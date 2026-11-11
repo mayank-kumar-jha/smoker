@@ -1,0 +1,105 @@
+@import "tailwindcss/theme.css" prefix(sm);
+@import "tailwindcss/utilities.css" source(none);
+@source "./hero.html";
+
+@font-face{font-family:SmokersDisplay;src:url("FONT_DATA_URI") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+
+/* No Tailwind Preflight or page-level reset: safe to embed alongside a WP theme. */
+#smokers-home{--sm-dark:#120D0A;--sm-orange:#E55216;--sm-cream:#F5EFE6;--sm-muted:#c3b5a8;isolation:isolate;container-type:inline-size;background:var(--sm-dark);color:var(--sm-cream);font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;text-align:left;width:100%;overflow-wrap:break-word;color-scheme:dark}
+#smokers-home,#smokers-home *,#smokers-home *::before,#smokers-home *::after{box-sizing:border-box}
+#smokers-home :is(h1,h2,p,figure,dl,dt,dd,ol){margin:0;padding:0}
+#smokers-home a{color:inherit;text-decoration:none;box-shadow:none}
+#smokers-home :is(a,summary):focus-visible{outline:3px solid currentColor;outline-offset:5px}
+#smokers-home .sm-shell{max-width:1320px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)}
+#smokers-home .sm-brandbar{min-height:98px;border-bottom:1px solid #f5efe626}
+#smokers-home .sm-brand{display:inline-flex;align-items:center;gap:10px;font-family:SmokersDisplay,Georgia,serif;font-size:25px;color:var(--sm-orange);line-height:1;letter-spacing:-1px;white-space:nowrap}
+#smokers-home .sm-brandmark{display:grid;place-items:center;width:33px;height:33px;border:2px solid currentColor;border-radius:50%;font-size:23px}
+#smokers-home .sm-origin{font-size:10px;font-weight:700;letter-spacing:1.7px;color:var(--sm-muted)}
+#smokers-home .sm-origin span{color:var(--sm-orange);padding-inline:12px}
+#smokers-home .sm-hero{grid-template-columns:1.12fr 1fr;gap:24px;padding-block:64px 54px}
+#smokers-home .sm-copy{min-width:0;position:relative;z-index:2}
+#smokers-home .sm-eyebrow{color:#f18b58;font-size:11px;letter-spacing:2px;font-weight:700;line-height:1.5}
+#smokers-home .sm-rule{width:26px;height:2px;background:currentColor;flex-shrink:0}
+#smokers-home h1{font-family:SmokersDisplay,Georgia,serif;font-weight:400;font-size:clamp(44px,5.6vw,76px);font-size:clamp(40px,5.6cqi,76px);line-height:1.04;letter-spacing:-1.6px;margin-top:24px;color:var(--sm-cream);text-transform:none}
+#smokers-home h1 span{color:var(--sm-orange)}
+#smokers-home .sm-description{max-width:480px;color:var(--sm-muted);font-size:16px;line-height:1.75;margin-top:27px}
+#smokers-home .sm-actions{margin-top:30px}
+#smokers-home .sm-button{display:inline-flex;align-items:center;justify-content:center;gap:28px;min-height:54px;padding:14px 24px;border:1px solid transparent;border-radius:100px;font-size:14px;font-weight:700;line-height:1.4;cursor:pointer;transition:background-color .18s,color .18s,border-color .18s}
+#smokers-home .sm-primary{background:var(--sm-orange);color:var(--sm-dark)}
+#smokers-home .sm-primary:hover{background:#f76a2d}
+#smokers-home .sm-secondary{border-color:#8a786b;color:var(--sm-cream);background:transparent}
+#smokers-home .sm-secondary:hover{border-color:var(--sm-cream);background:#f5efe612}
+#smokers-home .sm-arrow{font-size:21px;line-height:1}
+#smokers-home .sm-smallnote{font-size:11px;letter-spacing:.25px;color:var(--sm-muted);margin-top:15px}
+#smokers-home .sm-delivery{position:relative}
+#smokers-home summary{list-style:none}
+#smokers-home summary::-webkit-details-marker{display:none}
+#smokers-home .sm-apps{position:absolute;left:0;top:calc(100% + 12px);z-index:5;width:300px;max-width:calc(100vw - 40px);padding:20px;background:var(--sm-cream);color:var(--sm-dark);border:1px solid #bcaa98;border-radius:16px;box-shadow:0 16px 45px #0008}
+#smokers-home .sm-apps-title{font-weight:700;font-size:15px}
+#smokers-home .sm-apps-note{font-size:12px;line-height:1.5;margin:6px 0 12px;color:#645245}
+#smokers-home .sm-apps a{display:flex;align-items:center;justify-content:space-between;min-height:44px;border-top:1px solid #d6c7b8;font-size:14px;font-weight:700}
+#smokers-home .sm-apps a:hover{text-decoration:underline;text-underline-offset:4px}
+#smokers-home .sm-product{position:relative;min-width:0;padding:28px 8px 0 16px;align-self:center}
+#smokers-home .sm-product::before{content:"";position:absolute;inset:-40px -20px 0 -20px;background:radial-gradient(ellipse,#e552162e,transparent 68%);pointer-events:none;z-index:-1}
+#smokers-home .sm-photo-frame{aspect-ratio:1;border-radius:50%;padding:10px;border:1px solid #8b4930;box-shadow:0 0 0 13px #e5521605,0 0 0 14px #f5efe610}
+#smokers-home .sm-product-photo{display:block;width:100%;height:100%;max-width:100%;object-fit:cover;object-position:50% 57%;border-radius:50%;border:5px solid var(--sm-cream);aspect-ratio:1}
+#smokers-home .sm-gluten-badge{position:absolute;right:0;top:20px;width:122px;height:122px;border:5px solid var(--sm-dark);border-radius:50%;background:var(--sm-orange);color:var(--sm-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(10deg);text-align:center}
+#smokers-home .sm-gluten-badge>span{font-size:25px;line-height:1.1;margin-bottom:5px}
+#smokers-home .sm-gluten-badge strong{font-size:12px;line-height:1.4;letter-spacing:1px}
+#smokers-home .sm-photo-note{position:absolute;left:6px;bottom:70px;padding:12px 17px;background:var(--sm-cream);color:var(--sm-dark);font-size:11px;font-weight:800;line-height:1.5;letter-spacing:1.4px;transform:rotate(-7deg);box-shadow:0 6px 25px #0005}
+#smokers-home figcaption{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:30px;color:var(--sm-muted);font-size:9px;font-weight:700;letter-spacing:1.3px;text-align:center}
+#smokers-home .sm-caption-line{width:25px;height:1px;background:var(--sm-orange)}
+#smokers-home .sm-stats{grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #f5efe626;padding-block:28px 35px}
+#smokers-home .sm-stat{display:flex;flex-direction:column;min-width:0;padding:0 24px;border-right:1px solid #f5efe626}
+#smokers-home .sm-stat:first-child{padding-left:0}
+#smokers-home .sm-stat:last-child{border-right:0}
+#smokers-home .sm-stat dt{text-transform:uppercase;font-size:10px;font-weight:700;letter-spacing:1.4px;margin-top:8px;order:2}
+#smokers-home .sm-stat dd{font-family:SmokersDisplay,Georgia,serif;font-size:35px;line-height:1.25;white-space:nowrap;order:1}
+#smokers-home .sm-stat dd span{font-size:23px}
+#smokers-home .sm-stat-ready dd{color:var(--sm-orange)}
+#smokers-home .sm-stat .sm-stat-note{font-family:Arial,Helvetica,sans-serif;font-weight:400;color:var(--sm-muted);font-size:11px;line-height:1.5;white-space:normal;margin-top:5px;order:3}
+#smokers-home .sm-intro{background:var(--sm-cream);color:var(--sm-dark)}
+#smokers-home .sm-intro-grid{grid-template-columns:1fr 1fr;gap:60px;padding-block:53px 56px}
+#smokers-home .sm-intro .sm-eyebrow{color:#9e3912;font-size:10px;letter-spacing:1.7px}
+#smokers-home h2{font-family:SmokersDisplay,Georgia,serif;font-size:clamp(26px,3vw,37px);line-height:1.2;font-weight:400;letter-spacing:-.7px;margin-top:18px;color:var(--sm-dark);text-transform:none}
+#smokers-home h2 span{color:#a73c12}
+#smokers-home .sm-intro-copy>p{color:#655348;font-size:15px;line-height:1.8;max-width:490px}
+#smokers-home .sm-steps{gap:14px 25px;list-style:none;margin-top:24px}
+#smokers-home .sm-steps li{font-size:11px;font-weight:700}
+#smokers-home .sm-steps span{color:#9e3912;margin-right:6px;font-size:10px}
+@container (max-width:900px){
+ #smokers-home .sm-hero{grid-template-columns:1fr;gap:28px;padding-top:40px}
+ #smokers-home h1{font-size:clamp(40px,8.6cqi,72px)}
+ #smokers-home .sm-description{max-width:590px}
+ #smokers-home .sm-product{width:min(100%,490px);margin-inline:auto}
+ #smokers-home .sm-intro-grid{gap:30px;grid-template-columns:1fr}
+ #smokers-home .sm-intro-copy>p{max-width:650px}
+ #smokers-home .sm-stat{padding-inline:16px}
+ #smokers-home .sm-stat .sm-stat-note{font-size:10px}
+}
+@container (max-width:600px){
+ #smokers-home .sm-shell{padding-inline:24px}
+ #smokers-home .sm-brandbar{min-height:78px;flex-wrap:wrap;gap:8px;padding-block:17px}
+ #smokers-home .sm-brand{font-size:21px}
+ #smokers-home .sm-origin{font-size:8px;letter-spacing:1px}
+ #smokers-home .sm-origin span{padding-inline:5px}
+ #smokers-home h1{font-size:clamp(32px,11.8cqi,60px);letter-spacing:-1px}
+ #smokers-home .sm-description{font-size:15px}
+ #smokers-home .sm-eyebrow{font-size:9px;letter-spacing:1.6px}
+ #smokers-home .sm-button{padding-inline:19px;gap:17px;font-size:13px}
+ #smokers-home .sm-product{padding-inline:12px;padding-top:22px}
+ #smokers-home .sm-gluten-badge{width:100px;height:100px;top:9px;right:0}
+ #smokers-home .sm-gluten-badge strong{font-size:10px}
+ #smokers-home .sm-photo-note{font-size:9px;bottom:60px;left:0}
+ #smokers-home figcaption{font-size:8px;letter-spacing:.7px}
+ #smokers-home .sm-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 0;padding-block:25px 30px}
+ #smokers-home .sm-stat:nth-child(odd){padding-left:0}
+ #smokers-home .sm-stat:nth-child(even){border-right:0;padding-right:0}
+ #smokers-home .sm-stat dt{font-size:9px;letter-spacing:.8px}
+ #smokers-home .sm-stat dd{font-size:29px}
+ #smokers-home .sm-stat dd span{font-size:20px}
+ #smokers-home .sm-intro-grid{padding-block:38px;gap:22px}
+ #smokers-home .sm-steps{flex-direction:column;gap:12px}
+}
+@media(prefers-reduced-motion:reduce){#smokers-home .sm-button{transition:none}}
+@media(forced-colors:active){#smokers-home .sm-button,#smokers-home .sm-gluten-badge{border:2px solid ButtonText}#smokers-home .sm-photo-frame{border:1px solid CanvasText}}

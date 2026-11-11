@@ -1,0 +1,101 @@
+/* Curved card menu, matching the supplied November video. */
+#smokers-site[data-mode=casa] .ss-fan-menu{height:100svh;min-height:650px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 4%;background:radial-gradient(ellipse at 50% 65%,#29140a,#160c07 70%);overflow:hidden;position:relative}
+#smokers-site .ss-fan-heading{text-align:center;z-index:3;flex:none}
+#smokers-site .ss-fan-heading>.ss-eyebrow{font:600 10px var(--body);letter-spacing:.24em;color:#b89d7e;margin-bottom:10px}
+#smokers-site .ss-fan-heading h2{font:400 clamp(34px,min(3.7vw,6svh),62px)/1.15 SSDisplay,Georgia,serif;letter-spacing:-.035em;margin-bottom:10px}
+#smokers-site .ss-fan-heading h2 em{color:#e34d16}
+#smokers-site .ss-fan-heading>p:last-child{font:400 13px/1.5 var(--body);max-width:460px;margin:auto;color:#dcc8b4}
+#smokers-site .ss-fan-stage{--card-width:clamp(190px,18vw,255px);--card-height:clamp(275px,36svh,355px);--fan-gap:clamp(150px,17vw,235px);position:relative;display:block;width:min(100%,1200px);max-width:none;height:min(49svh,470px);min-height:330px;aspect-ratio:auto;margin:24px auto 0;flex:none;isolation:isolate;touch-action:pan-y;user-select:none;perspective:1400px}
+#smokers-site .ss-fan-stage:before,#smokers-site .ss-fan-stage:after{display:none}
+#smokers-site .ss-fan-card{position:absolute;left:50%;top:12px;width:var(--card-width);height:var(--card-height);padding:20px 18px;border:1px solid #90654555;border-radius:15px;background:linear-gradient(145deg,#2d180d,#160c07);display:flex;flex-direction:column;align-items:center;gap:12px;transform:translateX(calc(-50% + var(--offset) * var(--fan-gap))) translateY(var(--lift)) rotate(var(--turn));transform-origin:50% 100%;z-index:var(--depth);opacity:var(--fade);transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .5s,border-color .3s,box-shadow .3s;will-change:transform;overflow:hidden;cursor:pointer;box-shadow:0 20px 45px #0002;color:#f5e9d8}
+#smokers-site .ss-fan-card[aria-hidden=true]{visibility:hidden;pointer-events:none}
+#smokers-site .ss-fan-card[aria-pressed=true]{border-color:#be773c;box-shadow:0 20px 55px #0004,0 0 25px #b852090b}
+#smokers-site .ss-fan-card:hover{border-color:#df9853;opacity:1}
+#smokers-site .ss-fan-category{font:500 8px/1.4 var(--body);letter-spacing:.18em;text-transform:uppercase;color:#c7a77e;align-self:stretch;text-align:left;border-bottom:1px solid #96704422;padding-bottom:10px}
+#smokers-site .ss-fan-card img{width:clamp(105px,14svh,155px);height:clamp(105px,14svh,155px);border-radius:50%;object-fit:cover;flex:none;border:1px solid #9d704644;padding:3px;background:#21150e}
+#smokers-site .ss-fan-name{font:400 clamp(17px,1.5vw,23px)/1.15 SSDisplay,Georgia,serif;text-align:center;margin:auto 0 0;max-width:100%;text-wrap:balance}
+#smokers-site .ss-fan-note{font:400 8px/1.4 var(--body);letter-spacing:.07em;color:#ccb496;border-top:1px solid #96704422;width:100%;padding-top:10px;text-transform:uppercase}
+#smokers-site .ss-fan-bottom{position:relative;z-index:12;text-align:center;width:100%;padding-top:8px;background:linear-gradient(transparent,#160c07 28%);flex:none}
+#smokers-site .ss-fan-controls{display:flex;justify-content:center;align-items:center;gap:18px}
+#smokers-site .ss-fan-controls>button{width:36px;height:36px;border:1px solid #80604077;border-radius:50%;font-size:20px;color:#d2a875}
+#smokers-site .ss-fan-dots{display:flex;gap:0;align-items:center}
+#smokers-site .ss-fan-dots button{width:20px;height:30px;position:relative}
+#smokers-site .ss-fan-dots button:after{content:'';width:4px;height:4px;background:#816149;border-radius:50%;position:absolute;left:8px;top:13px;transition:background .2s,transform .2s}
+#smokers-site .ss-fan-dots button[aria-pressed=true]:after{background:#ef5c1b;transform:scale(1.8)}
+#smokers-site .ss-fan-hint{font:400 11px/1.5 var(--body);color:#c4ad96;margin:10px 0 16px}
+#smokers-site .ss-fan-menu .ss-wheel-info{padding:0;background:none;border:0;box-shadow:none;min-height:0;margin:0}
+#smokers-site .ss-fan-menu .ss-actions{justify-content:center;gap:14px;margin:0;padding:0;border:0}
+#smokers-site .ss-fan-menu .ss-button{min-height:44px;padding:12px 24px;font:600 11px var(--body);letter-spacing:.08em}
+#smokers-site .ss-fan-menu .ss-primary{background:#ed4c12;color:#fff2dd;box-shadow:0 5px 22px #e3471220}
+#smokers-site .ss-fan-menu .ss-outline{border-color:#8c643d;color:#f2dfc7}
+#smokers-site .ss-skip-intro{position:absolute;right:28px;bottom:28px;z-index:3;pointer-events:auto;border:1px solid #bd8c5c80;border-radius:30px;padding:12px 22px;color:#e9cbaa;background:#241409;font:500 13px var(--body)}
+@media(max-width:1100px){
+ #smokers-site .ss-fan-stage{--card-width:210px;--card-height:300px;--fan-gap:180px;height:390px;min-height:0}
+ #smokers-site[data-mode=casa] .ss-fan-menu{height:auto;min-height:780px;padding-block:45px}
+ #smokers-site .ss-fan-heading h2{font-size:42px}
+}
+@media(max-width:600px){
+ #smokers-site[data-mode=casa] .ss-fan-menu{min-height:700px;padding:40px 18px}
+ #smokers-site .ss-fan-heading h2{font-size:clamp(27px,7.8vw,42px)}
+ #smokers-site .ss-fan-heading>p:last-child{font-size:12px;max-width:320px}
+ #smokers-site .ss-fan-stage{--card-width:190px;--card-height:285px;--fan-gap:170px;height:370px;min-width:100%}
+ #smokers-site .ss-fan-card{padding:16px 14px}
+ #smokers-site .ss-fan-card img{width:120px;height:120px}
+ #smokers-site .ss-fan-name{font-size:18px}
+ #smokers-site .ss-fan-controls{gap:8px}
+ #smokers-site .ss-fan-dots button{width:15px}
+ #smokers-site .ss-fan-dots button:after{left:5px}
+ #smokers-site .ss-fan-hint{font-size:10px}
+}
+#smokers-site[data-motion=off] .ss-fan-card{transition:none}
+@media(prefers-reduced-motion:reduce){#smokers-site .ss-fan-card{transition:none}}
+#smokers-site .ss-home-method{background:radial-gradient(ellipse at 25% 45%,#3b1e0e,#160c07 75%);padding:6svh 7%;min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:5svh}
+#smokers-site .ss-method-intro{display:grid;grid-template-columns:1fr 1fr;gap:8%;align-items:center}
+#smokers-site .ss-method-intro .ss-eyebrow{font:600 11px var(--body);letter-spacing:.2em;color:#cf9b63;margin-bottom:20px}
+#smokers-site .ss-method-intro h2{font:400 clamp(36px,4.4vw,70px)/1 Georgia,serif;margin-bottom:20px}
+#smokers-site .ss-method-intro h2 em{font-style:italic}
+#smokers-site .ss-method-intro .ss-lead{font-size:16px;line-height:1.6;color:#dec6af;max-width:550px;margin-bottom:22px}
+#smokers-site .ss-method-intro .ss-button{font-size:13px;min-height:44px;padding:12px 20px;border-color:#98734e}
+#smokers-site .ss-method-intro>img{width:100%;height:34svh;min-height:220px;object-fit:cover;border-radius:38px;border:1px solid #986f45}
+#smokers-site .ss-home-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:35px}
+#smokers-site .ss-home-steps li{display:flex;gap:16px;align-items:start}
+#smokers-site .ss-home-steps svg{width:32px;height:32px;color:#d88440;flex:none}
+#smokers-site .ss-home-steps h3{font:400 25px Georgia,serif;margin-bottom:12px}
+#smokers-site .ss-home-steps h3 span{font-size:14px;color:#c87c36;margin-right:7px}
+#smokers-site .ss-home-steps p{font:400 14px/1.5 var(--body);color:#c4ad95}
+#smokers-site .ss-home-pro-link{border-top:1px solid #92633a55;padding-top:25px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+#smokers-site .ss-home-pro-link p{font-size:12px;color:#ca9e73;margin-bottom:8px}
+#smokers-site .ss-home-pro-link h3{font:400 25px Georgia,serif}
+#smokers-site .ss-home-pro-link .ss-actions{flex-wrap:wrap;gap:12px;margin:0}
+#smokers-site .ss-home-pro-link .ss-button{font-size:12px;min-height:44px;padding:10px 20px}
+#smokers-site .ss-footer-delivery-hours{font-size:12px!important;max-width:280px;margin-top:10px!important;color:#c9ae94}
+@media(max-width:800px){
+ #smokers-site .ss-home-method{padding:55px 24px;gap:35px}
+ #smokers-site .ss-method-intro{grid-template-columns:1fr;gap:30px}
+ #smokers-site .ss-method-intro>img{height:260px}
+ #smokers-site .ss-home-steps{grid-template-columns:1fr;gap:24px}
+ #smokers-site .ss-home-pro-link{flex-direction:column;align-items:start}
+}
+#smokers-site[data-mode=profesional] .ss-dish-options{overflow:auto;align-content:start;padding:4px;scrollbar-width:thin;scrollbar-color:#966a40 #21130b;grid-auto-rows:minmax(115px,auto)}
+#smokers-site[data-mode=profesional] .ss-catalogue-form fieldset{min-width:0}
+#smokers-site[data-mode=casa] .ss-home-transition>.ss-fan-menu{border-radius:0;border:0;box-shadow:none}
+#smokers-site .ss-business-options label:is(:hover,:focus-within) .ss-panel-icon{animation:var(--icon-motion) .85s ease-in-out both}
+#smokers-site[data-motion=off] .ss-business-options label .ss-panel-icon{animation:none}
+@media(prefers-reduced-motion:reduce){#smokers-site .ss-business-options label .ss-panel-icon{animation:none!important}}
+#smokers-site .ss-product-preparation{padding:45px 0;border-top:1px solid #a2734355;color:#f3e4cf}
+#smokers-site .ss-product-preparation>h2,#smokers-site .ss-product-allergens h2{font:400 clamp(28px,3vw,44px) Georgia,serif;margin-bottom:18px}
+#smokers-site .ss-product-preparation>p{color:#d7bfa5;max-width:850px}
+#smokers-site .ss-product-methods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:30px}
+#smokers-site .ss-product-methods article{padding:25px;border:1px solid #92613966;border-radius:20px;background:#28150b}
+#smokers-site .ss-product-methods svg{width:30px;height:30px;color:#ec8837}
+#smokers-site .ss-product-methods h3{font:400 26px Georgia,serif;margin:14px 0}
+#smokers-site .ss-product-methods strong{font-size:13px;color:#de8a43}
+#smokers-site .ss-product-methods p{font-size:15px;margin-top:12px;color:#dcc4a8}
+#smokers-site .ss-product-allergens{margin-top:30px;padding:25px;border:1px solid #92613966;border-radius:20px}
+#smokers-site .ss-product-allergens a{display:inline-block;margin-top:15px;color:#ed994e}
+@media(max-width:700px){#smokers-site .ss-product-methods{grid-template-columns:1fr}}
+@media(max-width:600px){
+ #smokers-site[data-mode=casa] .ss-fan-menu{padding-bottom:95px}
+ #smokers-site .ss-fan-menu .ss-actions{flex-direction:row;flex-wrap:nowrap;gap:10px}
+ #smokers-site .ss-fan-menu .ss-button{font-size:10px;padding:12px 16px;min-width:0;width:auto;gap:8px}
+}

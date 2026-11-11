@@ -1,0 +1,219 @@
+{
+  "origin": "https://smokers.cat",
+  "defaultLanguage": "es",
+  "environment": "staging",
+  "business": {
+    "name": "Smokers",
+    "legalName": "SMOKERS CAT, S.L.",
+    "email": "info@smokers.cat",
+    "telephone": "+34624212308",
+    "streetAddress": "Selva 5, local A",
+    "postalCode": "08917",
+    "addressLocality": "Badalona",
+    "addressRegion": "Barcelona",
+    "addressCountry": "ES"
+  },
+  "metadata": {
+    "es": {
+      "inicio": {
+        "title": "Cocina ahumada artesanal en Badalona | Smokers",
+        "description": "Smokers: carnes y verduras ahumadas con maderas nobles en Badalona. Descubre nuestros platos para casa y las soluciones para tu negocio."
+      },
+      "casa": {
+        "title": "Comida ahumada a domicilio en Badalona y Barcelona · Smokers",
+        "description": "Carnes y verduras marinadas 12 h, ahumadas con leña y cocinadas a baja temperatura en Badalona. Pídelas en Glovo o Uber Eats y caliéntalas en 15 minutos. Sin gluten."
+      },
+      "profesional": {
+        "title": "Quinta gama ahumada para hostelería | Smokers",
+        "description": "Platos ahumados y cocinados a baja temperatura para restaurantes, hoteles, catering y tiendas. Pide catálogo, fichas técnicas y tarifas profesionales."
+      },
+      "productSuffix": "Descubre este plato de Smokers, elaborado en Badalona. Sin gluten, envasado al vacío y listo para regenerar. Consulta su ficha técnica."
+    },
+    "ca": {
+      "inicio": {
+        "title": "Cuina fumada artesanal a Badalona | Smokers",
+        "description": "Smokers: carns i verdures fumades amb fustes nobles a Badalona. Descobreix els nostres plats per a casa i les solucions per al teu negoci."
+      },
+      "casa": {
+        "title": "Menjar fumat a domicili a Badalona i Barcelona · Smokers",
+        "description": "Carns i verdures marinades 12 h, fumades amb llenya i cuinades a baixa temperatura a Badalona. Demana-les a Glovo o Uber Eats i escalfa-les en 15 minuts. Sense gluten."
+      },
+      "profesional": {
+        "title": "Cinquena gamma fumada per a hostaleria | Smokers",
+        "description": "Plats fumats i cuinats a baixa temperatura per a restaurants, hotels, càtering i botigues. Demana catàleg, fitxes tècniques i tarifes professionals."
+      },
+      "productSuffix": "Descobreix aquest plat de Smokers, elaborat a Badalona. Sense gluten, envasat al buit i llest per regenerar. Consulta la fitxa tècnica."
+    },
+    "en": {
+      "inicio": {
+        "title": "Artisan smoked food in Badalona | Smokers",
+        "description": "Smokers: hardwood-smoked meat and vegetables made in Badalona. Discover dishes for your home and prepared-food solutions for your business."
+      },
+      "casa": {
+        "title": "Smoked food delivered in Badalona and Barcelona · Smokers",
+        "description": "Meat and vegetables marinated 12 h, wood-smoked and slow-cooked in Badalona. Order on Glovo or Uber Eats and reheat in 15 minutes. Gluten-free."
+      },
+      "profesional": {
+        "title": "Smoked prepared dishes for food service | Smokers",
+        "description": "Smoked, slow-cooked dishes for restaurants, hotels, caterers and retailers. Request the catalogue, technical sheets and professional pricing."
+      },
+      "productSuffix": "Discover this Smokers dish, prepared in Badalona. Gluten-free, vacuum-packed and ready to reheat. Request its technical sheet."
+    }
+  },
+  "productOverrides": {
+    "pork": {
+      "es": {
+        "description": "Carrillera marinada 12 horas, ahumada 4 horas con leña y cocinada a baja temperatura hasta que se deshace. Ni cuchillo."
+      },
+      "ca": {
+        "description": "Galta marinada 12 hores, fumada 4 hores amb llenya i cuinada a baixa temperatura fins que es desfà. Sense ganivet."
+      },
+      "en": {
+        "description": "Pork cheek marinated 12 hours, smoked 4 hours over wood and slow-cooked until it falls apart. No knife needed."
+      }
+    },
+    "spiced-chicken": {
+      "es": {
+        "description": "Pollo marinado con nuestra mezcla de especias y ahumado con leña. Crujiente por fuera, jugoso por dentro."
+      },
+      "ca": {
+        "description": "Pollastre marinat amb la nostra barreja d’espècies i fumat amb llenya. Cruixent per fora, sucós per dins."
+      },
+      "en": {
+        "description": "Chicken marinated in our spice blend and wood-smoked. Crisp outside, juicy inside."
+      }
+    },
+    "herb-chicken": {
+      "es": {
+        "description": "Pollo marinado con hierbas mediterráneas, ahumado suave y asado lentamente. El favorito de cada día."
+      },
+      "ca": {
+        "description": "Pollastre marinat amb herbes mediterrànies, fumat suau i rostit lentament. El favorit de cada dia."
+      },
+      "en": {
+        "description": "Chicken marinated with Mediterranean herbs, gently smoked and slow-roasted. The everyday favourite."
+      }
+    },
+    "meat-cannelloni": {
+      "es": {
+        "description": "Canelones de carne a la catalana, con bechamel y nuestro toque de humo. La receta de siempre, con nuestro método."
+      },
+      "ca": {
+        "description": "Canelons de carn a la catalana, amb beixamel i el nostre toc de fum. La recepta de sempre, amb el nostre mètode."
+      },
+      "en": {
+        "description": "Catalan-style meat cannelloni with béchamel and our touch of smoke. The classic recipe, made our way."
+      }
+    },
+    "spinach-cannelloni": {
+      "es": {
+        "description": "Espinacas y queso de cabra, cremosos y suaves, con un ligero ahumado."
+      },
+      "ca": {
+        "description": "Espinacs i formatge de cabra, cremosos i suaus, amb un lleuger fumat."
+      },
+      "en": {
+        "description": "Spinach and goat’s cheese, creamy and mild, lightly smoked."
+      }
+    },
+    "meat-aubergine": {
+      "es": {
+        "description": "Berenjena rellena de carne ahumada y horneada lentamente."
+      },
+      "ca": {
+        "description": "Albergínia farcida de carn fumada i cuita lentament al forn."
+      },
+      "en": {
+        "description": "Aubergine stuffed with smoked meat and slowly baked."
+      }
+    },
+    "vegetable-aubergine": {
+      "es": {
+        "description": "Berenjena rellena de verduras ahumadas. El humo también es vegetariano."
+      },
+      "ca": {
+        "description": "Albergínia farcida de verdures fumades. El fum també és vegetarià."
+      },
+      "en": {
+        "description": "Aubergine stuffed with smoked vegetables. Smoke is vegetarian too."
+      }
+    },
+    "olot-potatoes": {
+      "es": {
+        "description": "El clásico de la Garrotxa: patata rellena de carne, con nuestro toque ahumado y lista en minutos."
+      },
+      "ca": {
+        "description": "El clàssic de la Garrotxa: patata farcida de carn, amb el nostre toc fumat i llesta en minuts."
+      },
+      "en": {
+        "description": "The Garrotxa classic: a potato filled with meat, with our smoky touch, ready in minutes."
+      }
+    },
+    "spinach-potatoes": {
+      "es": {
+        "description": "La patata de Olot, rellena de espinacas. Crujiente por fuera, suave por dentro."
+      },
+      "ca": {
+        "description": "La patata d’Olot, farcida d’espinacs. Cruixent per fora, suau per dins."
+      },
+      "en": {
+        "description": "The Olot potato, filled with spinach. Crisp outside, soft inside."
+      }
+    },
+    "caesar-salad": {
+      "es": {
+        "description": "Ensalada César. Completa tu pedido. Consulta disponibilidad, ingredientes y alérgenos en Glovo o Uber Eats."
+      },
+      "ca": {
+        "description": "Amanida Cèsar. Completa la teva comanda. Consulta disponibilitat, ingredients i al·lèrgens a Glovo o Uber Eats."
+      },
+      "en": {
+        "description": "Caesar salad. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats."
+      }
+    },
+    "truffle-potato-salad": {
+      "es": {
+        "description": "Ensalada de patatas con trufa. Completa tu pedido. Consulta disponibilidad, ingredientes y alérgenos en Glovo o Uber Eats."
+      },
+      "ca": {
+        "description": "Amanida de patates amb tòfona. Completa la teva comanda. Consulta disponibilitat, ingredients i al·lèrgens a Glovo o Uber Eats."
+      },
+      "en": {
+        "description": "Truffle potato salad. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats."
+      }
+    },
+    "salad": {
+      "es": {
+        "description": "Ensalada. Completa tu pedido. Consulta disponibilidad, ingredientes y alérgenos en Glovo o Uber Eats."
+      },
+      "ca": {
+        "description": "Amanida. Completa la teva comanda. Consulta disponibilitat, ingredients i al·lèrgens a Glovo o Uber Eats."
+      },
+      "en": {
+        "description": "Salad. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats."
+      }
+    },
+    "truffle-potatoes": {
+      "es": {
+        "description": "Patatas a la trufa. Completa tu pedido. Consulta disponibilidad, ingredientes y alérgenos en Glovo o Uber Eats."
+      },
+      "ca": {
+        "description": "Patates amb tòfona. Completa la teva comanda. Consulta disponibilitat, ingredients i al·lèrgens a Glovo o Uber Eats."
+      },
+      "en": {
+        "description": "Truffle potatoes. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats."
+      }
+    },
+    "smokers-potatoes": {
+      "es": {
+        "description": "Patatas Smokers. Completa tu pedido. Consulta disponibilidad, ingredientes y alérgenos en Glovo o Uber Eats."
+      },
+      "ca": {
+        "description": "Patates Smokers. Completa la teva comanda. Consulta disponibilitat, ingredients i al·lèrgens a Glovo o Uber Eats."
+      },
+      "en": {
+        "description": "Smokers potatoes. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats."
+      }
+    }
+  }
+}

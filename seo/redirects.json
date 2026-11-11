@@ -1,0 +1,23 @@
+{
+  "/b2c/": "/ca/a-casa/",
+  "/es/b2c-es/": "/es/en-casa/",
+  "/en/b2c-en/": "/en/at-home/",
+  "/b2b/": "/ca/professionals/",
+  "/es/b2b-es/": "/es/profesionales/",
+  "/en/b2b-en/": "/en/professionals/",
+  "/hola/": "/ca/contacte/",
+  "/privacy-policy-2/": "/ca/privacitat/",
+  "/contact/": "/en/contact/",
+  "/contacto/": "/es/contacto/",
+  "/contacte/": "/ca/contacte/",
+  "/en/our-workshop/": "/en/contact/#ss-workshop",
+  "/en/stockists/": "/en/contact/#ss-find",
+  "/es/obrador/": "/es/contacto/#ss-workshop",
+  "/es/puntos-de-venta/": "/es/contacto/#ss-find",
+  "/ca/obrador/": "/ca/contacte/#ss-workshop",
+  "/ca/punts-de-venda/": "/ca/contacte/#ss-find",
+  "/": "/es/en-casa/",
+  "/es/": "/es/en-casa/",
+  "/en/": "/en/at-home/",
+  "/ca/": "/ca/a-casa/"
+}

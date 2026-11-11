@@ -1,0 +1,40 @@
+/* OFF-WHITE IDEATION ONLY — 4 Nov 2026.
+   Brown originals remain unchanged in menu-reference.css and b2c-reference.css.
+   To restore them, comment out this file's single import in styles.css.
+   Previous menu background: url('assets/menu-tabletop.webp') center/cover,#30170c;
+   Previous FAQ/footer background: var(--chapter-bg); color:#f6ead8;
+*/
+#smokers-site[data-mode=casa] .ss-menu-story .ss-fan-menu{
+ background:radial-gradient(ellipse at 50% 50%,#fffaf4 15%,transparent 72%),radial-gradient(ellipse at 5% 90%,#e9cbb0a8,transparent 45%),linear-gradient(130deg,#fcf3e9,#f6e7db 65%,#fff8f0);color:#442414;
+}
+#smokers-site[data-mode=casa] .ss-fan-heading h2{color:#442414}
+#smokers-site[data-mode=casa] .ss-fan-heading>.ss-eyebrow{color:#643b24}
+#smokers-site[data-mode=casa] .ss-fan-heading>.ss-eyebrow:before,#smokers-site[data-mode=casa] .ss-fan-heading>.ss-eyebrow:after{background:#ba8764}
+#smokers-site[data-mode=casa] .ss-fan-heading>p:last-child{color:#78675a}
+#smokers-site[data-mode=casa] .ss-fan-menu:before{border-color:#e8bb9855}
+#smokers-site[data-mode=casa] .ss-fan-stage:before{border-color:#d9995c66}
+#smokers-site[data-mode=casa] .ss-fan-card{background:linear-gradient(130deg,#fffaf3,#fbe7d4);box-shadow:0 18px 28px #78442530,inset 0 0 18px #fff8ee}
+#smokers-site[data-mode=casa] .ss-fan-card[aria-pressed=true]{border-color:#fffaf3;box-shadow:0 0 0 1px #ffb864,0 12px 35px #e788354d,0 2px 3px #ff7600}
+#smokers-site[data-mode=casa] .ss-fan-controls>button{color:#673519;border-color:#bf8965;background:#fffaf333}
+#smokers-site[data-mode=casa] .ss-fan-dots button:after{background:#c6a58b66}
+#smokers-site[data-mode=casa] .ss-fan-dots button[aria-pressed=true]:after{background:#ff6806}
+#smokers-site[data-mode=casa] .ss-fan-hint{color:#7b6150}
+#smokers-site[data-mode=casa] .ss-fan-menu .ss-outline{color:#59301b;border-color:#a97555;background:#fff9f155}
+#smokers-site[data-mode=casa] .ss-faq{height:auto;min-height:0;padding-block:65px;background:radial-gradient(ellipse at 0 0,#f5dfcd88,transparent 55%),linear-gradient(130deg,#fffaf5,#fcf3ec);color:#442414}
+#smokers-site[data-mode=casa] .ss-faq h2{color:#442414}
+#smokers-site[data-mode=casa] .ss-faq .ss-eyebrow{color:#f16513}
+#smokers-site[data-mode=casa] .ss-faq details{border-color:#baa08e}
+#smokers-site[data-mode=casa] .ss-faq summary{color:#442414}
+#smokers-site[data-mode=casa] .ss-faq details[open] summary{color:#e95706}
+#smokers-site[data-mode=casa] .ss-faq details>p{color:#654b3c}
+#smokers-site[data-mode=casa] .ss-faq-photo{border-color:#e9cab2;box-shadow:0 10px 24px #77411b18}
+#smokers-site[data-mode=casa] .ss-faq-photo>span{background:#fffaf1;color:#ed620b;border-color:#eea064}
+#smokers-site[data-mode=casa] .ss-faq-contact{color:#59331e;background:transparent;border-color:#b6937b}
+#smokers-site[data-mode=casa] .ss-footer{background:linear-gradient(135deg,#fff9f3,#fcf2e9);color:#442414;border-top-color:#c6a68f}
+#smokers-site[data-mode=casa] .ss-footer :is(p,h3),#smokers-site[data-mode=casa] .ss-footer>div>a:not(.ss-logo),#smokers-site[data-mode=casa] .ss-footer-bottom{color:#604431}
+#smokers-site[data-mode=casa] .ss-footer :is(.ss-footer-bottom,.ss-footer-pages){border-color:#c6a68f}
+#smokers-site[data-mode=casa] .ss-footer .ss-logo-word{filter:brightness(0) saturate(100%) invert(14%) sepia(30%) saturate(1100%) hue-rotate(338deg)}
+#smokers-site[data-mode=casa] .ss-footer .ss-logo-art{--ss-logo-smoke:#b18a6455}
+#smokers-site[data-mode=casa] .ss-footer-pages a{color:#59331e}
+#smokers-site[data-mode=casa] .ss-footer-pages a span{color:#ed620b}
+@media(max-width:700px){#smokers-site[data-mode=casa] .ss-faq{padding-block:44px}}

@@ -1,0 +1,276 @@
+/* Professional hero: open milestone arc over uninterrupted food photography. */
+#smokers-site[data-mode=profesional] .ss-reference-header .ss-header-right>.ss-button{display:none}
+#smokers-site .ss-reference-pro{padding:0;height:calc(100svh - clamp(72px,9.9svh,96px));min-height:690px;background:#0c0704}
+#smokers-site .ss-reference-pro .ss-pro-hero{height:100%;min-height:0;border:0;border-radius:0;box-shadow:none}
+#smokers-site .ss-reference-pro .ss-flip-inner{height:100%;min-height:0}
+#smokers-site .ss-reference-pro .ss-pro-front{position:relative;isolation:isolate;display:grid;grid-template-columns:38% 1fr;grid-template-rows:minmax(0,1fr) auto;gap:24px;height:100%;min-height:0;padding:5.8svh 5.8% 4.8svh;border:0;border-radius:0;box-shadow:none;background:#0d0805}
+#smokers-site .ss-reference-pro .ss-pro-wallpaper{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:right center;pointer-events:none}
+#smokers-site .ss-reference-pro .ss-pro-front::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#09050380,transparent 55%),linear-gradient(0deg,#090503a6,transparent 35%);opacity:1;pointer-events:none}
+#smokers-site .ss-reference-pro .ss-pro-copy{position:relative;z-index:2;grid-column:1;align-self:start;left:auto;top:auto;width:100%;max-width:none}
+#smokers-site .ss-reference-pro .ss-pro-copy>.ss-eyebrow{font-size:clamp(10px,.8vw,15px);letter-spacing:.18em;line-height:1.5;margin-bottom:22px;color:#e8b460}
+#smokers-site .ss-reference-pro .ss-pro-copy h1{font-size:clamp(38px,min(4vw,6.9svh),76px);line-height:.98;letter-spacing:-.028em;margin-bottom:26px}
+#smokers-site .ss-reference-pro .ss-pro-copy h1 em{background:none;color:#ff5105;filter:none}
+#smokers-site .ss-reference-pro .ss-pro-copy>.ss-lead{max-width:510px;color:#e2d8cd;font-size:clamp(16px,1.1vw,20px);line-height:1.5;text-wrap:pretty}
+#smokers-site .ss-reference-pro .ss-pro-copy .ss-actions{gap:16px;margin-top:28px;flex-wrap:wrap;align-items:stretch}
+@media(min-width:1251px){#smokers-site .ss-reference-pro .ss-pro-copy .ss-actions{width:max-content;max-width:125%}}
+#smokers-site .ss-reference-pro .ss-pro-copy .ss-button{padding:14px 24px;min-height:56px;font-size:clamp(12px,.85vw,16px);gap:18px;letter-spacing:.11em;line-height:1.3}
+#smokers-site .ss-reference-pro .ss-pro-copy .ss-outline .ss-panel-icon{width:26px;height:26px}
+#smokers-site .ss-reference-pro .ss-pro-copy .ss-outline{background:#120c0766;border-color:#f7f1e84d}
+#smokers-site .ss-reference-pro .ss-pro-copy .ss-primary{background:#ff5105;box-shadow:inset 0 1px #ffce8066,0 8px 24px #ff51051a}
+#smokers-site .ss-reference-pro .ss-panel-facts-pro{position:relative;z-index:2;grid-column:1/-1;left:auto;bottom:auto;width:84%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:stretch;gap:0;margin:0;padding:26px 0 0;border-top:1px solid #d6a04855}
+#smokers-site .ss-reference-pro .ss-panel-facts-pro li{display:flex;flex-direction:row;align-items:flex-start;gap:14px;padding:0 20px;border-right:1px solid #d6a04866;font-family:var(--body);letter-spacing:0;text-transform:none}
+#smokers-site .ss-reference-pro .ss-panel-facts-pro li:first-child{padding-left:0}
+#smokers-site .ss-reference-pro .ss-panel-facts-pro li:last-child{padding-right:0;border:0}
+#smokers-site .ss-reference-pro .ss-panel-facts-pro li+li::before{content:none}
+#smokers-site .ss-reference-pro .ss-panel-facts-pro .ss-panel-icon{width:30px;height:34px;color:#edaa4b}
+#smokers-site .ss-reference-pro .ss-panel-facts-pro strong{display:block;min-height:2.7em;font:700 clamp(11px,.8vw,15px)/1.35 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--smk-cream)}
+#smokers-site .ss-reference-pro .ss-panel-facts-pro p{font:400 clamp(12px,.75vw,14px)/1.5 var(--body);color:#c9bdb3;margin-top:8px}
+#smokers-site .ss-process-arc{--medallion-size:clamp(54px,4.8vw,90px);position:absolute;z-index:2;right:3%;top:9%;width:57%;aspect-ratio:1000/430;pointer-events:none}
+#smokers-site .ss-arc-track{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#smokers-site .ss-arc-glow{stroke:#ff6b00;stroke-width:9;filter:blur(7px);opacity:.8}
+#smokers-site .ss-arc-line{stroke:url(#ss-arc-light);stroke-width:2.7;filter:drop-shadow(0 0 5px #ff6b00);stroke-linecap:round}
+#smokers-site .ss-arc-trail{stroke:#fff2c9;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:45 955;filter:drop-shadow(0 0 5px #ff9100);animation:ss-arc-travel 12s linear infinite;opacity:.9}
+@keyframes ss-arc-travel{to{stroke-dashoffset:-1000}}
+#smokers-site .ss-arc-milestones{list-style:none;margin:0;padding:0}
+#smokers-site .ss-arc-milestones li{position:absolute;left:var(--arc-x);top:var(--arc-y);width:clamp(80px,8vw,145px);transform:translateX(-50%);text-align:center}
+#smokers-site .ss-arc-medallion{display:grid;place-items:center;width:var(--medallion-size);height:var(--medallion-size);margin:calc(var(--medallion-size) / -2) auto 0;border:1px solid #f2aa50;border-radius:50%;background:linear-gradient(#0e0805cc,#0e0805cc),url('assets/hero-texture.webp') center/cover;box-shadow:0 0 18px #ff6b0055,inset 0 0 18px #ff6b001a;color:#f4e5ca}
+#smokers-site .ss-arc-medallion .ss-panel-icon{width:47%;height:47%;stroke-width:1.5}
+#smokers-site .ss-arc-label{display:block;margin-top:12px;font:700 clamp(11px,.94vw,18px)/1.2 var(--ui);letter-spacing:.15em;color:#f7f1e8;text-shadow:0 2px 10px #000,0 0 8px #000}
+
+/* The reverse face uses the same smoky palette, with a real dish and numbered steps. */
+#smokers-site .ss-reference-pro .ss-pro-back{border:0;border-radius:0;box-shadow:none;min-height:0;height:100%;padding:5svh 5.8%;display:grid;grid-template-columns:.85fr 1.15fr;gap:6%;align-items:center;color:var(--smk-cream);background:linear-gradient(110deg,#120b08f2,#21130de6),url('assets/hero-texture.webp') center/cover}
+#smokers-site .ss-reference-pro .ss-pro-back::before{content:none}
+#smokers-site .ss-reference-pro .ss-process-photo{position:relative;height:min(67svh,670px);width:100%;max-width:520px;aspect-ratio:auto;justify-self:start;margin:0;padding:0;border:1px solid #b57a3d80;border-radius:24px;overflow:hidden;box-shadow:0 24px 60px #0005}
+#smokers-site .ss-reference-pro .ss-process-photo img{width:100%;height:100%;object-fit:cover;border-radius:0}
+#smokers-site .ss-reference-pro .ss-process-photo::after{content:'';position:absolute;inset:40% 0 0;background:linear-gradient(transparent,#0c0704eb)}
+#smokers-site .ss-process-photo figcaption{position:absolute;z-index:1;left:28px;right:28px;bottom:30px}
+#smokers-site .ss-process-photo figcaption>span{font:700 12px var(--ui);letter-spacing:.2em;color:#e8b460}
+#smokers-site .ss-process-photo figcaption strong{display:block;margin-top:14px;font:400 clamp(24px,2.6vw,44px)/1.06 var(--display);color:#fff5e7}
+#smokers-site .ss-process-photo-stamp{position:absolute;z-index:1;top:24px;left:24px;display:flex;align-items:center;gap:12px;padding:13px 18px;background:var(--smk-orange);border-radius:100px;color:var(--smk-charcoal);font:700 14px var(--ui);letter-spacing:.14em}
+#smokers-site .ss-process-photo-stamp svg{width:23px;height:25px}
+#smokers-site .ss-reference-pro .ss-process-copy{min-width:0}
+#smokers-site .ss-reference-pro .ss-process-copy>.ss-eyebrow{color:#e8b460;font-size:12px;letter-spacing:.18em;margin-bottom:18px}
+#smokers-site .ss-reference-pro .ss-process-copy h2{font-size:clamp(28px,min(3.15vw,5.2svh),54px);line-height:1.05;color:var(--smk-cream);margin-bottom:24px}
+#smokers-site .ss-reference-pro .ss-process-rows{border:0;padding:0;gap:12px}
+#smokers-site .ss-reference-pro .ss-process-rows>div{padding:16px 18px;gap:18px;align-items:flex-start;border-radius:14px;border:1px solid #d6a04840;background:#100a0773}
+#smokers-site .ss-process-step{flex:none;color:#d6a04880;font:400 22px/1 var(--display);display:flex;flex-direction:column;align-items:center;gap:12px}
+#smokers-site .ss-process-step svg{width:25px;height:27px;color:#e8b460}
+#smokers-site .ss-reference-pro .ss-process-rows strong{font-size:clamp(14px,1.05vw,18px);line-height:1.4;color:#f7f1e8}
+#smokers-site .ss-reference-pro .ss-process-rows p>span{font-size:clamp(12px,.9vw,16px);line-height:1.5;margin-top:4px;color:#c9bdb3}
+#smokers-site .ss-reference-pro .ss-process-copy .ss-stats{padding:20px 0;margin-top:24px;border-color:#d6a04844;gap:14px}
+#smokers-site .ss-reference-pro .ss-process-copy .ss-stats dd{font-size:clamp(22px,1.9vw,34px);color:#e8b460}
+#smokers-site .ss-reference-pro .ss-process-copy .ss-stats dt{color:#d9cabd;letter-spacing:.14em;font-size:11px}
+#smokers-site .ss-reference-pro .ss-process-copy .ss-actions{margin-top:24px;gap:14px;flex-wrap:wrap}
+#smokers-site .ss-reference-pro .ss-process-copy .ss-button{font-size:13px;padding:13px 22px;min-height:48px}
+#smokers-site .ss-reference-pro .ss-process-copy .ss-outline{color:#f7f1e8;border-color:#d6a04880}
+
+/* Dish pages: large photography, useful facts, clear details and the next dishes. */
+#smokers-site .ss-product-page{padding:32px 6% 72px;background:radial-gradient(ellipse at 0 5%,#94491f28,transparent 50%),linear-gradient(#160f0cf0,#160f0cf7),url('assets/hero-texture.webp') center top/cover;color:var(--smk-cream)}
+#smokers-site .ss-product-page .ss-breadcrumbs{max-width:1600px;margin:0 auto 36px;color:var(--smk-mist);font-size:13px}
+#smokers-site .ss-product-page .ss-breadcrumbs li[aria-current]{color:var(--smk-gold)}
+#smokers-site .ss-product-layout{grid-template-columns:1fr 1fr;align-items:center;gap:7%;max-width:1600px;margin:0 auto 54px}
+#smokers-site .ss-product-image{position:relative;margin:0;min-width:0;border:1px solid #d6a04866;border-radius:24px;overflow:hidden;box-shadow:0 24px 60px #0005}
+#smokers-site .ss-product-image>img{width:100%;height:clamp(440px,67svh,740px);object-fit:cover;border-radius:0}
+#smokers-site .ss-product-image::after{content:'';position:absolute;inset:60% 0 0;background:linear-gradient(transparent,#100b08e6)}
+#smokers-site .ss-dish-index{position:absolute;top:24px;left:24px;display:flex;align-items:baseline;gap:8px;background:#170e09e6;border:1px solid #d6a04880;border-radius:14px;padding:12px 18px;color:#f3bd6a;font:400 28px var(--display)}
+#smokers-site .ss-dish-index small{font:500 12px var(--ui);letter-spacing:.12em;color:var(--smk-mist)}
+#smokers-site .ss-product-image figcaption{position:absolute;z-index:1;bottom:26px;left:26px;right:26px;display:flex;align-items:center;gap:18px}
+#smokers-site .ss-product-image figcaption>svg{width:35px;height:42px;color:#e8b460}
+#smokers-site .ss-product-image figcaption>span{font:700 12px var(--ui);letter-spacing:.18em;color:#e8b460}
+#smokers-site .ss-product-image figcaption strong{display:block;margin-top:8px;font:500 16px var(--body);letter-spacing:0;color:#f7f1e8}
+#smokers-site .ss-product-copy{min-width:0}
+#smokers-site .ss-product-copy>.ss-eyebrow{font-size:12px;line-height:1.6;letter-spacing:.16em;color:#e8b460;margin-bottom:22px}
+#smokers-site .ss-product-copy h1{font-size:clamp(36px,3.6vw,65px);line-height:1.02;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:26px}
+#smokers-site .ss-product-copy .ss-lead{font-size:18px;line-height:1.7;color:#c9bdb3;max-width:600px}
+#smokers-site :is(.ss-product-copy,.ss-detail-copy) .ss-detail-tags{margin:26px 0;gap:10px}
+#smokers-site :is(.ss-product-copy,.ss-detail-copy) .ss-detail-tags span{display:flex;align-items:center;gap:8px;border-color:#d6a04866;background:#d6a0480d;padding:8px 14px;font-size:12px;color:#e7d8c5}
+#smokers-site :is(.ss-product-copy,.ss-detail-copy) .ss-detail-tags svg{width:18px;height:20px;color:#e8b460}
+#smokers-site .ss-dish-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-block:1px solid #d6a04844;padding:24px 0;gap:0;margin:30px 0}
+#smokers-site .ss-dish-facts>div{display:grid;grid-template-columns:30px 1fr;column-gap:12px;row-gap:7px;align-items:center;padding:0 20px;border-right:1px solid #d6a04844}
+#smokers-site .ss-dish-facts>div:first-child{padding-left:0}
+#smokers-site .ss-dish-facts>div:last-child{border:0;padding-right:0}
+#smokers-site .ss-dish-facts svg{grid-row:1/3;width:27px;height:30px;color:#e8b460}
+#smokers-site .ss-dish-facts dt{grid-column:2;grid-row:2;font:600 10px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--smk-mist)}
+#smokers-site .ss-dish-facts dd{grid-column:2;grid-row:1;font:400 clamp(18px,1.6vw,27px)/1 var(--display);white-space:nowrap;color:#e8b460}
+#smokers-site .ss-product-copy .ss-actions{flex-wrap:wrap;gap:14px;margin-top:28px}
+#smokers-site .ss-product-copy .ss-button{font-size:14px;min-height:52px;padding:14px 24px}
+#smokers-site .ss-product-page .ss-outline{color:#f7f1e8;border-color:#d6a04866}
+#smokers-site .ss-dish-signature{display:flex;align-items:center;gap:10px;margin-top:28px;color:#aa9480;font:600 11px var(--ui);letter-spacing:.16em}
+#smokers-site .ss-dish-signature svg{width:18px;height:22px}
+#smokers-site .ss-product-notes{max-width:1600px;margin:0 auto 80px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+#smokers-site .ss-product-notes article{display:flex;align-items:flex-start;gap:22px;border:1px solid #d6a04844;border-radius:18px;padding:30px;background:#d6a0480a}
+#smokers-site .ss-product-notes article>svg{flex:none;width:30px;height:34px;color:#e8b460}
+#smokers-site .ss-product-notes h2{font:600 18px/1.4 var(--body);margin:0 0 12px;letter-spacing:0;color:#f7f1e8}
+#smokers-site .ss-product-notes p{font-size:15px;line-height:1.7;color:#c9bdb3}
+#smokers-site .ss-product-related{max-width:1600px;margin:auto;padding-top:40px;border-top:1px solid #d6a04844}
+#smokers-site .ss-related-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:32px}
+#smokers-site .ss-related-heading .ss-eyebrow{color:#e8b460;font-size:12px;letter-spacing:.18em;margin-bottom:18px}
+#smokers-site .ss-related-heading h2{font-size:clamp(32px,3.3vw,56px);line-height:1.04}
+#smokers-site .ss-related-heading .ss-button{font-size:13px;flex-shrink:0}
+#smokers-site .ss-related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+#smokers-site .ss-related-dish{display:block;position:relative;min-width:0;border-radius:18px;overflow:hidden;border:1px solid #d6a04844;background:#251a14}
+#smokers-site .ss-related-dish>img{width:100%;height:270px;object-fit:cover;transition:transform .9s var(--ease)}
+#smokers-site .ss-related-dish:hover>img{transform:scale(1.035)}
+#smokers-site .ss-related-dish>div{position:relative;padding:24px 54px 26px 24px;background:#251a14}
+#smokers-site .ss-related-dish span{font:700 11px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:#e8b460}
+#smokers-site .ss-related-dish h3{font:600 19px/1.3 var(--body);margin-top:10px;color:#f7f1e8;letter-spacing:0}
+#smokers-site .ss-related-dish b{position:absolute;right:22px;top:34px;font-size:25px;font-weight:400;color:#e8b460}
+#smokers-site .ss-product-page .ss-dish-directory{max-width:1600px;margin:40px auto 0;border:1px solid #d6a04844;border-radius:16px;background:#d6a04808;padding:18px 24px}
+
+/* Dish dialogs share the dark, photographic treatment of the complete dish pages. */
+#smokers-site .ss-dialog{background:#1b120e;color:#f7f1e8;border-color:#b57a3d80;max-width:min(1120px,calc(100vw - 32px))}
+#smokers-site #ss-dialog-content{grid-template-columns:.95fr 1.05fr}
+#smokers-site .ss-detail-image{position:relative;min-height:100%;overflow:hidden}
+#smokers-site .ss-detail-image .ss-detail-photo{height:100%;min-height:620px;object-fit:cover}
+#smokers-site .ss-detail-image::after{content:'';position:absolute;inset:65% 0 0;background:linear-gradient(transparent,#100b08cc);pointer-events:none}
+#smokers-site .ss-detail-image-label{position:absolute;z-index:1;bottom:26px;left:26px;font:700 12px var(--ui);letter-spacing:.18em;color:#f3bd6a}
+#smokers-site .ss-detail-copy{padding:48px 34px 36px;background:radial-gradient(ellipse at 100% 0,#8c451e26,transparent 70%)}
+#smokers-site .ss-detail-copy>.ss-eyebrow{font-size:11px;color:#e8b460}
+#smokers-site .ss-detail-copy h2{font-size:clamp(28px,2.6vw,40px);line-height:1.05;color:#f7f1e8}
+#smokers-site .ss-detail-copy>p{color:#c9bdb3}
+#smokers-site .ss-detail-copy .ss-dish-facts{margin:24px 0;padding:20px 0}
+#smokers-site .ss-detail-copy .ss-dish-facts>div{display:flex;flex-direction:column;align-items:flex-start;padding-inline:14px;gap:8px}
+#smokers-site .ss-detail-copy .ss-dish-facts>div:first-child{padding-left:0}
+#smokers-site .ss-detail-copy .ss-dish-facts dd{order:1;font-size:22px}
+#smokers-site .ss-detail-copy .ss-dish-facts dt{order:2}
+#smokers-site .ss-detail-copy .ss-dish-facts svg{order:0;width:23px;height:26px}
+#smokers-site .ss-detail-note{padding:18px 20px;border:1px solid #d6a04844;border-radius:12px;background:#d6a04808;margin-bottom:18px}
+#smokers-site .ss-detail-note h3{display:flex;align-items:center;gap:10px;font:600 16px var(--body);margin:0 0 12px}
+#smokers-site .ss-detail-note svg{width:21px;height:23px;color:#e8b460}
+#smokers-site .ss-detail-note p{font-size:14px;line-height:1.6;color:#c9bdb3}
+#smokers-site .ss-detail-copy .ss-allergen-note{font-size:13px;line-height:1.6;color:#bcae9f}
+#smokers-site .ss-detail-copy>.ss-button{font-size:13px;min-height:48px;padding:13px 24px}
+#smokers-site .ss-dialog-close{border:1px solid #d6a04888;background:#1b120ee6;color:#f3bd6a}
+
+@media(max-width:1250px) and (min-width:801px){
+ #smokers-site .ss-reference-pro{min-height:790px}
+ #smokers-site .ss-reference-pro .ss-pro-front{grid-template-columns:43% 1fr;padding-inline:5%;padding-top:38px;padding-bottom:32px;gap:24px}
+ #smokers-site .ss-reference-pro .ss-pro-copy h1{font-size:clamp(38px,4.2vw,53px)}
+ #smokers-site .ss-reference-pro .ss-pro-copy .ss-button{min-height:48px;font-size:12px;padding:12px 18px;gap:14px}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro{width:100%}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro li{padding-inline:12px;gap:10px}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro .ss-panel-icon{width:24px;height:28px}
+ #smokers-site .ss-process-arc{width:52%;right:2%;top:13%;--medallion-size:52px}
+ #smokers-site .ss-arc-label{font-size:11px;letter-spacing:.1em}
+ #smokers-site .ss-arc-milestones li{width:84px}
+ #smokers-site .ss-reference-pro .ss-pro-back{padding:36px 5%;gap:4%;grid-template-columns:.75fr 1.25fr}
+ #smokers-site .ss-reference-pro .ss-process-copy h2{font-size:30px}
+ #smokers-site .ss-reference-pro .ss-process-rows>div{padding:12px;gap:12px}
+ #smokers-site .ss-reference-pro .ss-process-copy .ss-stats{padding:16px 0;margin-top:18px}
+ #smokers-site .ss-reference-pro .ss-process-copy .ss-actions{margin-top:18px}
+ #smokers-site .ss-product-layout{gap:5%}
+ #smokers-site .ss-product-copy h1{font-size:clamp(30px,3.5vw,44px)}
+ #smokers-site .ss-dish-facts>div{display:flex;flex-direction:column;align-items:flex-start;padding:0 14px;gap:9px}
+ #smokers-site .ss-dish-facts svg{order:0}
+ #smokers-site .ss-dish-facts dd{order:1;font-size:23px}
+ #smokers-site .ss-dish-facts dt{order:2}
+}
+@media(min-width:1251px) and (max-height:820px){
+ #smokers-site .ss-reference-pro .ss-pro-front{padding-top:32px;padding-bottom:30px;gap:20px}
+ #smokers-site .ss-reference-pro .ss-pro-copy h1{font-size:clamp(38px,6.6svh,55px);margin-bottom:22px}
+ #smokers-site .ss-reference-pro .ss-pro-copy .ss-actions{margin-top:20px}
+ #smokers-site .ss-reference-pro .ss-pro-copy .ss-button{min-height:48px;padding-block:12px;font-size:12px;gap:16px}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro{width:90%;padding-top:20px}
+ #smokers-site .ss-reference-pro .ss-pro-back{padding-block:30px}
+ #smokers-site .ss-reference-pro .ss-process-copy h2{font-size:30px;margin-bottom:18px}
+ #smokers-site .ss-reference-pro .ss-process-rows>div{padding:12px 16px}
+ #smokers-site .ss-reference-pro .ss-process-copy .ss-stats{padding:16px 0;margin-top:18px}
+ #smokers-site .ss-reference-pro .ss-process-copy .ss-actions{margin-top:18px}
+}
+@media(max-width:800px){
+ #smokers-site .ss-reference-pro{height:auto;min-height:0;padding:0}
+ #smokers-site .ss-reference-pro .ss-pro-hero,#smokers-site .ss-reference-pro .ss-flip-inner{height:auto;min-height:0}
+ #smokers-site .ss-reference-pro .ss-flip-inner{display:block}
+ #smokers-site .ss-reference-pro .ss-pro-front{position:relative;height:auto;grid-template-columns:minmax(0,1fr);grid-template-rows:auto;gap:32px;padding:38px 6%}
+ #smokers-site .ss-reference-pro .ss-pro-copy{width:100%;max-width:600px}
+ #smokers-site .ss-reference-pro .ss-pro-copy h1{font-size:clamp(38px,7.8vw,60px);line-height:.98}
+ #smokers-site .ss-reference-pro .ss-pro-copy>.ss-eyebrow{font-size:11px;letter-spacing:.14em}
+ #smokers-site .ss-reference-pro .ss-pro-copy .ss-button{min-height:48px;font-size:13px;padding:13px 20px;gap:16px}
+ #smokers-site .ss-reference-pro .ss-pro-wallpaper{opacity:.2;object-position:70% center}
+ #smokers-site .ss-reference-pro .ss-pro-front::before{background:linear-gradient(#100b0877,#100b08aa)}
+ #smokers-site .ss-process-arc{position:relative;inset:auto;width:100%;min-height:310px;aspect-ratio:1000/500;--medallion-size:52px;background:linear-gradient(#100b0866,transparent),url('assets/pro-arc-background.webp') 78% center/cover;border-radius:20px;margin:8px 0}
+ #smokers-site .ss-arc-track{height:85%;top:6%}
+ #smokers-site .ss-arc-milestones{position:absolute;inset:6% 0 9%}
+ #smokers-site .ss-arc-label{font-size:12px;letter-spacing:.12em}
+ #smokers-site .ss-arc-milestones li{width:90px}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro{width:100%;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 20px;padding-top:28px}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro li{padding:0;border:0;gap:12px}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro strong{font-size:12px}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro p{font-size:12px}
+ #smokers-site .ss-reference-pro .ss-pro-back{position:absolute;inset:0;height:100%;overflow:auto;padding:38px 6%;grid-template-columns:1fr;gap:34px;align-items:start}
+ #smokers-site .ss-reference-pro .ss-show-process .ss-pro-front{position:absolute;inset:0;height:100%;overflow:auto}
+ #smokers-site .ss-reference-pro .ss-show-process .ss-pro-back{position:relative;inset:auto;height:auto;overflow:visible}
+ #smokers-site .ss-reference-pro .ss-process-photo{order:2;height:340px;width:100%;max-width:none;justify-self:stretch}
+ #smokers-site .ss-reference-pro .ss-process-copy h2{font-size:clamp(30px,5.5vw,44px)}
+ #smokers-site .ss-reference-pro .ss-process-rows>div{padding:16px;gap:16px}
+ #smokers-site .ss-reference-pro .ss-process-rows strong{font-size:16px}
+ #smokers-site .ss-reference-pro .ss-process-rows p>span{font-size:14px}
+ #smokers-site .ss-reference-pro .ss-process-copy .ss-stats dd{font-size:27px}
+ #smokers-site .ss-reference-pro .ss-process-copy .ss-stats dt{font-size:10px}
+ #smokers-site .ss-product-page{padding:26px 6% 52px}
+ #smokers-site .ss-product-layout{grid-template-columns:1fr;gap:34px;margin-bottom:36px}
+ #smokers-site .ss-product-image>img{height:clamp(360px,65vw,540px)}
+ #smokers-site .ss-product-copy h1{font-size:clamp(34px,6vw,50px)}
+ #smokers-site .ss-product-notes{grid-template-columns:1fr;margin-bottom:52px;gap:18px}
+ #smokers-site .ss-product-notes article{padding:24px}
+ #smokers-site .ss-related-grid{gap:16px}
+ #smokers-site .ss-related-dish>img{height:210px}
+ #smokers-site .ss-related-dish>div{padding:18px 34px 22px 18px}
+ #smokers-site .ss-related-dish h3{font-size:16px}
+ #smokers-site .ss-related-dish b{right:14px;font-size:20px}
+ #smokers-site #ss-dialog-content{grid-template-columns:1fr}
+ #smokers-site .ss-detail-image{height:280px;min-height:0}
+ #smokers-site .ss-detail-image .ss-detail-photo{height:100%;min-height:0}
+ #smokers-site .ss-detail-copy{padding:32px}
+ #smokers-site .ss-detail-copy h2{font-size:34px}
+}
+@media(max-width:540px){
+ #smokers-site .ss-reference-pro .ss-pro-front,#smokers-site .ss-reference-pro .ss-pro-back{padding:36px 24px}
+ #smokers-site .ss-reference-pro .ss-pro-copy h1{font-size:clamp(36px,10vw,48px);margin-bottom:24px}
+ #smokers-site .ss-reference-pro .ss-pro-copy>.ss-lead{font-size:16px}
+ #smokers-site .ss-reference-pro .ss-pro-copy .ss-actions{gap:12px;margin-top:26px;display:grid;grid-template-columns:1fr;width:100%;max-width:360px}
+ #smokers-site .ss-reference-pro .ss-pro-copy .ss-button{white-space:normal;min-height:52px;padding:14px 18px}
+ #smokers-site .ss-process-arc{height:auto;min-height:0;aspect-ratio:auto;padding:26px 16px 190px;background-position:75% bottom;--medallion-size:44px}
+ #smokers-site .ss-arc-track{display:none}
+ #smokers-site .ss-arc-milestones{position:relative;inset:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 10px}
+ #smokers-site .ss-arc-milestones li{position:static;width:auto;transform:none}
+ #smokers-site .ss-arc-medallion{margin:0 auto}
+ #smokers-site .ss-arc-label{font-size:11px;letter-spacing:.09em;margin-top:10px}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro{grid-template-columns:1fr 1fr;gap:24px 16px}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro li{flex-direction:column;gap:10px}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro li:last-child{grid-column:1/-1;flex-direction:row}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro strong{font-size:12px}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro p{font-size:13px}
+ #smokers-site .ss-reference-pro .ss-process-copy h2{font-size:clamp(27px,7.4vw,36px)}
+ #smokers-site .ss-reference-pro .ss-process-copy .ss-stats{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:24px 0}
+ #smokers-site .ss-reference-pro .ss-process-copy .ss-stats dd{font-size:28px}
+ #smokers-site .ss-reference-pro .ss-process-photo{height:300px}
+ #smokers-site .ss-process-photo figcaption strong{font-size:28px}
+ #smokers-site .ss-product-page{padding:24px 24px 44px}
+ #smokers-site .ss-product-page .ss-breadcrumbs{margin-bottom:26px;font-size:12px}
+ #smokers-site .ss-product-image>img{height:370px}
+ #smokers-site .ss-product-image figcaption{left:20px;right:20px;bottom:22px;gap:12px}
+ #smokers-site .ss-product-image figcaption strong{font-size:14px;line-height:1.4}
+ #smokers-site .ss-product-copy h1{font-size:clamp(30px,8vw,42px)}
+ #smokers-site .ss-product-copy .ss-lead{font-size:16px}
+ #smokers-site .ss-product-copy .ss-button{font-size:13px;padding:13px 20px;min-height:48px}
+ #smokers-site .ss-dish-facts>div{display:flex;flex-direction:column;align-items:flex-start;padding:0 12px;gap:10px}
+ #smokers-site .ss-dish-facts svg{order:0;width:23px;height:27px}
+ #smokers-site .ss-dish-facts dd{order:1;font-size:21px}
+ #smokers-site .ss-dish-facts dt{order:2;font-size:10px}
+ #smokers-site .ss-product-notes article{padding:24px 20px;gap:16px}
+ #smokers-site .ss-product-notes article>svg{width:25px}
+ #smokers-site .ss-product-notes h2{font-size:17px}
+ #smokers-site .ss-product-notes p{font-size:14px}
+ #smokers-site .ss-related-heading{display:block}
+ #smokers-site .ss-related-heading h2{font-size:clamp(28px,7vw,38px);margin-bottom:24px}
+ #smokers-site .ss-related-grid{grid-template-columns:1fr}
+ #smokers-site .ss-related-dish>img{height:250px}
+ #smokers-site .ss-related-dish>div{padding:24px 54px 26px 24px}
+ #smokers-site .ss-related-dish h3{font-size:20px}
+ #smokers-site .ss-related-dish b{right:24px;font-size:24px}
+ #smokers-site .ss-detail-copy{padding:30px 24px}
+ #smokers-site .ss-detail-copy h2{font-size:29px}
+ #smokers-site .ss-detail-image{height:250px}
+}
+@media(forced-colors:active){#smokers-site .ss-arc-line{stroke:CanvasText}#smokers-site .ss-arc-glow,#smokers-site .ss-arc-trail{display:none}#smokers-site .ss-arc-medallion{background:Canvas;color:CanvasText;border-color:CanvasText}}

@@ -1,0 +1,35 @@
+#smokers-site .ss-chicken-showcase{position:relative;isolation:isolate;overflow:hidden;background:#180c06;min-height:780px;height:100svh;color:var(--cream);scroll-margin-top:0}
+#smokers-site .ss-chicken-bg{position:absolute;z-index:-2;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;pointer-events:none}
+#smokers-site .ss-chicken-showcase:after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#180c061c,transparent 20%,transparent 80%,#180c0633)}
+#smokers-site .ss-chicken-composition{width:min(1320px,86%);height:100%;margin:auto;padding:3vh 0;display:grid;grid-template-rows:1fr 1fr}
+#smokers-site .ss-chicken-dish{display:grid;grid-template-columns:43% 57%;align-items:center;min-height:0;gap:0}
+#smokers-site .ss-chicken-dish-1{grid-template-columns:57% 43%}
+#smokers-site .ss-chicken-plate{width:min(100%,49svh);height:auto;aspect-ratio:1;object-fit:contain;max-height:100%;justify-self:center;filter:drop-shadow(0 22px 15px #0008)}
+#smokers-site .ss-chicken-copy{padding:0 2% 0 4%;position:relative;z-index:1}
+#smokers-site .ss-chicken-dish-1 .ss-chicken-plate{grid-column:2;grid-row:1}
+#smokers-site .ss-chicken-dish-1 .ss-chicken-copy{grid-column:1;grid-row:1;padding-left:6%;padding-right:3%}
+#smokers-site .ss-chicken-kicker{font:700 clamp(12px,1.05vw,17px)/1.5 var(--ui);letter-spacing:.26em;text-transform:uppercase;display:flex;align-items:center;gap:22px;margin-bottom:12px}
+#smokers-site .ss-chicken-kicker:before,#smokers-site .ss-chicken-kicker:after{content:'';display:block;width:65px;height:1px;background:var(--orange);flex-shrink:1}
+#smokers-site .ss-chicken-copy h2{font:bold clamp(35px,4.1vw,72px)/1.08 Georgia,serif;letter-spacing:-.035em;margin:0 0 15px;text-wrap:balance}
+#smokers-site .ss-chicken-copy h2 em{font-style:italic;color:var(--orange)}
+#smokers-site .ss-chicken-description{font:400 clamp(17px,1.55vw,25px)/1.38 Georgia,serif;max-width:620px}
+#smokers-site .ss-chicken-facts{display:flex;list-style:none;margin:26px 0 0;gap:0;align-items:center}
+#smokers-site .ss-chicken-facts li{display:flex;gap:10px;align-items:center;font:600 clamp(11px,1vw,15px)/1.3 var(--body);padding:0 20px;border-right:1px solid #a889605c;min-height:38px}
+#smokers-site .ss-chicken-facts li:first-child{padding-left:0}
+#smokers-site .ss-chicken-facts li:last-child{border:0;padding-right:0}
+#smokers-site .ss-chicken-facts svg{width:32px;height:32px;flex:none;color:var(--orange)}
+.ss-block-clip{position:relative;overflow:hidden}.ss-block-wipe{position:absolute;inset:0;z-index:2;pointer-events:none}
+@media(min-width:801px) and (min-height:650px){
+ #smokers-site .ss-pro-showcase-mount:has([data-scroll-motion=sticky]){height:240svh;position:relative}
+ #smokers-site .ss-chicken-showcase[data-scroll-motion=sticky]{position:sticky;top:0;height:100svh;min-height:0}
+}
+@media(min-width:801px) and (max-height:780px){#smokers-site .ss-chicken-showcase{min-height:650px}#smokers-site .ss-chicken-copy h2{font-size:clamp(32px,3.7vw,58px)}#smokers-site .ss-chicken-description{font-size:19px}#smokers-site .ss-chicken-facts{margin-top:18px}}
+@media(max-width:800px){#smokers-site .ss-chicken-showcase{height:auto;min-height:100svh}#smokers-site .ss-chicken-composition{width:90%;padding:36px 0 54px;gap:46px}#smokers-site .ss-chicken-dish,#smokers-site .ss-chicken-dish-1{display:flex;flex-direction:column;gap:10px}#smokers-site .ss-chicken-plate{width:min(76vw,370px);max-height:none}#smokers-site .ss-chicken-copy,#smokers-site .ss-chicken-dish-1 .ss-chicken-copy{padding:0;text-align:center;width:100%}#smokers-site .ss-chicken-kicker{justify-content:center;font-size:12px;gap:14px}#smokers-site .ss-chicken-kicker:before,#smokers-site .ss-chicken-kicker:after{width:35px}#smokers-site .ss-chicken-copy h2{font-size:clamp(32px,7.4vw,54px);margin-bottom:12px}#smokers-site .ss-chicken-description{font-size:18px;max-width:510px;margin:auto}#smokers-site .ss-chicken-facts{justify-content:center;margin-top:22px}#smokers-site .ss-chicken-facts li{padding:0 10px;font-size:11px;gap:6px;flex-direction:column;flex:1}#smokers-site .ss-chicken-facts svg{width:27px;height:27px}}
+
+/* Branding occupies the waiting state only; the scroll timeline crossfades it out. */
+#smokers-site .ss-chicken-brand{display:none;position:absolute;inset:0;z-index:3;align-items:center;justify-content:center;flex-direction:column;gap:24px;pointer-events:none;text-align:center}
+#smokers-site [data-scroll-motion] .ss-chicken-brand{display:flex}
+#smokers-site .ss-chicken-brand img{width:min(440px,66vw);height:auto;filter:drop-shadow(0 8px 30px #0004)}
+#smokers-site .ss-chicken-brand p{font:700 clamp(12px,1vw,16px)/1.5 var(--ui);letter-spacing:.24em;text-transform:uppercase;color:var(--cream);padding-inline:20px}
+#smokers-site .ss-chicken-brand>span{width:60px;height:1px;background:var(--orange)}
+@media(max-width:800px){#smokers-site .ss-chicken-brand{justify-content:flex-start;padding-top:170px}}

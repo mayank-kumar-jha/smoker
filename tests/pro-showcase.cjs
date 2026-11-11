@@ -1,0 +1,74 @@
+const {chromium}=require('playwright'),assert=require('node:assert/strict');
+(async()=>{
+ const browser=await chromium.launch({channel:'chrome'});
+ const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+ for(const [lang,path] of [['en','professionals'],['es','profesionales'],['ca','professionals']]){
+  await page.goto(`http://127.0.0.1:4173/${lang}/${path}/`);
+  await page.locator('#ss-signatures').scrollIntoViewIfNeeded();
+  await page.locator('.ss-chicken-plate').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.decode())));
+  assert.equal(await page.locator('.ss-chicken-copy h2').count(),2);
+  assert.equal(await page.locator('.ss-block-wipe').count(),0);
+  assert.equal(await page.locator('.ss-pro-showcase-mount').evaluate(e=>e.previousElementSibling.id),'ss-como');
+  for(const width of [1440,1024,768,390,320]){
+   await page.setViewportSize({width,height:900});
+   await page.locator('#ss-signatures').scrollIntoViewIfNeeded();
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Overflow ${lang} ${width}`);
+   const inside=await page.locator('.ss-chicken-showcase').evaluate(el=>{const outer=el.getBoundingClientRect();return [...el.querySelectorAll('.ss-chicken-plate,.ss-chicken-copy')].every(n=>{const r=n.getBoundingClientRect();return r.left>=outer.left-1&&r.right<=outer.right+1&&r.bottom<=outer.bottom+1})});
+   assert.ok(inside,`Clipped content ${lang} ${width}`);
+   if(lang==='en'&&[1440,390].includes(width))await page.locator('#ss-signatures').screenshot({path:`output/qa/pro-showcase-${width}.png`});
+  }
+ }
+ await page.setViewportSize({width:1440,height:900});
+ await page.emulateMedia({reducedMotion:'no-preference'});
+ await page.goto('http://127.0.0.1:4173/en/professionals/');
+ await page.waitForFunction(()=>document.querySelector('#ss-signatures')?.dataset.scrollMotion==='sticky');
+ await page.evaluate(()=>window.SMOKERS_PRO_INTRO_CANCEL?.());
+ const scrollToProgress=async progress=>{
+  await page.evaluate(p=>{const el=document.querySelector('.ss-pro-showcase-mount');const top=el.getBoundingClientRect().top+scrollY;scrollTo({top:top+(el.offsetHeight-innerHeight)*p,behavior:'instant'})},progress);
+  await page.waitForTimeout(1100);
+ };
+ await scrollToProgress(0);
+ assert.ok(await page.locator('.ss-chicken-plate,.ss-chicken-kicker,.ss-chicken-copy h2,.ss-chicken-description,.ss-chicken-facts').evaluateAll(els=>els.every(e=>Number(getComputedStyle(e).opacity)===0)),'All entrance elements must stay hidden before their scroll sequence');
+ const transform=()=>page.locator('.ss-chicken-plate').first().evaluate(e=>getComputedStyle(e).transform);
+ const start=await transform();
+ assert.equal(await page.locator('.ss-chicken-brand').evaluate(e=>getComputedStyle(e).opacity),'1','Waiting panel has Smokers branding');
+ await page.screenshot({path:'output/qa/pro-showcase-brand.png'});
+ await scrollToProgress(.35);
+ const middle=await transform();
+ assert.equal(await page.locator('.ss-chicken-brand').evaluate(e=>getComputedStyle(e).opacity),'0','Brand fades out before the dishes settle');
+ assert.ok(await page.locator('.ss-chicken-facts').evaluateAll(els=>els.every(e=>Number(getComputedStyle(e).opacity)===0)),'Delayed facts must not flash before their entrance');
+ assert.notEqual(start,middle,'Plate must roll with scroll');
+ assert.equal(await page.locator('.ss-block-wipe').count(),0,'No block wipes in this panel');
+ assert.ok(await page.locator('.ss-chicken-description').evaluateAll(els=>els.some(e=>{const opacity=Number(getComputedStyle(e).opacity);return opacity>0&&opacity<1})), 'Subtle text fade must progress with scroll');
+ assert.ok(await page.locator('#ss-signatures').evaluate(e=>Math.abs(e.getBoundingClientRect().top)<2),'Panel must stay in view');
+ await page.screenshot({path:'output/qa/pro-showcase-scroll-middle.png'});
+ await scrollToProgress(1);
+ const end=await transform();
+ assert.notEqual(middle,end,'Plate must continue rolling');
+ assert.ok(await page.locator('.ss-chicken-plate').evaluateAll(imgs=>imgs.every(i=>getComputedStyle(i).opacity==='1')));
+ await page.screenshot({path:'output/qa/pro-showcase-animated.png'});
+ await scrollToProgress(.35);
+ assert.equal(await transform(),middle,'Animation must replay on reverse scroll');
+ await page.locator('[data-action="motion"]').click();
+ await page.waitForTimeout(300);
+ assert.equal(await page.locator('.ss-block-wipe').count(),0);
+ assert.equal(await page.locator('[data-scroll-motion]').count(),0);
+ await page.locator('[data-action="motion"]').click();
+ await page.waitForTimeout(400);
+ await page.setViewportSize({width:390,height:844});
+ await page.waitForTimeout(500);
+ assert.equal(await page.locator('#ss-signatures').getAttribute('data-scroll-motion'),'flow');
+ assert.equal(await page.locator('.ss-block-wipe').count(),0);
+ assert.ok(await page.locator('.ss-chicken-description').first().getAttribute('style'),'Text motion rebuilds after resize');
+ await page.setViewportSize({width:1440,height:900});
+ await page.waitForTimeout(500);
+ assert.equal(await page.locator('#ss-signatures').getAttribute('data-scroll-motion'),'sticky');
+ await scrollToProgress(1);
+ const staticPage=await browser.newPage({javaScriptEnabled:false});
+ await staticPage.goto('http://127.0.0.1:4173/en/professionals/');
+ assert.equal(await staticPage.locator('.ss-chicken-copy h2').count(),2);
+ assert.deepEqual(errors,[]);
+ await browser.close();
+ console.log('PASS: three locales, five viewport widths, image loading, content bounds, scroll-driven rolling, subtle text fade, reverse replay, motion toggle, resize rebuilding, static HTML, no browser errors.');
+})().catch(e=>{console.error(e);process.exit(1)});

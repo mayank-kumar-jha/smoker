@@ -1,0 +1,123 @@
+/* Company guidelines v1, October 2026. Shared brand tokens; layout changes
+   below are limited to the five reference panels. Official logo: PDF p.4. */
+@font-face{font-family:Archivo;src:url('assets/archivo-400.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:Archivo;src:url('assets/archivo-600.woff2') format('woff2');font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:Archivo;src:url('assets/archivo-700.woff2') format('woff2');font-style:normal;font-weight:700;font-display:swap}
+#smokers-site{
+ --smk-orange:#FD4009;--smk-charcoal:#1B1411;--smk-smoke:#2A201B;
+ --smk-cream:#F7F1E8;--smk-paper:#FFFCF7;--smk-gold:#D6A048;
+ --smk-ember-dk:#B23F0E;--smk-ash:#6E625A;--smk-mist:#C9BDB3;
+ --smk-glovo:#FFC244;--smk-gf:#2F7D4F;
+ --ff-display:SSDisplay,Georgia,serif;--ff-label:SSCondensed,'Arial Narrow',sans-serif;
+ --ff-body:Archivo,system-ui,sans-serif;--r-sm:10px;--r:16px;--r-lg:28px;
+ --s1:8px;--s2:16px;--s3:24px;--s4:40px;--s5:64px;--s6:96px;
+ --ease:cubic-bezier(.2,.7,.2,1);
+ --dark:var(--smk-charcoal);--ink:var(--smk-charcoal);--cream:var(--smk-cream);
+ --orange:var(--smk-orange);--home-orange:var(--smk-orange);--gold:var(--smk-gold);
+ --dim:var(--smk-mist);--display:var(--ff-display);--ui:var(--ff-label);--body:var(--ff-body);
+ font-size:17px;line-height:1.6;
+}
+#smokers-site .ss-logo{min-width:96px;line-height:0;flex-shrink:0;box-shadow:none;filter:none;transform:none}
+#smokers-site .ss-logo .ss-official-logo{width:clamp(210px,18vw,310px);height:auto;max-width:100%;object-fit:contain;filter:none}
+#smokers-site .ss-gate-emblem .ss-emblem-logo{width:88%;height:auto;margin-top:10%;object-fit:contain}
+#smokers-site .ss-loader-brand .ss-official-logo{width:300px;height:auto}
+#smokers-site .ss-reference-header .ss-nav a{font-family:var(--body);font-size:14px;font-weight:600;letter-spacing:.03em}
+#smokers-site .ss-button{font-family:var(--ui);font-weight:700;letter-spacing:.12em;text-transform:uppercase;min-height:44px}
+#smokers-site .ss-primary,
+#smokers-site .ss-reference-home .ss-primary,
+#smokers-site .ss-reference-pro .ss-primary{background:var(--smk-orange);color:var(--smk-charcoal)}
+#smokers-site .ss-primary{box-shadow:inset 0 1px #f7f1e866,0 0 20px #fd40091a}
+#smokers-site .ss-glovo-button{background:var(--smk-glovo);color:var(--smk-charcoal);box-shadow:0 0 0 6px #ffc24426,inset 0 1px #fff8}
+#smokers-site .ss-reference-home .ss-primary{box-shadow:0 0 0 6px #fd40091a,inset 0 1px #f7f1e866}
+#smokers-site :focus-visible{outline:3px solid var(--smk-gold);outline-offset:5px}
+#smokers-site .ss-reference-header,
+#smokers-site .ss-reference-pro{background-color:var(--smk-charcoal)}
+#smokers-site[data-mode=casa] .ss-reference-header,
+#smokers-site .ss-reference-home{background-color:var(--smk-cream)}
+#smokers-site .ss-reference-header .ss-mode-switch a[aria-current]{color:var(--smk-orange);border-color:var(--smk-orange);box-shadow:0 0 14px #fd400922}
+#smokers-site[data-mode=casa] .ss-reference-header .ss-mode-switch a[aria-current]{background:var(--smk-orange);color:var(--smk-charcoal)}
+#smokers-site .ss-reference-gate .ss-gate-copy h2 em,
+#smokers-site .ss-reference-wheel .ss-wheel-copy>h2 em{color:var(--smk-orange)}
+#smokers-site .ss-reference-home .ss-home-copy h1 em{background:none;color:var(--smk-orange);filter:none}
+#smokers-site .ss-reference-pro .ss-pro-copy h1 em{background:linear-gradient(110deg,var(--smk-gold),var(--smk-orange) 45%,var(--smk-orange));background-clip:text;-webkit-background-clip:text;color:transparent}
+#smokers-site .ss-reference-order h2 em{color:var(--smk-ember-dk)}
+#smokers-site .ss-reference-home .ss-home-copy .ss-eyebrow,
+#smokers-site .ss-reference-home :is(.ss-eyebrow,.ss-stats dd,.ss-stat-icon),
+#smokers-site .ss-reference-order :is(.ss-eyebrow,.ss-panel-icon){color:var(--smk-ember-dk)}
+#smokers-site .ss-reference-pro .ss-eyebrow,
+#smokers-site .ss-reference-gate .ss-gate-copy .ss-eyebrow,
+#smokers-site .ss-reference-wheel .ss-wheel-copy>.ss-eyebrow,
+#smokers-site .ss-panel-facts-pro .ss-panel-icon{color:var(--smk-gold)}
+#smokers-site .ss-reference-home .ss-home-copy .ss-lead{color:var(--smk-charcoal)}
+#smokers-site .ss-reference-pro .ss-pro-copy .ss-lead{color:var(--smk-mist)}
+#smokers-site .ss-reference-home .ss-home-product::before{content:none;border:0;box-shadow:none}
+#smokers-site .ss-reference-home .ss-home-product .ss-seal{background:var(--smk-gf);color:var(--smk-paper)}
+#smokers-site .ss-reference-ticker{background:var(--smk-orange);color:var(--smk-charcoal)}
+#smokers-site .ss-reference-home+.ss-reference-ticker{background:var(--smk-charcoal);color:var(--smk-gold)}
+#smokers-site .ss-reference-order .ss-provider-photo{background-size:160% 300%;background-position-x:right}
+#smokers-site .ss-reference-wheel .ss-orbit{pointer-events:none}
+
+/* Facts are part of the copy flow, so they cannot collide with the CTAs. */
+#smokers-site .ss-reference-pro .ss-pro-front{display:flex;align-items:center;padding:24px 4.6%}
+#smokers-site .ss-reference-pro .ss-pro-copy{position:relative;left:auto;top:auto;width:49%}
+#smokers-site .ss-reference-pro .ss-pro-copy h1{font-size:clamp(32px,min(3.85vw,7.8svh),78px);margin-bottom:18px}
+#smokers-site .ss-reference-pro .ss-pro-copy .ss-lead{font-size:clamp(16px,1.05vw,20px);line-height:1.5;max-width:580px}
+#smokers-site .ss-reference-pro .ss-pro-copy .ss-actions{margin-top:20px;gap:16px;flex-wrap:wrap}
+#smokers-site .ss-reference-pro .ss-pro-copy .ss-button{font-size:14px;min-height:48px;padding:12px 22px;gap:14px}
+#smokers-site .ss-reference-pro .ss-panel-facts-pro{position:static;width:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:start;gap:16px;margin-top:28px;padding-top:20px;border-top:1px solid #d6a04855}
+#smokers-site .ss-reference-pro .ss-panel-facts-pro li{display:flex;flex-direction:column;align-items:flex-start;gap:8px;font-size:13px;line-height:1.35;letter-spacing:.12em;color:var(--smk-cream)}
+#smokers-site .ss-reference-pro .ss-panel-facts-pro li+li::before{content:none}
+#smokers-site .ss-reference-pro .ss-panel-facts-pro .ss-panel-icon{width:28px;height:30px}
+/* Shared rows keep both choices level even when translated copy wraps differently. */
+@media(min-width:541px){
+ #smokers-site .ss-reference-gate .ss-gate-panels{grid-template-rows:repeat(4,auto);align-content:start;row-gap:0}
+ #smokers-site .ss-reference-gate .ss-gate-panel{display:grid;grid-row:1 / span 4;grid-template-rows:subgrid;align-items:start}
+ #smokers-site .ss-reference-gate .ss-gate-pro{grid-column:1}
+ #smokers-site .ss-reference-gate .ss-gate-home{grid-column:2}
+ #smokers-site .ss-reference-gate .ss-gate-copy,
+ #smokers-site .ss-reference-gate .ss-gate-home .ss-gate-copy{position:static;display:grid;grid-row:1 / -1;grid-template-rows:subgrid;justify-items:start;width:100%;max-width:none;margin:0;transform:none}
+ #smokers-site .ss-reference-gate .ss-gate-home .ss-gate-copy{justify-items:end}
+ #smokers-site .ss-reference-gate .ss-gate-copy>p:not(.ss-eyebrow){width:100%;max-width:405px}
+ #smokers-site .ss-reference-gate .ss-gate-copy .ss-button{align-self:start;max-width:100%}
+}
+@media(min-width:801px){
+ #smokers-site .ss-reference-gate .ss-gate-panels{padding:0;grid-template-rows:36.9svh repeat(4,auto) minmax(0,1fr)}
+ #smokers-site .ss-reference-gate .ss-gate-panel{padding:0 8%;grid-row:1 / -1}
+ #smokers-site .ss-reference-gate .ss-gate-copy,
+ #smokers-site .ss-reference-gate .ss-gate-home .ss-gate-copy{grid-row:2 / span 4}
+}
+@media(min-width:801px) and (max-width:1250px){
+ #smokers-site .ss-reference-gate .ss-gate-panels{grid-template-rows:34.2svh repeat(4,auto) minmax(0,1fr)}
+ #smokers-site .ss-reference-gate .ss-gate-copy>p:not(.ss-eyebrow){max-width:325px}
+}
+@media(min-width:801px) and (max-height:760px){
+ #smokers-site .ss-reference-pro .ss-pro-copy h1{font-size:min(3.7vw,7.2svh);margin-bottom:14px}
+ #smokers-site .ss-reference-pro .ss-pro-copy .ss-eyebrow{margin-bottom:12px}
+ #smokers-site .ss-reference-pro .ss-pro-copy .ss-lead{font-size:16px;line-height:1.35}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro{margin-top:20px;padding-top:16px;gap:12px}
+}
+@media(max-width:1250px) and (min-width:801px){
+ #smokers-site .ss-reference-home .ss-home-scene{object-fit:cover;object-position:right center;mask-image:linear-gradient(90deg,transparent 34%,#000 65%)}
+ #smokers-site .ss-reference-header .ss-logo .ss-official-logo{width:220px}
+ #smokers-site .ss-reference-pro .ss-pro-copy{width:52%}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro{gap:10px}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro li{font-size:12px;letter-spacing:.08em}
+}
+@media(max-width:800px){
+ #smokers-site{font-size:16px}
+ #smokers-site .ss-logo .ss-official-logo{width:210px}
+ #smokers-site .ss-reference-pro .ss-pro-front{padding:32px 28px;display:flex}
+ #smokers-site .ss-reference-pro .ss-pro-front::before{background-image:linear-gradient(#1b1411d9,#1b141180),url('assets/reference-pro.webp')}
+ #smokers-site .ss-reference-pro .ss-pro-copy{width:100%}
+ #smokers-site .ss-reference-pro .ss-pro-copy h1{font-size:clamp(36px,8vw,64px)}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:24px;gap:20px}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro li{font-size:12px}
+}
+@media(max-width:540px){
+ #smokers-site .ss-reference-gate .ss-logo .ss-official-logo{width:clamp(124px,40vw,158px)}
+ #smokers-site .ss-reference-gate .ss-languages :is(a,button){width:44px}
+ #smokers-site .ss-reference-pro .ss-pro-front{padding:28px 20px}
+ #smokers-site .ss-reference-pro .ss-pro-copy h1{font-size:clamp(32px,8.8vw,46px)}
+ #smokers-site .ss-reference-pro .ss-panel-facts-pro{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(forced-colors:active){#smokers-site .ss-reference-pro .ss-pro-copy h1 em{background:none;color:CanvasText}}

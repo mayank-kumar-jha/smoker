@@ -1,0 +1,741 @@
+{
+  "pork.webp": [
+    {
+      "file": "pork-160.webp",
+      "width": 160,
+      "height": 216
+    },
+    {
+      "file": "pork-320.webp",
+      "width": 320,
+      "height": 432
+    },
+    {
+      "file": "pork-640.webp",
+      "width": 640,
+      "height": 863
+    },
+    {
+      "file": "pork-800.webp",
+      "width": 800,
+      "height": 1079
+    }
+  ],
+  "spiced-chicken.webp": [
+    {
+      "file": "spiced-chicken-160.webp",
+      "width": 160,
+      "height": 216
+    },
+    {
+      "file": "spiced-chicken-320.webp",
+      "width": 320,
+      "height": 432
+    },
+    {
+      "file": "spiced-chicken-640.webp",
+      "width": 640,
+      "height": 863
+    },
+    {
+      "file": "spiced-chicken-800.webp",
+      "width": 800,
+      "height": 1079
+    }
+  ],
+  "herb-chicken.webp": [
+    {
+      "file": "herb-chicken-160.webp",
+      "width": 160,
+      "height": 216
+    },
+    {
+      "file": "herb-chicken-320.webp",
+      "width": 320,
+      "height": 432
+    },
+    {
+      "file": "herb-chicken-640.webp",
+      "width": 640,
+      "height": 863
+    },
+    {
+      "file": "herb-chicken-800.webp",
+      "width": 800,
+      "height": 1079
+    }
+  ],
+  "meat-cannelloni.jpg": [
+    {
+      "file": "meat-cannelloni-160.webp",
+      "width": 160,
+      "height": 218
+    },
+    {
+      "file": "meat-cannelloni-320.webp",
+      "width": 320,
+      "height": 436
+    },
+    {
+      "file": "meat-cannelloni-640.webp",
+      "width": 640,
+      "height": 873
+    },
+    {
+      "file": "meat-cannelloni-751.webp",
+      "width": 751,
+      "height": 1024
+    }
+  ],
+  "spinach-cannelloni.jpg": [
+    {
+      "file": "spinach-cannelloni-160.webp",
+      "width": 160,
+      "height": 218
+    },
+    {
+      "file": "spinach-cannelloni-320.webp",
+      "width": 320,
+      "height": 436
+    },
+    {
+      "file": "spinach-cannelloni-640.webp",
+      "width": 640,
+      "height": 873
+    },
+    {
+      "file": "spinach-cannelloni-751.webp",
+      "width": 751,
+      "height": 1024
+    }
+  ],
+  "meat-aubergine.jpg": [
+    {
+      "file": "meat-aubergine-160.webp",
+      "width": 160,
+      "height": 218
+    },
+    {
+      "file": "meat-aubergine-320.webp",
+      "width": 320,
+      "height": 436
+    },
+    {
+      "file": "meat-aubergine-640.webp",
+      "width": 640,
+      "height": 873
+    },
+    {
+      "file": "meat-aubergine-751.webp",
+      "width": 751,
+      "height": 1024
+    }
+  ],
+  "vegetable-aubergine.webp": [
+    {
+      "file": "vegetable-aubergine-160.webp",
+      "width": 160,
+      "height": 218
+    },
+    {
+      "file": "vegetable-aubergine-320.webp",
+      "width": 320,
+      "height": 436
+    },
+    {
+      "file": "vegetable-aubergine-640.webp",
+      "width": 640,
+      "height": 873
+    },
+    {
+      "file": "vegetable-aubergine-751.webp",
+      "width": 751,
+      "height": 1024
+    }
+  ],
+  "olot-potatoes.jpg": [
+    {
+      "file": "olot-potatoes-160.webp",
+      "width": 160,
+      "height": 218
+    },
+    {
+      "file": "olot-potatoes-320.webp",
+      "width": 320,
+      "height": 436
+    },
+    {
+      "file": "olot-potatoes-640.webp",
+      "width": 640,
+      "height": 873
+    },
+    {
+      "file": "olot-potatoes-751.webp",
+      "width": 751,
+      "height": 1024
+    }
+  ],
+  "spinach-potatoes.jpg": [
+    {
+      "file": "spinach-potatoes-160.webp",
+      "width": 160,
+      "height": 218
+    },
+    {
+      "file": "spinach-potatoes-320.webp",
+      "width": 320,
+      "height": 436
+    },
+    {
+      "file": "spinach-potatoes-640.webp",
+      "width": 640,
+      "height": 873
+    },
+    {
+      "file": "spinach-potatoes-751.webp",
+      "width": 751,
+      "height": 1024
+    }
+  ],
+  "glovo.png": [
+    {
+      "file": "glovo-160.webp",
+      "width": 160,
+      "height": 82
+    },
+    {
+      "file": "glovo-320.webp",
+      "width": 320,
+      "height": 164
+    },
+    {
+      "file": "glovo-640.webp",
+      "width": 640,
+      "height": 328
+    },
+    {
+      "file": "glovo-1000.webp",
+      "width": 1000,
+      "height": 512
+    }
+  ],
+  "just-eat.png": [
+    {
+      "file": "just-eat-160.webp",
+      "width": 160,
+      "height": 67
+    },
+    {
+      "file": "just-eat-320.webp",
+      "width": 320,
+      "height": 135
+    },
+    {
+      "file": "just-eat-640.webp",
+      "width": 640,
+      "height": 270
+    },
+    {
+      "file": "just-eat-1000.webp",
+      "width": 1000,
+      "height": 421
+    }
+  ],
+  "uber-eats.png": [
+    {
+      "file": "uber-eats-160.webp",
+      "width": 160,
+      "height": 71
+    },
+    {
+      "file": "uber-eats-320.webp",
+      "width": 320,
+      "height": 142
+    },
+    {
+      "file": "uber-eats-640.webp",
+      "width": 640,
+      "height": 283
+    },
+    {
+      "file": "uber-eats-1000.webp",
+      "width": 1000,
+      "height": 443
+    }
+  ],
+  "reference-gate.webp": [
+    {
+      "file": "reference-gate-960.webp",
+      "width": 960,
+      "height": 488
+    },
+    {
+      "file": "reference-gate-1759.webp",
+      "width": 1759,
+      "height": 894
+    }
+  ],
+  "reference-pro.webp": [
+    {
+      "file": "reference-pro-960.webp",
+      "width": 960,
+      "height": 414
+    },
+    {
+      "file": "reference-pro-1909.webp",
+      "width": 1909,
+      "height": 824
+    }
+  ],
+  "reference-home.webp": [
+    {
+      "file": "reference-home-960.webp",
+      "width": 960,
+      "height": 410
+    },
+    {
+      "file": "reference-home-1918.webp",
+      "width": 1918,
+      "height": 820
+    }
+  ],
+  "reference-order.webp": [
+    {
+      "file": "reference-order-960.webp",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "file": "reference-order-1672.webp",
+      "width": 1672,
+      "height": 940
+    }
+  ],
+  "reference-bags.webp": [
+    {
+      "file": "reference-bags-480.webp",
+      "width": 480,
+      "height": 720
+    },
+    {
+      "file": "reference-bags-960.webp",
+      "width": 960,
+      "height": 1440
+    }
+  ],
+  "pro-arc-background.webp": [
+    {
+      "file": "pro-arc-background-960.webp",
+      "width": 960,
+      "height": 416
+    },
+    {
+      "file": "pro-arc-background-1904.webp",
+      "width": 1904,
+      "height": 826
+    }
+  ],
+  "home-cannelloni.webp": [
+    {
+      "file": "home-cannelloni-960.webp",
+      "width": 960,
+      "height": 437
+    },
+    {
+      "file": "home-cannelloni-1860.webp",
+      "width": 1860,
+      "height": 846
+    }
+  ],
+  "craft-table.webp": [
+    {
+      "file": "craft-table-960.webp",
+      "width": 960,
+      "height": 601
+    },
+    {
+      "file": "craft-table-1585.webp",
+      "width": 1585,
+      "height": 992
+    }
+  ],
+  "craft-platter.webp": [
+    {
+      "file": "craft-platter-640.webp",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "file": "craft-platter-1254.webp",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
+  "craft-steps.webp": [
+    {
+      "file": "craft-steps-640.webp",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "file": "craft-steps-1254.webp",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
+  "home-flatlay.webp": [
+    {
+      "file": "home-flatlay-960.webp",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "file": "home-flatlay-1672.webp",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "home-reference.webp": [
+    {
+      "file": "home-reference-960.webp",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "file": "home-reference-1672.webp",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "home-reference-mobile.webp": [
+    {
+      "file": "home-reference-mobile-640.webp",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "file": "home-reference-mobile-1254.webp",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
+  "process-reference.webp": [
+    {
+      "file": "process-reference-960.webp",
+      "width": 960,
+      "height": 469
+    },
+    {
+      "file": "process-reference-1795.webp",
+      "width": 1795,
+      "height": 876
+    }
+  ],
+  "official-vegetable-aubergine.webp": [
+    {
+      "file": "official-vegetable-aubergine-160.webp",
+      "width": 160,
+      "height": 107
+    },
+    {
+      "file": "official-vegetable-aubergine-320.webp",
+      "width": 320,
+      "height": 213
+    },
+    {
+      "file": "official-vegetable-aubergine-640.webp",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "file": "official-vegetable-aubergine-1200.webp",
+      "width": 1200,
+      "height": 800
+    }
+  ],
+  "official-pork.webp": [
+    {
+      "file": "official-pork-160.webp",
+      "width": 160,
+      "height": 107
+    },
+    {
+      "file": "official-pork-320.webp",
+      "width": 320,
+      "height": 213
+    },
+    {
+      "file": "official-pork-640.webp",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "file": "official-pork-1200.webp",
+      "width": 1200,
+      "height": 800
+    }
+  ],
+  "official-spiced-chicken.webp": [
+    {
+      "file": "official-spiced-chicken-160.webp",
+      "width": 160,
+      "height": 107
+    },
+    {
+      "file": "official-spiced-chicken-320.webp",
+      "width": 320,
+      "height": 213
+    },
+    {
+      "file": "official-spiced-chicken-640.webp",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "file": "official-spiced-chicken-1200.webp",
+      "width": 1200,
+      "height": 800
+    }
+  ],
+  "official-herb-chicken.webp": [
+    {
+      "file": "official-herb-chicken-160.webp",
+      "width": 160,
+      "height": 107
+    },
+    {
+      "file": "official-herb-chicken-320.webp",
+      "width": 320,
+      "height": 213
+    },
+    {
+      "file": "official-herb-chicken-640.webp",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "file": "official-herb-chicken-1200.webp",
+      "width": 1200,
+      "height": 800
+    }
+  ],
+  "official-caesar-salad.webp": [
+    {
+      "file": "official-caesar-salad-160.webp",
+      "width": 160,
+      "height": 107
+    },
+    {
+      "file": "official-caesar-salad-320.webp",
+      "width": 320,
+      "height": 213
+    },
+    {
+      "file": "official-caesar-salad-640.webp",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "file": "official-caesar-salad-1200.webp",
+      "width": 1200,
+      "height": 800
+    }
+  ],
+  "official-truffle-potato-salad.webp": [
+    {
+      "file": "official-truffle-potato-salad-160.webp",
+      "width": 160,
+      "height": 107
+    },
+    {
+      "file": "official-truffle-potato-salad-320.webp",
+      "width": 320,
+      "height": 213
+    },
+    {
+      "file": "official-truffle-potato-salad-640.webp",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "file": "official-truffle-potato-salad-1200.webp",
+      "width": 1200,
+      "height": 800
+    }
+  ],
+  "official-salad.webp": [
+    {
+      "file": "official-salad-160.webp",
+      "width": 160,
+      "height": 107
+    },
+    {
+      "file": "official-salad-320.webp",
+      "width": 320,
+      "height": 213
+    },
+    {
+      "file": "official-salad-640.webp",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "file": "official-salad-1200.webp",
+      "width": 1200,
+      "height": 800
+    }
+  ],
+  "official-truffle-potatoes.webp": [
+    {
+      "file": "official-truffle-potatoes-160.webp",
+      "width": 160,
+      "height": 107
+    },
+    {
+      "file": "official-truffle-potatoes-320.webp",
+      "width": 320,
+      "height": 213
+    },
+    {
+      "file": "official-truffle-potatoes-640.webp",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "file": "official-truffle-potatoes-1200.webp",
+      "width": 1200,
+      "height": 800
+    }
+  ],
+  "official-smokers-potatoes.webp": [
+    {
+      "file": "official-smokers-potatoes-160.webp",
+      "width": 160,
+      "height": 107
+    },
+    {
+      "file": "official-smokers-potatoes-320.webp",
+      "width": 320,
+      "height": 213
+    },
+    {
+      "file": "official-smokers-potatoes-640.webp",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "file": "official-smokers-potatoes-1200.webp",
+      "width": 1200,
+      "height": 800
+    }
+  ],
+  "official-table.webp": [
+    {
+      "file": "official-table-160.webp",
+      "width": 160,
+      "height": 107
+    },
+    {
+      "file": "official-table-320.webp",
+      "width": 320,
+      "height": 213
+    },
+    {
+      "file": "official-table-640.webp",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "file": "official-table-1200.webp",
+      "width": 1200,
+      "height": 800
+    }
+  ],
+  "home-reference-official.webp": [
+    {
+      "file": "home-reference-official-960.webp",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "file": "home-reference-official-1672.webp",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "home-reference-mobile-official.webp": [
+    {
+      "file": "home-reference-mobile-official-640.webp",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "file": "home-reference-mobile-official-1254.webp",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
+  "b2c-kitchen.webp": [
+    {
+      "file": "b2c-kitchen.webp",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "b2c-order.webp": [
+    {
+      "file": "b2c-order.webp",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "b2b-fork.webp": [
+    {
+      "file": "b2b-fork.webp",
+      "width": 1024,
+      "height": 1536
+    }
+  ],
+  "b2c-kitchen-cabinet.webp": [
+    {
+      "file": "b2c-kitchen-cabinet.webp",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "b2c-kitchen-rocket.webp": [
+    {
+      "file": "b2c-kitchen-rocket.webp",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "b2c-kitchen-clean-steam.webp": [
+    {
+      "file": "b2c-kitchen-clean-steam.webp",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "b2c-chicken-kitchen.jpg": [
+    {
+      "file": "b2c-chicken-kitchen.jpg",
+      "width": 1600,
+      "height": 900
+    }
+  ],
+  "b2c-reference-kitchen.png": [
+    {
+      "file": "b2c-reference-kitchen.png",
+      "width": 1746,
+      "height": 901
+    }
+  ],
+  "b2c-reference-kitchen-clear.png": [
+    {
+      "file": "b2c-reference-kitchen-clear.png",
+      "width": 1746,
+      "height": 901
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+/* Head-script gate prevents the server-rendered hero flashing before the loader mounts. */
+html[data-ss-pro-boot]{background:#faf5ee}
+html[data-ss-pro-boot] #smokers-site{visibility:hidden}
+#smokers-site[data-mode=profesional] .ss-b2b-hero .ss-pro-hero{background:#faf5ee;perspective:none;border:0;border-radius:0}
+#smokers-site[data-mode=profesional] .ss-b2b-hero .ss-flip-inner{transform:none!important;transition:none;transform-style:flat}
+#smokers-site[data-mode=profesional] .ss-b2b-hero .ss-pro-front{background:transparent;transform:none;backface-visibility:visible;transition:opacity .65s ease;z-index:1}
+#smokers-site[data-mode=profesional] .ss-b2b-hero .ss-pro-back{position:absolute;inset:0;display:block;background:transparent;transform:none;backface-visibility:visible;padding:0;overflow:hidden;opacity:1;visibility:hidden;z-index:4;pointer-events:none;color:#30180d;border:0}
+#smokers-site[data-mode=profesional] .ss-show-process .ss-pro-back{visibility:visible;pointer-events:auto}
+#smokers-site[data-mode=profesional] .ss-show-process .ss-pro-front{opacity:0;pointer-events:none}
+#smokers-site .ss-b2b-wordmark>span,#smokers-site .ss-b2b-taglines>p,#smokers-site .ss-b2b-process-link{transition:translate .85s cubic-bezier(.22,.75,.16,1),opacity .55s ease}
+#smokers-site .ss-show-process .ss-b2b-wordmark>span:first-child{translate:-65vw 0;opacity:0}
+#smokers-site .ss-show-process .ss-b2b-wordmark>span:last-child{translate:65vw 0;opacity:0}
+#smokers-site .ss-show-process .ss-b2b-taglines>p:first-child{translate:-70px 0;opacity:0}
+#smokers-site .ss-show-process .ss-b2b-taglines>p:last-child{translate:70px 0;opacity:0}
+#smokers-site .ss-show-process .ss-b2b-process-link{translate:0 25px;opacity:0}
+#smokers-site .ss-b2b-hero>.ss-pro-hero>.ss-b2b-fork{z-index:3;pointer-events:none}
+#smokers-site .ss-method-copy{position:absolute;left:6.5%;top:10%;width:31%;z-index:1}
+#smokers-site .ss-method-eyebrow{display:flex;align-items:center;gap:16px;font:700 clamp(10px,.85vw,14px)/1.4 var(--body);letter-spacing:.2em;text-transform:uppercase;color:#f65108;margin-bottom:26px}
+#smokers-site .ss-method-eyebrow:before{content:'';width:55px;height:1px;background:currentColor}
+#smokers-site .ss-method-copy h2{font:bold clamp(38px,4.4vw,78px)/1.04 Georgia,serif;letter-spacing:-.04em;text-wrap:initial;margin-bottom:25px}
+#smokers-site .ss-method-copy h2 em{display:block;font-style:italic;white-space:normal;margin-top:12px;color:#f65108}
+@media(min-width:801px){#smokers-site .ss-method-copy h2 em{font-size:.88em;white-space:nowrap}}
+#smokers-site .ss-method-description{font:400 clamp(15px,1.4vw,23px)/1.4 Georgia,serif;color:#70513c}
+#smokers-site .ss-method-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+#smokers-site .ss-method-actions .ss-button{font:700 clamp(10px,.8vw,13px)/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;padding:14px 22px;min-height:48px;gap:14px}
+#smokers-site .ss-method-actions .ss-primary{color:#fff8ef;background:#ff5b00}
+#smokers-site .ss-method-actions .ss-outline{color:#30180d;border-color:#d8bfa8}
+#smokers-site .ss-method-actions svg{width:24px;height:24px;color:#f65108}
+#smokers-site .ss-method-back{font:600 11px var(--body);color:#77523b;margin-top:18px;padding:8px 0;min-height:32px;border-bottom:1px solid #dabfa5}
+#smokers-site .ss-method-arc{position:absolute;left:57.5%;top:6%;height:72%;width:10%;overflow:visible}
+#smokers-site .ss-method-arc path{stroke:#cfa88a;stroke-width:1;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s .3s ease}
+#smokers-site .ss-method-arc circle{fill:#ff5b00;stroke:#ff5b0025;stroke-width:6;opacity:0;transition:opacity .6s .9s}
+#smokers-site .ss-show-process .ss-method-arc path{stroke-dashoffset:0}
+#smokers-site .ss-show-process .ss-method-arc circle{opacity:1}
+#smokers-site .ss-method-steps{position:absolute;top:8%;right:6%;width:27%;height:66%;list-style:none;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+#smokers-site .ss-method-steps li{display:grid;grid-template-columns:65px 1fr;gap:22px;align-items:center}
+#smokers-site .ss-method-steps li:nth-child(2),#smokers-site .ss-method-steps li:nth-child(3){translate:18px 0}
+#smokers-site .ss-method-icon{width:65px;height:65px;display:grid;place-items:center;background:#fff2df88;border:1px solid #e9daca;border-radius:17px;color:#ff5b00}
+#smokers-site .ss-method-icon svg{width:38px;height:38px;stroke-width:1.5}
+#smokers-site .ss-method-steps h3{font:700 clamp(12px,1.15vw,19px)/1.2 var(--body);letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px}
+#smokers-site .ss-method-steps p{font:400 clamp(12px,1vw,17px)/1.45 var(--body);color:#513927}
+#smokers-site .ss-method-facts{position:absolute;bottom:4%;left:12%;right:12%;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #dfc6b2;padding-top:22px;z-index:5}
+#smokers-site .ss-method-facts>div{display:flex;gap:22px;align-items:center;justify-content:center;border-right:1px solid #dfc6b2}
+#smokers-site .ss-method-facts>div:last-child{border:0}
+#smokers-site .ss-method-facts svg{width:38px;height:38px;color:#ff5b00;flex:none}
+#smokers-site .ss-method-facts strong{font:bold clamp(21px,2vw,34px)/1 Georgia,serif;display:block}
+#smokers-site .ss-method-facts span{display:block;font:700 10px/1.4 var(--body);letter-spacing:.23em;text-transform:uppercase;margin-top:8px}
+#smokers-site .ss-method-copy>*{opacity:0;transform:translateY(22px);transition:opacity .7s .25s,transform .9s .25s cubic-bezier(.22,.75,.16,1)}
+#smokers-site .ss-method-copy h2{transition-delay:.35s}#smokers-site .ss-method-description{transition-delay:.45s}#smokers-site .ss-method-actions{transition-delay:.55s}
+#smokers-site .ss-method-steps li,#smokers-site .ss-method-facts>div{opacity:0;transform:translateY(24px);transition:opacity .8s calc(.35s + var(--step)*.12s),transform 1s calc(.35s + var(--step)*.12s) cubic-bezier(.22,.75,.16,1)}
+#smokers-site .ss-show-process :is(.ss-method-copy>*,.ss-method-steps li,.ss-method-facts>div){opacity:1;transform:translateY(0)}
+#smokers-site :is(.ss-method-icon,.ss-method-facts) path[pathLength]{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.35s calc(.45s + var(--step)*.12s) ease}
+#smokers-site .ss-show-process :is(.ss-method-icon,.ss-method-facts) path[pathLength]{stroke-dashoffset:0}
+#smokers-site .ss-method-open .ss-b2b-ribbon-wrap{opacity:0;pointer-events:none}
+#smokers-site .ss-b2b-ribbon-wrap{transition:opacity .55s}
+#smokers-site .ss-method-film{padding:30px;width:100%}#smokers-site .ss-method-film video{width:100%;max-height:70svh;display:block;margin-top:20px}
+@media(max-width:1100px){#smokers-site .ss-method-copy{left:4%;width:33%}#smokers-site .ss-method-steps{right:3%;width:29%}#smokers-site .ss-method-steps li{grid-template-columns:48px 1fr;gap:12px}#smokers-site .ss-method-icon{width:48px;height:48px}#smokers-site .ss-method-icon svg{width:29px;height:29px}#smokers-site .ss-method-copy h2{font-size:clamp(34px,4.4vw,52px)}}
+@media(max-width:800px){
+ #smokers-site[data-mode=profesional] .ss-b2b-hero .ss-pro-back{overflow:auto;background:#faf5eeed;padding:30px 6% 40px}
+ #smokers-site .ss-method-copy{position:relative;inset:auto;width:100%;max-width:530px}
+ #smokers-site .ss-method-copy h2{font-size:clamp(36px,7vw,56px)}
+ #smokers-site .ss-method-copy h2 br{display:none}
+ #smokers-site .ss-method-arc{display:none}
+ #smokers-site .ss-method-steps{position:relative;inset:auto;width:100%;height:auto;margin-top:28px;gap:24px}
+ #smokers-site .ss-method-steps li:nth-child(n){translate:0 0;grid-template-columns:54px 1fr}
+ #smokers-site .ss-method-steps h3{font-size:15px}#smokers-site .ss-method-steps p{font-size:14px}
+ #smokers-site .ss-method-facts{position:relative;inset:auto;grid-template-columns:1fr 1fr;margin-top:30px;gap:24px 8px;padding-top:24px}
+ #smokers-site .ss-method-facts>div{justify-content:flex-start;gap:12px;border:0}#smokers-site .ss-method-facts span{font-size:9px}
+}
+@media(min-width:801px) and (max-height:720px){#smokers-site .ss-method-copy{top:5%}#smokers-site .ss-method-copy h2{font-size:clamp(32px,3.8vw,50px);margin-bottom:16px}#smokers-site .ss-method-eyebrow{margin-bottom:14px}#smokers-site .ss-method-actions{margin-top:16px}#smokers-site .ss-method-description{font-size:16px}#smokers-site .ss-method-back{margin-top:6px}#smokers-site .ss-method-facts{bottom:3%;padding-top:14px}}
+#smokers-site[data-motion=off] .ss-pro-hero *,#smokers-site[data-motion=off] .ss-b2b-ribbon-wrap{transition:none!important}
+@media(prefers-reduced-motion:reduce){#smokers-site .ss-pro-hero *,#smokers-site .ss-b2b-ribbon-wrap{transition:none!important}}
+/* Brand guideline typography: Bevan headlines, Archivo body, Barlow Condensed actions. */
+#smokers-site .ss-method-copy h2{font-family:SSDisplay,Georgia,serif;font-weight:400;font-size:clamp(32px,3.3vw,58px);line-height:1.15;letter-spacing:-.025em}
+#smokers-site .ss-method-copy h2 em{font-family:SSDisplay,Georgia,serif;font-weight:400;font-style:normal;font-size:.88em;white-space:normal;line-height:1.15}
+#smokers-site .ss-method-description,#smokers-site .ss-method-steps p,#smokers-site .ss-method-back{font-family:Archivo,system-ui,sans-serif}
+#smokers-site .ss-method-description{font-size:clamp(15px,1.15vw,20px);line-height:1.6}
+#smokers-site .ss-method-steps h3{font-family:Archivo,system-ui,sans-serif;font-weight:700}
+#smokers-site .ss-method-actions .ss-button{font-family:SSCondensed,'Arial Narrow',sans-serif;font-size:14px;letter-spacing:.08em}
+#smokers-site .ss-method-copy{top:17%}
+@media(max-width:800px){#smokers-site .ss-method-copy{top:auto}#smokers-site .ss-method-copy h2{font-size:clamp(30px,6.5vw,46px)}}
+@media(min-width:801px) and (max-height:720px){#smokers-site .ss-method-copy{top:10%}#smokers-site .ss-method-copy h2{font-size:clamp(30px,3.1vw,43px)}}
+#smokers-site .ss-method-arc path{transition-timing-function:linear} #smokers-site .ss-method-arc circle{transform-box:fill-box;transform-origin:center;transform:scale(0);transition:opacity .25s var(--dot-delay),transform .4s var(--dot-delay) cubic-bezier(.2,.8,.2,1)} #smokers-site .ss-show-process .ss-method-arc circle{transform:scale(1)}

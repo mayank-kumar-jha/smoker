@@ -1,0 +1,155 @@
+/* The tabletop, food and interface are independent layers; only the first two drift. */
+#smokers-site .ss-home-transition{position:relative;background:#f8f2e9}
+#smokers-site .ss-table-hero{position:sticky;top:0;z-index:1;isolation:isolate;height:100svh;min-height:740px;padding:24px 0 0;background:#f8f2e9;color:#292621;display:flex;flex-direction:column;overflow:clip}
+#smokers-site .ss-table-wallpaper{position:absolute;inset:-4% 0;width:100%;height:108%;max-width:none;object-fit:cover;z-index:-1;transform:translateY(var(--table-shift,0px));pointer-events:none}
+#smokers-site .ss-craft-intro{text-align:center;font:600 15px/1.5 var(--body);letter-spacing:.32em;color:#292621;margin:0 0 24px;text-transform:uppercase;flex:none}
+#smokers-site .ss-craft-intro>span{display:block;font-size:12px;font-weight:700;letter-spacing:.3em;color:#ed4c16;margin-bottom:2px}
+#smokers-site .ss-craft-intro>i{display:block;width:48px;height:1px;background:#ed4c16;margin:10px auto 0}
+#smokers-site .ss-table-layout{position:relative;display:grid;grid-template-columns:minmax(0,1fr) clamp(150px,12.5vw,200px);gap:26px;margin:0 2.7% 0 10.2%;flex:1;min-height:0}
+#smokers-site .ss-craft-card{position:relative;border:1px solid #c6a27b40;background:#fffaf272;border-radius:30px;box-shadow:0 12px 55px #72553306;min-width:0}
+#smokers-site[data-mode=casa] .ss-craft-header{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:20px;padding:16px 4.8% 0;height:auto;min-height:0;flex-wrap:nowrap;border:0;background:none;color:#292621;z-index:10}
+#smokers-site .ss-card-brand{text-align:center;min-width:0}
+#smokers-site .ss-craft-header .ss-logo{display:block;width:clamp(250px,21vw,360px);aspect-ratio:1680/386;margin:auto}
+#smokers-site .ss-card-brand>p{font:600 10px/1.5 var(--body);letter-spacing:.38em;margin-top:5px;text-transform:uppercase;white-space:nowrap}
+#smokers-site .ss-craft-location{display:flex;align-items:center;gap:14px;margin-top:10px;font:600 9px/1.5 var(--body);letter-spacing:.16em;white-space:nowrap}
+#smokers-site .ss-craft-location svg{width:40px;height:42px;padding:9px;border:1px solid #ed7d4144;border-radius:3px;flex:none;color:#ee4b13}
+#smokers-site .ss-craft-location i{width:36px;height:1px;background:#e76229;flex:none}
+#smokers-site .ss-craft-tools{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:10px}
+#smokers-site .ss-craft-tools>a,#smokers-site .ss-craft-tools>.ss-menu-toggle{display:flex;align-items:center;justify-content:center;width:40px;height:42px;padding:9px;border:1px solid #e97a40aa;border-radius:3px;min-width:0;color:#332b23;transition:background .4s,transform .5s,border-color .4s}
+#smokers-site .ss-craft-tools>a:hover,#smokers-site .ss-craft-tools>.ss-menu-toggle:hover{background:#ff6b0012;transform:translateY(-2px);border-color:#ed4c16}
+#smokers-site .ss-craft-tools>a>svg{width:22px;height:22px}
+#smokers-site .ss-craft-tools>.ss-menu-toggle{flex-direction:column;gap:6px}
+#smokers-site .ss-craft-tools>.ss-menu-toggle>span{display:block;width:20px;height:1px;margin:0;background:currentColor}
+#smokers-site .ss-craft-header .ss-mobile-nav{display:grid;gap:0;position:absolute;top:100%;left:auto;right:24px;width:min(340px,calc(100vw - 48px));padding:18px 24px;background:#fffaf2;border:1px solid #d7b895;border-radius:14px;color:#332b23;box-shadow:0 20px 50px #41230e26}
+#smokers-site .ss-craft-header .ss-mobile-nav>a{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #d7b89544;color:#332b23;font:700 17px var(--ui);letter-spacing:.08em;text-transform:uppercase}
+#smokers-site .ss-craft-header .ss-mobile-locales{display:block;margin-top:18px}
+#smokers-site .ss-craft-header .ss-languages{width:max-content;height:44px;background:#f1e6d7;border-color:#d7b895}
+#smokers-site .ss-craft-header .ss-languages :is(a,button){display:grid;place-items:center;width:40px;height:36px;color:#332b23}
+#smokers-site .ss-craft-header .ss-languages [aria-current],#smokers-site .ss-craft-header .ss-languages [aria-pressed=true]{background:#332b23;color:#fffaf2}
+#smokers-site .ss-platter-layer{position:absolute;top:5%;left:50%;width:min(93%,77svh);aspect-ratio:1;transform:translate(calc(-50% + var(--pointer-x,0px)),calc(var(--plate-shift,0px) + var(--pointer-y,0px)));transition:transform 1.2s cubic-bezier(.16,.7,.2,1);pointer-events:none}
+#smokers-site .ss-craft-platter{display:block;position:relative;width:100%;height:100%;pointer-events:auto;border-radius:50%;-webkit-tap-highlight-color:transparent}
+#smokers-site .ss-craft-platter>img{width:100%;height:100%;object-fit:contain;animation:ss-platter-breathe 11s ease-in-out infinite;filter:drop-shadow(0 12px 14px #4d301512)}
+#smokers-site .ss-food-steam{position:absolute;left:44%;top:30%;width:20%;height:27%;pointer-events:none;filter:blur(9px);opacity:.45}
+#smokers-site .ss-food-steam>i{position:absolute;bottom:0;left:20%;width:20%;height:100%;border-radius:50%;background:linear-gradient(0deg,transparent,#fff8efaa,transparent);animation:ss-food-steam 7s ease-out infinite}
+#smokers-site .ss-food-steam>i:nth-child(2){left:50%;animation-delay:-2.4s}
+#smokers-site .ss-food-steam>i:nth-child(3){left:75%;animation-delay:-4.8s}
+#smokers-site .ss-craft-journey{position:absolute;left:8%;right:8%;bottom:18px;height:32%;min-height:170px;pointer-events:none}
+#smokers-site .ss-craft-path{position:absolute;left:0;top:5%;width:100%;height:65%;overflow:visible;stroke:#f26622;stroke-width:1.6}
+#smokers-site .ss-craft-path-light{stroke:#ffbd75;stroke-width:3;stroke-dasharray:3 97;animation:ss-craft-trace 12s linear infinite}
+#smokers-site .ss-craft-journey ol{position:relative;list-style:none;display:grid;grid-template-columns:repeat(4,1fr);height:100%;gap:8%}
+#smokers-site .ss-craft-journey li{min-width:0;align-self:start;pointer-events:auto}
+#smokers-site .ss-craft-journey li:nth-child(2),#smokers-site .ss-craft-journey li:nth-child(3){margin-top:38%}
+#smokers-site .ss-craft-journey button{width:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
+#smokers-site .ss-step-photo{display:block;width:100%;max-width:min(145px,14.5svh);aspect-ratio:1;border-radius:50%;border:2px solid #ed672c;background-image:url('assets/craft-steps.webp');background-size:200% 200%;background-position:var(--step-x) var(--step-y);box-shadow:0 8px 22px #6a4a1714;transition:transform .65s cubic-bezier(.2,.7,.2,1),box-shadow .6s,border-color .6s}
+#smokers-site .ss-craft-journey button:hover .ss-step-photo,#smokers-site .ss-craft-journey button:focus-visible .ss-step-photo{transform:translateY(-5px) scale(1.025);box-shadow:0 12px 25px #70451a33}
+#smokers-site .ss-craft-journey button[aria-pressed=true] .ss-step-photo{border-color:#ef4b0b;box-shadow:0 0 0 4px #ed672c13,0 8px 22px #6a4a1714}
+#smokers-site .ss-step-caption{font:700 10px/1.45 var(--body);letter-spacing:.18em;text-transform:uppercase;text-align:center;white-space:nowrap}
+#smokers-site .ss-craft-how{align-self:end;padding-bottom:24px;position:relative}
+#smokers-site .ss-craft-how h2{display:flex;align-items:center;gap:14px;font:600 12px/1.4 var(--body);letter-spacing:.18em;margin-bottom:20px;white-space:nowrap}
+#smokers-site .ss-craft-how h2>i{flex:1;min-width:20px;height:1px;background:#e9642d}
+#smokers-site .ss-craft-step-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#smokers-site .ss-craft-step-grid>button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:94px;padding:14px 7px;border:1px solid #ed844f80;border-radius:3px;transition:background .5s,border-color .5s,transform .5s}
+#smokers-site .ss-craft-step-grid>button:hover{background:#ff6b0010;transform:translateY(-3px)}
+#smokers-site .ss-craft-step-grid>button[aria-pressed=true]{background:#ff6b0012;border-color:#ed672c}
+#smokers-site .ss-craft-step-grid svg{width:30px;height:30px;color:#ee4b13}
+#smokers-site .ss-craft-step-grid span{font:700 9px/1.4 var(--body);letter-spacing:.08em;text-transform:uppercase}
+#smokers-site .ss-craft-note{min-height:100px;margin:20px 0 12px}
+#smokers-site .ss-craft-note strong{font:700 16px/1.2 var(--ui);letter-spacing:.04em;color:#bc461c}
+#smokers-site .ss-craft-note p{font:400 12px/1.5 var(--body);color:#69584b;margin-top:6px}
+#smokers-site .ss-craft-actions{display:grid;gap:8px}
+#smokers-site .ss-craft-actions .ss-button{min-height:42px;padding:10px 12px;font:700 13px/1.3 var(--ui);letter-spacing:.09em;gap:12px}
+#smokers-site .ss-craft-actions .ss-primary{background:#ef4e13;color:#fff9ed;border:1px solid #ef4e13}
+#smokers-site .ss-craft-actions .ss-glovo-button{background:transparent;color:#473426;border:1px solid #b4916c66;box-shadow:none}
+#smokers-site .ss-craft-actions .ss-button>span{font-size:19px}
+#smokers-site .ss-craft-marquee{flex:none;height:94px;margin-top:8px;background:transparent;color:#b54a22;border:0;font:700 14px/1 var(--ui);letter-spacing:.2em;transform:none;box-shadow:none}
+#smokers-site .ss-craft-marquee .ss-ticker-track{animation-duration:55s}
+#smokers-site .ss-craft-marquee:hover .ss-ticker-track{animation-play-state:running}
+#smokers-site .ss-craft-marquee b{color:#f16628;margin-inline:34px;font-size:19px;font-weight:400}
+#smokers-site .ss-home-transition>.ss-wheel-section{position:relative;z-index:3;border-radius:34px 34px 0 0;box-shadow:0 -16px 65px #39271330}
+#smokers-site[data-mode=casa] .ss-motion-toggle{position:absolute;bottom:22px;right:22px;z-index:20;font-size:12px;background:#fff9efeb;color:#57402e;border-color:#b4916c66;padding:8px 14px}
+@keyframes ss-platter-breathe{0%,100%{transform:scale(1) rotate(-.2deg)}50%{transform:scale(1.009) rotate(.2deg)}}
+@keyframes ss-food-steam{0%{transform:translateY(10px) scaleX(.7) rotate(-12deg);opacity:0}25%{opacity:.8}100%{transform:translateY(-100px) scaleX(2) rotate(12deg);opacity:0}}
+@keyframes ss-craft-trace{to{stroke-dashoffset:-100}}
+@media(max-width:1250px){
+ #smokers-site .ss-table-layout{margin-left:5%;gap:22px;grid-template-columns:minmax(0,1fr) 160px}
+ #smokers-site .ss-craft-location{gap:10px}
+ #smokers-site .ss-craft-location span{max-width:90px;white-space:normal;font-size:8px}
+ #smokers-site .ss-craft-location i{display:none}
+ #smokers-site .ss-craft-header .ss-logo{width:clamp(240px,25vw,320px)}
+ #smokers-site .ss-craft-tools{gap:5px}
+ #smokers-site .ss-craft-tools>a,#smokers-site .ss-craft-tools>.ss-menu-toggle{width:34px;height:38px;padding:8px}
+ #smokers-site .ss-step-caption{font-size:8px;letter-spacing:.12em}
+ #smokers-site .ss-craft-journey{left:6%;right:6%;bottom:24px}
+ #smokers-site .ss-craft-how h2{font-size:10px;letter-spacing:.12em}
+}
+@media(min-width:901px) and (max-height:800px){
+ #smokers-site .ss-table-hero{min-height:680px;padding-top:15px}
+ #smokers-site .ss-craft-intro{margin-bottom:16px;font-size:12px}
+ #smokers-site .ss-craft-intro>span{font-size:10px}
+ #smokers-site .ss-craft-marquee{height:65px}
+ #smokers-site .ss-craft-header .ss-logo{width:250px}
+ #smokers-site .ss-craft-journey{bottom:12px;min-height:145px}
+ #smokers-site .ss-step-photo{max-width:106px}
+ #smokers-site .ss-craft-journey li:nth-child(2),#smokers-site .ss-craft-journey li:nth-child(3){margin-top:25%}
+ #smokers-site .ss-craft-step-grid>button{min-height:76px;gap:8px;padding:10px 6px}
+ #smokers-site .ss-craft-step-grid svg{width:26px;height:26px}
+ #smokers-site .ss-craft-note{min-height:85px;margin-top:14px}
+ #smokers-site .ss-craft-how{padding-bottom:15px}
+}
+@media(max-width:900px){
+ #smokers-site .ss-table-hero{position:relative;height:auto;min-height:0;padding-top:20px}
+ #smokers-site .ss-craft-intro{font-size:13px;margin-bottom:20px}
+ #smokers-site .ss-table-layout{display:block;margin:0 4%}
+ #smokers-site .ss-craft-card{height:clamp(560px,90vw,740px);border-radius:24px}
+ #smokers-site[data-mode=casa] .ss-craft-header{padding:20px 22px 0;grid-template-columns:1fr auto 1fr;gap:10px}
+ #smokers-site .ss-craft-header .ss-logo{width:clamp(220px,39vw,340px)}
+ #smokers-site .ss-craft-location span,#smokers-site .ss-craft-tools>a{display:none}
+ #smokers-site .ss-craft-location{margin-top:2px}
+ #smokers-site .ss-craft-tools{margin-top:2px}
+ #smokers-site .ss-platter-layer{width:94%;max-width:650px;top:7%;transform:translateX(-50%)}
+ #smokers-site .ss-craft-journey{height:27%;min-height:150px;left:6%;right:6%;bottom:22px}
+ #smokers-site .ss-craft-journey ol{gap:6%}
+ #smokers-site .ss-step-photo{max-width:120px}
+ #smokers-site .ss-craft-how{display:grid;grid-template-columns:1fr 1fr;gap:18px 30px;align-items:center;padding:28px 12px 12px}
+ #smokers-site .ss-craft-how h2{grid-column:1/-1;margin:0;font-size:12px}
+ #smokers-site .ss-craft-step-grid{grid-column:1;grid-row:2/4;gap:10px}
+ #smokers-site .ss-craft-note{min-height:65px;margin:0}
+ #smokers-site .ss-craft-note strong{font-size:18px}
+ #smokers-site .ss-craft-note p{font-size:13px}
+ #smokers-site .ss-craft-actions{grid-column:2;align-self:start}
+ #smokers-site .ss-craft-marquee{height:75px;margin-top:0;font-size:13px}
+ #smokers-site .ss-home-transition>.ss-wheel-section{min-height:0;border-radius:24px 24px 0 0}
+}
+@media(max-width:540px){
+ #smokers-site .ss-table-layout{margin:0 14px}
+ #smokers-site .ss-craft-card{height:calc(112vw + 125px);min-height:470px;border-radius:22px}
+ #smokers-site[data-mode=casa] .ss-craft-header{padding:17px 14px 0;gap:6px;grid-template-columns:minmax(0,1fr) auto}
+ #smokers-site .ss-craft-location{display:none}
+ #smokers-site .ss-card-brand{justify-self:center}
+ #smokers-site .ss-craft-header .ss-logo{width:clamp(188px,60vw,280px)}
+ #smokers-site .ss-card-brand>p{font-size:7px;letter-spacing:.3em;margin-top:5px}
+ #smokers-site .ss-craft-tools{margin-top:2px}
+ #smokers-site .ss-craft-tools>.ss-menu-toggle{width:32px;height:34px;padding:6px}
+ #smokers-site .ss-craft-header .ss-mobile-nav{right:10px;top:calc(100% + 12px)}
+ #smokers-site .ss-platter-layer{width:100%;max-width:none;top:15%}
+ #smokers-site .ss-craft-journey{left:5%;right:5%;bottom:24px;min-height:108px;height:24%}
+ #smokers-site .ss-craft-journey ol{gap:5%}
+ #smokers-site .ss-craft-journey li:nth-child(2),#smokers-site .ss-craft-journey li:nth-child(3){margin-top:48%}
+ #smokers-site .ss-craft-journey button{gap:8px}
+ #smokers-site .ss-step-caption{font-size:7px;letter-spacing:.08em;white-space:normal;max-width:76px;min-height:20px}
+ #smokers-site .ss-step-photo{border-width:1.5px}
+ #smokers-site .ss-craft-how{padding:26px 8px 10px;gap:15px 18px;grid-template-columns:1fr 1fr}
+ #smokers-site .ss-craft-how h2{font-size:10px}
+ #smokers-site .ss-craft-step-grid{gap:8px}
+ #smokers-site .ss-craft-step-grid>button{min-height:78px;padding:10px 4px;gap:9px}
+ #smokers-site .ss-craft-step-grid svg{width:26px;height:26px}
+ #smokers-site .ss-craft-step-grid span{font-size:7px;letter-spacing:.05em}
+ #smokers-site .ss-craft-note strong{font-size:16px}
+ #smokers-site .ss-craft-note p{font-size:11px;line-height:1.5}
+ #smokers-site .ss-craft-actions .ss-button{font-size:11px;letter-spacing:.05em;padding:9px 8px;gap:8px;min-height:38px}
+ #smokers-site .ss-craft-marquee{height:65px;font-size:11px}
+}
+#smokers-site[data-motion=off] .ss-table-hero{position:relative}
+@media(min-width:901px) and (max-height:679px){#smokers-site .ss-table-hero{position:relative}}
+#smokers-site[data-motion=off] :is(.ss-table-wallpaper,.ss-platter-layer){transition:none}
+@media(prefers-reduced-motion:reduce){#smokers-site .ss-table-hero{position:relative}#smokers-site :is(.ss-table-wallpaper,.ss-platter-layer){transition:none}}

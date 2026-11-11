@@ -1,0 +1,132 @@
+/* Original video flames, a quieter menu wheel, and the supplied professional background. */
+#smokers-site .ss-brand-fire{display:block;position:relative;width:clamp(100px,8.2vw,150px);aspect-ratio:200/64;margin:-3px auto 0;pointer-events:none}
+#smokers-site .ss-brand-fire :is(canvas,svg){display:block;position:absolute;inset:0;width:100%;height:100%;transition:opacity .25s ease}
+#smokers-site .ss-brand-fire canvas{opacity:0}
+#smokers-site .ss-brand-fire[data-ready=true] canvas{opacity:1}
+#smokers-site .ss-brand-fire[data-ready=true] .ss-fire-fallback{opacity:0}
+
+#smokers-site .ss-reference-wheel{padding-inline:6%;grid-template-columns:43% 57%}
+#smokers-site .ss-reference-wheel .ss-wheel-copy{padding-right:34px}
+#smokers-site .ss-reference-wheel .ss-wheel-copy>.ss-eyebrow{color:#d1ab83;font:700 14px var(--ui);letter-spacing:.2em}
+#smokers-site .ss-reference-wheel .ss-wheel-copy>.ss-eyebrow:before{height:1px;background:#a78260;width:36px}
+#smokers-site .ss-reference-wheel .ss-wheel-copy>h2{font-size:clamp(40px,min(4.6vw,8.5svh),82px);line-height:1.02;letter-spacing:-.035em}
+#smokers-site .ss-reference-wheel .ss-wheel-copy>.ss-lead{color:#c1b6ab;font-size:clamp(16px,1.2vw,20px);max-width:510px}
+#smokers-site .ss-reference-wheel .ss-wheel-info{border:0;border-top:1px solid #c7a98644;border-bottom:1px solid #c7a98633;border-radius:0;background:none;box-shadow:none;padding:24px 0;min-height:260px}
+#smokers-site .ss-reference-wheel .ss-wheel-info .ss-eyebrow{color:#c6a581;font:600 12px var(--body);letter-spacing:.16em}
+#smokers-site .ss-reference-wheel .ss-wheel-info h3{font-family:Georgia,serif;font-weight:700;font-size:clamp(27px,2.45vw,43px);line-height:1.12;letter-spacing:-.035em;min-height:2.24em}
+#smokers-site .ss-reference-wheel .ss-panel-facts-wheel{justify-content:flex-start;gap:14px 22px}
+#smokers-site .ss-reference-wheel .ss-panel-facts-wheel li{color:#d8ccc0;font-size:12px;letter-spacing:.03em}
+#smokers-site .ss-reference-wheel .ss-panel-facts-wheel svg{color:#bd9672;width:19px;height:19px}
+#smokers-site .ss-reference-wheel .ss-wheel-info .ss-actions{border:0;padding-top:0;margin-top:24px;gap:12px}
+#smokers-site .ss-reference-wheel .ss-wheel-info .ss-button{min-height:48px;font-size:14px;padding:12px 22px}
+#smokers-site .ss-reference-wheel .ss-wheel-info .ss-primary{background:var(--smk-orange);box-shadow:none;color:#fff5e9}
+#smokers-site .ss-reference-wheel .ss-wheel-info .ss-outline{border-color:#e0c8ac66;background:transparent}
+#smokers-site .ss-reference-wheel .ss-wheel-controls{gap:12px;margin-top:22px}
+#smokers-site .ss-reference-wheel .ss-wheel-controls button{width:52px;height:52px;border:1px solid #c4a17c66;color:#f0e0ce;background:transparent;font:400 23px var(--body);transition:background .25s,border-color .25s,transform .25s}
+#smokers-site .ss-reference-wheel .ss-wheel-controls button:hover{background:#d7b89715;border-color:#e0c8ac;transform:translateY(-2px)}
+#smokers-site .ss-reference-wheel .ss-wheel{width:min(100%,85svh);isolation:isolate}
+#smokers-site .ss-reference-wheel .ss-orbit{inset:7%;border:1px solid #c4a17c26}
+#smokers-site .ss-reference-wheel .ss-orbit:after{content:'';position:absolute;inset:9%;border:1px solid #c4a17c10;border-radius:50%}
+#smokers-site .ss-reference-wheel .ss-wheel-center{left:24%;top:24%;width:52%;height:52%;padding:0;overflow:hidden;border:5px solid #1c1814;background:#1c1814;box-shadow:0 0 0 1px #b38c6266,0 24px 60px #0006;transform:translateZ(0)}
+#smokers-site .ss-reference-wheel .ss-wheel-center img{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;object-fit:cover;filter:brightness(.97) saturate(.92);will-change:opacity,transform}
+#smokers-site .ss-reference-wheel .ss-wheel>.ss-label-ring{inset:17%;width:66%;height:66%;animation-duration:180s;opacity:.8}
+#smokers-site .ss-reference-wheel .ss-label-ring text{fill:#bea183;font:500 18px var(--body);letter-spacing:5px}
+#smokers-site .ss-reference-wheel .ss-satellite{border:3px solid #332b23;box-shadow:0 0 0 1px #c4a17c33,0 8px 18px #0005;transition:transform 1s cubic-bezier(.22,1,.36,1),border-color .35s,box-shadow .35s;scale:1;background:#17130f}
+#smokers-site .ss-reference-wheel .ss-satellite img{filter:saturate(.76) brightness(.84);transition:filter .4s}
+#smokers-site .ss-reference-wheel .ss-satellite[aria-pressed=true]{border-color:#d7b897;box-shadow:0 0 0 2px #100e0c,0 0 0 3px #d7b89777,0 10px 24px #0006}
+#smokers-site .ss-reference-wheel .ss-satellite:hover{scale:1;border-color:#b99573}
+#smokers-site .ss-reference-wheel .ss-satellite:is(:hover,[aria-pressed=true]) img{filter:saturate(.97) brightness(1)}
+
+#smokers-site .ss-reference-pro .ss-pro-back{grid-template-columns:.94fr 1.06fr;gap:4%;padding:5svh 16% 5svh 6%;align-items:center;background:linear-gradient(90deg,#100c0870,#100c0840 78%,transparent),url('assets/process-reference.webp') center/cover;color:#f7f1e8}
+#smokers-site .ss-reference-pro .ss-process-copy>.ss-eyebrow{font:700 clamp(11px,.85vw,15px)/1.4 var(--body);letter-spacing:.16em;color:var(--smk-orange);margin-bottom:24px}
+#smokers-site .ss-reference-pro .ss-process-copy h2{font:700 clamp(32px,min(3.55vw,6.5svh),65px)/1.02 Georgia,serif;letter-spacing:-.045em;margin-bottom:24px;color:#fff8ed}
+#smokers-site .ss-reference-pro .ss-process-copy h2 em{display:block;margin-top:8px;color:var(--smk-orange);font-style:normal}
+#smokers-site .ss-reference-pro .ss-process-intro{font:400 clamp(15px,1.2vw,21px)/1.5 Georgia,serif;color:#c6bbae;max-width:560px}
+#smokers-site .ss-reference-pro .ss-process-copy .ss-actions{margin-top:32px;gap:14px;flex-wrap:wrap}
+#smokers-site .ss-reference-pro .ss-process-copy .ss-button{font-size:clamp(11px,.85vw,15px);min-height:52px;padding:14px 24px;gap:24px}
+#smokers-site .ss-reference-pro .ss-process-copy .ss-primary{background:var(--smk-orange);box-shadow:none;color:#fff7eb}
+#smokers-site .ss-reference-pro .ss-process-copy .ss-outline{border-color:#d6b38f99;background:#100b0733}
+#smokers-site .ss-process-signature{margin-top:5svh;color:#a78260;font:700 11px var(--body);letter-spacing:.18em;display:flex;align-items:center;gap:18px}
+#smokers-site .ss-process-signature:before{content:'';height:1px;width:70px;background:#a7826066}
+#smokers-site .ss-process-detail{min-width:0;border-left:1px solid #c7995c66;padding-left:24px}
+#smokers-site .ss-reference-pro .ss-process-rows{list-style:none;display:grid;gap:0;margin:0;padding:0;border:0}
+#smokers-site .ss-reference-pro .ss-process-rows>li{display:grid;grid-template-columns:28px 64px minmax(0,1fr) 26%;gap:18px;align-items:center;min-height:145px;padding:18px 0;border-bottom:1px solid #b68d5b66;position:relative}
+#smokers-site .ss-reference-pro .ss-process-rows>li:before{content:'';position:absolute;left:-28px;top:50%;width:7px;height:7px;border-radius:50%;background:#ca9756;box-shadow:0 0 0 5px #c7995c0a}
+#smokers-site .ss-reference-pro .ss-process-step{font:700 24px Georgia,serif;color:#d09c59;display:block}
+#smokers-site .ss-process-icon{display:grid;place-items:center;width:64px;height:70px;border:1px solid #b7834388;border-radius:13px;color:var(--smk-orange);background:#100c0744;box-shadow:inset 0 1px #e4bf8e0d}
+#smokers-site .ss-process-icon svg{width:40px;height:40px;stroke-width:1.7}
+#smokers-site .ss-process-row-copy{min-width:0}
+#smokers-site .ss-process-row-copy h3{font:700 clamp(13px,.95vw,18px)/1.35 var(--body);text-transform:uppercase;color:#f7f1e8;margin:0 0 9px}
+#smokers-site .ss-process-row-copy p{font:400 clamp(13px,.95vw,17px)/1.5 Georgia,serif;color:#c5b8a8;margin:0}
+#smokers-site .ss-process-thumbnail{height:110px;margin:0;border:1px solid #ac865343;border-radius:12px;overflow:hidden}
+#smokers-site .ss-process-thumbnail img{width:100%;height:100%;object-fit:cover;filter:brightness(.85) saturate(.8)}
+#smokers-site .ss-process-detail .ss-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:24px 0 0;margin:0;border:0;gap:10px}
+#smokers-site .ss-process-detail .ss-stats>div{padding:0 12px;border-right:1px solid #b68d5b55;min-width:0}
+#smokers-site .ss-process-detail .ss-stats>div:first-child{padding-left:0}
+#smokers-site .ss-process-detail .ss-stats>div:last-child{border:0}
+#smokers-site .ss-process-detail .ss-stats dt{font:600 10px/1.4 var(--body);letter-spacing:.1em;color:#c5b8a8;overflow-wrap:anywhere}
+#smokers-site .ss-process-detail .ss-stats dd{font:700 clamp(22px,1.8vw,30px)/1.2 Georgia,serif;margin-top:6px;color:#f3e2cd;white-space:nowrap}
+@media(min-width:801px) and (max-width:1250px){
+ #smokers-site .ss-reference-pro .ss-pro-back{padding:36px 6%;grid-template-columns:.85fr 1.15fr;gap:5%;background-position:70% center}
+ #smokers-site .ss-reference-pro .ss-process-copy h2{font-size:clamp(32px,4vw,43px)}
+ #smokers-site .ss-reference-pro .ss-process-rows>li{grid-template-columns:24px 50px minmax(0,1fr);gap:14px;min-height:150px}
+ #smokers-site .ss-process-thumbnail{display:none}
+ #smokers-site .ss-process-icon{width:50px;height:58px}
+ #smokers-site .ss-process-icon svg{width:31px;height:31px}
+}
+@media(min-width:1251px) and (max-height:760px){
+ #smokers-site .ss-reference-pro .ss-pro-back{padding-block:24px;gap:4%;padding-right:13%}
+ #smokers-site .ss-reference-pro .ss-process-copy h2{font-size:clamp(30px,5.3svh,43px);margin-bottom:18px}
+ #smokers-site .ss-reference-pro .ss-process-copy .ss-actions{margin-top:20px}
+ #smokers-site .ss-process-signature{margin-top:24px}
+ #smokers-site .ss-reference-pro .ss-process-rows>li{min-height:115px;gap:12px;grid-template-columns:24px 50px minmax(0,1fr) 22%;padding:12px 0}
+ #smokers-site .ss-process-icon{width:50px;height:58px}
+ #smokers-site .ss-process-icon svg{width:31px;height:31px}
+ #smokers-site .ss-process-thumbnail{height:90px}
+}
+@media(max-width:1100px){#smokers-site .ss-brand-fire{width:112px}}
+@media(max-width:800px){
+ #smokers-site .ss-reference-wheel{padding:42px 24px;gap:34px;grid-template-columns:1fr}
+ #smokers-site .ss-reference-wheel .ss-wheel-copy{padding:0}
+ #smokers-site .ss-reference-wheel .ss-wheel-copy>h2{font-size:clamp(38px,8vw,58px)}
+ #smokers-site .ss-reference-wheel .ss-wheel-info{padding:22px 0;min-height:0}
+ #smokers-site .ss-reference-wheel .ss-wheel-info h3{font-size:clamp(26px,6vw,36px);min-height:0;overflow-wrap:normal}
+ #smokers-site .ss-reference-wheel .ss-wheel{width:100%;max-width:560px}
+ #smokers-site .ss-reference-wheel .ss-wheel-center{border-width:3px}
+ #smokers-site .ss-reference-wheel .ss-satellite{border-width:2px;min-width:44px;min-height:44px}
+ #smokers-site .ss-reference-wheel .ss-wheel-info .ss-button{font-size:13px;padding:12px 18px}
+ #smokers-site .ss-reference-pro .ss-pro-back{grid-template-columns:1fr;padding:36px 6%;gap:32px;align-items:start;background:linear-gradient(#110d08b3,#110d08de),url('assets/process-reference.webp') 72% center/cover}
+ #smokers-site .ss-reference-pro .ss-process-copy h2{font-size:clamp(34px,6vw,48px);max-width:600px}
+ #smokers-site .ss-reference-pro .ss-process-intro{font-size:17px}
+ #smokers-site .ss-reference-pro .ss-process-copy .ss-button{font-size:13px;min-height:48px;padding:13px 20px}
+ #smokers-site .ss-process-signature{display:none}
+ #smokers-site .ss-process-detail{padding-left:20px}
+ #smokers-site .ss-reference-pro .ss-process-rows>li{grid-template-columns:24px 52px minmax(0,1fr);gap:14px;min-height:145px;padding:22px 0}
+ #smokers-site .ss-reference-pro .ss-process-rows>li:before{left:-24px}
+ #smokers-site .ss-process-thumbnail{display:none}
+ #smokers-site .ss-process-icon{width:52px;height:60px}
+ #smokers-site .ss-process-icon svg{width:33px;height:33px}
+ #smokers-site .ss-process-row-copy h3{font-size:15px}
+ #smokers-site .ss-process-row-copy p{font-size:15px}
+ #smokers-site .ss-process-detail .ss-stats dd{font-size:22px}
+ #smokers-site .ss-process-detail .ss-stats>div{padding:0 6px}
+}
+@media(max-width:420px){
+ #smokers-site .ss-brand-fire{width:100px}
+ #smokers-site .ss-reference-wheel{padding-inline:20px}
+ #smokers-site .ss-reference-wheel .ss-wheel-info .ss-actions{gap:10px}
+ #smokers-site .ss-reference-wheel .ss-wheel-info .ss-button{font-size:12px;padding:12px 14px}
+ #smokers-site .ss-reference-pro .ss-process-copy h2{font-size:34px}
+ #smokers-site .ss-process-detail{padding-left:14px}
+ #smokers-site .ss-reference-pro .ss-process-rows>li{grid-template-columns:22px 44px minmax(0,1fr);gap:10px}
+ #smokers-site .ss-reference-pro .ss-process-rows>li:before{left:-18px}
+ #smokers-site .ss-process-icon{width:44px;height:52px;border-radius:10px}
+ #smokers-site .ss-process-icon svg{width:29px;height:29px}
+ #smokers-site .ss-process-row-copy h3{font-size:13px}
+ #smokers-site .ss-process-row-copy p{font-size:14px}
+ #smokers-site .ss-process-detail .ss-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 10px}
+ #smokers-site .ss-process-detail .ss-stats>div:nth-child(2){border:0}
+ #smokers-site .ss-process-detail .ss-stats>div:nth-child(3){padding-left:0}
+}
+#smokers-site[data-motion=off] .ss-reference-wheel :is(.ss-satellite,.ss-center-image,.ss-wheel-info){transition:none!important;animation:none!important}
+@media(prefers-reduced-motion:reduce){#smokers-site .ss-reference-wheel :is(.ss-satellite,.ss-center-image,.ss-wheel-info){transition:none!important;animation:none!important}}

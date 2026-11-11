@@ -1,0 +1,83 @@
+/* Compact full-photo menu. Entrance and carousel motion have separate layers. */
+#smokers-site[data-mode=casa] .ss-menu-story .ss-fan-menu{--card-width:clamp(230px,18vw,278px);--card-height:calc((var(--card-width) - 24px)*.791667 + 145px);--fan-gap:clamp(105px,10.6vw,174px);position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;height:100svh;min-height:690px;aspect-ratio:auto;padding:32px 0 28px;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,#fff9f1 0%,#fbece0 60%,#f5decc 100%);color:#28170e}
+#smokers-site[data-mode=casa] .ss-fan-menu:before{content:'';display:block;position:absolute;inset:12% -15% -25%;width:auto;height:auto;transform:rotate(-8deg);border:1px solid #fff9ef;border-radius:50%;z-index:-1;background:none;pointer-events:none}
+#smokers-site[data-mode=casa] .ss-fan-menu:after{content:'';display:block;position:absolute;inset:8% -8% -30%;width:auto;height:auto;transform:rotate(9deg);border:1px solid #dc9d6840;border-radius:50%;z-index:-1;background:none;clip-path:none;filter:none;pointer-events:none}
+#smokers-site[data-mode=casa] .ss-fan-heading,#smokers-site[data-mode=casa] .ss-fan-stage,#smokers-site[data-mode=casa] .ss-fan-bottom{zoom:1}
+#smokers-site[data-mode=casa] .ss-fan-heading{position:relative;width:90%;text-align:center;z-index:3;translate:none!important;opacity:1!important}
+#smokers-site[data-mode=casa] .ss-fan-heading>.ss-eyebrow{font-size:13px;letter-spacing:.16em;color:#6b5140;margin:0 0 15px;gap:18px}
+#smokers-site[data-mode=casa] .ss-fan-heading>.ss-eyebrow:before,#smokers-site[data-mode=casa] .ss-fan-heading>.ss-eyebrow:after{width:42px;height:1px;background:#b8987d}
+#smokers-site[data-mode=casa] .ss-fan-heading h2{font-size:clamp(37px,4vw,62px);line-height:1.12;letter-spacing:-2px;margin:0 0 17px;color:#2a160b;text-shadow:none}
+#smokers-site[data-mode=casa] .ss-fan-heading h2 em{color:#e65b17;text-shadow:none}
+#smokers-site[data-mode=casa] .ss-fan-heading h2 em:after{display:none}
+#smokers-site[data-mode=casa] .ss-fan-heading>p:last-child{font-size:clamp(13px,1.1vw,16px);line-height:1.6;color:#705747;max-width:760px;margin:0 auto;padding-inline:10px}
+#smokers-site[data-mode=casa] .ss-fan-stage{width:100%;max-width:none;height:calc(var(--card-height) + 34px);min-height:0;margin:36px auto 0;aspect-ratio:auto;perspective:1500px;touch-action:pan-y;flex:none}
+#smokers-site[data-mode=casa] .ss-fan-stage:before,#smokers-site[data-mode=casa] .ss-fan-stage:after{display:none}
+#smokers-site[data-mode=casa] .ss-fan-card,#smokers-site[data-mode=casa][data-scroll-motion=true] .ss-fan-card,#smokers-site[data-mode=casa][data-motion=on] .ss-fan-card{position:absolute;left:50%;top:0;width:var(--card-width);height:var(--card-height);padding:0;display:block;border:0;border-radius:19px;background:transparent;color:#28170e;box-shadow:none;overflow:visible;transform:translateX(calc(-50% + var(--offset)*var(--fan-gap))) translateY(var(--lift)) rotate(var(--turn)) scale(var(--card-scale));transform-origin:center;opacity:1;z-index:var(--depth);transition:none;will-change:transform}
+#smokers-site[data-mode=casa] .ss-fan-card:before,#smokers-site[data-mode=casa] .ss-fan-card:after{display:none}
+#smokers-site[data-mode=casa] .ss-fan-card[aria-pressed=true]{border:0;box-shadow:none}
+#smokers-site[data-mode=casa] .ss-card-flipper{position:absolute;inset:0;display:block;transform-style:preserve-3d;transform:rotateY(0);transition:transform 1s cubic-bezier(.22,.65,.12,1)}
+#smokers-site[data-mode=casa] .ss-card-front,#smokers-site[data-mode=casa] .ss-card-back{position:absolute;inset:0;display:block;border-radius:19px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;border:1px solid #e3cbb6;box-shadow:0 10px 22px #58341c17,0 2px 4px #58341c0a}
+#smokers-site[data-mode=casa] .ss-card-front{background:#fff9f1;transform:rotateY(0)}
+#smokers-site[data-mode=casa] .ss-fan-card[aria-pressed=true] .ss-card-front{border-color:#d8b08f;box-shadow:0 18px 32px #58341c24,0 3px 7px #58341c0c}
+#smokers-site[data-mode=casa] .ss-card-back{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;transform:rotateY(180deg);background:radial-gradient(ellipse at 30% 20%,#70422b,#25150f 75%);color:#f9e5cb;border:1px solid #b97a4b}
+#smokers-site[data-mode=casa] .ss-card-back:before{content:'';position:absolute;inset:13px;border:1px solid #cd9b6155;border-radius:11px}
+#smokers-site[data-mode=casa] .ss-card-back strong{font:28px SSDisplay,Georgia,serif;letter-spacing:1px}
+#smokers-site[data-mode=casa] .ss-card-back small{font:10px Archivo,sans-serif;letter-spacing:4px;color:#d6b08b}
+#smokers-site[data-mode=casa] .ss-card-smoke{font:80px/1 Georgia;color:#e6bd8c;filter:blur(.7px);transform:rotate(-90deg);text-shadow:0 0 24px #f6cea155}
+#smokers-site[data-mode=casa] .ss-menu-photo{position:absolute;display:block;top:48px;left:12px;width:calc(100% - 24px);aspect-ratio:360/285;overflow:hidden;border-radius:10px;background:#ece4db}
+#smokers-site[data-mode=casa] .ss-fan-card .ss-menu-photo img{position:absolute;display:block;left:var(--photo-x);top:var(--photo-y);width:445.555556%;max-width:none;height:auto;min-height:0;object-fit:initial;object-position:initial;clip-path:none;border:0;border-radius:0;padding:0;box-shadow:none;filter:none;background:none;pointer-events:none}
+#smokers-site[data-mode=casa] .ss-fan-category{position:absolute;top:18px;left:17px;padding:0;max-width:calc(100% - 55px);border:0;border-radius:0;background:none;color:#8b6040;font-size:11px;line-height:1.2;letter-spacing:.09em;backdrop-filter:none}
+#smokers-site[data-mode=casa] .ss-fan-category:before{display:none}
+#smokers-site[data-mode=casa] .ss-fan-serial{position:absolute;top:15px;right:17px;width:auto;height:auto;display:block;background:none;color:#987d68;border:0;border-radius:0;box-shadow:none;font:12px/1.3 Archivo,sans-serif}
+#smokers-site[data-mode=casa] .ss-fan-name{position:absolute;top:calc(61px + (var(--card-width) - 24px)*.791667);left:18px;right:18px;padding:0;margin:0;text-align:left;color:#2c1a10;font-family:Georgia,serif!important;font-weight:700!important;font-size:25px;letter-spacing:-.8px;line-height:1.05;text-wrap:balance}
+#smokers-site[data-mode=casa] .ss-fan-note{position:absolute;bottom:22px;left:18px;width:calc(100% - 62px);padding:0;margin:0;border:0;font-size:10px;letter-spacing:.02em;line-height:1.2;color:#927158;text-align:left}
+#smokers-site[data-mode=casa] .ss-fan-card-arrow{position:absolute;right:15px;bottom:13px;width:33px;height:33px;display:grid;place-items:center;background:#e96120;border:1px solid #e96120;border-radius:50%;color:#fff;font:22px/1 Arial;transition:background .2s}
+#smokers-site[data-mode=casa] .ss-fan-card:not([aria-pressed=true]) .ss-fan-card-arrow{background:transparent;color:#9c7253;border-color:#d9c1ac}
+#smokers-site[data-mode=casa] .ss-fan-card:focus-visible{outline:2px solid #e65b17;outline-offset:5px}
+#smokers-site[data-mode=casa] .ss-fan-bottom{position:relative;margin:8px auto 0;padding:0 16px;z-index:12}
+#smokers-site[data-mode=casa] .ss-fan-controls{display:flex;align-items:center;justify-content:center;gap:26px}
+#smokers-site[data-mode=casa] .ss-fan-controls>button{display:grid;place-items:center;width:40px;height:40px;flex:none;border:1px solid #b59981;background:#fff9f066;color:#553c29;font:25px/1 Arial;border-radius:50%;transition:background .2s,color .2s}
+#smokers-site[data-mode=casa] .ss-fan-controls>button:hover{background:#e96120;border-color:#e96120;color:white}
+#smokers-site[data-mode=casa] .ss-fan-dots{display:flex;gap:3px}
+#smokers-site[data-mode=casa] .ss-fan-dots button{width:23px;height:40px}
+#smokers-site[data-mode=casa] .ss-fan-dots button:after{width:6px;height:6px;left:9px;top:17px;background:#d6bca6;transform:none;transition:background .3s,transform .3s}
+#smokers-site[data-mode=casa] .ss-fan-dots button[aria-pressed=true]:after{background:#e96120;transform:scale(1.3)}
+#smokers-site[data-mode=casa] .ss-fan-hint{font-size:10px;line-height:1.4;color:#8e7561;margin:9px 0 17px}
+#smokers-site[data-mode=casa] .ss-fan-menu .ss-actions{gap:14px;justify-content:center}
+#smokers-site[data-mode=casa] .ss-fan-menu .ss-button{min-height:43px;padding:12px 27px;font-size:12px;letter-spacing:.04em;border-radius:30px;box-shadow:none}
+#smokers-site[data-mode=casa] .ss-fan-menu .ss-primary{background:#e96120;border:1px solid #e96120;color:#fff}
+#smokers-site[data-mode=casa] .ss-fan-menu .ss-outline{background:transparent;border:1px solid #ab8e76;color:#503723}
+/* Each quadrant of the transparent PNG moves independently. */
+#smokers-site[data-mode=casa] .ss-menu-corners{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+#smokers-site[data-mode=casa] .ss-menu-corner{position:absolute;width:clamp(140px,19vw,290px);aspect-ratio:1;background-image:url('assets/menu-corners-transparent.png');background-size:200% 200%;background-repeat:no-repeat;opacity:1;transform:translate3d(0,0,0);transition:transform 1.35s cubic-bezier(.16,.75,.18,1),opacity 1s;filter:drop-shadow(0 12px 12px #81481712)}
+#smokers-site[data-mode=casa] .ss-menu-corner-tl{top:-6%;left:-3%;background-position:left top;--corner-x:-110%;--corner-y:-45%}
+#smokers-site[data-mode=casa] .ss-menu-corner-tr{top:-7%;right:-3%;background-position:right top;--corner-x:110%;--corner-y:-45%;transition-delay:.12s}
+#smokers-site[data-mode=casa] .ss-menu-corner-bl{bottom:-9%;left:-3%;background-position:left bottom;--corner-x:-110%;--corner-y:45%;transition-delay:.22s}
+#smokers-site[data-mode=casa] .ss-menu-corner-br{bottom:-9%;right:-3%;background-position:right bottom;--corner-x:110%;--corner-y:45%;transition-delay:.32s}
+#smokers-site[data-mode=casa] .ss-fan-menu[data-menu-phase=waiting] .ss-menu-corner{transform:translate3d(var(--corner-x),var(--corner-y),0);opacity:0}
+/* Hold one face-down card, flip it, then fan the other six out from behind. */
+#smokers-site[data-mode=casa] .ss-fan-menu:is([data-menu-phase=waiting],[data-menu-phase=flipping]) .ss-fan-card{transform:translateX(-50%) translateY(0) scale(1)}
+#smokers-site[data-mode=casa] .ss-fan-menu:is([data-menu-phase=waiting],[data-menu-phase=flipping]) .ss-fan-card:not([aria-pressed=true]){opacity:0;pointer-events:none}
+#smokers-site[data-mode=casa] .ss-fan-menu[data-menu-phase=waiting] .ss-card-flipper{transform:rotateY(180deg)}
+#smokers-site[data-mode=casa] .ss-fan-menu[data-menu-phase=spreading] .ss-fan-card{transition:transform 1s cubic-bezier(.22,.68,.15,1),opacity .4s}
+#smokers-site[data-mode=casa] .ss-fan-menu:is([data-menu-phase=waiting],[data-menu-phase=flipping],[data-menu-phase=spreading]) .ss-fan-controls{pointer-events:none}
+@media(max-width:1100px){#smokers-site[data-mode=casa] .ss-menu-story .ss-fan-menu{--card-width:236px;--fan-gap:105px;min-height:660px}#smokers-site[data-mode=casa] .ss-fan-heading h2{font-size:42px}#smokers-site[data-mode=casa] .ss-fan-name{font-size:23px}}
+@media(max-width:700px){#smokers-site[data-mode=casa] .ss-menu-story .ss-fan-menu{--card-width:220px;--fan-gap:146px;height:auto;min-height:730px;padding:52px 0 84px}#smokers-site[data-mode=casa] .ss-fan-heading h2{font-size:clamp(29px,7.6vw,42px);letter-spacing:-1.2px}#smokers-site[data-mode=casa] .ss-fan-heading>p:last-child{font-size:12px;max-width:310px}#smokers-site[data-mode=casa] .ss-fan-heading>.ss-eyebrow{font-size:11px;margin-bottom:14px}#smokers-site[data-mode=casa] .ss-fan-stage{margin-top:30px}#smokers-site[data-mode=casa] .ss-fan-name{font-size:22px}#smokers-site[data-mode=casa] .ss-fan-controls{gap:19px}#smokers-site[data-mode=casa] .ss-fan-menu .ss-button{padding-inline:22px;font-size:11px}#smokers-site[data-mode=casa] .ss-menu-corner{width:125px}#smokers-site[data-mode=casa] .ss-menu-corner-tl{left:-35px;top:-25px}#smokers-site[data-mode=casa] .ss-menu-corner-tr{right:-35px;top:-25px}#smokers-site[data-mode=casa] .ss-menu-corner-bl{bottom:-18px}#smokers-site[data-mode=casa] .ss-menu-corner-br{bottom:-18px}}
+@media(prefers-reduced-motion:reduce){#smokers-site[data-mode=casa] .ss-card-flipper,#smokers-site[data-mode=casa] .ss-menu-corner,#smokers-site[data-mode=casa] .ss-fan-card{transition:none!important}}
+#smokers-site[data-mode=casa] .ss-fan-stage{--card-width:inherit;--card-height:inherit;--fan-gap:inherit}
+/* Restore the original curved fan and cream photo-card treatment. */
+#smokers-site[data-mode=casa] .ss-menu-story .ss-fan-menu{--card-width:clamp(220px,17vw,278px);--card-height:calc((var(--card-width) - 8px)*.791667 + 111px);--fan-gap:clamp(145px,12.5vw,205px);min-height:750px}
+#smokers-site[data-mode=casa] .ss-fan-stage{height:calc(var(--card-height) + 80px);margin-top:34px}
+#smokers-site[data-mode=casa] .ss-fan-card{border-radius:30px;transform-origin:50% 60%}
+#smokers-site[data-mode=casa] .ss-card-front{border:2px solid #fff6eb;border-radius:30px;background:linear-gradient(125deg,#fff4e8,#f9e0c7);box-shadow:0 16px 25px #78442524,inset 0 0 18px #fff7ec}
+#smokers-site[data-mode=casa] .ss-fan-card[aria-pressed=true] .ss-card-front{border-color:#fff5db;box-shadow:0 0 0 1px #efbc83,0 0 13px #ffbd6430,0 18px 30px #78442530}
+#smokers-site[data-mode=casa] .ss-card-back{border-radius:30px}
+#smokers-site[data-mode=casa] .ss-menu-photo{left:3px;top:3px;width:calc(100% - 6px);border-radius:24px 24px 27px 27px}
+#smokers-site[data-mode=casa] .ss-fan-category{top:15px;left:14px;padding:8px 11px;border-radius:24px;background:#48220def;color:#fff5ea;font-size:10px;letter-spacing:.025em;z-index:2;max-width:calc(100% - 67px)}
+#smokers-site[data-mode=casa] .ss-fan-serial{top:13px;right:13px;width:34px;height:34px;display:grid;place-items:center;background:#fff9f2;color:#48220d;border-radius:50%;font-size:16px;z-index:2}
+#smokers-site[data-mode=casa] .ss-fan-name{top:calc(16px + (var(--card-width) - 8px)*.791667);left:12px;right:12px;text-align:center;font-size:25px;font-weight:400!important;letter-spacing:-1px;line-height:1.03}
+#smokers-site[data-mode=casa] .ss-fan-note{bottom:20px;left:19px;width:calc(100% - 38px);padding:12px 30px 0 0;border-top:1px solid #dcb89b;color:#65432c;font-size:9px}
+#smokers-site[data-mode=casa] .ss-fan-card-arrow,#smokers-site[data-mode=casa] .ss-fan-card:not([aria-pressed=true]) .ss-fan-card-arrow{right:15px;bottom:13px;width:29px;height:29px;background:transparent;border:1px solid #947155;color:#69452d;font-size:20px}
+#smokers-site[data-mode=casa] .ss-menu-corner{filter:drop-shadow(0 5px 5px #57301c16) drop-shadow(0 14px 13px #57301c0d)}
+@media(max-width:1100px){#smokers-site[data-mode=casa] .ss-menu-story .ss-fan-menu{--card-width:230px;--fan-gap:165px}#smokers-site[data-mode=casa] .ss-fan-name{font-size:23px}}
+@media(max-width:700px){#smokers-site[data-mode=casa] .ss-menu-story .ss-fan-menu{--card-width:220px;--fan-gap:175px;min-height:750px}#smokers-site[data-mode=casa] .ss-fan-stage{height:calc(var(--card-height) + 65px)}#smokers-site[data-mode=casa] .ss-fan-name{font-size:22px}}
