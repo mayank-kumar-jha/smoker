@@ -76,24 +76,3 @@ window.SMOKERS_HUB_COPY={
     }
   }
 };
-window.SMOKERS_RENDER_HUB=({state,c,asset,url,button,panelIcon,config,image,sectionLink,form,contacts,copy})=>{
- const t=window.SMOKERS_HUB_COPY[state.lang],a=copy.about,s=copy.stockists,l=copy.labels;
- const sections=['workshop','find','enquiry'];
- const chapter=(i)=>`<span class="ss-chapter-number">0${i+1}</span><span>${t.chapters[i]}</span>`;
- return `<section class="ss-hub-hero">
-  <img class="ss-hub-wallpaper" src="${asset('reference-pro.webp')}" alt="" width="1909" height="820" fetchpriority="high">
-  <div class="ss-hub-hero-copy"><p class="ss-eyebrow">${t.eyebrow}</p><h1>${t.title}</h1><p class="ss-lead">${t.intro}</p><div class="ss-actions">${button(t.chapters[1],sectionLink('contact','find'),'ss-primary',true)}${button(t.chapters[2],sectionLink('contact','enquiry'),'ss-outline')}</div></div>
-  <div class="ss-hub-hero-note">${panelIcon('smoke')}<strong>${t.note}</strong><span>BADALONA · EST. 2025</span></div>
-  <nav class="ss-hub-chapters" aria-label="${l.contents}">${sections.map((id,i)=>`<a href="${sectionLink('contact',id)}">${chapter(i)}<b aria-hidden="true">↘</b></a>`).join('')}</nav>
- </section>
- <section class="ss-hub-workshop" id="ss-workshop">
-  <div class="ss-hub-mosaic"><figure>${image(0)}<figcaption>${a.caption}</figcaption></figure><figure>${image(6)}</figure><div class="ss-hub-time"><strong>12 H</strong><span>${c().marinade}</span>${panelIcon('smoke')}</div></div>
-  <div class="ss-hub-story"><p class="ss-eyebrow">01 / ${t.chapters[0]}</p><h2>${a.section}</h2><p class="ss-lead">${a.body}</p><p class="ss-hub-signature">${c().tagline}<span>SMOKERS · BADALONA</span></p></div>
-  <div class="ss-hub-process">${a.steps.map(([number,title,body],i)=>`<article>${panelIcon(['leaf','smoke','thermo','fork'][i])}<span class="ss-hub-process-number">${number}</span><h3>${title}</h3><p>${body}</p></article>`).join('')}</div>
- </section>
- <section class="ss-hub-find" id="ss-find"><div class="ss-hub-section-heading"><div><p class="ss-eyebrow">02 / ${t.chapters[1]}</p><h2>${t.findTitle}</h2></div><p class="ss-lead">${t.findIntro}</p></div>
-  <div class="ss-hub-find-options"><article class="ss-hub-delivery"><span class="ss-hub-option-icon">${panelIcon('bag')}</span><h3>${t.delivery}</h3><p>${s.deliveryBody}</p><div class="ss-hub-providers">${config.delivery.filter(app=>app.name!=='Just Eat').map(app=>`<a href="${app.url}" target="_blank" rel="noopener" data-delivery="${app.name}" aria-label="${c().orderOn} ${app.name}"><img src="${asset(app.image)}" width="130" height="60" alt="${app.name}" loading="lazy"><span aria-hidden="true">↗</span></a>`).join('')}</div><p class="ss-hub-availability">${panelIcon('pin')}${c().availability}</p></article>
-  <article class="ss-hub-stockist"><div class="ss-hub-stockist-copy"><span class="ss-hub-option-icon">${panelIcon('shop')}</span><h3>${t.shop}</h3><p>${t.shopBody}</p><a class="ss-button ss-dark-button" href="${sectionLink('contact','enquiry')}" data-enquiry-topic="2">${t.shopCta}<span aria-hidden="true">↗</span></a></div><div class="ss-hub-stockist-photo">${image(8)}</div></article></div>
- </section>
- <section class="ss-hub-contact ss-enquiry-section" id="ss-enquiry"><div class="ss-hub-contact-copy"><p class="ss-eyebrow">03 / ${t.chapters[2]}</p><h2>${t.talkTitle}</h2><p class="ss-lead">${t.talkIntro}</p>${contacts()}<div class="ss-hub-address"><p class="ss-eyebrow">${t.address}</p><address>Selva 5, local A<br>08917 Badalona</address><p>${l.hours}<br>${l.visit}</p><a href="https://www.google.com/maps/search/?api=1&query=Selva+5+08917+Badalona" target="_blank" rel="noopener">${l.directions} ↗</a></div></div>${form('contact')}</section>`;
-};

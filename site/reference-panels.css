@@ -15,11 +15,11 @@
 #smokers-site .ss-reference-header .ss-languages{height:54px;background:#08070699;border-color:#fff4}
 #smokers-site .ss-reference-header .ss-languages a{width:48px;height:46px;font-size:14px}
 #smokers-site .ss-reference-header .ss-header-right>.ss-button{font-size:16px;min-height:54px;padding:14px 28px;box-shadow:0 0 22px #ff6b001c}
-#smokers-site[data-mode=casa] .ss-reference-header{background:#f6f1ea;border-color:#e765202e}
-#smokers-site[data-mode=casa] .ss-reference-header .ss-logo{color:#cf430a}
-#smokers-site[data-mode=casa] .ss-reference-header .ss-languages{background:#fff;border-color:#22170b33}
-#smokers-site[data-mode=casa] .ss-reference-header .ss-mode-switch{border-color:#ff6b0055;background:#fff9}
-#smokers-site[data-mode=casa] .ss-reference-header .ss-mode-switch a[aria-current]{background:linear-gradient(#ff6d16,#ff550d);color:#120d0a;box-shadow:0 0 18px #ff6b0033;border-color:#ff6b00}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-header{background:#f6f1ea;border-color:#e765202e}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-header .ss-logo{color:#cf430a}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-header .ss-languages{background:#fff;border-color:#22170b33}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-header .ss-mode-switch{border-color:#ff6b0055;background:#fff9}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-header .ss-mode-switch a[aria-current]{background:linear-gradient(#ff6d16,#ff550d);color:#120d0a;box-shadow:0 0 18px #ff6b0033;border-color:#ff6b00}
 #smokers-site .ss-reference-gate{height:100svh;min-height:0;padding-bottom:3.2svh;background:#030302}
 #smokers-site .ss-reference-gate .ss-gate-panels{height:90svh;min-height:0;padding:0;grid-template-columns:1fr 1fr}
 #smokers-site .ss-reference-gate .ss-gate-header{height:10svh;min-height:76px;left:4%;right:4%;border-bottom:1px solid #fff2}
@@ -125,17 +125,9 @@
 #smokers-site .ss-reference-wheel .ss-wheel-copy>h2{font-size:clamp(40px,min(5.35vw,10svh),98px);line-height:.93;letter-spacing:-.03em;margin-bottom:22px;white-space:normal}
 #smokers-site .ss-reference-wheel .ss-wheel-copy>h2 em{color:#ff7900}
 #smokers-site .ss-reference-wheel .ss-wheel-copy>.ss-lead{font-size:clamp(16px,1.3vw,23px);line-height:1.45;margin-bottom:24px;color:#f0e9df}
-#smokers-site .ss-reference-wheel .ss-wheel-info{border:1px solid #ff9d00;border-radius:32px;background:linear-gradient(110deg,#0e0905cc,#46240755);padding:28px 24px;box-shadow:inset 0 1px #ffb34555,0 15px 30px #0002;min-height:0}
-#smokers-site .ss-reference-wheel .ss-wheel-info .ss-eyebrow{font-size:16px;letter-spacing:3px;margin-bottom:9px;color:#ffd089}
-#smokers-site .ss-reference-wheel .ss-wheel-info h3{font-size:clamp(25px,2.6vw,46px);margin-bottom:18px;line-height:1}
 #smokers-site .ss-reference-wheel .ss-panel-facts-wheel{gap:18px;justify-content:space-between;flex-wrap:wrap}
 #smokers-site .ss-reference-wheel .ss-panel-facts-wheel li{gap:8px;font-size:14px}
 #smokers-site .ss-reference-wheel .ss-panel-facts-wheel .ss-panel-icon{width:24px;height:24px}
-#smokers-site .ss-reference-wheel .ss-wheel-info .ss-actions{padding-top:18px;border-top:1px solid #dab57d12;gap:16px;margin-top:18px}
-#smokers-site .ss-reference-wheel .ss-wheel-info .ss-button{min-height:54px;font-size:16px;padding:12px 26px}
-#smokers-site .ss-reference-wheel .ss-wheel-info .ss-primary{background:linear-gradient(#ff8c00,#ff6b00);box-shadow:0 0 24px #ff880033}
-#smokers-site .ss-reference-wheel .ss-wheel-info .ss-outline{background:#09070488;gap:10px}
-#smokers-site .ss-reference-wheel .ss-wheel-info .ss-outline svg{width:22px;height:24px}
 #smokers-site .ss-reference-wheel .ss-wheel-controls{margin-top:24px;gap:20px}
 #smokers-site .ss-reference-wheel .ss-wheel-controls button{width:64px;height:64px;border-color:#ffbf18;font-size:30px}
 #smokers-site .ss-reference-wheel .ss-wheel{width:min(100%,88svh);max-width:none}
@@ -254,10 +246,8 @@
  #smokers-site .ss-reference-home .ss-stats dd{font-size:23px}
  #smokers-site .ss-reference-home .ss-home-copy .ss-stats{margin-top:24px}
  #smokers-site .ss-reference-wheel{grid-template-columns:45% 55%;padding-inline:4%}
- #smokers-site .ss-reference-wheel .ss-wheel-info{padding:20px;border-radius:24px}
  #smokers-site .ss-reference-wheel .ss-panel-facts-wheel{gap:10px}
  #smokers-site .ss-reference-wheel .ss-panel-facts-wheel li{font-size:12px}
- #smokers-site .ss-reference-wheel .ss-wheel-info .ss-button{font-size:13px;padding:10px 16px;min-height:44px}
  #smokers-site .ss-reference-order{grid-template-columns:40% 55%;gap:5%}
  #smokers-site .ss-reference-order .ss-delivery-card{padding:18px;gap:16px}
  #smokers-site .ss-reference-order .ss-provider-logo{min-width:64px}
@@ -281,10 +271,6 @@
  #smokers-site .ss-reference-home .ss-home-copy .ss-stats{margin-top:20px}
  #smokers-site .ss-reference-wheel .ss-wheel-copy>h2{font-size:6svh;margin-bottom:14px}
  #smokers-site .ss-reference-wheel .ss-wheel-copy>.ss-lead{font-size:16px;margin-bottom:16px}
- #smokers-site .ss-reference-wheel .ss-wheel-info{padding:16px}
- #smokers-site .ss-reference-wheel .ss-wheel-info h3{font-size:26px;margin-bottom:12px}
- #smokers-site .ss-reference-wheel .ss-wheel-info .ss-eyebrow{font-size:12px}
- #smokers-site .ss-reference-wheel .ss-wheel-info .ss-actions{margin-top:12px;padding-top:12px}
  #smokers-site .ss-reference-wheel .ss-wheel-controls{margin-top:16px}
  #smokers-site .ss-reference-wheel .ss-wheel-controls button{width:44px;height:44px;font-size:24px}
  #smokers-site .ss-reference-order .ss-panel-facts-order{margin-block:24px}
@@ -357,12 +343,8 @@
  #smokers-site .ss-reference-wheel .ss-wheel-copy{width:100%;padding:0}
  #smokers-site .ss-reference-wheel .ss-wheel-copy>h2{font-size:clamp(40px,9vw,64px);margin-bottom:20px}
  #smokers-site .ss-reference-wheel .ss-wheel-copy>.ss-lead{font-size:16px}
- #smokers-site .ss-reference-wheel .ss-wheel-info{padding:22px;border-radius:24px}
- #smokers-site .ss-reference-wheel .ss-wheel-info h3{font-size:28px;overflow-wrap:anywhere}
  #smokers-site .ss-reference-wheel .ss-panel-facts-wheel{gap:12px}
  #smokers-site .ss-reference-wheel .ss-panel-facts-wheel li{font-size:13px;gap:8px}
- #smokers-site .ss-reference-wheel .ss-wheel-info .ss-actions{flex-wrap:wrap;gap:12px}
- #smokers-site .ss-reference-wheel .ss-wheel-info .ss-button{min-height:48px;font-size:14px;padding:12px 20px}
  #smokers-site .ss-reference-wheel .ss-wheel-controls button{width:50px;height:50px}
  #smokers-site .ss-reference-wheel .ss-wheel{width:100%;max-width:550px;margin:0 auto}
  #smokers-site .ss-reference-wheel .ss-wheel-center{padding:8px}
@@ -428,7 +410,6 @@
  #smokers-site .ss-reference-home .ss-home-product{width:300px}
  #smokers-site .ss-reference-home .ss-home-scene{height:310px}
  #smokers-site .ss-reference-wheel{padding:40px 22px}
- #smokers-site .ss-reference-wheel .ss-wheel-info{padding:20px 16px}
  #smokers-site .ss-reference-order{padding:44px 20px 70px}
  #smokers-site .ss-reference-order .ss-delivery-card{padding:16px 12px;gap:12px;height:168px}
  #smokers-site .ss-reference-order .ss-provider-logo{min-width:54px;width:20%;padding:5px}

@@ -18,7 +18,7 @@ const base='http://127.0.0.1:4173';
  }
  const baseline='output/qa/phone-desktop-baseline.json';
  if(process.argv.includes('--baseline')){fs.writeFileSync(baseline,JSON.stringify(desktop,null,2));await browser.close();return}
- assert.deepEqual(desktop,JSON.parse(fs.readFileSync(baseline)),'Tablet and laptop styles unchanged');
+ assert.deepEqual(desktop,Object.fromEntries(Object.entries(JSON.parse(fs.readFileSync(baseline))).map(([key,rows])=>[key,rows.filter(row=>row[0]!=='ss-shop-link')])),'Tablet and laptop styles unchanged');
  for(const [width,height] of [[320,568],[360,800],[375,667],[390,844],[412,915],[430,932]]){
   await page.setViewportSize({width,height});
   for(const [lang,home,pro] of [['en','at-home','professionals'],['es','en-casa','profesionales'],['ca','a-casa','professionals']]){

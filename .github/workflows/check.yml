@@ -1,0 +1,19 @@
+name: Smokers checks
+on: [push, pull_request]
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run typecheck
+      - run: npm run build:wordpress && npm run build:site
+      - run: npm run test:seo
+      - run: node serve.cjs > /tmp/smokers-server.log 2>&1 &
+      - run: npm run test:site && npm run test:flavours
+      - run: npm audit --audit-level=moderate

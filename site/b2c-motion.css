@@ -1,3 +1,3 @@
 /* Small scroll offsets affect scenery, never navigation or reading position. */
-#smokers-site[data-mode=casa] .ss-panel-icon.ss-icon-cycle{animation:var(--icon-motion,ss-icon-lift) .85s ease-in-out both}
-#smokers-site[data-mode=casa] [data-icon=clock].ss-icon-cycle path{animation:ss-clock-hand 1.1s ease-in-out both}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-panel-icon.ss-icon-cycle{animation:var(--icon-motion,ss-icon-lift) .85s ease-in-out both}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) [data-icon=clock].ss-icon-cycle path{animation:ss-clock-hand 1.1s ease-in-out both}

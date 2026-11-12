@@ -29,32 +29,32 @@
  #smokers-site .dsh-root .dsh-plates{width:200px;height:200px}
 }
 @media(prefers-reduced-motion:reduce){#smokers-site .dsh-scene{transform:none!important;opacity:1!important}}
-#smokers-site[data-mode=casa] .dsh-root .dsh-head h2{font-family:dsh-face,Arial,sans-serif!important;font-weight:400!important;line-height:1!important}
-#smokers-site[data-mode=casa] .dsh-root .dsh-t1{font-family:dsh-face,Arial,sans-serif!important;font-weight:200!important}
-#smokers-site[data-mode=casa] .dsh-root .dsh-t2{font-family:dsh-face,Arial,sans-serif!important;font-weight:800!important}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-head h2{font-family:dsh-face,Arial,sans-serif!important;font-weight:400!important;line-height:1!important}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-t1{font-family:dsh-face,Arial,sans-serif!important;font-weight:200!important}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-t2{font-family:dsh-face,Arial,sans-serif!important;font-weight:800!important}
 /* Company typography: Bevan headings, Archivo body, condensed UI labels. */
-#smokers-site[data-mode=casa] .dsh-root{font-family:Archivo,Arial,sans-serif!important}
-#smokers-site[data-mode=casa] .dsh-root .dsh-head h2,
-#smokers-site[data-mode=casa] .dsh-root .dsh-t1,
-#smokers-site[data-mode=casa] .dsh-root .dsh-t2{font-family:SSDisplay,Georgia,serif!important;font-weight:400!important}
-#smokers-site[data-mode=casa] .dsh-root :is(.dsh-desc,.dsh-kit,.dsh-chef,.dsh-num,.dsh-ing li,.dsh-th span){font-family:Archivo,Arial,sans-serif!important}
-#smokers-site[data-mode=casa] .dsh-root :is(.dsh-eye,.dsh-btn,.dsh-like){font-family:SSCondensed,'Arial Narrow',sans-serif!important;font-weight:700!important}
-#smokers-site[data-mode=casa] .dsh-root .dsh-eye{letter-spacing:.08em;font-size:13px}
-#smokers-site[data-mode=casa] .dsh-root :is(.dsh-tab,.dsh-acts .dsh-btn){font-size:14px}
-#smokers-site[data-mode=casa] .dsh-root .dsh-like{font-size:13px;letter-spacing:.035em;text-transform:uppercase}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root{font-family:Archivo,Arial,sans-serif!important}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-head h2,
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-t1,
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-t2{font-family:SSDisplay,Georgia,serif!important;font-weight:400!important}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root :is(.dsh-desc,.dsh-kit,.dsh-chef,.dsh-num,.dsh-ing li,.dsh-th span){font-family:Archivo,Arial,sans-serif!important}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root :is(.dsh-eye,.dsh-btn,.dsh-like){font-family:SSCondensed,'Arial Narrow',sans-serif!important;font-weight:700!important}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-eye{letter-spacing:.08em;font-size:13px}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root :is(.dsh-tab,.dsh-acts .dsh-btn){font-size:14px}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-like{font-size:13px;letter-spacing:.035em;text-transform:uppercase}
 /* Brand accent and a single set of carousel navigation controls. */
-#smokers-site[data-mode=casa] .dsh-root .dsh-eye,
-#smokers-site[data-mode=casa] .dsh-root .dsh-acts .dsh-btn{color:var(--color-primary)}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-eye,
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-acts .dsh-btn{color:var(--color-primary)}
 @media(max-width:639px){
  #smokers-site .dsh-strip{position:relative;left:auto;top:auto;display:flex;width:140px;height:44px;margin:0 auto 24px;justify-content:space-between}
  #smokers-site .dsh-strip .dsh-win{display:none}
  #smokers-site .dsh-strip .dsh-arrow{width:44px;height:44px}
 }
 /* Keep both menu-card actions on one line. */
-#smokers-site[data-mode=casa] .dsh-root .dsh-react{gap:8px;align-items:center}
-#smokers-site[data-mode=casa] .dsh-root .dsh-react .dsh-like{padding:0 11px;gap:8px;font-size:12px;white-space:nowrap}
-#smokers-site[data-mode=casa] .dsh-root .dsh-react .dsh-reheat{background:#2a160b;color:#fff4e8;text-decoration:none}
-#smokers-site[data-mode=casa] .dsh-root .dsh-react .dsh-reheat:hover{background:#482b18}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-react{gap:8px;align-items:center}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-react .dsh-like{padding:0 11px;gap:8px;font-size:12px;white-space:nowrap}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-react .dsh-reheat{background:#2a160b;color:#fff4e8;text-decoration:none}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-react .dsh-reheat:hover{background:#482b18}
 /* Shift the menu composition by 15 screen pixels; keep the details card fixed. */
 #smokers-site .dsh-canvas>:not(.dsh-card){translate:calc(-15px / var(--dsh-s,1)) 0}
 @container(max-width:639px){#smokers-site .dsh-canvas>:not(.dsh-card){translate:-15px 0}}

@@ -9,12 +9,18 @@ with ZipFile(output / 'smokers-production.zip', 'w', ZIP_DEFLATED) as archive:
         if file.is_file():
             archive.write(file, file.relative_to(output / 'production-site'))
 with ZipFile(output / 'smokers-source.zip', 'w', ZIP_DEFLATED) as archive:
-    for directory in ['site', 'seo', 'scripts', 'tests', 'src', 'docs']:
+    for directory in ['site', 'seo', 'scripts', 'tests', 'src', 'docs', 'components', 'wordpress', '.github']:
         for file in sorted((root / directory).rglob('*')):
             if file.is_file():
                 archive.write(file, file.relative_to(root))
-    for name in ['README.md', '.gitignore', 'package.json', 'package-lock.json', 'build-site.cjs', 'build.cjs', 'serve.cjs', 'output/smokers-full.html', 'output/smokers-full-widget.html', 'output/qa/test-results.json', 'output/qa/validation.md', 'output/qa/completion-validation.md', 'output/qa/support-page-results.json', 'output/qa/brand-panel-results.json']:
+    for name in ['README.md', '.gitignore', 'package.json', 'package-lock.json', 'tsconfig.json', 'build-site.cjs', 'build.cjs', 'serve.cjs']:
         file = root / name
         if file.exists():
             archive.write(file, name)
-print('Created output/smokers-production.zip and output/smokers-source.zip')
+for name in ['smokers-theme', 'smokers-content']:
+    folder = root / 'wordpress' / name
+    with ZipFile(output / (name + '.zip'), 'w', ZIP_DEFLATED) as archive:
+        for file in sorted(folder.rglob('*')):
+            if file.is_file():
+                archive.write(file, file.relative_to(root / 'wordpress'))
+print('Created static, source, WordPress theme and content-plugin packages')

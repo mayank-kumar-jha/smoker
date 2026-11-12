@@ -14,7 +14,7 @@ window.SMOKERS_CONFIG = {
     {
       "name": "Uber Eats",
       "image": "uber-eats.png",
-      "url": "https://www.ubereats.com/es-en"
+      "url": "https://www.ubereats.com/es-en/store/smokers-badalona/_uBFwwSyWlWfXWHiFGeYqA"
     }
   ]
 };

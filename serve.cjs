@@ -15,6 +15,7 @@ const types={'.mp4':'video/mp4','.html':'text/html; charset=utf-8','.js':'text/j
 const csp="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self' mailto:";
 function authorized(req){const supplied=Buffer.from(req.headers.authorization||''),expected=Buffer.from('Basic '+Buffer.from(process.env.STAGING_USER+':'+process.env.STAGING_PASSWORD).toString('base64'));return supplied.length===expected.length&&crypto.timingSafeEqual(supplied,expected)}
 const server=http.createServer((req,res)=>{
+ try {
  // LAN preview is explicitly requested and only serves local-network clients.
  if(lan&&!privateIPv4(req.socket.remoteAddress||'')){res.writeHead(403);res.end('Local-network preview only');return}
  res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Referrer-Policy','strict-origin-when-cross-origin');res.setHeader('Content-Security-Policy',csp);
@@ -42,5 +43,11 @@ const server=http.createServer((req,res)=>{
  let body=fs.readFileSync(file);res.setHeader('Content-Type',type);res.setHeader('Cache-Control',canonical.startsWith('/assets/')?'public, max-age=3600':'no-cache');
  if(/text|json|xml|svg/.test(type)&&/\bgzip\b/.test(req.headers['accept-encoding']||'')){body=zlib.gzipSync(body);res.setHeader('Content-Encoding','gzip');res.setHeader('Vary','Accept-Encoding')}
  res.setHeader('Content-Length',body.length);res.writeHead(status);res.end(req.method==='HEAD'?undefined:body);
+ } catch(error) {
+  // A local rebuild can briefly replace HTML and media between stat and read.
+  // Keep the preview alive and let the browser retry instead of crashing Node.
+  if(!res.headersSent)res.writeHead(error.code==='ENOENT'?503:500,{'Content-Type':'text/plain; charset=utf-8','Retry-After':'2'});
+  res.end('Preview is updating. Please refresh in a moment.');
+ }
 });
 server.listen(port,host,()=>console.log(`Smokers ${lan?'local-network':staging?'staging':'production'} preview: http://${lan?host:'127.0.0.1'}:${port}/en/at-home/`));

@@ -32,10 +32,10 @@
 #smokers-site :focus-visible{outline:3px solid var(--smk-gold);outline-offset:5px}
 #smokers-site .ss-reference-header,
 #smokers-site .ss-reference-pro{background-color:var(--smk-charcoal)}
-#smokers-site[data-mode=casa] .ss-reference-header,
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-header,
 #smokers-site .ss-reference-home{background-color:var(--smk-cream)}
 #smokers-site .ss-reference-header .ss-mode-switch a[aria-current]{color:var(--smk-orange);border-color:var(--smk-orange);box-shadow:0 0 14px #fd400922}
-#smokers-site[data-mode=casa] .ss-reference-header .ss-mode-switch a[aria-current]{background:var(--smk-orange);color:var(--smk-charcoal)}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-header .ss-mode-switch a[aria-current]{background:var(--smk-orange);color:var(--smk-charcoal)}
 #smokers-site .ss-reference-gate .ss-gate-copy h2 em,
 #smokers-site .ss-reference-wheel .ss-wheel-copy>h2 em{color:var(--smk-orange)}
 #smokers-site .ss-reference-home .ss-home-copy h1 em{background:none;color:var(--smk-orange);filter:none}

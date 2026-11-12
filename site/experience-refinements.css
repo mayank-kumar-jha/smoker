@@ -11,16 +11,9 @@
 #smokers-site .ss-reference-wheel .ss-wheel-copy>.ss-eyebrow:before{height:1px;background:#a78260;width:36px}
 #smokers-site .ss-reference-wheel .ss-wheel-copy>h2{font-size:clamp(40px,min(4.6vw,8.5svh),82px);line-height:1.02;letter-spacing:-.035em}
 #smokers-site .ss-reference-wheel .ss-wheel-copy>.ss-lead{color:#c1b6ab;font-size:clamp(16px,1.2vw,20px);max-width:510px}
-#smokers-site .ss-reference-wheel .ss-wheel-info{border:0;border-top:1px solid #c7a98644;border-bottom:1px solid #c7a98633;border-radius:0;background:none;box-shadow:none;padding:24px 0;min-height:260px}
-#smokers-site .ss-reference-wheel .ss-wheel-info .ss-eyebrow{color:#c6a581;font:600 12px var(--body);letter-spacing:.16em}
-#smokers-site .ss-reference-wheel .ss-wheel-info h3{font-family:Georgia,serif;font-weight:700;font-size:clamp(27px,2.45vw,43px);line-height:1.12;letter-spacing:-.035em;min-height:2.24em}
 #smokers-site .ss-reference-wheel .ss-panel-facts-wheel{justify-content:flex-start;gap:14px 22px}
 #smokers-site .ss-reference-wheel .ss-panel-facts-wheel li{color:#d8ccc0;font-size:12px;letter-spacing:.03em}
 #smokers-site .ss-reference-wheel .ss-panel-facts-wheel svg{color:#bd9672;width:19px;height:19px}
-#smokers-site .ss-reference-wheel .ss-wheel-info .ss-actions{border:0;padding-top:0;margin-top:24px;gap:12px}
-#smokers-site .ss-reference-wheel .ss-wheel-info .ss-button{min-height:48px;font-size:14px;padding:12px 22px}
-#smokers-site .ss-reference-wheel .ss-wheel-info .ss-primary{background:var(--smk-orange);box-shadow:none;color:#fff5e9}
-#smokers-site .ss-reference-wheel .ss-wheel-info .ss-outline{border-color:#e0c8ac66;background:transparent}
 #smokers-site .ss-reference-wheel .ss-wheel-controls{gap:12px;margin-top:22px}
 #smokers-site .ss-reference-wheel .ss-wheel-controls button{width:52px;height:52px;border:1px solid #c4a17c66;color:#f0e0ce;background:transparent;font:400 23px var(--body);transition:background .25s,border-color .25s,transform .25s}
 #smokers-site .ss-reference-wheel .ss-wheel-controls button:hover{background:#d7b89715;border-color:#e0c8ac;transform:translateY(-2px)}
@@ -89,12 +82,9 @@
  #smokers-site .ss-reference-wheel{padding:42px 24px;gap:34px;grid-template-columns:1fr}
  #smokers-site .ss-reference-wheel .ss-wheel-copy{padding:0}
  #smokers-site .ss-reference-wheel .ss-wheel-copy>h2{font-size:clamp(38px,8vw,58px)}
- #smokers-site .ss-reference-wheel .ss-wheel-info{padding:22px 0;min-height:0}
- #smokers-site .ss-reference-wheel .ss-wheel-info h3{font-size:clamp(26px,6vw,36px);min-height:0;overflow-wrap:normal}
  #smokers-site .ss-reference-wheel .ss-wheel{width:100%;max-width:560px}
  #smokers-site .ss-reference-wheel .ss-wheel-center{border-width:3px}
  #smokers-site .ss-reference-wheel .ss-satellite{border-width:2px;min-width:44px;min-height:44px}
- #smokers-site .ss-reference-wheel .ss-wheel-info .ss-button{font-size:13px;padding:12px 18px}
  #smokers-site .ss-reference-pro .ss-pro-back{grid-template-columns:1fr;padding:36px 6%;gap:32px;align-items:start;background:linear-gradient(#110d08b3,#110d08de),url('assets/process-reference.webp') 72% center/cover}
  #smokers-site .ss-reference-pro .ss-process-copy h2{font-size:clamp(34px,6vw,48px);max-width:600px}
  #smokers-site .ss-reference-pro .ss-process-intro{font-size:17px}
@@ -114,8 +104,6 @@
 @media(max-width:420px){
  #smokers-site .ss-brand-fire{width:100px}
  #smokers-site .ss-reference-wheel{padding-inline:20px}
- #smokers-site .ss-reference-wheel .ss-wheel-info .ss-actions{gap:10px}
- #smokers-site .ss-reference-wheel .ss-wheel-info .ss-button{font-size:12px;padding:12px 14px}
  #smokers-site .ss-reference-pro .ss-process-copy h2{font-size:34px}
  #smokers-site .ss-process-detail{padding-left:14px}
  #smokers-site .ss-reference-pro .ss-process-rows>li{grid-template-columns:22px 44px minmax(0,1fr);gap:10px}
@@ -128,5 +116,4 @@
  #smokers-site .ss-process-detail .ss-stats>div:nth-child(2){border:0}
  #smokers-site .ss-process-detail .ss-stats>div:nth-child(3){padding-left:0}
 }
-#smokers-site[data-motion=off] .ss-reference-wheel :is(.ss-satellite,.ss-center-image,.ss-wheel-info){transition:none!important;animation:none!important}
-@media(prefers-reduced-motion:reduce){#smokers-site .ss-reference-wheel :is(.ss-satellite,.ss-center-image,.ss-wheel-info){transition:none!important;animation:none!important}}
+@media(prefers-reduced-motion:reduce){}

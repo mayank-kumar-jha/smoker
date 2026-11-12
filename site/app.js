@@ -18,7 +18,8 @@
  const pageUrl=(mode,lang=state.lang,index=state.product)=>standalone&&['inicio','casa','profesional','about','contact','stockists','clients','privacy','blog'].includes(mode)?'#'+mode:mode==='product'?window.SMOKERS_ROUTES[lang].products+window.SMOKERS_PRODUCT_SLUGS[lang][index]+'/':window.SMOKERS_ROUTES[lang][mode]||window.SMOKERS_ROUTES[lang].inicio;
  const url=(mode,lang=state.lang,index=state.product)=>mode==='inicio'?pageUrl('casa',lang):['about','stockists'].includes(mode)?pageUrl('contact',lang)+(standalone?'/':'#ss-')+(mode==='about'?'workshop':'find'):pageUrl(mode,lang,index);
  const normalizeAudienceLinks=html=>html.replace(/<a\b[^>]*href="[^"]*(?:\/(?:clients|clientes)\/|#clients)[^"]*"[^>]*>[\s\S]*?<\/a>/g,'').replace(/href="([^"]+)"/g,(tag,href)=>{if(/\/(?:obrador|our-workshop|stockists|puntos-de-venta|punts-de-venda)\//.test(href))return 'href="#ss-method"';if(/\/(?:dishes|productos|productes)\//.test(href)){const slug=href.split('/').filter(Boolean).pop(),i=window.SMOKERS_PRODUCT_SLUGS[state.lang].indexOf(slug);return 'href="#ss-carta"'+(i>=0?' data-product="'+i+'"':'')}return tag});
- const normalizeLinks=html=>standalone?normalizeAudienceLinks(html):normalizeAudienceLinks(html).replace(/href="#(inicio|casa|profesional)(?:\/(\w+))?"/g,(_,mode,section)=>`href="${url(mode)}${section?'#ss-'+section:''}"`);
+ const normalizeLinksRaw=html=>standalone?normalizeAudienceLinks(html):normalizeAudienceLinks(html).replace(/href="#(inicio|casa|profesional)(?:\/(\w+))?"/g,(_,mode,section)=>`href="${url(mode)}${section?'#ss-'+section:''}"`);
+ const normalizeLinks=html=>window.SMOKERS_CMS?.html(normalizeLinksRaw(html))||normalizeLinksRaw(html);
  const arrow='<span aria-hidden="true">→</span>';
  const loader=()=>`<div class="ss-loader"><div class="ss-intro-stage"><video class="ss-intro-video" muted playsinline preload="none" data-intro-src="${asset('smokers-intro.mp4')}"></video><canvas class="ss-intro-clean" width="1200" height="676"></canvas></div><button type="button" class="ss-skip-intro">${({es:"Saltar intro",ca:"Salta la intro",en:"Skip intro"})[state.lang]} →</button></div>`;
  const logoSmoke='<span class="ss-logo-smoke" aria-hidden="true"><i></i><i></i><i></i></span><span class="ss-logo-smoke ss-logo-name-smoke" aria-hidden="true"><i></i><i></i><i></i></span>';
@@ -43,7 +44,7 @@
   return `<header class="ss-header ss-reference-header ss-flat-header ss-pro-flat-header"><nav class="ss-flat-nav" aria-label="${c().navigation}">${nav.map(link).join('')}</nav><div class="ss-flat-brand">${logo()}</div><div class="ss-flat-header-tools"><div class="ss-flat-spaces"><a href="#profesional" ${pro?'aria-current="page"':''}>${c().professional}</a><a href="#casa">${c().home}</a></div>${languages()}</div><button class="ss-menu-toggle" type="button" data-action="mobile-menu" aria-expanded="false" aria-controls="ss-mobile-nav" aria-label="${c().navigation}"><span></span><span></span></button><nav id="ss-mobile-nav" class="ss-mobile-nav" hidden aria-label="${c().navigation}">${mobile.map(link).join('')}<div class="ss-mobile-locales">${languages()}</div></nav></header>`;
  }
  function header(){
-  if(['profesional','contact','blog'].includes(state.mode))return flatHeader();
+  if(['profesional','contact','blog','flavour'].includes(state.mode))return flatHeader();
   const pro=['profesional','clients'].includes(state.mode),base='#'+(pro?'profesional':'casa'),labels=window.SMOKERS_PAGE_COPY[state.lang].labels;
   const secondary=['about','contact','stockists','clients','privacy','blog'].includes(state.mode);
   const links=secondary?[[window.SMOKERS_HUB_COPY[state.lang].label,url('contact')],[c().menu,standalone?'#casa/carta':url('casa')+'#ss-carta'],[labels.clients,url('clients')]]:pro?[[c().menu,base+'/carta'],[c().catalogue,base+'/catalogo'],[window.SMOKERS_HUB_COPY[state.lang].label,url('contact')]]:[[c().menu,base+'/carta'],[c().order,base+'/pedir'],[c().reheat,base+'/regenerar']];
@@ -67,17 +68,7 @@
   return `<section class="ss-pro-hero-wrap ss-reference-pro ss-b2b-hero" id="ss-como"><div class="ss-pro-hero ${state.process?'ss-show-process':''}"><img class="ss-b2b-fork" src="${asset('b2b-fork.webp')}" width="1024" height="1536" alt="" fetchpriority="high"><div class="ss-flip-inner"><div class="ss-pro-front" aria-hidden="${state.process}" ${state.process?'inert':''}><h1 class="ss-b2b-wordmark" aria-label="Smokers"><span aria-hidden="true">SMO</span><span class="ss-b2b-letter" aria-hidden="true">K</span><span aria-hidden="true">ERS</span></h1><div class="ss-b2b-taglines"><p>${t[0]}</p><p>${t[1]}</p></div><button class="ss-b2b-process-link" type="button" data-action="process">${panelIcon('play')}${c().howWeWork}</button></div><div class="ss-pro-back" aria-hidden="${!state.process}" ${!state.process?'inert':''}>${proProcess()}</div></div></div><div class="ss-b2b-ribbon-wrap"><div class="ss-b2b-ribbon"><div class="ss-b2b-ribbon-track">${[false,true].map(clone=>`<div class="ss-b2b-ribbon-group" ${clone?'aria-hidden="true"':''}>${facts.map(([icon,label])=>`<a href="#profesional/catalogo" ${clone?'tabindex="-1"':''}>${panelIcon(icon)}<span>${label}</span></a>`).join('')}</div>`).join('')}</div></div></div></section>`;
  }
  function homeHero(){return window.SMOKERS_HOME_HERO({lang:state.lang,c,asset,url,logo,languages,panelIcon,button,homeDeliveryButton,products,name})}
- function proMenu(){
-  const rows=[[2,3,4,0,1,9,10],[8,11,5,6,7,12,13]];
-  const card=(i,index,clone)=>`<a class="ss-food-card" href="${standalone?'#'+state.mode:url('product',state.lang,i)}" ${standalone?`data-product="${i}"`:''} ${clone?'tabindex="-1"':''}><img src="${asset(products[i].image)}" alt="" width="800" height="1000" loading="lazy"><span><small>${category(products[i])}</small><strong>${name(products[i])}</strong><em>${index===0?c().sheet+' →':products[i].type==='side'?c().sheet:c().gluten}</em></span></a>`;
-  return `<section class="ss-pro-menu" id="ss-carta"><div class="ss-section-heading"><p class="ss-eyebrow">${c().professionalMenu}</p><h2>${c().nineTitle}</h2><a class="ss-pill" href="#profesional/catalogo">↗ ${c().catalogueLink}</a></div><div class="ss-food-wall">${rows.map((row,index)=>`<div class="ss-food-row ss-food-row-${index+1}"><div class="ss-food-track">${[false,true].map(clone=>`<div class="ss-food-group" ${clone?'aria-hidden="true"':''}>${row.map(i=>card(i,index,clone)).join('')}</div>`).join('')}</div></div>`).join('')}</div></section>`;
- }
- const menuIndices=['pork','spiced-chicken','herb-chicken','meat-cannelloni','salad','truffle-potatoes','smokers-potatoes'].map(id=>products.findIndex(p=>p.id===id));
- const fanOffset=i=>(menuIndices.indexOf(i)-menuIndices.indexOf(state.dish)+menuIndices.length+3)%menuIndices.length-3;
- const fanStyle=i=>{const d=fanOffset(i);return `--offset:${d};--lift:${d*d*18}px;--turn:${d*10}deg;--depth:${10-Math.abs(d)};--fade:${Math.abs(d)>3?0:1};--card-scale:1;--stack-lift:${Math.abs(d)*11}px;--stack-turn:${d*2}deg`};
- const menuPhoto=i=>{const n=menuIndices.indexOf(i),x=[47,430,814,1198][n%4],y=n<4?127:505;return `<span class="ss-menu-photo"><img src="${asset('menu-seven-photos.png')}" alt="${esc(name(products[i]))}" width="1604" height="981" loading="lazy" draggable="false" style="--photo-x:${-x/360*100}%;--photo-y:${-y/285*100}%"></span>`};
- const menuCorners=()=>`<div class="ss-menu-corners" aria-hidden="true">${['tl','tr','bl','br'].map(pos=>`<span class="ss-menu-corner ss-menu-corner-${pos}"></span>`).join('')}</div>`;
- function wheel(){return `<section id="ss-carta" class="ss-orbit-menu" aria-label="${c().menu}"><div class="ss-orbit-mount"${state.flavour!==undefined?` data-flavour="${state.flavour}"`:""}>${window.SMOKERS_ORBIT_MARKUPS?.[state.lang]?.[state.flavour??0]||window.SMOKERS_ORBIT_HTML||''}</div></section>`}
+ function wheel(){return `<section id="ss-carta" class="ss-orbit-menu" aria-label="${c().menu}"><div class="ss-orbit-mount"${state.flavour!==undefined?` data-flavour="${state.flavour}"`:""}>${(state.mode==='flavour'?window.SMOKERS_FLAVOUR_MARKUPS?.[state.lang]?.[state.flavour]:window.SMOKERS_ORBIT_MARKUPS?.[state.lang]?.[0])||window.SMOKERS_ORBIT_HTML||''}</div></section>`}
 
  function formContent(){
   if(state.prepared)return `<div class="ss-request-ready"><span aria-hidden="true">✓</span><h3>${c().prepared}</h3><p>${c().preparedDesc}</p><button class="ss-button ss-dark-button" type="button" data-action="download-request">${c().download}</button><button class="ss-text-button" type="button" data-action="restart">${c().restart}</button></div>`;
@@ -100,7 +91,7 @@
  function messagePage(){const thanks=state.mode==='thanks';return `<main id="ss-main" class="ss-message-page"><p class="ss-eyebrow">${thanks?'SMOKERS':'404'}</p><h1>${thanks?extra().thanks:extra().notFound}</h1><p class="ss-lead">${thanks?extra().thanksBody:extra().notFoundBody}</p>${button(c().viewMenu,'#casa/carta')}</main>`}
  function render(){
   document.documentElement.lang=state.lang;root.lang=state.lang;root.dataset.mode=state.mode;
-  const body=(state.mode==='casa'?'':header())+(['about','contact','stockists','clients','privacy','blog'].includes(state.mode)?window.SMOKERS_SUPPORT_PAGES({state,c,asset,url,products,name,esc,button,panelIcon,config}):state.mode==='product'?productPage():['thanks','404'].includes(state.mode)?messagePage():`<main id="ss-main">${state.mode==='profesional'?proHero()+`<div class="ss-pro-showcase-mount">${window.SMOKERS_PRO_HTML?.[state.lang]||''}</div>`+catalogue():`<div class="ss-home-transition">${homeHero()}<div class="ss-menu-story">${wheel()}${homeMethod()}</div></div>`+''+orderSection()+reheatSection()}${faq()}</main>`)+footer()+modalMarkup();
+  const body=(state.mode==='casa'?'':header())+(['about','contact','stockists','clients','privacy','blog'].includes(state.mode)?window.SMOKERS_SUPPORT_PAGES({state,c,asset,url,products,name,esc,button,panelIcon,config}):state.mode==='flavour'?window.SMOKERS_FLAVOUR_PAGE({state,dishes:window.SMOKERS_MENU_PAGES[state.lang],wheel,orderSection,reheatSection,button,esc,url}):state.mode==='product'?productPage():['thanks','404'].includes(state.mode)?messagePage():`<main id="ss-main">${state.mode==='profesional'?proHero()+`<div class="ss-pro-showcase-mount">${window.SMOKERS_PRO_HTML?.[state.lang]||''}</div>`+catalogue():`<div class="ss-home-transition">${homeHero()}<div class="ss-menu-story">${wheel()}${homeMethod()}</div></div>`+''+orderSection()+reheatSection()}${faq()}</main>`)+footer()+modalMarkup();
   root.innerHTML=normalizeLinks(loader()+`<a class="ss-skip" href="#ss-main">${c().skip}</a>`+body+`<button class="ss-motion-toggle" type="button" data-action="motion" aria-pressed="true"><span aria-hidden="true">◉</span> ${extra().motion}</button>`);
   if(standalone)document.title='Smokers · '+(state.mode==='profesional'?c().professional:state.mode==='casa'?c().home:c().choose);
  }
@@ -138,42 +129,16 @@
   homeMotionCleanup=()=>{removeEventListener('scroll',measure);removeEventListener('resize',measure);cancelAnimationFrame(frame);reset()};
  }
  function syncEnquiryTopic(form){if(!form)return;const postcode=form.querySelector('[name=postcode]');if(postcode){postcode.required=form.querySelector('[name=topic]')?.value==='2';postcode.closest('label').firstChild.textContent=window.SMOKERS_PAGE_COPY[state.lang].labels.postcode+(postcode.required?' *':'')}}
- function applyMotion(){syncEnquiryTopic(root.querySelector('#ss-enquiry-form'));root.querySelectorAll('[data-enquiry-submit]').forEach(el=>el.disabled=false);root.dataset.motion=motionEnabled()?'on':'off';root.querySelector('[data-action="motion"]')?.setAttribute('aria-pressed',String(motionEnabled()));initHomeMotion()}
+ function applyMotion(){syncEnquiryTopic(root.querySelector('#ss-enquiry-form'));root.querySelectorAll('[data-enquiry-submit]').forEach(el=>el.disabled=false);root.dataset.motion=motionEnabled()?'on':'off';root.dispatchEvent(new CustomEvent('smokers:motion',{detail:motionEnabled()}));root.querySelector('[data-action="motion"]')?.setAttribute('aria-pressed',String(motionEnabled()));initHomeMotion()}
  reduced.addEventListener('change',applyMotion);
  function flip(){state.process=!state.process;const hero=root.querySelector('.ss-pro-hero');hero.classList.toggle('ss-show-process',state.process);hero.closest('.ss-b2b-hero').classList.toggle('ss-method-open',state.process);const front=hero.querySelector('.ss-pro-front'),back=hero.querySelector('.ss-pro-back');front.inert=state.process;back.inert=!state.process;front.setAttribute('aria-hidden',String(state.process));back.setAttribute('aria-hidden',String(!state.process));const heading=hero.querySelector(state.process?'.ss-pro-back h2':'.ss-pro-front h1');heading.tabIndex=-1;heading.focus({preventScroll:true})}
- let menuAnimating=false,menuQueued=0;
- function spin(delta){if(menuAnimating&&motionEnabled()){menuQueued+=delta;return}if(!delta)return;state.rotation+=delta;state.dish=menuIndices[((menuIndices.indexOf(state.dish)+delta)%menuIndices.length+menuIndices.length)%menuIndices.length];updateWheel()}
  function reveal(){if(state.mode==='casa'||!motionEnabled()||!('IntersectionObserver' in window))return;const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('ss-entered');observer.unobserve(entry.target)}})},{threshold:.08});const below=Array.from(root.querySelectorAll('.ss-reheat-cards article,.ss-catalogue-steps li')).filter(el=>el.getBoundingClientRect().top>innerHeight);below.forEach(el=>{el.classList.add('ss-reveal');observer.observe(el)})}
  function route(){let [requested,section]=location.hash.replace(/^#/,'').split('/');if(['about','stockists'].includes(requested)){section=requested==='about'?'workshop':'find';requested='contact'}const mode=['casa','profesional','contact','blog','privacy'].includes(requested)?requested:'casa';const changed=state.mode!==mode;if(changed){state.mode=mode;render();if(mode==='profesional')window.SMOKERS_PRO_INTRO?.();else window.SMOKERS_PRO_INTRO_CANCEL?.()}
   if(section==='como'&&mode==='profesional'&&!state.process)flip();applyMotion();reveal();
   const target=section?document.getElementById('ss-'+section):null;
   requestAnimationFrame(()=>{if(target)target.scrollIntoView({behavior:motionEnabled()?'smooth':'instant',block:'start'});else window.scrollTo({top:0,behavior:'instant'})});
  }
- function updateForm(focus=true){const form=document.getElementById('ss-catalogue-form');form.innerHTML=formContent();if(motionEnabled())form.animate([{opacity:.5,transform:'translateY(10px)'},{opacity:1,transform:'none'}],{duration:260,easing:'ease-out'});if(focus){const heading=form.querySelector('legend,h3');heading.tabIndex=-1;heading.focus({preventScroll:true});form.scrollIntoView({behavior:motionEnabled()?'smooth':'instant',block:'nearest'})}}
- function updateWheel(){
-  const temp=document.createElement('div');temp.innerHTML=normalizeLinks(wheel());
-  root.querySelector('.ss-wheel-info').innerHTML=temp.querySelector('.ss-wheel-info').innerHTML;
-  const animate=motionEnabled()&&root.querySelector('.ss-fan-menu')?.dataset.menuPhase==='ready';
-  const animations=[];
-  root.querySelectorAll('.ss-fan-card').forEach(card=>{
-   const i=Number(card.dataset.dish),oldOffset=Number(card.style.getPropertyValue('--offset'));
-   const oldStyle=getComputedStyle(card),from=oldStyle.transform,fromDepth=oldStyle.zIndex;
-   card.style.cssText=fanStyle(i);card.setAttribute('aria-pressed',String(i===state.dish));
-   card.tabIndex=i===state.dish?0:-1;card.setAttribute('aria-hidden','false');card.querySelector('.ss-fan-card-arrow').textContent=fanOffset(i)<0?'←':'→';
-   if(!animate)return;
-   const toStyle=getComputedStyle(card),to=toStyle.transform,toDepth=toStyle.zIndex;
-   const wrap=Math.abs(oldOffset-fanOffset(i))>3;
-   const frames=wrap?[
-    {transform:from,opacity:1,zIndex:1,offset:0},
-    {transform:from,opacity:0,zIndex:1,offset:.2},
-    {transform:to,opacity:0,zIndex:1,offset:.75},
-    {transform:to,opacity:1,zIndex:toDepth,offset:1}
-   ]:[{transform:from,opacity:1,zIndex:fromDepth},{transform:to,opacity:1,zIndex:toDepth}];
-   animations.push(card.animate(frames,{duration:780,easing:'cubic-bezier(.22,.68,.15,1)'}).finished.catch(()=>{}));
-  });
-  root.querySelectorAll('.ss-fan-dots button').forEach(dot=>dot.setAttribute('aria-pressed',String(Number(dot.dataset.dish)===state.dish)));
-  if(animations.length){menuAnimating=true;Promise.all(animations).then(()=>{menuAnimating=false;const next=menuQueued;menuQueued=0;if(next)spin(next)})}
- }
+ function updateForm(focus=true){const form=document.getElementById('ss-catalogue-form');form.innerHTML=window.SMOKERS_CMS?.html(formContent())||formContent();if(motionEnabled())form.animate([{opacity:.5,transform:'translateY(10px)'},{opacity:1,transform:'none'}],{duration:260,easing:'ease-out'});if(focus){const heading=form.querySelector('legend,h3');heading.tabIndex=-1;heading.focus({preventScroll:true});form.scrollIntoView({behavior:motionEnabled()?'smooth':'instant',block:'nearest'})}}
  let enquiryDraft='';
  let dialogTrigger=null;
  function openProduct(index){const p=products[index];if(!p)return;dialogTrigger=document.activeElement;const dialog=document.getElementById('ss-product-dialog');document.getElementById('ss-dialog-content').innerHTML=`<div class="ss-detail-image"><img class="ss-detail-photo" src="${asset(p.image)}" alt="${name(p)}" width="800" height="1000"><span class="ss-detail-image-label">${designCopy().batch}</span></div><div class="ss-detail-copy"><p class="ss-eyebrow">${designCopy().menu} · ${category(p)}</p><h2 id="ss-dialog-title">${name(p)}</h2><p>${esc(description(p))}</p>${dishTags(p)}${dishFacts(p)}<div class="ss-detail-note"><h3>${panelIcon('snow')}${c().storage}</h3><p>${esc(storage(p))}</p></div><p class="ss-allergen-note">${extra().ingredientsNote}</p>${servingCopy(p)}${button(state.mode==='profesional'?c().requestSheet:c().delivery,'#'+state.mode+(state.mode==='profesional'?'/catalogo':'/pedir'),'ss-primary',true)}</div>`;document.getElementById('ss-dialog-content').innerHTML=normalizeLinks(document.getElementById('ss-dialog-content').innerHTML);dialog.showModal();document.body.style.overflow='hidden';dialog.addEventListener('close',()=>{document.body.style.overflow='';dialogTrigger?.focus({preventScroll:true})},{once:true})}
@@ -200,8 +165,6 @@
   }
   if(el.dataset.language){const y=scrollY;state.lang=el.dataset.language;try{localStorage.setItem('smokers-language',state.lang)}catch{}render();applyMotion();reveal();window.scrollTo(0,y);root.querySelector(`[data-language="${state.lang}"]`)?.focus({preventScroll:true});return}
   if(el.dataset.product!==undefined){event.preventDefault();openProduct(Number(el.dataset.product));return}
-  if(el.dataset.dish!==undefined){if(el.classList.contains('ss-fan-card')&&Number(el.dataset.dish)===state.dish){openProduct(state.dish);return}const delta=menuIndices.indexOf(Number(el.dataset.dish))-menuIndices.indexOf(state.dish);spin(delta);return}
-  if(el.dataset.spin){spin(Number(el.dataset.spin));return}
   const action=el.dataset.action;
   if(action==='enquiry-edit'){const form=el.closest('form');form.querySelector('.ss-draft-result').hidden=true;form.querySelector('[name=message]').focus();}
   if(action==='enquiry-download'&&enquiryDraft){const downloadURL=URL.createObjectURL(new Blob([enquiryDraft],{type:'text/plain;charset=utf-8'}));const link=document.createElement('a');link.href=downloadURL;link.download='smokers-enquiry.txt';link.click();setTimeout(()=>URL.revokeObjectURL(downloadURL),1000);}
@@ -218,13 +181,14 @@
  });
  root.addEventListener('change',event=>{const el=event.target;if(el.name==='topic'){syncEnquiryTopic(el.closest('form'));el.closest('form').querySelector('.ss-draft-result').hidden=true}if(el.name==='business')state.business=Number(el.value);if(el.name==='dish'){state.error='';const error=root.querySelector('.ss-form-error');if(error)error.textContent='';el.checked?state.selected.add(Number(el.value)):state.selected.delete(Number(el.value));document.getElementById('ss-selected-count').textContent=state.selected.size;root.querySelector('[data-action="select-all"]').textContent=state.selected.size===products.length?c().none:c().all}if(el.name==='consent')state.fields.consent=el.checked});
  root.addEventListener('input',event=>{const el=event.target;if(el.closest('#ss-enquiry-form')){el.closest('form').querySelector('.ss-draft-result').hidden=true;return;}if(['name','company','email','phone','notes'].includes(el.name))state.fields[el.name]=el.value});
- root.addEventListener('submit',event=>{
+ root.addEventListener('submit',async event=>{
   if(event.target.id==='ss-enquiry-form'){
    event.preventDefault();const form=event.target,l=window.SMOKERS_PAGE_COPY[state.lang].labels,fields=new FormData(form);if(!form.reportValidity())return;
    const topic=l.topics[Number(fields.get('topic'))]||l.topics[0];
    const lines=[l.sentBy,topic,''];for(const [key,label] of [['name',l.name],['email',l.emailField],['phone',l.phoneField],['company',l.company],['postcode',l.postcode]])if(fields.get(key))lines.push(label+': '+String(fields.get(key)).trim());
    const dishes=fields.getAll('dishes').map(Number).filter(i=>Number.isInteger(i)&&products[i]).map(i=>name(products[i]));if(dishes.length)lines.push('',l.products+':',...dishes.map(n=>'• '+n));
    lines.push('',l.message+':',String(fields.get('message')).trim());enquiryDraft=lines.join('\n');
+   if(window.SMOKERS_SEND){await window.SMOKERS_SEND({form,name:String(fields.get('name')),email:String(fields.get('email')),message:enquiryDraft,consent:!!fields.get('privacy')});return;}
    form.querySelector('[data-draft-open]').href='mailto:'+config.email+'?subject='+encodeURIComponent('Smokers — '+topic)+'&body='+encodeURIComponent(enquiryDraft);
    const result=form.querySelector('.ss-draft-result');result.hidden=false;result.querySelector('h4').focus();return;
   }
@@ -232,15 +196,11 @@
   if(state.step===1&&state.business===null){state.error=c().selectBusiness;updateForm(false);return}
   if(state.step===2&&!state.selected.size){state.error=c().selectDish;updateForm(false);return}
   if(state.step<3){state.step++;updateForm();return}
+  if(window.SMOKERS_SEND){await window.SMOKERS_SEND({form:event.target,name:state.fields.name,email:state.fields.email,message:requestText(),consent:!!state.fields.consent});return;}
   const a=document.createElement('a');a.href=`mailto:${config.email}?subject=${encodeURIComponent(c().formHeading+' — '+state.fields.company)}&body=${encodeURIComponent(requestText())}`;root.appendChild(a);a.click();a.remove();state.prepared=true;updateForm();
  });
  root.addEventListener('click',event=>{const dialog=document.getElementById('ss-product-dialog');if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close()}});
- let fanStart=null,fanDragged=false;
- root.addEventListener('pointerdown',e=>{if(e.target.closest('.ss-fan-stage')){fanStart={x:e.clientX,y:e.clientY};fanDragged=false}});
- root.addEventListener('pointerup',e=>{if(!fanStart)return;const dx=e.clientX-fanStart.x,dy=e.clientY-fanStart.y;fanStart=null;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){fanDragged=true;spin(dx<0?1:-1)}});
- root.addEventListener('pointercancel',()=>fanStart=null);
- root.addEventListener('click',e=>{if(fanDragged&&e.target.closest('.ss-fan-stage')){e.stopImmediatePropagation();e.preventDefault();fanDragged=false}},true);
- root.addEventListener('keydown',event=>{if(event.key==='Escape'){const nav=document.getElementById('ss-mobile-nav');if(nav&&!nav.hidden){nav.hidden=true;const toggle=root.querySelector('.ss-menu-toggle');toggle.setAttribute('aria-expanded','false');toggle.focus()}}if(event.target.closest('.ss-wheel')&&['ArrowRight','ArrowLeft'].includes(event.key)){event.preventDefault();spin(event.key==='ArrowRight'?1:-1);root.querySelector(`[data-dish="${state.dish}"]`).focus({preventScroll:true})}});
+ root.addEventListener('keydown',event=>{if(event.key==='Escape'){const nav=document.getElementById('ss-mobile-nav');if(nav&&!nav.hidden){nav.hidden=true;const toggle=root.querySelector('.ss-menu-toggle');toggle.setAttribute('aria-expanded','false');toggle.focus()}}});
  if(standalone){state.mode='';window.addEventListener('hashchange',()=>{if(!location.hash.startsWith('#ss-'))route()});route()}else{root.dataset.enhanced='true';applyMotion();reveal();if(location.hash==='#ss-como'&&state.mode==='profesional')flip()}
  root.dataset.enhanced='true';
 })();

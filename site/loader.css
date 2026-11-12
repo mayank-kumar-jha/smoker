@@ -21,7 +21,7 @@
 #smokers-site .ss-logo-name-smoke i{inset:-20px auto -30px 0;width:48%;animation-delay:-1.8s;animation-duration:10s}
 #smokers-site .ss-logo-name-smoke i:nth-child(2){left:28%;right:auto;animation-delay:-5.6s;animation-duration:12s}
 #smokers-site .ss-logo-name-smoke i:nth-child(3){left:55%;right:auto;animation-delay:-8.2s;animation-duration:14s}
-#smokers-site:not([data-mode=casa]) .ss-logo-smoke{filter:brightness(2)}
+#smokers-site:not(:is([data-mode=casa],[data-mode=flavour])) .ss-logo-smoke{filter:brightness(2)}
 @keyframes ss-natural-smoke{0%{opacity:0;transform:translate3d(4px,12px,0) scale(.84) rotate(3deg)}25%{opacity:.38}65%{opacity:.26}100%{opacity:0;transform:translate3d(-16px,-24px,0) scale(1.16) rotate(-9deg)}}
 #smokers-site[data-motion=off] :is(.ss-header,.ss-loader) .ss-logo-smoke{display:none}
 @media(prefers-reduced-motion:reduce){#smokers-site :is(.ss-header,.ss-loader) .ss-logo-smoke{display:none}}
@@ -29,8 +29,8 @@
 #smokers-site .ss-loader::before{content:'';position:absolute;inset:0;background:#161e22;transition:opacity .65s cubic-bezier(.2,.7,.2,1)}
 #smokers-site .ss-intro-stage{position:relative;width:min(1200px,100vw,calc(100svh * 1200 / 676));aspect-ratio:1200/676;transition:opacity .4s ease-out}
 #smokers-site .ss-intro-stage::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 35% 54% at 50% 59%,#7a350b8c, #45241038 46%,transparent 78%)}
-#smokers-site[data-mode=casa] .ss-loader::before{background:#fffcf7}
-#smokers-site[data-mode=casa] .ss-intro-stage::before{background:radial-gradient(ellipse 35% 54% at 50% 59%,#ffd9b74d,#ffe9d61a 46%,transparent 78%)}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-loader::before{background:#fffcf7}
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-intro-stage::before{background:radial-gradient(ellipse 35% 54% at 50% 59%,#ffd9b74d,#ffe9d61a 46%,transparent 78%)}
 #smokers-site .ss-intro-video,#smokers-site .ss-intro-clean{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 #smokers-site .ss-intro-video{opacity:0}
 html[data-ss-loading] #smokers-site .ss-loader{opacity:1;visibility:visible}

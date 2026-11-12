@@ -19,6 +19,7 @@ export type Dish = {
   subtitle: string
   /** Plate photo, ideally a top-down cut-out (transparent PNG/WebP), square. */
   image: string
+  thumbnail?: string
   /** Compensates for transparent padding without altering the supplied PNG. */
   imageScale?: number
   alt?: string
@@ -46,11 +47,8 @@ export type DishOrbitCarouselProps = {
   height?: string
   /** Optional photo behind the display, e.g. a kitchen wall. Washed by the theme background. */
   backdrop?: string
-  /** Scroll on forever: past the last dish comes the first again, and up from the first, the last. */
-  loop?: boolean
   /** Embedded display face (Outfit, OFL). Pass null to use the host's font. */
   fontSrc?: string | null
-  onPlay?: (dish: Dish, index: number) => void
   onOrder?: (dish: Dish, index: number) => void
   onChange?: (index: number) => void
   className?: string
@@ -67,16 +65,6 @@ export function stepDirection(from: number, to: number, n: number): 1 | -1 {
   if (n <= 0) return 1
   const fwd = (((to - from) % n) + n) % n
   return fwd <= n - fwd ? 1 : -1
-}
-
-/** Scroll stretches in the section: one per dish change, plus one back round to the first when looping. */
-export function scrollSteps(n: number, loop: boolean): number {
-  return Math.max(0, loop ? n : n - 1)
-}
-
-/** The scroll stretch for dish `i` nearest the current one (when looping, dish 0 is also the last stretch). */
-export function segmentFor(i: number, current: number, n: number, loop: boolean): number {
-  return loop && i === 0 && current > n / 2 ? n : i
 }
 
 /** First thumbnail shown in the strip window, keeping the current one in view. */
@@ -237,9 +225,7 @@ export function DishOrbitCarousel({
   selectedIndex,
   height = "90svh",
   backdrop,
-  loop = true,
   fontSrc = null,
-  onPlay,
   onOrder,
   onChange,
   className,
@@ -270,11 +256,12 @@ export function DishOrbitCarousel({
   const dirRef = useRef(1 as 1 | -1)
   const tlRef = useRef(null as gsap.core.Timeline | null)
   const reducedRef = useRef(false)
+  const [motion, setMotion] = useState(true)
   const swipe = useRef(null as { x: number; y: number } | null)
 
   useEffect(() => {
     const plate = rootRef.current?.querySelector('.dsh-plates')
-    if (!plate || !matchMedia('(max-width: 639px)').matches) return
+    if (n<2 || !plate || !matchMedia('(max-width: 639px)').matches) return
     let timer: ReturnType<typeof setTimeout>
     const observer = new IntersectionObserver(entries => {
       if (!entries.some(entry => entry.isIntersecting && entry.intersectionRatio >= .6)) return
@@ -303,10 +290,12 @@ export function DishOrbitCarousel({
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const on = () => (reducedRef.current = mq.matches)
+    const scope=rootRef.current?.closest('#smokers-site')
+    const on = () => {const enabled=!mq.matches && scope?.getAttribute('data-motion')!=='off';reducedRef.current=!enabled;setMotion(enabled);if(!enabled)tlRef.current?.progress(1).kill()}
     on()
     mq.addEventListener("change", on)
-    return () => mq.removeEventListener("change", on)
+    scope?.addEventListener("smokers:motion",on)
+    return () => {mq.removeEventListener("change", on);scope?.removeEventListener("smokers:motion",on)}
   }, [])
 
   // The swap. Every dish is in the DOM; GSAP only moves the outgoing and incoming ones.
@@ -402,7 +391,7 @@ export function DishOrbitCarousel({
   // The entrance, fixed menu offset and dish orbit each keep their own transform.
   useLayoutEffect(() => {
     const root = rootRef.current
-    if (!root) return
+    if (!root || !motion) return
     const media = gsap.matchMedia()
     media.add('(prefers-reduced-motion: no-preference)', () => {
       const plate = root.querySelector('.dsh-plates')
@@ -415,13 +404,14 @@ export function DishOrbitCarousel({
       entrance.fromTo(plate, { '--dsh-enter-x': '-28px', autoAlpha: 0 }, { '--dsh-enter-x': '0px', autoAlpha: 1 }, 0)
         .fromTo(text, { '--dsh-enter-y': '18px', autoAlpha: 0 }, { '--dsh-enter-y': '0px', autoAlpha: 1, stagger: .06 }, .08)
         .fromTo(card, { '--dsh-enter-x': '28px', autoAlpha: 0 }, { '--dsh-enter-x': '0px', autoAlpha: 1 }, .14)
+      if(n===1)entrance.fromTo(root.querySelector('.dsh-orbit'),{rotation:-SWING},{rotation:0,duration:.95,ease:'power3.out'},0)
       // Keyboard navigation should never land on a concealed control.
       const reveal = () => { entrance.progress(1); entrance.scrollTrigger?.kill() }
       root.addEventListener('focusin', reveal)
       return () => root.removeEventListener('focusin', reveal)
     })
     return () => media.revert()
-  }, [])
+  }, [motion])
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowRight") { e.preventDefault(); step(1) }
@@ -482,7 +472,7 @@ export function DishOrbitCarousel({
           {swipeHint && <p className="dsh-swipe-hint" role="status"><span aria-hidden="true">↔</span> {{en:'Swipe to explore more flavours',es:'Desliza para descubrir más sabores',ca:'Llisca per descobrir més sabors'}[language]}</p>}
           {dishes.map((d, i) => (
             <div key={i} ref={(el) => { orbits.current[i] = el }} className="dsh-orbit" style={{visibility:i===firstIndex?"visible":"hidden"}} aria-hidden={i !== index}>
-              <img decoding="async" src={d.image} style={{ scale: d.imageScale ?? 1 }} alt={d.alt ?? d.title + " " + d.subtitle} width={245} height={245} draggable={false} />
+              <img decoding="async" src={i===index||i===wrapIndex(index+1,n)||i===wrapIndex(index-1,n)?d.image:'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='} style={{ scale: d.imageScale ?? 1 }} alt={d.alt ?? d.title + " " + d.subtitle} width={245} height={245} draggable={false} />
             </div>
           ))}
         </div>
@@ -544,7 +534,7 @@ export function DishOrbitCarousel({
               {dishes.map((d, i) => (
                 <div key={i} className="dsh-th">
                   <a className="dsh-btn" href={d.href} aria-current={i === index ? "true" : undefined} onClick={e=>{if(!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&!e.altKey&&e.button===0){e.preventDefault();go(i)}}}>
-                    <img decoding="async" src={d.image} style={{ scale: d.imageScale ?? 1 }} alt="" width={56} height={56} draggable={false} />
+                    <img decoding="async" loading="lazy" src={d.thumbnail||d.image} style={{ scale: d.imageScale ?? 1 }} alt="" width={56} height={56} draggable={false} />
                     <span>{d.label ?? d.title + " " + d.subtitle}</span>
                   </a>
                 </div>

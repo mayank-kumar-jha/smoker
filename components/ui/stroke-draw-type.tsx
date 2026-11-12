@@ -51,7 +51,10 @@ export function StrokeDrawType({text, host}:{text:string; host:HTMLElement}) {
   if(!document.documentElement.hasAttribute('data-ss-loading'))void start()
   document.addEventListener('ss:intro-finished',start)
   reduced.addEventListener('change',stop)
-  return()=>{disposed=true;resize?.disconnect();stop();document.removeEventListener('ss:intro-finished',start);reduced.removeEventListener('change',stop)}
+  const scope=host.closest('#smokers-site')
+  const toggle=()=>{if(scope?.getAttribute('data-motion')==='off')stop()}
+  scope?.addEventListener('smokers:motion',toggle)
+  return()=>{disposed=true;resize?.disconnect();stop();document.removeEventListener('ss:intro-finished',start);reduced.removeEventListener('change',stop);scope?.removeEventListener('smokers:motion',toggle)}
  },[text,host])
  return <svg ref={ref} aria-hidden="true" focusable="false"><text x="0" y="0" visibility="hidden">{text}</text></svg>
 }

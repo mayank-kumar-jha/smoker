@@ -4,10 +4,10 @@
   "description": "Smokers multilingual static website, responsive video reference implementation and portable Elementor demo",
   "private": true,
   "scripts": {
-    "build": "node build.cjs && node build-site.cjs",
+    "build": "node build-site.cjs",
     "build:site": "node build-site.cjs",
     "build:production": "node build-site.cjs --production",
-    "test:site": "node tests/site-qa.cjs",
+    "test:site": "node tests/production-smoke.cjs",
     "test:seo": "node tests/seo-output.cjs",
     "test:viewport": "node tests/viewport-qa.cjs",
     "media:social": "node scripts/social-images.cjs",
@@ -18,7 +18,16 @@
     "test:experience": "node tests/experience.cjs",
     "test:details": "node tests/smoke-details.cjs",
     "test:home": "node tests/home-reference.cjs",
-    "test:refinements": "node tests/experience-refinements.cjs"
+    "test:refinements": "node tests/experience-refinements.cjs",
+    "build:portable": "node build-site.cjs --portable",
+    "build:wordpress": "node build-site.cjs --production && node scripts/build-wordpress.cjs",
+    "dev:wordpress": "node scripts/wordpress-local.mjs",
+    "typecheck": "tsc --noEmit --noUnusedLocals --noUnusedParameters",
+    "test:wordpress": "node scripts/wordpress-local.mjs --test",
+    "test:animations": "node tests/pro-scroll-motion.cjs && node tests/swipe-hint-navigation.cjs && node tests/support-navbar.cjs",
+    "check": "npm run typecheck && npm run test:seo && npm run test:site",
+    "test:flavours": "node tests/flavour-pages.cjs",
+    "package": "python scripts/package-release.py"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +37,7 @@
     "@tailwindcss/cli": "^4.3.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "@wp-playground/cli": "^3.1.64",
     "esbuild": "^0.28.2",
     "jsdom": "^30.1.3",
     "lighthouse": "^13.5.0",
@@ -41,5 +51,9 @@
     "gsap": "^3.15.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
+  },
+  "overrides": {
+    "isomorphic-git": "^1.44.12",
+    "qs": "^6.17.1"
   }
 }

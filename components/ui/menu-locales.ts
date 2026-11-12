@@ -36,6 +36,6 @@ export function localizedDishes(lang:MenuLanguage){
   const title=translated?.[0]||d.title,subtitle=translated?.[1]||d.subtitle,label=title+' '+subtitle
   const category=i<4?copy.meat:i<7?copy.sides:copy.vegetable
   const seoDescription=(translated?.[3]||d.description)+' '+({en:'Explore this flavour in the Smokers menu and choose your next dish.',es:'Descubre este sabor en la carta de Smokers y elige tu próximo plato.',ca:'Descobreix aquest sabor a la carta de Smokers i tria el teu proper plat.'})[lang]
-  return {...d,title,subtitle,label,seoDescription,description:translated?.[3]||d.description,ingredientsNote:copy.note,category,eyebrow:'SMOKERS · '+category.toLocaleUpperCase(lang),alt:lang==='en'?d.alt:label,href:bases[lang]+(translated?.[2]||slugs[i])+'/'}
+  return {...d,thumbnail:d.image.replace('.webp','-thumb.webp'),title,subtitle,label,seoDescription,description:translated?.[3]||d.description,ingredientsNote:copy.note,category,eyebrow:'SMOKERS · '+category.toLocaleUpperCase(lang),alt:lang==='en'?d.alt:label,href:(typeof window!=='undefined'&&window.SMOKERS_CMS?window.SMOKERS_CMS.url(bases[lang]+(translated?.[2]||slugs[i])+'/'):bases[lang]+(translated?.[2]||slugs[i])+'/')}
  })
 }

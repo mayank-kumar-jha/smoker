@@ -1,0 +1,29 @@
+{
+  "en": {
+    "send": "Send message",
+    "sending": "Sending…",
+    "sent": "Message submitted. Thank you.",
+    "error": "Unable to send. Please try again or use the contact email.",
+    "hint": "Send your message directly to the Smokers team.",
+    "privacyForm": "When you submit a form, the website sends the contact details and message you enter to Smokers through the configured email service. Smokers uses them to respond to your enquiry. The website checks required fields and uses a short-lived request limit to reduce spam. This plugin does not create a database inbox for submitted messages.",
+    "privacyDescription": "How Smokers handles website enquiries, contact messages, browser preferences and links to external services."
+  },
+  "es": {
+    "send": "Enviar mensaje",
+    "sending": "Enviando…",
+    "sent": "Mensaje enviado. Gracias.",
+    "error": "No se pudo enviar. Inténtalo de nuevo o utiliza el correo de contacto.",
+    "hint": "Envía tu mensaje directamente al equipo Smokers.",
+    "privacyForm": "Al enviar un formulario, la web transmite los datos de contacto y el mensaje que introduces a Smokers mediante el servicio de correo configurado. Smokers los utiliza para responder a tu consulta. La web valida los campos obligatorios y aplica un límite temporal de solicitudes para reducir el spam. Este plugin no crea una bandeja de mensajes en la base de datos.",
+    "privacyDescription": "Cómo Smokers trata las consultas web, los mensajes de contacto, las preferencias del navegador y los enlaces externos."
+  },
+  "ca": {
+    "send": "Envia el missatge",
+    "sending": "Enviant…",
+    "sent": "Missatge enviat. Gràcies.",
+    "error": "No s’ha pogut enviar. Torna-ho a provar o utilitza el correu de contacte.",
+    "hint": "Envia el missatge directament a l’equip Smokers.",
+    "privacyForm": "En enviar un formulari, el web transmet les dades de contacte i el missatge que introdueixes a Smokers mitjançant el servei de correu configurat. Smokers els utilitza per respondre la consulta. El web valida els camps obligatoris i aplica un límit temporal de sol·licituds per reduir el correu brossa. Aquest plugin no crea una bústia de missatges a la base de dades.",
+    "privacyDescription": "Com Smokers tracta les consultes web, els missatges de contacte, les preferències del navegador i els enllaços externs."
+  }
+}

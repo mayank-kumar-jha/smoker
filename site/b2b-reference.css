@@ -38,8 +38,6 @@
 #smokers-site[data-mode=profesional] .ss-pro-menu{height:100svh;min-height:680px;padding-top:7svh;background:radial-gradient(ellipse at 50% 70%,#3b1c0c,var(--b2b-dark) 75%)}
 #smokers-site[data-mode=profesional] .ss-pro-menu .ss-section-heading h2{font:400 clamp(40px,4.5vw,76px)/1 Georgia,serif}
 #smokers-site[data-mode=profesional] .ss-pro-menu .ss-pill{background:none;border:1px solid #946239;color:#e8d3ba}
-#smokers-site[data-mode=profesional] .ss-food-card{border:1px solid #8b603d55;border-radius:22px;overflow:hidden}
-#smokers-site[data-mode=profesional] .ss-food-card strong{font-family:Georgia,serif}
 #smokers-site[data-mode=profesional] .ss-catalogue{height:100svh;min-height:680px;padding:8svh 8.5%;gap:6%;grid-template-columns:1fr 1fr;align-items:center;background:radial-gradient(ellipse at 48% 45%,#392010,#180c06 75%);overflow:hidden;isolation:isolate}
 #smokers-site[data-mode=profesional] .ss-catalogue:after{content:'';position:absolute;width:120%;height:110px;bottom:3%;left:-10%;border-top:1px solid #bd621c40;border-radius:50%;transform:rotate(12deg);z-index:-1;box-shadow:0 -5px 25px -20px #e28937}
 #smokers-site[data-mode=profesional] .ss-catalogue .ss-rail{display:none}

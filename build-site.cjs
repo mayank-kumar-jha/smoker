@@ -28,15 +28,16 @@ files.add('b2c-kitchen-layer-v7.png');
 files.add('b2c-table-layer-v7.png');
 files.add('b2c-kitchen-panoramic-v4.png');
 for(const f of ['pro-chicken-background.png','pro-chicken-spiced.png','pro-chicken-herb.png'])files.add(f);
-for(const f of fs.readdirSync('site/assets').filter(f=>f.startsWith('orbit-')))files.add(f);
+for(const f of fs.readdirSync('site/assets').filter(f=>f.startsWith('orbit-v2-')&&f.endsWith('.webp')))files.add(f);
 files.add('menu-peach-reference.png');
 files.add('menu-seven-photos.png');
 files.add('menu-corners-transparent.png');
 files.add('menu-corner-food.png');
+for(const name of Object.values(JSON.parse(fs.readFileSync('site/optimized-media.json','utf8'))))files.add(name);
 for(const file of files)if(fs.existsSync('site/assets/'+file))fs.copyFileSync('site/assets/'+file,dir+'/assets/'+file);
 fs.copyFileSync('site/orbit-menu.js',dir+'/orbit-menu.js');
 fs.copyFileSync('site/pro-showcase.js',dir+'/pro-showcase.js');
-for(const file of ['pro-loader.js','loader.js','data.js','routes.js','hub.js','pages.js','home-hero.js','brand-fire.js','b2c-scroll.js','orbit-menu-markup.js','pro-showcase-markup.js','app.js'])fs.copyFileSync('site/'+file,dir+'/'+file);
+for(const file of ['pro-loader.js','loader.js','data.js','routes.js','hub.js','pages.js','home-hero.js','flavour-pages.js','brand-fire.js','b2c-scroll.js','orbit-menu-markup.js','pro-showcase-markup.js','app.js'])fs.copyFileSync('site/'+file,dir+'/'+file);
 execFileSync(process.execPath,['node_modules/@tailwindcss/cli/dist/index.mjs','-i','site/styles.css','-o',dir+'/styles.css','--minify'],{stdio:'inherit'});
 let css=fs.readFileSync(dir+'/styles.css','utf8').replace(/url\((['"]?)assets\//g,'url($1/assets/');
 for(const [name,variants] of Object.entries(media))css=css.replaceAll('/assets/'+name,'/assets/'+variants.at(-1).file);
@@ -44,12 +45,12 @@ fs.writeFileSync(dir+'/styles.css',css+'\nbody.smokers-page{margin:0;background:
 const root={innerHTML:'',dataset:{}};
 const sandbox={window:{SMOKERS_BUILD:true},document:{getElementById:()=>root,documentElement:{}},localStorage:{getItem:()=>null}};
 vm.createContext(sandbox);
-for(const file of ['data.js','routes.js','hub.js','pages.js','home-hero.js','brand-fire.js','b2c-scroll.js','orbit-menu-markup.js','pro-showcase-markup.js','app.js'])vm.runInContext(fs.readFileSync('site/'+file,'utf8'),sandbox);
+for(const file of ['data.js','routes.js','hub.js','pages.js','home-hero.js','flavour-pages.js','brand-fire.js','b2c-scroll.js','orbit-menu-markup.js','pro-showcase-markup.js','app.js'])vm.runInContext(fs.readFileSync('site/'+file,'utf8'),sandbox);
 const w=sandbox.window,langs=['es','ca','en'];
 const route=(p,l=p.lang)=>p.flavour!==undefined?w.SMOKERS_MENU_PAGES[l][p.flavour].href:p.mode==='product'?w.SMOKERS_ROUTES[l].products+w.SMOKERS_PRODUCT_SLUGS[l][p.product]+'/':w.SMOKERS_ROUTES[l][p.mode]||w.SMOKERS_ROUTES[l].inicio;
 const pages=[];
 for(const lang of langs)for(const mode of ['casa','profesional','contact','blog','privacy'])pages.push({lang,mode,path:route({lang,mode})});
-for(const lang of langs)for(let flavour=0;flavour<w.SMOKERS_MENU_PAGES[lang].length;flavour++)pages.push({lang,mode:'casa',flavour,path:route({lang,flavour})});
+for(const lang of langs)for(let flavour=0;flavour<w.SMOKERS_MENU_PAGES[lang].length;flavour++)pages.push({lang,mode:'flavour',flavour,path:route({lang,flavour})});
 pages.push({lang:'es',mode:'404',path:'/404.html',noindex:true});
 function responsiveImages(html){return html.replace(/<img\b[^>]*>/g,tag=>{
  const name=tag.match(/src="\/assets\/([^"]+)"/)?.[1],variants=media[name];if(!variants)return tag;
@@ -80,7 +81,7 @@ function graph(p,meta){
   // No fabricated price, availability, review or rating. This is not a rich-result eligibility claim.
   g.push({'@type':'Product','@id':id+'#product',name,description:meta.description,image:origin+'/assets/'+variant.file,url:id,brand:{'@type':'Brand',name:'Smokers'},manufacturer:{'@id':brand}});
  }
- if(['casa','profesional'].includes(p.mode))g.push({'@type':'FAQPage','@id':id+'#faq',mainEntity:w.SMOKERS_COPY[p.lang][p.mode==='casa'?'faqHome':'faqPro'].map(([name,text])=>({'@type':'Question',name,acceptedAnswer:{'@type':'Answer',text}}))});
+ if(['casa','profesional'].includes(p.mode))g.push({'@type':'FAQPage','@id':id+'#faq',mainEntity:w.SMOKERS_COPY[p.lang][['casa','flavour'].includes(p.mode)?'faqHome':'faqPro'].map(([name,text])=>({'@type':'Question',name,acceptedAnswer:{'@type':'Answer',text}}))});
  return{'@context':'https://schema.org','@graph':g};
 }
 for(const p of pages){
@@ -98,12 +99,15 @@ for(const p of pages){
 <meta property="og:type" content="website"><meta property="og:site_name" content="Smokers"><meta property="og:locale" content="${locale}"><meta property="og:title" content="${esc(meta.title)}"><meta property="og:description" content="${esc(meta.description)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${origin}/assets/og-smokers.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Smokers · Badalona">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(meta.title)}"><meta name="twitter:description" content="${esc(meta.description)}"><meta name="twitter:image" content="${origin}/assets/og-smokers.jpg">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="preload" href="/assets/display.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/condensed-0.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/styles.css">
-${p.mode==='profesional'?'<link rel="preload" as="image" href="/assets/pro-arc-background-1904.webp" fetchpriority="high">':''}<script type="application/ld+json">${json(graph(p,meta))}</script>
+<script type="application/ld+json">${json(graph(p,meta))}</script>
 </head><body class="smokers-page"><div id="smokers-site" lang="${p.lang}" data-mode="${p.mode}">${content}</div>
-<script type="application/json" id="ss-page-state">${json(p)}</script><script src="/data.js" defer></script><script src="/routes.js" defer></script><script src="/hub.js" defer></script><script src="/pages.js" defer></script><script src="/home-hero.js" defer></script><script src="/brand-fire.js" defer></script><script src="/b2c-scroll.js" defer></script><script src="/orbit-menu.js" defer></script><script src="/pro-showcase.js" defer></script><script src="/app.js" defer></script>
+<script type="application/json" id="ss-page-state">${json(p)}</script><script src="/data.js" defer></script><script src="/routes.js" defer></script><script src="/hub.js" defer></script><script src="/pages.js" defer></script><script src="/home-hero.js" defer></script><script src="/flavour-pages.js" defer></script><script src="/brand-fire.js" defer></script><script src="/b2c-scroll.js" defer></script>${['casa','flavour'].includes(p.mode)?'<script src="/orbit-menu.js" defer></script>':''}${p.mode==='profesional'?'<script src="/pro-showcase.js" defer></script>':''}<script src="/app.js" defer></script>
 </body></html>`;
  const filename=dir+(p.path.endsWith('/')?p.path+'index.html':p.path);fs.mkdirSync(path.dirname(filename),{recursive:true});fs.writeFileSync(filename,html);
 }
+// Remove unreferenced release media. Sources remain intact for future design work.
+const releaseText=pages.map(p=>fs.readFileSync(dir+(p.path.endsWith('/')?p.path+'index.html':p.path),'utf8')).join('\n')+css+['data.js','app.js','home-hero.js','pages.js','orbit-menu.js','pro-showcase.js','loader.js'].map(f=>fs.readFileSync('site/'+f,'utf8')).join('\n');
+for(const file of fs.readdirSync(dir+'/assets'))if(!file.endsWith('.txt')&&!releaseText.includes(file))fs.unlinkSync(dir+'/assets/'+file);
 // Static-host fallback for the retired audience chooser. Server hosts use 301s.
 for(const [legacy,target] of [['/','/es/en-casa/'],...langs.map(lang=>['/'+lang+'/',w.SMOKERS_ROUTES[lang].casa])]){
  const lang=legacy==='/'?'es':legacy.split('/')[1],filename=dir+legacy+'index.html';fs.mkdirSync(path.dirname(filename),{recursive:true});
@@ -113,20 +117,22 @@ const indexable=pages.filter(p=>!p.noindex);
 const sitemap=production?indexable:[];
 fs.writeFileSync(dir+'/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+sitemap.map(p=>`<url><loc>${esc(origin+p.path)}</loc></url>`).join('')+'</urlset>');
 fs.writeFileSync(dir+'/robots.txt',`User-agent: *\nAllow: /\nDisallow: /wp-admin/\nDisallow: /wp-login.php\nDisallow: /?s=\nSitemap: ${origin}/sitemap.xml\n`);
-fs.writeFileSync(dir+'/build-info.json',JSON.stringify({environment:production?'production':'staging',origin,indexableCount:production?indexable.length:0,pages:pages.map(p=>({path:p.path,mode:p.mode,lang:p.lang,noindex:!production||!!p.noindex}))},null,2));
+fs.writeFileSync(dir+'/build-info.json',JSON.stringify({environment:production?'production':'staging',origin,indexableCount:production?indexable.length:0,pages:pages.map(p=>({path:p.path,mode:p.mode,lang:p.lang,flavour:p.flavour,noindex:!production||!!p.noindex}))},null,2));
 const redirects=Object.fromEntries(Object.entries(JSON.parse(fs.readFileSync('seo/redirects.json','utf8'))).filter(([,to])=>pages.some(p=>p.path===to.split('#')[0])));
 fs.writeFileSync(dir+'/redirects.json',JSON.stringify(redirects,null,2));
 fs.writeFileSync(dir+'/_redirects',Object.entries(redirects).map(([from,to])=>`${from} ${to} 301`).join('\n')+'\n');
 const csp="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self' mailto:";
 fs.writeFileSync(dir+'/_headers',`/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Content-Security-Policy: ${csp}\n${production?'':'  X-Robots-Tag: noindex, follow\n'}\n`);
+if(process.argv.includes('--portable')){
 // Portable preview and Elementor demo. SEO production delivery uses the real URL files above.
 const types={'.ttf':'font/ttf','.mp4':'video/mp4','.jpg':'image/jpeg','.webp':'image/webp','.png':'image/png','.woff2':'font/woff2','.svg':'image/svg+xml'},assets={};
 for(const name of files){const type=types[path.extname(name)];if(type&&fs.existsSync('site/assets/'+name))assets[name]=`data:${type};base64,${fs.readFileSync('site/assets/'+name).toString('base64')}`}
 const embedCSS=css.replace(/url\((?:["'])?\/assets\/([^)'"\s]+)(?:["'])?\)/g,(_,name)=>`url("${assets[name]}")`);
 const imageAssets=Object.fromEntries(Object.entries(assets).filter(([name])=>Object.hasOwn(media,name)||name.startsWith('orbit-')||name==='b2c-hero-wide-v10.webp'||name==='b2c-hero-refined-v9.webp'||name==='b2c-reference-clean-v8.png'||name==='b2c-kitchen-reference-nov9.png'||name==='b2c-kitchen-clean-v3.png'||name==='b2c-kitchen-warm-v5.png'||name==='b2c-kitchen-warm-v6.png'||name==='b2c-kitchen-layer-v7.png'||name==='b2c-table-layer-v7.png'||name==='b2c-kitchen-panoramic-v4.png'||['favicon.svg','logo-smoke.webp','smokers-logo-orange.png','smokers-loader-logo.png','smokers-intro.mp4','home-reference-mobile-official-640.webp','menu-seven-photos.png'].includes(name)));
-const scripts=`${fs.readFileSync('site/pro-loader.js','utf8')}\n${fs.readFileSync('site/loader.js','utf8')}\nwindow.SMOKERS_STANDALONE=true;window.SMOKERS_ASSETS=${json(imageAssets)};\n${['data.js','routes.js','hub.js','pages.js','home-hero.js','brand-fire.js','b2c-scroll.js','orbit-menu-markup.js','pro-showcase-markup.js','app.js'].map(f=>fs.readFileSync('site/'+f,'utf8')).join('\n')}\n${fs.readFileSync('site/orbit-menu.js','utf8')}\n${fs.readFileSync('site/pro-showcase.js','utf8')}\nwindow.SMOKERS_MOUNT_PRO?.(document.getElementById('smokers-site'),document.getElementById('smokers-site').dataset.motion!=='off');\nwindow.SMOKERS_MOUNT_ORBIT?.(document.getElementById('smokers-site'));`;
+const scripts=`${fs.readFileSync('site/pro-loader.js','utf8')}\n${fs.readFileSync('site/loader.js','utf8')}\nwindow.SMOKERS_STANDALONE=true;window.SMOKERS_ASSETS=${json(imageAssets)};\n${['data.js','routes.js','hub.js','pages.js','home-hero.js','flavour-pages.js','brand-fire.js','b2c-scroll.js','orbit-menu-markup.js','pro-showcase-markup.js','app.js'].map(f=>fs.readFileSync('site/'+f,'utf8')).join('\n')}\n${fs.readFileSync('site/orbit-menu.js','utf8')}\n${fs.readFileSync('site/pro-showcase.js','utf8')}\nwindow.SMOKERS_MOUNT_PRO?.(document.getElementById('smokers-site'),document.getElementById('smokers-site').dataset.motion!=='off');\nwindow.SMOKERS_MOUNT_ORBIT?.(document.getElementById('smokers-site'));`;
 const licenses=['Bevan-OFL.txt','barlowcondensed-OFL.txt','Archivo-OFL.txt'].map(f=>'/*! '+fs.readFileSync('site/assets/'+f,'utf8')+' */').join('\n');
 const widget=`<!-- Interactive demo only. For indexed WordPress pages use server-rendered templates and real language URLs. -->\n<style>${licenses}\n${embedCSS}</style><div id="smokers-site"></div><script>${scripts.replace(/<\/script/gi,'<\\/script')}</script>`;
 fs.writeFileSync('output/smokers-full-widget.html',widget);
 fs.writeFileSync('output/smokers-full.html',`<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><title>Smokers · Interactive preview</title><style>body{margin:0;background:#120d0a}</style></head><body>${widget}</body></html>`);
-console.log(`Built ${pages.length} HTML pages (${production?'production':'staging, noindex'}); responsive assets, schema, hreflang, sitemap and portable preview.`);
+}
+console.log(`Built ${pages.length} HTML pages (${production?'production':'staging, noindex'}); responsive assets, schema, hreflang and sitemap.`);

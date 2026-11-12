@@ -26,9 +26,12 @@ export default function ProChickenShowcase({lang='es',motion=true,assets={}}:{la
     host.dataset.scrollMotion='phone'
     ctx.add(()=>{
      host.querySelectorAll<HTMLElement>('.ss-chicken-dish').forEach((dish,i)=>{
+      const plate=dish.querySelector('.ss-chicken-plate'),copy=dish.querySelector('.ss-chicken-copy')
+      gsap.set(plate,{autoAlpha:0,x:i?60:-60,rotation:i?25:-25,scale:.9})
+      gsap.set(copy,{autoAlpha:0,y:24})
       const tl=gsap.timeline({scrollTrigger:{trigger:dish,start:'top 78%',toggleActions:'play none none none',once:true},defaults:{ease:'power3.out'}})
-      tl.fromTo(dish.querySelector('.ss-chicken-plate'),{autoAlpha:0,x:i?60:-60,rotation:i?25:-25,scale:.9},{autoAlpha:1,x:0,rotation:0,scale:1,duration:1},0)
-        .fromTo(dish.querySelector('.ss-chicken-copy'),{autoAlpha:0,y:24},{autoAlpha:1,y:0,duration:.8},.15)
+      tl.to(plate,{autoAlpha:1,x:0,rotation:0,scale:1,duration:1},0)
+        .to(copy,{autoAlpha:1,y:0,duration:.8},.15)
      })
     })
     ScrollTrigger.refresh()
@@ -76,10 +79,10 @@ export default function ProChickenShowcase({lang='es',motion=true,assets={}}:{la
 
  },{scope:ref,dependencies:[motion,lang],revertOnUpdate:true})
  return <section ref={ref} className="ss-chicken-showcase" id="ss-signatures" aria-label={lang==='en'?'Two signature chicken dishes':lang==='ca'?'Dues especialitats de pollastre':'Dos especialidades de pollo'}>
-  <img className="ss-chicken-bg" src={asset('pro-chicken-background.png')} alt="" width="1536" height="1024" loading="lazy"/>
+  <img className="ss-chicken-bg" src={asset('pro-chicken-background.webp')} alt="" width="1536" height="1024" loading="lazy"/>
   <div className="ss-chicken-brand" aria-hidden="true"><img src={asset('smokers-loader-logo.png')} width="1680" height="386" alt=""/><p>{lang==='es'?'Fuego lento. Sabor intenso.':lang==='ca'?'Foc lent. Sabor intens.':'Slow fire. Bold flavour.'}</p><span/></div>
   <div className="ss-chicken-composition">{copy[lang].map((dish,i)=><article className={'ss-chicken-dish ss-chicken-dish-'+i} key={i}>
-   <img className="ss-chicken-plate" src={asset(i?'pro-chicken-herb.png':'pro-chicken-spiced.png')} alt={dish[1]+' '+dish[2]} width="1024" height="1024" loading="lazy" decoding="async"/>
+   <img className="ss-chicken-plate" src={asset(i?'pro-chicken-herb.webp':'pro-chicken-spiced.webp')} alt={dish[1]+' '+dish[2]} width="1024" height="1024" loading="lazy" decoding="async"/>
    <div className="ss-chicken-copy"><p className="ss-chicken-kicker">{dish[0]}</p><h2>{dish[1]} <em>{dish[2]}</em></h2><p className="ss-chicken-description">{dish[3]}</p><ul className="ss-chicken-facts">{dish.slice(4).map((fact,j)=><li key={fact}><Icon kind={i*3+j}/><span>{fact}</span></li>)}</ul></div>
   </article>)}</div>
  </section>

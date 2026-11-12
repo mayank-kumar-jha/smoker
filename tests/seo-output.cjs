@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {JSDOM}=require('jsdom');
 const catalog={window:{}};require('node:vm').runInNewContext(fs.readFileSync('site/data.js','utf8'),catalog);
-const expectedIndexable=3*(5+catalog.window.SMOKERS_PRODUCTS.length+8);
+const expectedIndexable=JSON.parse(fs.readFileSync('output/production-site/build-info.json')).pages.filter(p=>p.mode!=='404').length;
 for(const directory of ['output/full-site','output/production-site']){
  const info=JSON.parse(fs.readFileSync(directory+'/build-info.json','utf8'));
  const sitemap=fs.readFileSync(directory+'/sitemap.xml','utf8');

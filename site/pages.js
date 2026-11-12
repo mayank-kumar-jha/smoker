@@ -556,7 +556,7 @@ for(const [lang,title,intro,empty] of [
  ['ca','Des de l’obrador de Smokers','Històries de fum, cuina lenta i bon menjar.','Les primeres històries estan en camí. Mentrestant, explora la carta o escriu-nos.']
 ]){
  window.SMOKERS_PAGE_COPY[lang].labels.blog='Blog';
- window.SMOKERS_PAGE_COPY[lang].blog={title,intro,empty,meta:{title:'Blog | Smokers',description:intro}};
+ window.SMOKERS_PAGE_COPY[lang].blog={title,intro,empty,meta:{title:({es:'Historias | Blog Smokers',ca:'Històries | Blog Smokers',en:'Stories | Smokers Blog'})[lang],description:intro}};
 }
 window.SMOKERS_SUPPORT_PAGES=({state,c,asset,url,products,name,esc,button,panelIcon,config})=>{
  const copy=window.SMOKERS_PAGE_COPY[state.lang],l=copy.labels,t=copy[state.mode];
