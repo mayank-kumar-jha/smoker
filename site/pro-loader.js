@@ -1,10 +1,11 @@
 /* Professional-only three-second brand reveal; never blocks content on failure. */
 (()=>{
  let skipIntro=false;try{skipIntro=sessionStorage.getItem('smokers-skip-intro')===location.pathname;if(skipIntro&&/\/(professionals|profesionales)\/?$/.test(location.pathname))sessionStorage.removeItem('smokers-skip-intro')}catch{}
+ try{skipIntro ||= sessionStorage.getItem('smokers-session-intro')==='seen'||(!!document.referrer&&new URL(document.referrer).origin===location.origin)}catch{}
 
  // This file runs in the head, before the first body paint.
  const boot=!skipIntro&&/\/(professionals|profesionales)\/?$/.test(location.pathname)||location.hash.startsWith('#profesional');
- if(boot)document.documentElement.dataset.ssProBoot='true';
+ if(boot){document.documentElement.dataset.ssProBoot='true';try{sessionStorage.setItem('smokers-session-intro','seen')}catch{}}
  const bootDeadline=setTimeout(()=>{delete document.documentElement.dataset.ssProBoot},12000);
  let overlay=null,timer=0,release=0,locked=[],heroFlights=[];
  let heroRoot=null;

@@ -11,6 +11,7 @@
   document.addEventListener('ss:text-ready',release,{once:true});
  }
  let skipIntro=false;try{skipIntro=sessionStorage.getItem('smokers-skip-intro')===location.pathname;if(skipIntro)sessionStorage.removeItem('smokers-skip-intro')}catch{}
+ try{skipIntro ||= sessionStorage.getItem('smokers-session-intro')==='seen'||(!!document.referrer&&new URL(document.referrer).origin===location.origin)}catch{}
 
  if(skipIntro||!/^\/(?:en\/at-home|es\/en-casa|ca\/a-casa)\/?$/.test(location.pathname))return;
  if(/\/(?:en\/at-home\/menu|es\/en-casa\/carta|ca\/a-casa\/carta)\/[^/]+\/$/.test(location.pathname))return;
@@ -20,6 +21,7 @@
  try{disabled ||= localStorage.getItem('smokers-motion')==='off'}catch{}
  if(disabled)return;
  try{localStorage.setItem('smokers-intro-seen','true')}catch{}
+ try{sessionStorage.setItem('smokers-session-intro','seen')}catch{}
  html.dataset.ssLoading='true';
  let phase='waiting',video,art,slot,videoFrame,deadline,flights=[];
  const finish=()=>{
