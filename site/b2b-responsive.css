@@ -6,11 +6,11 @@
  #smokers-site:is([data-mode=profesional],[data-mode=contact],[data-mode=blog]) .ss-pro-flat-header .ss-mobile-nav{top:76px;right:16px;left:16px;width:auto;max-height:calc(100svh - 92px);overflow:auto}
  #smokers-site[data-mode=profesional] .ss-b2b-hero{height:600px;min-height:0}
  #smokers-site[data-mode=profesional] .ss-b2b-fork{height:96%;bottom:-5%;max-width:70%;object-fit:contain}
- #smokers-site[data-mode=profesional] .ss-method-open{height:auto;min-height:600px}
- #smokers-site[data-mode=profesional] .ss-method-open :is(.ss-pro-hero,.ss-flip-inner){height:auto!important}
- #smokers-site[data-mode=profesional] .ss-method-open :is(.ss-pro-front,.ss-b2b-fork){display:none}
- #smokers-site[data-mode=profesional] .ss-b2b-hero .ss-pro-back{padding:40px 5%;background:#faf5ee;overflow:visible}
- #smokers-site[data-mode=profesional] .ss-method-open .ss-pro-back{position:relative;inset:auto;height:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}
+ #smokers-site[data-mode=profesional] .ss-method-open{height:600px;min-height:0}
+ #smokers-site[data-mode=profesional] .ss-method-open :is(.ss-pro-hero,.ss-flip-inner){height:100%!important}
+ #smokers-site[data-mode=profesional] .ss-b2b-hero .ss-pro-back{padding:32px 5%;background:#faf5ee;overflow:auto;opacity:0;transition:opacity .5s ease,visibility 0s .5s}
+ #smokers-site[data-mode=profesional] .ss-show-process .ss-pro-back{opacity:1;visibility:visible;transition-delay:0s}
+ #smokers-site[data-mode=profesional] .ss-method-open .ss-pro-back{position:absolute;inset:0;height:100%;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-content:start;gap:24px}
  #smokers-site[data-mode=profesional] .ss-method-copy{position:static;width:auto;max-width:none}
  #smokers-site[data-mode=profesional] .ss-method-copy h2{font-size:38px;line-height:1.1}
  #smokers-site[data-mode=profesional] .ss-method-copy h2 br{display:block}
@@ -54,18 +54,19 @@
  #smokers-site:is([data-mode=profesional],[data-mode=contact],[data-mode=blog]) .ss-pro-flat-header :is(.ss-logo,.ss-logo-art){width:clamp(150px,48vw,190px)}
  #smokers-site:is([data-mode=profesional],[data-mode=contact],[data-mode=blog]) .ss-pro-flat-header>.ss-menu-toggle{top:14px;right:12px}
  #smokers-site[data-mode=profesional] .ss-b2b-hero{height:560px}
- #smokers-site[data-mode=profesional] .ss-b2b-wordmark{top:28px;left:6%;width:88%;font-size:10vw;letter-spacing:.08em;justify-content:center;gap:0}
+ #smokers-site[data-mode=profesional] .ss-b2b-wordmark{top:28px;left:4%;width:92%;font-size:min(12vw,68px);font-weight:700;letter-spacing:.035em;justify-content:center;gap:0}
  #smokers-site[data-mode=profesional] .ss-b2b-wordmark .ss-b2b-letter{visibility:visible;width:auto;flex:initial}
- #smokers-site[data-mode=profesional] .ss-b2b-taglines{top:88px;left:8%;right:8%;gap:20px;align-items:start}
- #smokers-site[data-mode=profesional] .ss-b2b-taglines p{font-size:10px;max-width:48%;letter-spacing:.12em}
- #smokers-site[data-mode=profesional] .ss-b2b-fork{height:73%;bottom:52px;max-width:90%}
- #smokers-site[data-mode=profesional] .ss-b2b-process-link{bottom:14px;left:50%;transform:translateX(-50%);max-width:none;white-space:nowrap;min-height:44px;font-size:13px;gap:12px}
- #smokers-site[data-mode=profesional] .ss-method-open{height:auto;min-height:0}
- #smokers-site[data-mode=profesional] .ss-method-open .ss-pro-back{display:flex;flex-direction:column;padding:28px 20px 36px;gap:30px}
- #smokers-site[data-mode=profesional] .ss-method-copy h2{font-size:34px}
- #smokers-site[data-mode=profesional] .ss-method-actions{display:grid;grid-template-columns:minmax(0,1fr)}
- #smokers-site[data-mode=profesional] .ss-method-actions .ss-button{width:100%;justify-content:center;font-size:12px}
- #smokers-site[data-mode=profesional] .ss-method-back{min-height:44px}
+ #smokers-site[data-mode=profesional] .ss-b2b-taglines{display:none}
+ #smokers-site[data-mode=profesional] .ss-b2b-fork{height:calc(73% + 30px);max-height:calc(100% - 160px);bottom:24px;max-width:90%}
+ #smokers-site[data-mode=profesional] .ss-b2b-process-link{top:calc(40px + min(12vw,68px));bottom:auto;left:50%;transform:translateX(-50%);max-width:none;white-space:nowrap;min-height:44px;font-size:13px;gap:12px}
+ #smokers-site[data-mode=profesional] .ss-method-open .ss-pro-back{display:flex;flex-direction:column;padding:24px 20px 28px;gap:20px}
+ #smokers-site[data-mode=profesional] .ss-method-open :is(.ss-method-copy,.ss-method-steps){flex:none}
+ #smokers-site[data-mode=profesional] .ss-method-copy h2{font-size:clamp(27px,7.5vw,34px);margin-bottom:14px}
+ #smokers-site[data-mode=profesional] .ss-method-actions{display:flex;flex-wrap:wrap;margin-top:18px}
+ #smokers-site[data-mode=profesional] .ss-method-actions .ss-button{width:auto;flex:1 1 auto;justify-content:center;font-size:12px}
+ #smokers-site[data-mode=profesional] .ss-method-actions .ss-button{min-height:44px;padding:10px 14px}
+ #smokers-site[data-mode=profesional] .ss-method-back{min-height:36px;margin-top:8px}
+ #smokers-site[data-mode=profesional] .ss-method-steps{gap:14px}
  #smokers-site[data-mode=profesional] .ss-method-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
  #smokers-site[data-mode=profesional] .ss-method-facts strong{font-size:25px}
  #smokers-site[data-mode=profesional] .ss-method-facts svg{width:28px;height:28px}
@@ -96,3 +97,16 @@
  #smokers-site[data-mode=profesional] .ss-footer-grid{grid-template-columns:minmax(0,1fr);gap:28px}
  #smokers-site[data-mode=profesional] .ss-footer-bottom{flex-wrap:wrap;gap:16px}
 }
+@media(min-width:601px) and (max-width:639px){
+ #smokers-site[data-mode=profesional] .ss-b2b-wordmark{top:28px;left:4%;width:92%;font-size:min(12vw,68px);font-weight:700;letter-spacing:.035em;justify-content:center;gap:0}
+ #smokers-site[data-mode=profesional] .ss-b2b-wordmark .ss-b2b-letter{visibility:visible;width:auto;flex:initial}
+ #smokers-site[data-mode=profesional] .ss-b2b-taglines{display:none}
+ #smokers-site[data-mode=profesional] .ss-b2b-fork{height:calc(96% + 30px);max-height:calc(100% - 160px);bottom:calc(-5% - 28px)}
+ #smokers-site[data-mode=profesional] .ss-b2b-process-link{top:calc(40px + min(12vw,68px));bottom:auto;left:50%;transform:translateX(-50%);max-width:none;white-space:nowrap;min-height:44px}
+}
+
+/* Emphasize the process link without enclosing it in a button shape. */
+#smokers-site[data-mode=profesional] .ss-b2b-process-link{padding:10px 0;color:#633c24;font-size:14px;font-weight:700;transition:color .2s}
+#smokers-site[data-mode=profesional] .ss-b2b-process-link svg{width:23px;height:23px;color:#c85a21}
+#smokers-site[data-mode=profesional] .ss-b2b-process-link:hover{color:#b3420b}
+#smokers-site[data-mode=profesional] .ss-b2b-process-link:focus-visible{outline:2px solid #c85a21;outline-offset:4px}

@@ -11,7 +11,7 @@ const info=JSON.parse(fs.readFileSync(root+'/build-info.json','utf8'));
 const staging=info.environment!=='production';
 if(publicHost&&staging&&(!process.env.STAGING_USER||!process.env.STAGING_PASSWORD))throw Error('Public staging requires STAGING_USER and STAGING_PASSWORD.');
 const redirects=JSON.parse(fs.readFileSync(root+'/redirects.json','utf8'));
-const types={'.mp4':'video/mp4','.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.woff2':'font/woff2','.txt':'text/plain; charset=utf-8','.xml':'application/xml; charset=utf-8','.json':'application/json; charset=utf-8'};
+const types={'.pdf':'application/pdf','.mp4':'video/mp4','.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.woff2':'font/woff2','.txt':'text/plain; charset=utf-8','.xml':'application/xml; charset=utf-8','.json':'application/json; charset=utf-8'};
 const csp="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self' mailto:";
 function authorized(req){const supplied=Buffer.from(req.headers.authorization||''),expected=Buffer.from('Basic '+Buffer.from(process.env.STAGING_USER+':'+process.env.STAGING_PASSWORD).toString('base64'));return supplied.length===expected.length&&crypto.timingSafeEqual(supplied,expected)}
 const server=http.createServer((req,res)=>{

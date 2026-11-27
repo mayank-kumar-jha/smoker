@@ -7,18 +7,18 @@
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-flat-header .ss-logo{width:clamp(155px,40vw,210px)}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-flat-copy{position:relative;inset:auto;width:auto;max-width:none;margin:22px 5% 0;text-align:center;padding:0}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-flat-eyebrow{justify-content:center;font-size:clamp(11px,3vw,15px);letter-spacing:.18em}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-flat-copy h1{font-size:clamp(22px,7.5vw,45px);line-height:1.2;margin:16px -2%}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-flat-copy h1 em{font-size:1.22em;font-style:italic}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-flat-description{text-align:center;font-size:clamp(13px,3.6vw,18px);line-height:1.5;margin:auto;width:94%;max-width:480px}
+#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-flat-copy h1{font-size:calc(clamp(29px,8.4vw,42px) + 5px);line-height:1.12;margin:16px -2%;text-wrap:balance}
+#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-flat-copy h1 em{font-size:1em;font-style:italic}
+#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-flat-description{text-align:center;font-size:calc(clamp(14px,3.6vw,18px) - 2px);line-height:1.5;margin:auto;width:94%;max-width:480px}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-flat-actions{justify-content:center;display:flex;margin-top:20px}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-glovo-button{min-height:48px;width:58%;min-width:190px;font-size:18px;background:#ff5900;border-color:#ff5900}
+#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-glovo-button{height:40px;min-height:40px;width:calc(58% - 8px);min-width:182px;padding:6px 20px;font-size:18px;background:#ff5900;border-color:#ff5900}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-flat-scene{inset:auto 0 0;height:100%;background:#080704}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-flat-scene:after{background:linear-gradient(#080704 0%,transparent 15%)}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-flat-wallpaper{width:170%;height:auto;inset:auto auto 145px 42%;transform:translateX(-50%);object-fit:contain;mask-image:linear-gradient(transparent,#000 22%,#000 80%,transparent)}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-hero-foreground{display:none}
+#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-hero-foreground{display:block}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-hero-facts{position:relative;inset:auto;margin-top:clamp(230px,66vw,380px);padding:12px 4% 28px;background:linear-gradient(transparent,#080704 25%);grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 0}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-hero-facts li{flex-direction:column;text-align:center;justify-content:flex-start;gap:8px;min-height:60px;padding:0 9px}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-hero-facts li span{font:600 clamp(10px,2.8vw,14px)/1.25 Archivo,sans-serif!important}
+#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-hero-facts li span{font:600 clamp(12px,3.1vw,14px)/1.3 Archivo,Arial,sans-serif!important;letter-spacing:.01em}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reference-v8 .ss-hero-facts svg{width:27px;height:27px;color:#ff6500}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-orbit-menu,#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root{height:auto!important;min-height:100svh}
 /* Clip orbit artwork without creating a horizontal touch-scroll container. */
@@ -30,6 +30,7 @@
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-eye{font-size:clamp(11px,3vw,16px);margin:0 0 12px}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-t1,#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-t2{font-size:clamp(27px,8.7vw,52px)!important;white-space:normal;line-height:1.06}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-t1[data-long-title]{font-size:clamp(16px,6vw,36px)!important;white-space:nowrap}
+#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-t2[data-long-title]{font-size:clamp(16px,6vw,36px)!important;white-space:nowrap}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-plates{order:2;width:70vw;height:70vw;max-width:360px;max-height:360px;margin:0}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-acts{order:4;margin:12px 0 16px;justify-content:center;width:100%;gap:24px}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .dsh-root .dsh-acts .dsh-btn{font-size:17px;min-height:44px}
@@ -94,7 +95,6 @@
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq-photo>span{width:58px;height:58px;font-size:21px;right:12px;bottom:10px}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq summary{font-size:16px;line-height:1.3;padding:14px 0}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq summary span{font-size:28px;flex-shrink:0}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq-contact{margin-top:26px;padding:20px;border-radius:18px;font-size:23px}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-home-method{height:auto;min-height:0;padding:32px 6%}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-home-steps{grid-template-columns:1fr;gap:20px}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-home-steps li{display:flex;gap:16px}

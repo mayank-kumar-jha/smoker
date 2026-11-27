@@ -15,11 +15,14 @@ const outputRoot=path.resolve(dir);
 function cleanHTML(folder){for(const entry of fs.readdirSync(folder,{withFileTypes:true})){const file=path.resolve(folder,entry.name);if(!file.startsWith(outputRoot+path.sep))throw Error('Output path escaped');if(entry.isDirectory())cleanHTML(file);else if(entry.name.endsWith('.html'))fs.unlinkSync(file)}}
 cleanHTML(outputRoot);
 const files=new Set(['display.woff2','condensed-0.woff2','archivo-400.woff2','archivo-600.woff2','archivo-700.woff2','Archivo-OFL.txt','smokers-logo-orange.png','smokers-loader-logo.png','smokers-intro.mp4','logo-smoke.webp','Bevan-OFL.txt','barlowcondensed-OFL.txt','favicon.svg','apple-touch-icon.png','og-smokers.jpg','hero-texture.webp',...Object.keys(media),...Object.values(media).flat().map(v=>v.file)]);
+for(const f of ['kreo-digital-white.svg','smokers-horeca-2027-en.pdf','smokers-horeca-2027-es.pdf','smokers-horeca-2027-ca.pdf'])files.add(f);
 files.add('menu-tabletop.webp');
 files.add('b2c-reference-clean-v8.png');
 files.add('b2c-hero-refined-v9.webp');
 files.add('b2c-hero-wide-v10.webp');
+for(const f of ['b2c-hero-badge-centered.webp','b2c-hero-wide-badge-centered.webp','chicken-steam.webp'])files.add(f);
 for(const f of ['great-vibes.ttf','anek-latin.ttf','GreatVibes-OFL.txt','AnekLatin-OFL.txt'])files.add(f);
+for(const f of ['dm-serif-display-latin.woff2','great-vibes-latin.woff2','DMSerifDisplay-OFL.txt'])files.add(f);
 files.add('b2c-kitchen-reference-nov9.png');
 files.add('b2c-kitchen-clean-v3.png');
 files.add('b2c-kitchen-warm-v5.png');
@@ -37,19 +40,21 @@ for(const name of Object.values(JSON.parse(fs.readFileSync('site/optimized-media
 for(const file of files)if(fs.existsSync('site/assets/'+file))fs.copyFileSync('site/assets/'+file,dir+'/assets/'+file);
 fs.copyFileSync('site/orbit-menu.js',dir+'/orbit-menu.js');
 fs.copyFileSync('site/pro-showcase.js',dir+'/pro-showcase.js');
-for(const file of ['pro-loader.js','loader.js','data.js','routes.js','hub.js','pages.js','home-hero.js','flavour-pages.js','brand-fire.js','b2c-scroll.js','orbit-menu-markup.js','pro-showcase-markup.js','app.js'])fs.copyFileSync('site/'+file,dir+'/'+file);
+fs.copyFileSync('site/gallery-carousel.js',dir+'/gallery-carousel.js');
+for(const file of ['pro-loader.js','loader.js','data.js','routes.js','hub.js','pages.js','home-hero.js','hero-text.js','flavour-pages.js','method-page.js','brand-fire.js','b2c-scroll.js','orbit-menu-markup.js','pro-showcase-markup.js','app.js'])fs.copyFileSync('site/'+file,dir+'/'+file);
 execFileSync(process.execPath,['node_modules/@tailwindcss/cli/dist/index.mjs','-i','site/styles.css','-o',dir+'/styles.css','--minify'],{stdio:'inherit'});
 let css=fs.readFileSync(dir+'/styles.css','utf8').replace(/url\((['"]?)assets\//g,'url($1/assets/');
 for(const [name,variants] of Object.entries(media))css=css.replaceAll('/assets/'+name,'/assets/'+variants.at(-1).file);
 fs.writeFileSync(dir+'/styles.css',css+'\nbody.smokers-page{margin:0;background:#120d0a}');
+for(const [mode,variant]of Object.entries(require('./scripts/css-variants.cjs')(css)))fs.writeFileSync(dir+'/styles-'+mode+'.css',variant+'\nbody.smokers-page{margin:0;background:#120d0a}');
 const root={innerHTML:'',dataset:{}};
 const sandbox={window:{SMOKERS_BUILD:true},document:{getElementById:()=>root,documentElement:{}},localStorage:{getItem:()=>null}};
 vm.createContext(sandbox);
-for(const file of ['data.js','routes.js','hub.js','pages.js','home-hero.js','flavour-pages.js','brand-fire.js','b2c-scroll.js','orbit-menu-markup.js','pro-showcase-markup.js','app.js'])vm.runInContext(fs.readFileSync('site/'+file,'utf8'),sandbox);
+for(const file of ['data.js','routes.js','hub.js','pages.js','home-hero.js','flavour-pages.js','method-page.js','brand-fire.js','b2c-scroll.js','orbit-menu-markup.js','pro-showcase-markup.js','app.js'])vm.runInContext(fs.readFileSync('site/'+file,'utf8'),sandbox);
 const w=sandbox.window,langs=['es','ca','en'];
 const route=(p,l=p.lang)=>p.flavour!==undefined?w.SMOKERS_MENU_PAGES[l][p.flavour].href:p.mode==='product'?w.SMOKERS_ROUTES[l].products+w.SMOKERS_PRODUCT_SLUGS[l][p.product]+'/':w.SMOKERS_ROUTES[l][p.mode]||w.SMOKERS_ROUTES[l].inicio;
 const pages=[];
-for(const lang of langs)for(const mode of ['casa','profesional','contact','blog','privacy'])pages.push({lang,mode,path:route({lang,mode})});
+for(const lang of langs)for(const mode of ['casa','profesional','method','contact','blog','privacy'])pages.push({lang,mode,path:route({lang,mode})});
 for(const lang of langs)for(let flavour=0;flavour<w.SMOKERS_MENU_PAGES[lang].length;flavour++)pages.push({lang,mode:'flavour',flavour,path:route({lang,flavour})});
 pages.push({lang:'es',mode:'404',path:'/404.html',noindex:true});
 function responsiveImages(html){return html.replace(/<img\b[^>]*>/g,tag=>{
@@ -98,10 +103,10 @@ for(const p of pages){
 <link rel="canonical" href="${canonical}">${alternates}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Smokers"><meta property="og:locale" content="${locale}"><meta property="og:title" content="${esc(meta.title)}"><meta property="og:description" content="${esc(meta.description)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${origin}/assets/og-smokers.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Smokers · Badalona">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(meta.title)}"><meta name="twitter:description" content="${esc(meta.description)}"><meta name="twitter:image" content="${origin}/assets/og-smokers.jpg">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="preload" href="/assets/display.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/condensed-0.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="preload" href="/assets/display.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/condensed-0.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/styles-${['casa','flavour'].includes(p.mode)?'casa':['profesional','method'].includes(p.mode)?'profesional':'support'}.css">
 <script type="application/ld+json">${json(graph(p,meta))}</script>
 </head><body class="smokers-page"><div id="smokers-site" lang="${p.lang}" data-mode="${p.mode}">${content}</div>
-<script type="application/json" id="ss-page-state">${json(p)}</script><script src="/data.js" defer></script><script src="/routes.js" defer></script><script src="/hub.js" defer></script><script src="/pages.js" defer></script><script src="/home-hero.js" defer></script><script src="/flavour-pages.js" defer></script><script src="/brand-fire.js" defer></script><script src="/b2c-scroll.js" defer></script>${['casa','flavour'].includes(p.mode)?'<script src="/orbit-menu.js" defer></script>':''}${p.mode==='profesional'?'<script src="/pro-showcase.js" defer></script>':''}<script src="/app.js" defer></script>
+<script type="application/json" id="ss-page-state">${json(p)}</script><script src="/data.js" defer></script><script src="/routes.js" defer></script><script src="/hub.js" defer></script><script src="/pages.js" defer></script><script src="/home-hero.js" defer></script><script src="/flavour-pages.js" defer></script><script src="/method-page.js" defer></script><script src="/brand-fire.js" defer></script><script src="/b2c-scroll.js" defer></script><script src="/app.js" defer></script>${p.mode==='casa'?'<script src="/hero-text.js" defer></script>':''}
 </body></html>`;
  const filename=dir+(p.path.endsWith('/')?p.path+'index.html':p.path);fs.mkdirSync(path.dirname(filename),{recursive:true});fs.writeFileSync(filename,html);
 }
@@ -125,11 +130,11 @@ const csp="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inlin
 fs.writeFileSync(dir+'/_headers',`/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Content-Security-Policy: ${csp}\n${production?'':'  X-Robots-Tag: noindex, follow\n'}\n`);
 if(process.argv.includes('--portable')){
 // Portable preview and Elementor demo. SEO production delivery uses the real URL files above.
-const types={'.ttf':'font/ttf','.mp4':'video/mp4','.jpg':'image/jpeg','.webp':'image/webp','.png':'image/png','.woff2':'font/woff2','.svg':'image/svg+xml'},assets={};
+const types={'.ttf':'font/ttf','.mp4':'video/mp4','.jpg':'image/jpeg','.webp':'image/webp','.png':'image/png','.woff2':'font/woff2','.svg':'image/svg+xml','.pdf':'application/pdf'},assets={};
 for(const name of files){const type=types[path.extname(name)];if(type&&fs.existsSync('site/assets/'+name))assets[name]=`data:${type};base64,${fs.readFileSync('site/assets/'+name).toString('base64')}`}
 const embedCSS=css.replace(/url\((?:["'])?\/assets\/([^)'"\s]+)(?:["'])?\)/g,(_,name)=>`url("${assets[name]}")`);
-const imageAssets=Object.fromEntries(Object.entries(assets).filter(([name])=>Object.hasOwn(media,name)||name.startsWith('orbit-')||name==='b2c-hero-wide-v10.webp'||name==='b2c-hero-refined-v9.webp'||name==='b2c-reference-clean-v8.png'||name==='b2c-kitchen-reference-nov9.png'||name==='b2c-kitchen-clean-v3.png'||name==='b2c-kitchen-warm-v5.png'||name==='b2c-kitchen-warm-v6.png'||name==='b2c-kitchen-layer-v7.png'||name==='b2c-table-layer-v7.png'||name==='b2c-kitchen-panoramic-v4.png'||['favicon.svg','logo-smoke.webp','smokers-logo-orange.png','smokers-loader-logo.png','smokers-intro.mp4','home-reference-mobile-official-640.webp','menu-seven-photos.png'].includes(name)));
-const scripts=`${fs.readFileSync('site/pro-loader.js','utf8')}\n${fs.readFileSync('site/loader.js','utf8')}\nwindow.SMOKERS_STANDALONE=true;window.SMOKERS_ASSETS=${json(imageAssets)};\n${['data.js','routes.js','hub.js','pages.js','home-hero.js','flavour-pages.js','brand-fire.js','b2c-scroll.js','orbit-menu-markup.js','pro-showcase-markup.js','app.js'].map(f=>fs.readFileSync('site/'+f,'utf8')).join('\n')}\n${fs.readFileSync('site/orbit-menu.js','utf8')}\n${fs.readFileSync('site/pro-showcase.js','utf8')}\nwindow.SMOKERS_MOUNT_PRO?.(document.getElementById('smokers-site'),document.getElementById('smokers-site').dataset.motion!=='off');\nwindow.SMOKERS_MOUNT_ORBIT?.(document.getElementById('smokers-site'));`;
+const imageAssets=Object.fromEntries(Object.entries(assets).filter(([name])=>Object.hasOwn(media,name)||name.startsWith('orbit-')||name==='b2c-hero-wide-v10.webp'||name==='b2c-hero-refined-v9.webp'||name==='b2c-reference-clean-v8.png'||name==='b2c-kitchen-reference-nov9.png'||name==='b2c-kitchen-clean-v3.png'||name==='b2c-kitchen-warm-v5.png'||name==='b2c-kitchen-warm-v6.png'||name==='b2c-kitchen-layer-v7.png'||name==='b2c-table-layer-v7.png'||name==='b2c-kitchen-panoramic-v4.png'||['kreo-digital-white.svg','smokers-horeca-2027-en.pdf','smokers-horeca-2027-es.pdf','smokers-horeca-2027-ca.pdf','b2c-hero-badge-centered.webp','b2c-hero-wide-badge-centered.webp','chicken-steam.webp','favicon.svg','logo-smoke.webp','smokers-logo-orange.png','smokers-loader-logo.png','smokers-intro.mp4','home-reference-mobile-official-640.webp','menu-seven-photos.png'].includes(name)));
+const scripts=`${fs.readFileSync('site/pro-loader.js','utf8')}\n${fs.readFileSync('site/loader.js','utf8')}\nwindow.SMOKERS_STANDALONE=true;window.SMOKERS_ASSETS=${json(imageAssets)};\n${['data.js','routes.js','hub.js','pages.js','home-hero.js','flavour-pages.js','method-page.js','brand-fire.js','b2c-scroll.js','orbit-menu-markup.js','pro-showcase-markup.js','app.js'].map(f=>fs.readFileSync('site/'+f,'utf8')).join('\n')}\n${fs.readFileSync('site/orbit-menu.js','utf8')}\n${fs.readFileSync('site/pro-showcase.js','utf8')}\n${fs.readFileSync('site/gallery-carousel.js','utf8')}\nwindow.SMOKERS_MOUNT_PRO?.(document.getElementById('smokers-site'),document.getElementById('smokers-site').dataset.motion!=='off');\nwindow.SMOKERS_MOUNT_ORBIT?.(document.getElementById('smokers-site'));\nwindow.SMOKERS_MOUNT_GALLERY?.(document.getElementById('smokers-site'));`;
 const licenses=['Bevan-OFL.txt','barlowcondensed-OFL.txt','Archivo-OFL.txt'].map(f=>'/*! '+fs.readFileSync('site/assets/'+f,'utf8')+' */').join('\n');
 const widget=`<!-- Interactive demo only. For indexed WordPress pages use server-rendered templates and real language URLs. -->\n<style>${licenses}\n${embedCSS}</style><div id="smokers-site"></div><script>${scripts.replace(/<\/script/gi,'<\\/script')}</script>`;
 fs.writeFileSync('output/smokers-full-widget.html',widget);

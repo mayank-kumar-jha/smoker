@@ -9,7 +9,7 @@ const{chromium}=require('playwright'),assert=require('node:assert/strict');
    for(const path of [pro,contact,'blog']){
     assert.equal((await page.goto(`http://127.0.0.1:4173/${lang}/${path}/`)).status(),200);
     const style=await page.locator('.ss-pro-flat-header').evaluate(e=>{const s=getComputedStyle(e),logo=e.querySelector('.ss-logo').getBoundingClientRect();return {height:e.getBoundingClientRect().height,background:s.backgroundColor,padding:s.padding,logoWidth:logo.width,logoX:logo.x}});
-    if(path===pro)reference=style;else assert.deepEqual(style,reference,'Same header geometry and background: '+width+' '+lang+' '+path);
+    if(path===pro){reference=style;assert(style.logoWidth<=48,'Professional header shows the compact emblem');}else {assert.equal(style.height,reference.height);assert.equal(style.background,reference.background);assert.equal(style.padding,reference.padding);}
     assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
     if(width<=768){
      await page.locator('.ss-menu-toggle').click();assert(await page.locator('#ss-mobile-nav').isVisible());

@@ -1,10 +1,10 @@
 #smokers-site[data-mode=flavour]{background:#fbece0;color:#2a160b}
-#smokers-site .ss-flavour-intro{max-width:1050px;margin:auto;padding:160px 40px 48px;text-align:center}
-#smokers-site .ss-flavour-back{display:inline-block;font:600 14px Archivo,Arial,sans-serif;margin-bottom:42px;text-decoration:underline}
-#smokers-site .ss-flavour-intro h1{font-size:clamp(45px,6vw,90px);margin-bottom:24px}
-#smokers-site .ss-flavour-intro .ss-eyebrow{color:#a8380b}
-#smokers-site .ss-flavour-intro .ss-lead{color:#513c31;max-width:720px;margin:0 auto 28px}
+#smokers-site .ss-flavour-intro{max-width:1050px;margin:auto;padding:112px 40px 12px;text-align:center}
+#smokers-site .ss-flavour-back{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 14px/1.4 Archivo,Arial,sans-serif;text-decoration:none}
+#smokers-site .ss-flavour-back span:first-child{text-decoration:underline;text-underline-offset:3px}
+#smokers-site .ss-flavour-back span:last-child{flex:none;line-height:1}
 #smokers-site .ss-flavour-page .dsh-strip,#smokers-site .ss-flavour-page .dsh-pager,#smokers-site .ss-flavour-page .dsh-dish-link{display:none!important}
+#smokers-site .ss-flavour-page .dsh-acts a:not(.dsh-reheat-link){display:none}
 #smokers-site .ss-flavour-story{max-width:1120px;margin:auto;padding:80px 40px;display:grid;grid-template-columns:1fr 1fr;gap:56px}
 #smokers-site .ss-flavour-story h2,#smokers-site .ss-flavour-related h2{font-size:clamp(32px,3.2vw,48px);margin-bottom:22px}
 #smokers-site .ss-flavour-story p{font-family:Archivo,Arial,sans-serif;line-height:1.75}
@@ -15,6 +15,7 @@
 #smokers-site .ss-flavour-related>a,#smokers-site .ss-flavour-related a{display:flex;flex-direction:column;align-items:center;text-align:center;font:700 18px Archivo,Arial,sans-serif;padding:18px;border-radius:20px;transition:background .2s}
 #smokers-site .ss-flavour-related a:hover{background:#fff6ed}
 #smokers-site .ss-flavour-related img{width:min(100%,220px);aspect-ratio:1;object-fit:contain}
-@media(max-width:639px){#smokers-site .ss-flavour-intro{padding:125px 24px 24px}#smokers-site .ss-flavour-back{margin-bottom:26px}#smokers-site .ss-flavour-story{grid-template-columns:1fr;padding:48px 24px;gap:36px}#smokers-site .ss-flavour-related>div{grid-template-columns:repeat(2,1fr);gap:8px}#smokers-site .ss-flavour-related a{font-size:15px;padding:8px}}
+@media(max-width:639px){#smokers-site .ss-flavour-intro{padding:110px 24px 4px}#smokers-site .ss-flavour-story{grid-template-columns:1fr;padding:48px 24px;gap:36px}#smokers-site .ss-flavour-related>div{grid-template-columns:repeat(2,1fr);gap:8px}#smokers-site .ss-flavour-related a{font-size:15px;padding:8px}}
 
 #smokers-site[data-mode=flavour] .ss-pro-flat-header{background:#f7f2e9;color:#27170e}
+#smokers-site[data-mode=flavour] .ss-pro-flat-header .ss-logo-word{filter:none}

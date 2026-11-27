@@ -23,13 +23,13 @@ window.SMOKERS_B2C_MOTION=(root,motionEnabled)=>{
   // at every cover crop. The broad fade protects copy without a hard clip edge.
   const safeTop=reference?0:Math.max(0,(copy.querySelector('.ss-flat-description').getBoundingClientRect().bottom-s.top)/factor+6);
   steam.style.maskImage=`linear-gradient(to bottom,transparent ${safeTop}px,#000 ${safeTop+Math.min(48,s.height*.065)}px)`;
-  (reference?[[.48,.56,.12,.28],[.60,.55,.10,.25]]:[[.44,.75,.13,.30],[.57,.72,.11,.27]]).forEach(([x,y,w,h],i)=>{
+  (reference?[[.48,.56,.25,.27],[.60,.55,.23,.25]]:[[.44,.75,.13,.30],[.57,.72,.11,.27]]).forEach(([x,y,w,h],i)=>{
    const anchorX=left+width*x,anchorY=top+height*y;
    const plumeWidth=width*w;
    // The opaque CTA sits above the steam; keep wisps tall instead of cutting them at its edge.
    const limit=safeTop+12;
    const plumeHeight=Math.max(0,Math.min(height*h,anchorY-limit));
-   Object.assign(steam.children[i].style,{left:anchorX+'px',top:(anchorY-plumeHeight)+'px',width:Math.min(plumeWidth,plumeHeight*.8)+'px',height:plumeHeight+'px',visibility:plumeHeight>16?'visible':'hidden'});
+   Object.assign(steam.children[i].style,{left:anchorX+'px',top:(anchorY-plumeHeight)+'px',width:(reference?plumeWidth:Math.min(plumeWidth,plumeHeight*.8))+'px',height:plumeHeight+'px',visibility:plumeHeight>16?'visible':'hidden'});
   });
  }
  function measure(){

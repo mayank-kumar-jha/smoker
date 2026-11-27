@@ -36,25 +36,25 @@ html[data-ss-pro-loading]{overflow:hidden}
 @keyframes ss-pro-load-progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .ss-pro-load-reduced .ss-pro-preloader-inner,.ss-pro-load-reduced .ss-pro-load-line:after{animation:none}
 @media(prefers-reduced-motion:reduce){.ss-pro-preloader,.ss-pro-preloader-inner,.ss-pro-load-line:after{animation:none;transition:none}}
-/* Three-second cinematic reveal: emblem arrival, wordmark reveal, curtain exit. */
-.ss-pro-preloader{overflow:hidden;transition:clip-path .7s cubic-bezier(.76,0,.24,1);clip-path:inset(0 0 0 0)}
-.ss-pro-preloader:before{animation:ss-pro-orbit-reveal 2.3s cubic-bezier(.2,.65,.2,1) both}
+/* Short brand reveal: emblem arrival, wordmark reveal, curtain exit. */
+.ss-pro-preloader{overflow:hidden;transition:clip-path .3s cubic-bezier(.76,0,.24,1);clip-path:inset(0 0 0 0)}
+.ss-pro-preloader:before{animation:ss-pro-orbit-reveal .5s cubic-bezier(.2,.65,.2,1) both}
 .ss-pro-preloader-inner{width:min(440px,74vw);animation:none;perspective:900px}
 .ss-pro-cinema-logo{position:relative;width:100%;aspect-ratio:1680/386}
 .ss-pro-cinema-logo>span{position:absolute;top:0;height:100%;overflow:hidden}
 .ss-pro-cinema-logo img{position:absolute;top:0;height:100%;max-width:none;width:auto}
-.ss-pro-cinema-symbol{left:0;width:23%;animation:ss-pro-emblem-arrive 1.4s cubic-bezier(.16,.8,.2,1) both}
+.ss-pro-cinema-symbol{left:0;width:23%;animation:ss-pro-emblem-arrive .35s cubic-bezier(.16,.8,.2,1) both}
 .ss-pro-cinema-symbol img{left:0;width:434.782609%}
-.ss-pro-cinema-word{left:23%;width:77%;animation:ss-pro-word-reveal 1.25s .45s cubic-bezier(.16,.8,.2,1) both}
+.ss-pro-cinema-word{left:23%;width:77%;animation:ss-pro-word-reveal .35s .1s cubic-bezier(.16,.8,.2,1) both}
 .ss-pro-cinema-word img{left:-29.87013%;width:129.87013%}
-.ss-pro-preloader-inner p{animation:ss-pro-caption-in 1s .9s cubic-bezier(.2,.7,.2,1) both}
-.ss-pro-load-line{animation:ss-pro-caption-in .7s 1.1s both}
-.ss-pro-load-line:after{animation-duration:2.3s}
+.ss-pro-preloader-inner p{animation:ss-pro-caption-in .25s .2s cubic-bezier(.2,.7,.2,1) both}
+.ss-pro-load-line{animation:ss-pro-caption-in .25s .2s both}
+.ss-pro-load-line:after{animation-duration:2.65s}
 .ss-pro-load-leave{opacity:1;visibility:visible;clip-path:inset(0 0 100% 0);pointer-events:none}
-@keyframes ss-pro-emblem-arrive{0%{opacity:0;transform:translateX(150%) translateZ(180px) rotate(-35deg) scale(1.5);filter:blur(12px)}35%{opacity:1}100%{opacity:1;transform:none;filter:blur(0)}}
-@keyframes ss-pro-word-reveal{0%{opacity:0;clip-path:inset(0 100% 0 0);transform:translateX(-24px);filter:blur(8px)}100%{opacity:1;clip-path:inset(0 0 0 0);transform:none;filter:blur(0)}}
+@keyframes ss-pro-emblem-arrive{0%{opacity:1;transform:scale(.9)}100%{opacity:1;transform:none}}
+@keyframes ss-pro-word-reveal{0%{opacity:1;transform:translateX(8px)}100%{opacity:1;transform:none}}
 @keyframes ss-pro-orbit-reveal{0%{opacity:0;transform:scale(.55) rotate(-35deg)}60%{opacity:1}100%{opacity:1;transform:scale(1.08) rotate(0)}}
-@keyframes ss-pro-caption-in{from{opacity:0;transform:translateY(12px);letter-spacing:.5em}to{opacity:1;transform:none}}
+@keyframes ss-pro-caption-in{from{opacity:1;transform:translateY(6px)}to{opacity:1;transform:none}}
 #smokers-site[data-pro-entrance=waiting] :is(.ss-b2b-fork,.ss-b2b-wordmark>span,.ss-b2b-taglines>p,.ss-b2b-process-link){opacity:0}
 .ss-pro-load-reduced .ss-pro-cinema-logo>span,.ss-pro-load-reduced .ss-pro-preloader-inner p,.ss-pro-load-reduced .ss-pro-load-line,.ss-pro-load-reduced:before{animation:none}
 .ss-pro-load-reduced .ss-pro-cinema-glow{display:none}
@@ -63,3 +63,19 @@ html[data-ss-pro-loading]{overflow:hidden}
 #smokers-site .ss-flat-header .ss-flat-nav>a+a{position:relative;border-left:0}
 #smokers-site .ss-flat-header .ss-flat-nav>a+a:before{content:'';position:absolute;left:0;top:50%;width:1px;height:20px;transform:translateY(-50%);background:#fa410a88;pointer-events:none}
 #smokers-site .ss-flat-header .ss-flat-spaces>a:first-child:after{width:1px;height:20px;flex:none;background:#fa410a88}
+
+/* Reference film: centered emblem, wordmark, then the brand line. */
+.ss-pro-preloader{background:#f1ece6;transition:opacity .6s ease,visibility .6s;clip-path:none}
+.ss-pro-preloader:before{display:none}
+.ss-pro-preloader-inner{width:min(440px,72vw);display:flex;flex-direction:column;align-items:center}
+.ss-pro-cinema-logo{order:0}
+.ss-pro-cinema-symbol{animation:ss-pro-reference-symbol 1.6s cubic-bezier(.22,.7,.2,1) both}
+.ss-pro-cinema-word{animation:ss-pro-reference-word .7s 1.15s ease-out both}
+.ss-pro-load-line{order:1;width:26px;height:1px;margin:22px auto 0;background:#f85a25;animation:ss-pro-reference-caption .5s 2s both}
+.ss-pro-load-line:after{display:none}
+.ss-pro-preloader-inner p{order:2;margin:14px 0 0;font:700 clamp(8px,.65vw,10px)/1.5 Archivo,Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#211b17;animation:ss-pro-reference-caption .6s 2.5s both}
+.ss-pro-preloader-inner p span{color:#ee4e1b}
+.ss-pro-load-leave{opacity:0;visibility:hidden;clip-path:none}
+@keyframes ss-pro-reference-symbol{0%{opacity:0;transform:translateX(167%) scale(.35)}35%,65%{opacity:1;transform:translateX(167%) scale(1)}100%{opacity:1;transform:translateX(0) scale(1)}}
+@keyframes ss-pro-reference-word{from{opacity:0;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0)}}
+@keyframes ss-pro-reference-caption{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}

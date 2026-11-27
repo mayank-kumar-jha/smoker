@@ -2,8 +2,6 @@ import { hydrateRoot, createRoot, type Root } from 'react-dom/client'
 import { useState } from 'react'
 import DishOrbitCarousel from './ui/dish-orbit-carousel'
 import { localizedDishes, type MenuLanguage } from './ui/menu-locales'
-import { StrokeDrawType } from './ui/stroke-draw-type'
-let titleRoot:Root|undefined,titleHost:HTMLElement|undefined
 let mounted:{host:HTMLElement;root:Root}|undefined
 function Menu({scope,host}:{scope:HTMLElement;host:HTMLElement}){
  const language=(scope.lang||'es') as MenuLanguage
@@ -14,8 +12,6 @@ function Menu({scope,host}:{scope:HTMLElement;host:HTMLElement}){
  return <DishOrbitCarousel dishes={dishes} language={language} initialIndex={0} selectedIndex={selected} onChange={setSelected} fontSrc={null} onOrder={order}/>
 }
 window.SMOKERS_MOUNT_ORBIT=(scope:HTMLElement)=>{
- const title=scope.querySelector<HTMLElement>('.ss-eat-animation')
- if(title!==titleHost){titleRoot?.unmount();titleRoot=undefined;titleHost=title||undefined;if(title){titleRoot=createRoot(title.querySelector<HTMLElement>('.ss-eat-effect')!);titleRoot.render(<StrokeDrawType text={title.dataset.text!} host={title}/>)}}
  const host=scope.querySelector<HTMLElement>('.ss-orbit-mount')
  if(!host){mounted?.root.unmount();mounted=undefined;return}
  if(mounted?.host===host)return

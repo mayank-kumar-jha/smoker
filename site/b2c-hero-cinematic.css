@@ -14,11 +14,11 @@
 }
 /* Two textured depth layers: only opacity and transforms animate, no frame loop or SVG filters. */
 #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-chicken-steam{overflow:visible;contain:none;clip-path:none;mix-blend-mode:screen}
-#smokers-site .ss-steam-layer{position:absolute;display:block;transform:translateX(-50%);pointer-events:none;mask-image:radial-gradient(ellipse at 50% 52%,#000 20%,#000b 48%,transparent 74%)}
-#smokers-site .ss-steam-layer i{position:absolute;inset:0;background:var(--steam-texture) center bottom/100% 100% no-repeat;transform-origin:50% 100%;opacity:0;filter:sepia(.24) saturate(.7) brightness(1.35) blur(2.2px) drop-shadow(2px 0 3px #d28c4433);animation:ss-steam-curl var(--steam-duration) linear infinite;animation-play-state:paused;will-change:transform,opacity}
-#smokers-site .ss-steam-far{--steam-duration:13s;--steam-opacity:.24;--steam-drift:-13%;--steam-turn:-7deg}
-#smokers-site .ss-steam-near{--steam-duration:9.5s;--steam-opacity:.31;--steam-drift:11%;--steam-turn:6deg}
-#smokers-site .ss-steam-near i{filter:sepia(.2) saturate(.65) brightness(1.55) blur(1px) drop-shadow(-2px 0 3px #e7a25526)}
+#smokers-site .ss-steam-layer{position:absolute;display:block;transform:translateX(-50%);pointer-events:none;mask-image:linear-gradient(transparent,#000 18%,#000 75%,transparent)}
+#smokers-site .ss-steam-layer i{position:absolute;inset:0;background:var(--steam-texture) center bottom/100% 100% no-repeat;mask-image:radial-gradient(ellipse,#000 25%,transparent 72%);transform-origin:50% 100%;opacity:0;filter:contrast(1.15) sepia(.16) brightness(2) blur(1px);animation:ss-steam-curl var(--steam-duration) linear infinite;animation-play-state:paused;will-change:transform,opacity}
+#smokers-site .ss-steam-far{--steam-duration:13s;--steam-opacity:.4;--steam-drift:-8%;--steam-turn:-3deg}
+#smokers-site .ss-steam-near{--steam-duration:10.5s;--steam-opacity:.5;--steam-drift:8%;--steam-turn:3deg}
+#smokers-site .ss-steam-near i{filter:contrast(1.15) sepia(.12) brightness(2.2) blur(.5px)}
 #smokers-site .ss-steam-far i:first-child{animation-delay:-3.25s}
 #smokers-site .ss-steam-far i:last-child{animation-delay:-9.75s}
 #smokers-site .ss-steam-near i:first-child{animation-delay:-1.4s}

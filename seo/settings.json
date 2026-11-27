@@ -27,7 +27,11 @@
         "title": "Quinta gama ahumada para hostelería | Smokers",
         "description": "Platos ahumados y cocinados a baja temperatura para restaurantes, hoteles, catering y tiendas. Pide catálogo, fichas técnicas y tarifas profesionales."
       },
-      "productSuffix": "Descubre este plato de Smokers, elaborado en Badalona. Sin gluten, envasado al vacío y listo para regenerar. Consulta su ficha técnica."
+      "productSuffix": "Descubre este plato de Smokers, elaborado en Badalona. Sin gluten, envasado al vacío y listo para regenerar. Consulta su ficha técnica.",
+      "method": {
+        "title": "Cómo trabajamos | Smokers profesionales",
+        "description": "Descubre nuestro método de marinado, ahumado y cocción lenta para cocinas profesionales."
+      }
     },
     "ca": {
       "inicio": {
@@ -42,7 +46,11 @@
         "title": "Cinquena gamma fumada per a hostaleria | Smokers",
         "description": "Plats fumats i cuinats a baixa temperatura per a restaurants, hotels, càtering i botigues. Demana catàleg, fitxes tècniques i tarifes professionals."
       },
-      "productSuffix": "Descobreix aquest plat de Smokers, elaborat a Badalona. Sense gluten, envasat al buit i llest per regenerar. Consulta la fitxa tècnica."
+      "productSuffix": "Descobreix aquest plat de Smokers, elaborat a Badalona. Sense gluten, envasat al buit i llest per regenerar. Consulta la fitxa tècnica.",
+      "method": {
+        "title": "Com treballem | Smokers professionals",
+        "description": "Descobreix el nostre mètode de marinat, fumat i cocció lenta per a cuines professionals."
+      }
     },
     "en": {
       "inicio": {
@@ -57,7 +65,11 @@
         "title": "Smoked prepared dishes for food service | Smokers",
         "description": "Smoked, slow-cooked dishes for restaurants, hotels, caterers and retailers. Request the catalogue, technical sheets and professional pricing."
       },
-      "productSuffix": "Discover this Smokers dish, prepared in Badalona. Gluten-free, vacuum-packed and ready to reheat. Request its technical sheet."
+      "productSuffix": "Discover this Smokers dish, prepared in Badalona. Gluten-free, vacuum-packed and ready to reheat. Request its technical sheet.",
+      "method": {
+        "title": "How we work | Smokers professionals",
+        "description": "Discover our marinating, wood-smoking and slow-cooking method for professional kitchens."
+      }
     }
   },
   "productOverrides": {
@@ -191,28 +203,6 @@
       },
       "en": {
         "description": "Salad. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats."
-      }
-    },
-    "truffle-potatoes": {
-      "es": {
-        "description": "Patatas a la trufa. Completa tu pedido. Consulta disponibilidad, ingredientes y alérgenos en Glovo o Uber Eats."
-      },
-      "ca": {
-        "description": "Patates amb tòfona. Completa la teva comanda. Consulta disponibilitat, ingredients i al·lèrgens a Glovo o Uber Eats."
-      },
-      "en": {
-        "description": "Truffle potatoes. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats."
-      }
-    },
-    "smokers-potatoes": {
-      "es": {
-        "description": "Patatas Smokers. Completa tu pedido. Consulta disponibilidad, ingredientes y alérgenos en Glovo o Uber Eats."
-      },
-      "ca": {
-        "description": "Patates Smokers. Completa la teva comanda. Consulta disponibilitat, ingredients i al·lèrgens a Glovo o Uber Eats."
-      },
-      "en": {
-        "description": "Smokers potatoes. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats."
       }
     }
   }

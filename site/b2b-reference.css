@@ -78,14 +78,13 @@
 #smokers-site[data-mode=profesional] .ss-contact-fields :is(input,textarea){background:#1b100bcc;color:#f6ead8;border-color:#806244}
 #smokers-site[data-mode=profesional] .ss-email-hint{color:#c7b09b}
 #smokers-site[data-mode=profesional] .ss-consent{color:#eed9c1}
-#smokers-site[data-mode=profesional] .ss-faq{height:auto;min-height:600px;padding:7svh 6%;background:var(--b2b-dark);border:0;grid-template-columns:36% 57%;gap:7%;align-items:center}
+#smokers-site[data-mode=profesional] .ss-faq{height:auto;min-height:0;padding:7svh 6%;background:var(--b2b-dark);border:0;grid-template-columns:36% 57%;gap:7%;align-items:center}
 #smokers-site[data-mode=profesional] .ss-faq h2{font:400 clamp(38px,4.1vw,66px)/1 Georgia,serif}
 #smokers-site[data-mode=profesional] .ss-faq .ss-eyebrow{color:#e87324;letter-spacing:.2em}
 #smokers-site[data-mode=profesional] .ss-faq-photo{height:220px;width:100%;border:1px solid #a07a4a;border-radius:32px}
 #smokers-site[data-mode=profesional] .ss-faq-photo>span{width:75px;height:75px;background:#29130cdb;border:1px solid #ed741c;color:#e87324;transform:none;right:8px;bottom:8px}
 #smokers-site[data-mode=profesional] .ss-faq summary{padding:16px 0;font-size:16px}
 #smokers-site[data-mode=profesional] .ss-faq summary span,#smokers-site[data-mode=profesional] .ss-faq details[open] summary{color:#e76d18}
-#smokers-site[data-mode=profesional] .ss-faq-contact{padding:14px 20px;margin-top:20px;background:none;border-radius:24px}
 #smokers-site[data-mode=profesional] .ss-footer{background:var(--b2b-dark);border-top:1px solid #997044;color:#f5e9d8;padding-top:45px}
 #smokers-site[data-mode=profesional] .ss-footer .ss-logo-word{filter:grayscale(1) brightness(0) invert(93%) sepia(17%) saturate(386%)}
 #smokers-site[data-mode=profesional] .ss-footer h3{font:600 15px var(--body);letter-spacing:.18em}

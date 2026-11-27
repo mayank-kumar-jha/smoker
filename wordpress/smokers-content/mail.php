@@ -13,3 +13,5 @@ function smokers_contact(){
     wp_send_json_success(['message'=>'Your message has been submitted.']);
 }
 add_action('wp_ajax_smokers_contact','smokers_contact');add_action('wp_ajax_nopriv_smokers_contact','smokers_contact');
+function smokers_contact_nonce(){nocache_headers();wp_send_json_success(['nonce'=>wp_create_nonce('smokers_contact')]);}
+add_action('wp_ajax_smokers_contact_nonce','smokers_contact_nonce');add_action('wp_ajax_nopriv_smokers_contact_nonce','smokers_contact_nonce');

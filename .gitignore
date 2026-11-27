@@ -5,7 +5,9 @@ wordpress/smokers-theme/dist/
 wordpress/smokers-content/data/
 site/orbit-menu.js
 site/pro-showcase.js
+site/gallery-carousel.js
 site/orbit-menu-markup.js
 site/pro-showcase-markup.js
 .playground/
+.codex-ppt-build/
 *.log

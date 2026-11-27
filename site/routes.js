@@ -9,6 +9,7 @@ window.SMOKERS_ROUTES = {
     "inicio": "/es/en-casa/",
     "casa": "/es/en-casa/",
     "profesional": "/es/profesionales/",
+    "method": "/es/profesionales/como-trabajamos/",
     "products": "/es/productos/",
     "thanks": "/es/gracias/"
   },
@@ -22,6 +23,7 @@ window.SMOKERS_ROUTES = {
     "inicio": "/ca/a-casa/",
     "casa": "/ca/a-casa/",
     "profesional": "/ca/professionals/",
+    "method": "/ca/professionals/com-treballem/",
     "products": "/ca/productes/",
     "thanks": "/ca/gracies/"
   },
@@ -35,6 +37,7 @@ window.SMOKERS_ROUTES = {
     "inicio": "/en/at-home/",
     "casa": "/en/at-home/",
     "profesional": "/en/professionals/",
+    "method": "/en/professionals/how-we-work/",
     "products": "/en/dishes/",
     "thanks": "/en/thank-you/"
   }
@@ -53,9 +56,7 @@ window.SMOKERS_PRODUCT_SLUGS = {
     "patatas-de-olot-de-espinacas",
     "ensalada-cesar",
     "ensalada-de-patatas-con-trufa",
-    "ensalada",
-    "patatas-a-la-trufa",
-    "patatas-smokers"
+    "ensalada"
   ],
   "ca": [
     "galta-de-porc-fumada",
@@ -69,9 +70,7 @@ window.SMOKERS_PRODUCT_SLUGS = {
     "patates-d-olot-d-espinacs",
     "amanida-cesar",
     "amanida-de-patates-amb-tofona",
-    "amanida",
-    "patates-amb-tofona",
-    "patates-smokers"
+    "amanida"
   ],
   "en": [
     "smoked-pork-cheek",
@@ -85,9 +84,7 @@ window.SMOKERS_PRODUCT_SLUGS = {
     "spinach-olot-style-potatoes",
     "caesar-salad",
     "truffle-potato-salad",
-    "salad",
-    "truffle-potatoes",
-    "smokers-potatoes"
+    "salad"
   ]
 };
 

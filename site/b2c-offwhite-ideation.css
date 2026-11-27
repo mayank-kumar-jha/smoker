@@ -13,7 +13,6 @@
 #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq details>p{color:#654b3c}
 #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq-photo{border-color:#e9cab2;box-shadow:0 10px 24px #77411b18}
 #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq-photo>span{background:#fffaf1;color:#ed620b;border-color:#eea064}
-#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq-contact{color:#59331e;background:transparent;border-color:#b6937b}
 #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-footer{background:linear-gradient(135deg,#fff9f3,#fcf2e9);color:#442414;border-top-color:#c6a68f}
 #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-footer :is(p,h3),#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-footer>div>a:not(.ss-logo),#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-footer-bottom{color:#604431}
 #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-footer :is(.ss-footer-bottom,.ss-footer-pages){border-color:#c6a68f}

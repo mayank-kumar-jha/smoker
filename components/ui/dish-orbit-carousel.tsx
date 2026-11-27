@@ -235,7 +235,6 @@ export function DishOrbitCarousel({
   // Seed prerendered visibility once; GSAP owns it throughout dish transitions.
   const firstIndex = useRef(wrapIndex(initialIndex,n)).current
   const [index, setIndex] = useState(firstIndex)
-  const [tab, setTab] = useState("overview")
   const [swipeHint, setSwipeHint] = useState(false)
 
 
@@ -397,6 +396,7 @@ export function DishOrbitCarousel({
       const plate = root.querySelector('.dsh-plates')
       const text = root.querySelectorAll('.dsh-head, .dsh-acts')
       const card = root.querySelector('.dsh-card')
+      const supporting = root.querySelectorAll('.dsh-arc, .dsh-pager, .dsh-strip')
       const entrance = gsap.timeline({
         defaults: { duration: .95, ease: 'power2.out' },
         scrollTrigger: { trigger: root, start: 'top 72%', once: true },
@@ -404,12 +404,14 @@ export function DishOrbitCarousel({
       entrance.fromTo(plate, { '--dsh-enter-x': '-28px', autoAlpha: 0 }, { '--dsh-enter-x': '0px', autoAlpha: 1 }, 0)
         .fromTo(text, { '--dsh-enter-y': '18px', autoAlpha: 0 }, { '--dsh-enter-y': '0px', autoAlpha: 1, stagger: .06 }, .08)
         .fromTo(card, { '--dsh-enter-x': '28px', autoAlpha: 0 }, { '--dsh-enter-x': '0px', autoAlpha: 1 }, .14)
+        .fromTo(supporting, { autoAlpha: 0 }, { autoAlpha: 1 }, .08)
       if(n===1)entrance.fromTo(root.querySelector('.dsh-orbit'),{rotation:-SWING},{rotation:0,duration:.95,ease:'power3.out'},0)
       // Keyboard navigation should never land on a concealed control.
       const reveal = () => { entrance.progress(1); entrance.scrollTrigger?.kill() }
       root.addEventListener('focusin', reveal)
       return () => root.removeEventListener('focusin', reveal)
     })
+    root.closest('.ss-orbit-mount')?.removeAttribute('data-orbit-pending')
     return () => media.revert()
   }, [motion])
 
@@ -472,7 +474,7 @@ export function DishOrbitCarousel({
           {swipeHint && <p className="dsh-swipe-hint" role="status"><span aria-hidden="true">↔</span> {{en:'Swipe to explore more flavours',es:'Desliza para descubrir más sabores',ca:'Llisca per descobrir més sabors'}[language]}</p>}
           {dishes.map((d, i) => (
             <div key={i} ref={(el) => { orbits.current[i] = el }} className="dsh-orbit" style={{visibility:i===firstIndex?"visible":"hidden"}} aria-hidden={i !== index}>
-              <img decoding="async" src={i===index||i===wrapIndex(index+1,n)||i===wrapIndex(index-1,n)?d.image:'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='} style={{ scale: d.imageScale ?? 1 }} alt={d.alt ?? d.title + " " + d.subtitle} width={245} height={245} draggable={false} />
+              <img decoding="async" loading="lazy" src={i===index||i===wrapIndex(index+1,n)||i===wrapIndex(index-1,n)?d.image:'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='} style={{ scale: d.imageScale ?? 1 }} alt={d.alt ?? d.title + " " + d.subtitle} width={245} height={245} draggable={false} />
             </div>
           ))}
         </div>
@@ -483,42 +485,30 @@ export function DishOrbitCarousel({
               <p className="dsh-eye">{d.eyebrow ?? "#" + (i + 1) + " Most loved dish"}</p>
               <h2 style={{ margin: 0, font: "inherit" }}>
                 <span className="dsh-t1" data-long-title={d.title.length > 12 ? true : undefined} style={{ fontSize: fitSize(d.title.length, 48, 320, 0.82) + "px" }}>{d.title}</span>
-                <span className="dsh-t2" style={{ fontSize: fitSize(d.subtitle.length, 56, 320, 0.86) + "px" }}>{d.subtitle}</span>
+                <span className="dsh-t2" data-long-title={d.subtitle.length > 12 ? true : undefined} style={{ fontSize: fitSize(d.subtitle.length, 56, 320, 0.86) + "px" }}>{d.subtitle}</span>
               </h2>
             </div>
           ))}
         </div>
 
         <div className="dsh-acts">
-          <button type="button" className="dsh-btn" onClick={() => setTab(tab === "overview" ? "ingredients" : "overview")}>{Icon.play}{copy.details}</button>
+          <a className="dsh-btn" href={dish?.href}>{Icon.play}{copy.details}</a>
           <a className="dsh-btn dsh-reheat-link" href="#ss-regenerar"><svg className="dsh-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3v3m4-3v3m4-3v3M5 10h14v10H5zM8 14h8" /></svg>{copy.reheat}</a>
         </div>
 
         <div className="dsh-card">
-          <div className="dsh-tabs" role="tablist" aria-label={copy.details}>
-            {["overview", "ingredients"].map((t) => (
-              <button key={t} type="button" role="tab" className="dsh-btn dsh-tab" aria-selected={tab === t} onClick={() => setTab(t)}>
-                {t === "overview" ? copy.overview : copy.ingredients}
-              </button>
-            ))}
-          </div>
           <div className="dsh-bodies">
             {dishes.map((d, i) => (
               <div key={i} ref={(el) => { bodies.current[i] = el }} className="dsh-body" style={{visibility:i===firstIndex?"visible":"hidden"}} aria-hidden={i !== index}>
+                <div className="dsh-card-heading"><div className="dsh-card-brand"><p className="dsh-chef">{d.brand}</p><p className="dsh-kit">{d.category ?? " "}</p></div>
                 <div className="dsh-rate">
                   <div className="dsh-badge" style={{ background: d.accent }}>
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 5 6 7 6 12a6 6 0 0 1-12 0c0-3 2-5 3-7 0 4 2 4 3 5 2-3 1-6 0-10z" /></svg>
                   </div>
                   <span className="dsh-num" aria-label={copy.dishes + " " + (i + 1) + " / " + n}>{String(i + 1).padStart(2, "0")}</span>
                 </div>
-                <p className="dsh-chef">{d.brand}</p>
-                <p className="dsh-kit">{d.category ?? " "}</p>
-                {tab === "overview" ? (
-                  <p className="dsh-desc">{d.description}</p>
-                ) : (
-                  d.ingredients?.length ? <ul className="dsh-ing">{d.ingredients.map((x) => <li key={x}>{x}</li>)}</ul> : <p className="dsh-desc">{d.ingredientsNote}</p>
-                )}
-                {d.href&&<a className="dsh-dish-link" href={d.href} tabIndex={i===index?0:-1}>{copy.link} ↗</a>}
+                </div>
+                <p className="dsh-desc">{d.description}</p>
                 <div className="dsh-react"><button type="button" className="dsh-btn dsh-like" tabIndex={i === index ? 0 : -1} onClick={() => onOrder?.(d, i)}>{copy.order} <span aria-hidden="true">→</span></button></div>
               </div>
             ))}

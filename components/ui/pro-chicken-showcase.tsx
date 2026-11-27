@@ -15,7 +15,9 @@ export default function ProChickenShowcase({lang='es',motion=true,assets={}}:{la
  const asset=(name:string)=>assets[name]||'/assets/'+name
  useGSAP(()=>{
   const host=ref.current
-  if(!host||!motion||matchMedia('(prefers-reduced-motion: reduce)').matches)return
+  if(!host)return
+  const releasePending=()=>host.parentElement?.removeAttribute('data-pro-pending')
+  if(!motion||matchMedia('(prefers-reduced-motion: reduce)').matches){releasePending();return}
   let cancelled=false, timer=0
   const ctx=gsap.context(()=>{},ref)
   const clear=()=>{ctx.revert();delete host.dataset.scrollMotion}
@@ -35,9 +37,10 @@ export default function ProChickenShowcase({lang='es',motion=true,assets={}}:{la
      })
     })
     ScrollTrigger.refresh()
+    releasePending()
     return
    }
-   if(innerWidth<=1024)return
+   if(innerWidth<=1024){releasePending();return}
    const desktop=matchMedia('(min-width: 801px) and (min-height: 650px)').matches
    host.dataset.scrollMotion=desktop?'sticky':'flow'
    ctx.add(()=>{
@@ -46,7 +49,6 @@ export default function ProChickenShowcase({lang='es',motion=true,assets={}}:{la
     const brand=host.querySelector('.ss-chicken-brand')
     gsap.set(brand,{autoAlpha:1,y:0})
     tl.to(brand,{autoAlpha:0,y:-12,duration:.7,ease:'power1.out'},0)
-    // Quiet breathing while the branded opening is waiting for the next scroll.
     gsap.to(brand!.querySelector('img'),{scale:1.035,y:-5,duration:2.8,repeat:-1,yoyo:true,ease:'sine.inOut'})
     gsap.fromTo(brand!.querySelector('span'),{scaleX:.4,opacity:.4},{scaleX:1,opacity:1,duration:2,repeat:-1,yoyo:true,ease:'sine.inOut'})
     // Establish every initial state synchronously, including delayed/staggered children.
@@ -64,6 +66,7 @@ export default function ProChickenShowcase({lang='es',motion=true,assets={}}:{la
     tl.progress(trigger.progress)
    })
    ScrollTrigger.refresh()
+   releasePending()
   }
   setup()
   let layoutWidth=innerWidth

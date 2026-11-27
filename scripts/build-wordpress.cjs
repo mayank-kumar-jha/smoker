@@ -7,6 +7,8 @@ if(info.environment!=='production')throw Error('Build production first');
 fs.mkdirSync(theme+'/dist',{recursive:true});fs.mkdirSync(plugin+'/data',{recursive:true});
 const key=s=>crypto.createHash('sha256').update(s).digest('hex').slice(0,20);
 const manifest={formCopy:JSON.parse(fs.readFileSync('site/form-copy.json')),dishes:require(path.resolve('output/.orbit-render.cjs')).menuPages,version:1,origin:info.origin,pages:{},text:{es:{},ca:{},en:{}},links:{},images:{},redirects:JSON.parse(fs.readFileSync('seo/redirects.json'))};
+manifest.legacyKeys={};
+for(const [before,after]of JSON.parse(fs.readFileSync('seo/content-migrations.json','utf8')))manifest.legacyKeys[key(after)]=[key(before)];
 function text(value,lang,group){const trimmed=value.trim();if(!trimmed)return value;const id=key(trimmed);const field=manifest.text[lang][id]??={value:trimmed,groups:[]};if(!field.groups.includes(group))field.groups.push(group);return value.replace(trimmed,'{{text:'+id+'}}')}
 function url(value,group){
  if(value.startsWith('/assets/')){const name=value.slice(8);if(!/\.(png|webp|jpg|jpeg|svg|mp4)$/i.test(name))return '{{asset:'+name+'}}';manifest.images[name]??={groups:[]};if(!manifest.images[name].groups.includes(group))manifest.images[name].groups.push(group);return '{{media:'+name+'}}'}
@@ -21,7 +23,7 @@ for(const page of info.pages){
  const walker=doc.createTreeWalker(root,4);let node;while(node=walker.nextNode()){if(!node.parentElement.closest('script,style'))node.textContent=text(node.textContent,page.lang,group)}
  for(const el of root.querySelectorAll('*')){
   for(const attr of ['alt','title','aria-label','placeholder','data-text'])if(el.hasAttribute(attr))el.setAttribute(attr,text(el.getAttribute(attr),page.lang,group));
-  for(const attr of ['src','poster','href'])if(el.hasAttribute(attr))el.setAttribute(attr,url(el.getAttribute(attr),group));
+  for(const attr of ['src','poster','href','data-intro-src'])if(el.hasAttribute(attr))el.setAttribute(attr,url(el.getAttribute(attr),group));
   if(el.hasAttribute('srcset'))el.setAttribute('srcset',el.getAttribute('srcset').replace(/\/assets\/([^,\s]+)/g,(_,name)=>url('/assets/'+name,group)));
   if(el.hasAttribute('style'))el.setAttribute('style',el.getAttribute('style').replace(/\/assets\/([^)'"\s]+)/g,(_,name)=>url('/assets/'+name,group)));
  }
@@ -45,6 +47,7 @@ for(const product of sandbox.window.SMOKERS_PRODUCTS||[])for(const [index,lang]o
 const css=fs.readFileSync(release+'/styles.css','utf8');
 const cssTemplate=css.replace(/\/assets\/([^)'"\s]+)/g,(_,name)=>url('/assets/'+name,'Backgrounds & decoration'));
 fs.writeFileSync(theme+'/dist/styles.template.css',cssTemplate);
+for(const mode of ['casa','profesional','support'])fs.writeFileSync(theme+'/dist/styles-'+mode+'.template.css',fs.readFileSync(release+'/styles-'+mode+'.css','utf8').replace(/\/assets\/([^)'"\s]+)/g,(_,name)=>url('/assets/'+name,'Backgrounds & decoration')));
 // Retain only files referenced by the site or needed by its runtime.
 for(const entry of fs.readdirSync(release,{withFileTypes:true}))if(entry.isFile()&&/\.(?:js|css)$/.test(entry.name)&&!entry.name.endsWith('-markup.js'))fs.copyFileSync(release+'/'+entry.name,theme+'/dist/'+entry.name);
 fs.cpSync(release+'/assets',theme+'/dist/assets',{recursive:true});
@@ -61,4 +64,15 @@ for(const [original,variants]of Object.entries(JSON.parse(fs.readFileSync('site/
 }
 for(const name of Object.keys(manifest.images))if(name.startsWith('orbit-v2-')&&name.endsWith('-thumb.webp')){manifest.mediaAliases[name]=name.replace('-thumb.webp','.webp');delete manifest.images[name]}
 fs.writeFileSync(plugin+'/data/manifest.json',JSON.stringify(manifest));
+// Keep all page HTML out of the common request manifest. Load just one template.
+manifest.build=key(['styles.css','styles-casa.css','styles-profesional.css','styles-support.css'].map(name=>fs.readFileSync(release+'/'+name,'utf8')).join('\n')+JSON.stringify(manifest)+['smokers-content.php','frontend.php','media.php','runtime.js'].map(name=>fs.readFileSync(plugin+'/'+name,'utf8')).join('\n'));
+manifest.mediaWidths={};
+for(const variants of Object.values(JSON.parse(fs.readFileSync('site/media.json'))))for(const v of variants)manifest.mediaWidths[v.file]=v.width;
+const index={...manifest,pages:{}};
+fs.mkdirSync(plugin+'/data/templates',{recursive:true});
+for(const [route,page]of Object.entries(manifest.pages)){
+ const htmlFile='templates/'+key(route)+'.html';fs.writeFileSync(plugin+'/data/'+htmlFile,page.html);
+ index.pages[route]={...page,htmlFile};delete index.pages[route].html;
+}
+fs.writeFileSync(plugin+'/data/index.json',JSON.stringify(index));
 console.log('WordPress:',Object.keys(manifest.pages).length,'templates;',Object.fromEntries(Object.entries(manifest.text).map(([l,v])=>[l,Object.keys(v).length])),'text fields;',Object.keys(manifest.images).length,'media fields.');

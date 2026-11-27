@@ -4,7 +4,7 @@ window.SMOKERS_CONFIG = {
     {
       "name": "Glovo",
       "image": "glovo.png",
-      "url": "https://glovoapp.com/en/es"
+      "url": "https://glovoapp.com/es/es/barcelona/stores/smokers-b"
     },
     {
       "name": "Just Eat",
@@ -14,7 +14,7 @@ window.SMOKERS_CONFIG = {
     {
       "name": "Uber Eats",
       "image": "uber-eats.png",
-      "url": "https://www.ubereats.com/es-en/store/smokers-badalona/_uBFwwSyWlWfXWHiFGeYqA"
+      "url": "https://www.ubereats.com/es/store/smokers-badalona/_uBFwwSyWlWfXWHiFGeYqA"
     }
   ]
 };
@@ -244,36 +244,6 @@ window.SMOKERS_PRODUCTS = [
       "Amanida. Completa la teva comanda. Consulta disponibilitat, ingredients i al·lèrgens a Glovo o Uber Eats.",
       "Salad. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats."
     ]
-  },
-  {
-    "id": "truffle-potatoes",
-    "image": "official-truffle-potatoes.webp",
-    "type": "side",
-    "names": [
-      "Patatas a la trufa",
-      "Patates amb tòfona",
-      "Truffle potatoes"
-    ],
-    "descriptions": [
-      "Patatas a la trufa. Completa tu pedido. Consulta disponibilidad, ingredientes y alérgenos en Glovo o Uber Eats.",
-      "Patates amb tòfona. Completa la teva comanda. Consulta disponibilitat, ingredients i al·lèrgens a Glovo o Uber Eats.",
-      "Truffle potatoes. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats."
-    ]
-  },
-  {
-    "id": "smokers-potatoes",
-    "image": "official-smokers-potatoes.webp",
-    "type": "side",
-    "names": [
-      "Patatas Smokers",
-      "Patates Smokers",
-      "Smokers potatoes"
-    ],
-    "descriptions": [
-      "Patatas Smokers. Completa tu pedido. Consulta disponibilidad, ingredientes y alérgenos en Glovo o Uber Eats.",
-      "Patates Smokers. Completa la teva comanda. Consulta disponibilitat, ingredients i al·lèrgens a Glovo o Uber Eats.",
-      "Smokers potatoes. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats."
-    ]
   }
 ];
 
@@ -377,7 +347,7 @@ window.SMOKERS_COPY = {
     "sheet": "Ver ficha",
     "previousDish": "Plato anterior",
     "nextDish": "Plato siguiente",
-    "formEyebrow": "Catálogo en 3 pasos",
+    "formEyebrow": "Catálogo para profesionales",
     "formTitle": "PIDE EL<br>CATÁLOGO",
     "formDesc": "Te enviamos fichas técnicas, tarifas y condiciones de distribución, y preparamos una propuesta para tu negocio.",
     "formSteps": [
@@ -496,12 +466,12 @@ window.SMOKERS_COPY = {
       ],
       [
         "¿Cómo recibo las fichas técnicas?",
-        "Solicita el catálogo e indica los platos que te interesan. Te facilitamos ingredientes, alérgenos e instrucciones de regeneración."
+        "Solicita el catálogo completo. Te facilitamos ingredientes, alérgenos e instrucciones de regeneración."
       ]
     ],
     "footerLine": "Tierno y ahumado desde 2025.",
     "contact": "Hablemos",
-    "address": "Selva 5 · 08917 Badalona",
+    "address": "Selva 9 · 08917 Badalona",
     "hours": "Lunes a viernes · 9:00–17:00",
     "visit": "Visitas con cita previa",
     "top": "Volver arriba",
@@ -618,7 +588,7 @@ window.SMOKERS_COPY = {
     "sheet": "Veure fitxa",
     "previousDish": "Plat anterior",
     "nextDish": "Plat següent",
-    "formEyebrow": "Catàleg en 3 passos",
+    "formEyebrow": "Catàleg per a professionals",
     "formTitle": "DEMANA EL<br>CATÀLEG",
     "formDesc": "T’enviem fitxes tècniques, tarifes i condicions de distribució, i preparem una proposta per al teu negoci.",
     "formSteps": [
@@ -737,12 +707,12 @@ window.SMOKERS_COPY = {
       ],
       [
         "Com rebo les fitxes tècniques?",
-        "Demana el catàleg i indica els plats que t’interessen. Et facilitem ingredients, al·lèrgens i instruccions de regeneració."
+        "Demana el catàleg complet. Et facilitem ingredients, al·lèrgens i instruccions de regeneració."
       ]
     ],
     "footerLine": "Tendre i fumat des del 2025.",
     "contact": "Parlem",
-    "address": "Selva 5 · 08917 Badalona",
+    "address": "Selva 9 · 08917 Badalona",
     "hours": "Dilluns a divendres · 9:00–17:00",
     "visit": "Visites amb cita prèvia",
     "top": "Tornar amunt",
@@ -859,7 +829,7 @@ window.SMOKERS_COPY = {
     "sheet": "View details",
     "previousDish": "Previous dish",
     "nextDish": "Next dish",
-    "formEyebrow": "Catalogue in 3 steps",
+    "formEyebrow": "Catalogue for professionals",
     "formTitle": "GET THE<br>CATALOGUE",
     "formDesc": "Get technical sheets, pricing and distribution terms, with a proposal tailored to your business.",
     "formSteps": [
@@ -978,12 +948,12 @@ window.SMOKERS_COPY = {
       ],
       [
         "How do I get technical sheets?",
-        "Request the catalogue and select the dishes you are interested in. We will provide ingredients, allergens and reheating instructions."
+        "Request the complete catalogue. We will provide ingredients, allergens and reheating instructions."
       ]
     ],
     "footerLine": "Tender and smoked since 2025.",
     "contact": "Let’s talk",
-    "address": "Selva 5 · 08917 Badalona",
+    "address": "Selva 9 · 08917 Badalona",
     "hours": "Monday to Friday · 9:00–17:00",
     "visit": "Visits by appointment",
     "top": "Back to top",

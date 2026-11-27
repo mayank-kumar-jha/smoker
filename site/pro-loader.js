@@ -1,12 +1,15 @@
-/* Professional-only three-second brand reveal; never blocks content on failure. */
+/* Professional-only brand reveal; never blocks content on failure. */
 (()=>{
  let skipIntro=false;try{skipIntro=sessionStorage.getItem('smokers-skip-intro')===location.pathname;if(skipIntro&&/\/(professionals|profesionales)\/?$/.test(location.pathname))sessionStorage.removeItem('smokers-skip-intro')}catch{}
- try{skipIntro ||= sessionStorage.getItem('smokers-session-intro')==='seen'||(!!document.referrer&&new URL(document.referrer).origin===location.origin)}catch{}
 
+
+ const scriptBase=document.currentScript?.src?new URL('./assets/',document.currentScript.src).href:'/assets/';
  // This file runs in the head, before the first body paint.
- const boot=!skipIntro&&/\/(professionals|profesionales)\/?$/.test(location.pathname)||location.hash.startsWith('#profesional');
+ let motionAllowed=!matchMedia('(prefers-reduced-motion: reduce)').matches;
+ try{motionAllowed &&=localStorage.getItem('smokers-motion')!=='off'}catch{}
+ const boot=motionAllowed&&!skipIntro&&(window.SMOKERS_BOOT_MODE ? window.SMOKERS_BOOT_MODE==='profesional' : /\/(professionals|profesionales)\/?$/.test(location.pathname)||location.hash.startsWith('#profesional'));
  if(boot){document.documentElement.dataset.ssProBoot='true';try{sessionStorage.setItem('smokers-session-intro','seen')}catch{}}
- const bootDeadline=setTimeout(()=>{delete document.documentElement.dataset.ssProBoot},12000);
+ const bootDeadline=setTimeout(()=>{delete document.documentElement.dataset.ssProBoot},3000);
  let overlay=null,timer=0,release=0,locked=[],heroFlights=[];
  let heroRoot=null;
  const revealHero=()=>{
@@ -24,17 +27,17 @@
  const cancel=()=>{clearTimeout(timer);clearTimeout(release);overlay?.remove();overlay=null;delete html.dataset.ssProLoading;locked.forEach(el=>el.inert=false);locked=[];revealHero()};
  window.SMOKERS_PRO_INTRO_CANCEL=cancel;
  window.SMOKERS_PRO_INTRO=()=>{
-  cancel();if(skipIntro){skipIntro=false;delete html.dataset.ssProBoot;return}const root=document.getElementById('smokers-site');if(root?.dataset.mode!=='profesional')return;
+  cancel();if(skipIntro||!motionAllowed){skipIntro=false;delete html.dataset.ssProBoot;return}const root=document.getElementById('smokers-site');if(root?.dataset.mode!=='profesional')return;
   heroFlights.forEach(a=>a.cancel());heroFlights=[];heroRoot=root;root.dataset.proEntrance='waiting';
   delete html.dataset.ssLoading;
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const label={es:'PARA PROFESIONALES',ca:'PER A PROFESSIONALS',en:'FOR PROFESSIONALS'}[root.lang||document.documentElement.lang]||'FOR PROFESSIONALS';
   overlay=document.createElement('div');overlay.className='ss-pro-preloader';overlay.setAttribute('role','status');overlay.setAttribute('aria-label',label);
-  const image=document.createElement('img');image.src=window.SMOKERS_ASSETS?.['smokers-loader-logo.png']||'/assets/smokers-loader-logo.png';image.alt='Smokers';image.width=1680;image.height=386;
+  const image=document.createElement('img');image.src=window.SMOKERS_ASSETS?.['smokers-loader-logo.png']||scriptBase+'smokers-loader-logo.png';image.alt='Smokers';image.width=1680;image.height=386;
   const inner=document.createElement('div');inner.className='ss-pro-preloader-inner';
   const mark=document.createElement('div');mark.className='ss-pro-cinema-logo';mark.setAttribute('aria-label','Smokers');
   for(const part of ['symbol','word']){const crop=document.createElement('span');crop.className='ss-pro-cinema-'+part;const copy=image.cloneNode();copy.alt='';crop.append(copy);mark.append(crop)}inner.append(mark);
-  const caption=document.createElement('p');caption.textContent=label;inner.append(caption);
+  const caption=document.createElement('p');const words={es:['Ahumado durante horas.','Servido en minutos.'],ca:['Fumat durant hores.','Servit en minuts.'],en:['Smoked for hours.','Served in minutes.']}[root.lang]||['Smoked for hours.','Served in minutes.'];caption.append(document.createTextNode(words[0]+' '));const accent=document.createElement('span');accent.textContent=words[1];caption.append(accent);inner.append(caption);
   const line=document.createElement('span');line.className='ss-pro-load-line';line.setAttribute('aria-hidden','true');inner.append(line);overlay.append(inner);
   const skip=document.createElement('button');skip.type='button';skip.className='ss-pro-load-skip';skip.textContent={es:'Saltar intro',ca:'Salta la intro',en:'Skip intro'}[root.lang]||'Skip intro';skip.onclick=cancel;overlay.append(skip);
   document.body.append(overlay);html.dataset.ssProLoading='true';
@@ -44,10 +47,10 @@
   const currentOverlay=overlay;
   const assetsReady=Promise.all([document.fonts.ready,...[...root.querySelectorAll('.ss-b2b-fork,.ss-header img')].map(img=>img.decode().catch(()=>{}))]);
   timer=setTimeout(async()=>{
-   await Promise.race([assetsReady,new Promise(resolve=>setTimeout(resolve,1500))]);
+   await Promise.race([assetsReady,new Promise(resolve=>setTimeout(resolve,350))]);
    if(overlay!==currentOverlay)return;
-   revealHero();overlay.classList.add('ss-pro-load-leave');release=setTimeout(cancel,reduced?0:700);
-  },reduced?300:2300);
+   revealHero();overlay.classList.add('ss-pro-load-leave');release=setTimeout(cancel,reduced?0:300);
+  },reduced?0:5000);
  };
  const ready=()=>{if(document.getElementById('smokers-site')?.dataset.mode==='profesional')window.SMOKERS_PRO_INTRO()};
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready,{once:true});else ready();

@@ -17,3 +17,6 @@ jobs:
       - run: node serve.cjs > /tmp/smokers-server.log 2>&1 &
       - run: npm run test:site && npm run test:flavours
       - run: npm audit --audit-level=moderate
+      - name: Clean WordPress installation and editor integration
+        run: npm run test:wordpress
+        timeout-minutes: 20

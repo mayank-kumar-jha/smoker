@@ -1,0 +1,5 @@
+const fs=require('fs'),{chromium}=require('playwright');
+(async()=>{const b=await chromium.launch({channel:'chrome',headless:true}),p=await b.newPage({reducedMotion:'reduce'});p.setDefaultNavigationTimeout(120000);const rows=[];
+for(const route of ['/en/at-home/','/en/privacy/','/en/at-home/menu/pork-cheek/','/wp-admin/admin.php?page=smokers-content&tab=text&lang=en&q=Chicken']){
+const t=Date.now();const r=await p.goto('http://127.0.0.1:9400'+route,{waitUntil:'domcontentloaded'});await p.waitForTimeout(800);rows.push({route,status:r.status(),ms:Date.now()-t,url:p.url(),...await p.evaluate(()=>({title:document.title,text:document.body.innerText.slice(0,12000),canonical:[...document.querySelectorAll('link[rel=canonical]')].map(x=>x.href),images:[...document.images].map(x=>({src:x.getAttribute('src'),srcset:x.getAttribute('srcset')})),fields:document.querySelectorAll('textarea').length}))});console.log(route,r.status(),Date.now()-t);fs.writeFileSync('output/audit-2026-11-14/wordpress-inspection.json',JSON.stringify(rows,null,2));}
+await b.close()})().catch(e=>{console.error(e);process.exit(1)});

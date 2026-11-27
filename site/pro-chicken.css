@@ -29,7 +29,9 @@
 /* Branding occupies the waiting state only; the scroll timeline crossfades it out. */
 #smokers-site .ss-chicken-brand{display:none;position:absolute;inset:0;z-index:3;align-items:center;justify-content:center;flex-direction:column;gap:24px;pointer-events:none;text-align:center}
 #smokers-site [data-scroll-motion] .ss-chicken-brand{display:flex}
+#smokers-site [data-pro-pending] .ss-chicken-brand{display:flex}
+#smokers-site [data-pro-pending] .ss-chicken-composition{visibility:hidden}
 #smokers-site .ss-chicken-brand img{width:min(440px,66vw);height:auto;filter:drop-shadow(0 8px 30px #0004)}
 #smokers-site .ss-chicken-brand p{font:700 clamp(12px,1vw,16px)/1.5 var(--ui);letter-spacing:.24em;text-transform:uppercase;color:var(--cream);padding-inline:20px}
 #smokers-site .ss-chicken-brand>span{width:60px;height:1px;background:var(--orange)}
-@media(max-width:800px){#smokers-site .ss-chicken-brand{justify-content:flex-start;padding-top:170px}}
+@media(max-width:639px){#smokers-site [data-scroll-motion=phone] .ss-chicken-brand{position:relative;inset:auto;padding:70px 0 35px}}

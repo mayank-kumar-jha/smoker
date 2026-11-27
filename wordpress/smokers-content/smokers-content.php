@@ -10,7 +10,7 @@ defined('ABSPATH') || exit;
 define('SMOKERS_CONTENT_DIR', __DIR__);
 function smokers_manifest() {
     static $manifest;
-    if (!$manifest) $manifest = json_decode(file_get_contents(__DIR__ . '/data/manifest.json'), true);
+    if (!$manifest) $manifest = json_decode(file_get_contents(__DIR__ . '/data/'.(file_exists(__DIR__.'/data/index.json')?'index.json':'manifest.json')), true);
     return $manifest;
 }
 function smokers_settings() { return get_option('smokers_content', []); }
@@ -20,21 +20,32 @@ function smokers_lang() {
 }
 function smokers_text($key, $lang) {
     $settings = smokers_settings();
+    if(!isset($settings['text'][$lang][$key]))foreach(smokers_manifest()['legacyKeys'][$key]??[]as $old)if(isset($settings['text'][$lang][$old]))return $settings['text'][$lang][$old];
     return $settings['text'][$lang][$key] ?? smokers_manifest()['defaultOverrides'][$lang][$key] ?? smokers_manifest()['text'][$lang][$key]['value'] ?? '';
 }
 function smokers_media($name) {
+    static $resolved=[];
     $settings = smokers_settings();
     $manifest=smokers_manifest();$field=$manifest['mediaAliases'][$name]??$name;
     $attachment = absint($settings['media'][$field] ?? 0);
+    $cache=$name.':'.$attachment;if(isset($resolved[$cache]))return $resolved[$cache];
     $default=$manifest['images'][$name]['defaultFile']??$name;
-    return ($attachment ? wp_get_attachment_url($attachment) : false) ?: get_template_directory_uri() . '/dist/assets/' . rawurlencode($default);
+    $size=$manifest['mediaWidths'][$name]??(str_contains($name,'-thumb.')?160:1200);
+    $url=$attachment&&wp_attachment_is_image($attachment)?wp_get_attachment_image_url($attachment,[$size,$size]):($attachment?wp_get_attachment_url($attachment):false);
+    return $resolved[$cache]=$url ?: smokers_asset_base().rawurlencode($default);
+}
+function smokers_asset_base(){static $base;return $base??=get_template_directory_uri().'/dist/assets/';}
+function smokers_revision(){static $revision;return $revision??=hash('sha256',wp_json_encode([smokers_settings(),smokers_manifest()['build']??'1',get_option('smokers_media_revision','0'),home_url('/'),get_template_directory_uri()]));}
+function smokers_page_template($page){
+    if(isset($page['htmlFile']))$page['html']=file_get_contents(__DIR__.'/data/'.$page['htmlFile']);
+    return $page;
 }
 function smokers_tokens($source, $lang) {
     $settings = smokers_settings();
     return preg_replace_callback('/\{\{(text|media|asset|link|home)(?::([^}]+))?\}\}/', function ($m) use ($lang, $settings) {
         if ($m[1] === 'text') return esc_html(smokers_text($m[2], $lang));
         if ($m[1] === 'media') return esc_url(smokers_media($m[2]));
-        if ($m[1] === 'asset') return esc_url(get_template_directory_uri().'/dist/assets/'.rawurlencode($m[2]));
+        if ($m[1] === 'asset') return esc_url(smokers_asset_base().rawurlencode($m[2]));
         if ($m[1] === 'home') return esc_url(untrailingslashit(home_url('/')));
         return esc_url($settings['links'][$m[2]] ?? smokers_manifest()['links'][$m[2]]['value']);
     }, $source);
@@ -73,7 +84,7 @@ add_action('admin_enqueue_scripts', function ($hook) {
 function smokers_admin() {
     if (!current_user_can('edit_pages')) return;
     $manifest = smokers_manifest(); $settings = smokers_settings();
-    $tab = sanitize_key($_GET['tab'] ?? 'text');
+    $tab = sanitize_key($_GET['tab'] ?? 'text');if(!in_array($tab,['text','media','links','delivery'],true))$tab='text';
     $lang = sanitize_key($_GET['lang'] ?? 'es'); if (!in_array($lang,['es','ca','en'],true)) $lang='es';
     $group = sanitize_text_field(wp_unslash($_GET['group'] ?? ''));
     echo '<div class="wrap smokers-admin"><h1>Smokers content</h1><p>Edit content without changing the animated layout. Repeated phrases are shared within each language. Empty text fields are allowed. Use matching crops and transparent backgrounds for plate replacements.</p>';
@@ -83,7 +94,7 @@ function smokers_admin() {
     echo '<form method="get"><input type="hidden" name="page" value="smokers-content"><input type="hidden" name="tab" value="'.esc_attr($tab).'">';
     if($tab==='text'){echo '<label>Language <select name="lang">';foreach(['es'=>'Spanish','ca'=>'Catalan','en'=>'English']as $id=>$label)echo '<option value="'.$id.'" '.selected($id,$lang,false).'>'.$label.'</option>';echo '</select></label>';}
     if($tab!=='delivery'){echo ' <label>Search <input name="q" value="'.esc_attr(wp_unslash($_GET['q']??'')).'"></label> <label>Section <select name="group"><option value="">All sections</option>'; $groups=[];foreach($manifest[$tab==='text'?'text':($tab==='media'?'images':'links')][$tab==='text'?$lang:'']??[]as $field) $groups=array_merge($groups,$field['groups']);if($tab!=='text')foreach($manifest[$tab==='media'?'images':'links']as $field)$groups=array_merge($groups,$field['groups']);foreach(array_unique($groups)as $g)echo '<option '.selected($group,$g,false).'>'.esc_html($g).'</option>';echo '</select></label> <button class="button">Filter</button>';}
-    echo '</form><form method="post" action="'.esc_url(admin_url('admin-post.php')).'">';wp_nonce_field('smokers_save');echo '<input type="hidden" name="action" value="smokers_save"><input type="hidden" name="tab" value="'.esc_attr($tab).'"><input type="hidden" name="lang" value="'.esc_attr($lang).'">';
+    echo '</form><form method="post" action="'.esc_url(admin_url('admin-post.php')).'">';wp_nonce_field('smokers_save');echo '<input type="hidden" name="smokers_version" value="'.esc_attr(smokers_settings_signature()).'">';echo '<input type="hidden" name="action" value="smokers_save"><input type="hidden" name="tab" value="'.esc_attr($tab).'"><input type="hidden" name="lang" value="'.esc_attr($lang).'">';
     if ($tab === 'delivery') {
         if (!current_user_can('manage_options')) { echo '<p>Administrator access is required for email and setup.</p></form></div>';return; }
         echo '<p><label>Contact recipient <input type="email" name="recipient" required value="'.esc_attr($settings['recipient']??get_option('admin_email')).'"></label></p><p>Forms use WordPress mail. Configure authenticated email delivery on your host and test receipt before launch. Failed submissions remain visible and can be retried.</p><p><label><input type="checkbox" name="setup" value="1"> Create missing Smokers pages. Existing non-Smokers pages are never overwritten.</label></p><p>The current homepage and domain are not changed. Choose the Smokers homepage under Settings → Reading when ready. Blog articles use Posts; select the article language in its sidebar.</p>';
@@ -103,7 +114,7 @@ function smokers_admin() {
     submit_button('Save changes');echo '</form></div>';
 }
 add_action('admin_post_smokers_save',function(){
-    if(!current_user_can('edit_pages'))wp_die('Forbidden','',['response'=>403]);check_admin_referer('smokers_save');
+    if(!current_user_can('edit_pages'))wp_die('Forbidden','',['response'=>403]);check_admin_referer('smokers_save');smokers_check_edit_version();
     $tab=sanitize_key($_POST['tab']??'');$lang=sanitize_key($_POST['lang']??'es');$manifest=smokers_manifest();$settings=smokers_settings();
     if($tab==='delivery'){
         if(!current_user_can('manage_options'))wp_die('Forbidden','',['response'=>403]);
@@ -122,6 +133,8 @@ add_action('add_meta_boxes',function(){
     add_meta_box('smokers-page-content','Smokers content',function($post){if(get_post_meta($post->ID,'_smokers_managed',true))echo '<p>This page uses the animated Smokers template. <a href="'.esc_url(admin_url('admin.php?page=smokers-content&lang='.get_post_meta($post->ID,'_smokers_language',true))).'">Edit its text and artwork</a>.</p>';else echo '<p>This page is not managed by Smokers.</p>';},'page','side');
 });
 add_action('save_post_post',function($id){if(wp_is_post_revision($id)||!current_user_can('edit_post',$id)||!wp_verify_nonce($_POST['smokers_language_nonce']??'','smokers_language'))return;$lang=sanitize_key($_POST['smokers_language']??'es');if(in_array($lang,['es','ca','en'],true))update_post_meta($id,'_smokers_language',$lang);});
+require_once __DIR__.'/history.php';
 require_once __DIR__.'/dishes.php';
+require_once __DIR__.'/media.php';
 require_once __DIR__.'/frontend.php';
 require_once __DIR__.'/mail.php';

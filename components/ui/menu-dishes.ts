@@ -1,6 +1,6 @@
 import type { Dish } from "./dish-orbit-carousel"
 
-// Eight supplied PNGs matched to the existing Smokers catalogue.
+// Supplied photos matched to the current Smokers menu.
 export const dishes: Dish[] = [
   {
     "title": "Pork",
@@ -64,32 +64,6 @@ export const dishes: Dish[] = [
     "brand": "Smokers",
     "category": "Salads & sides",
     "description": "Salad. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats.",
-    "ingredientsNote": "Check the current ingredients and allergens on Glovo or Uber Eats before ordering.",
-    "accent": "#edb489"
-  },
-  {
-    "title": "Truffle",
-    "subtitle": "Potatoes",
-    "label": "Truffle Potatoes",
-    "image": "/assets/orbit-v2-06_truffle_potatoes.webp",
-    "alt": "Truffle Potatoes served on a plate",
-    "eyebrow": "SMOKERS · SALADS & SIDES",
-    "brand": "Smokers",
-    "category": "Salads & sides",
-    "description": "Truffle potatoes. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats.",
-    "ingredientsNote": "Check the current ingredients and allergens on Glovo or Uber Eats before ordering.",
-    "accent": "#edb489"
-  },
-  {
-    "title": "Smokers",
-    "subtitle": "Potatoes",
-    "label": "Smokers Potatoes",
-    "image": "/assets/orbit-v2-07_smokers_potatoes.webp",
-    "alt": "Smokers Potatoes served on a plate",
-    "eyebrow": "SMOKERS · SALADS & SIDES",
-    "brand": "Smokers",
-    "category": "Salads & sides",
-    "description": "Smokers potatoes. Complete your order. Check availability, ingredients and allergens on Glovo or Uber Eats.",
     "ingredientsNote": "Check the current ingredients and allergens on Glovo or Uber Eats before ordering.",
     "accent": "#edb489"
   },

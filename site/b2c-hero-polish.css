@@ -27,10 +27,10 @@
 #smokers-site#smokers-site .ss-reference-v8 .ss-flat-eyebrow:before,
 #smokers-site#smokers-site .ss-reference-v8 .ss-flat-eyebrow:after{width:clamp(22px,3vw,45px)}
 #smokers-site#smokers-site .ss-reference-v8 .ss-flat-copy h1{
- font-family:SSDisplay,Georgia,serif!important;font-weight:400!important;font-size:clamp(30px,3.15vw,53px);line-height:1.13;letter-spacing:-.015em;margin:clamp(12px,1.5svh,20px) 0;white-space:normal;text-wrap:initial;
+ font-family:Georgia,'Times New Roman',serif!important;font-weight:700!important;font-size:clamp(30px,3.15vw,53px);line-height:1.13;letter-spacing:-.015em;margin:clamp(12px,1.5svh,20px) 0;white-space:normal;text-wrap:initial;
 }
 #smokers-site#smokers-site .ss-reference-v8 .ss-flat-copy h1 em{
- font-family:SSDisplay,Georgia,serif!important;font-size:1em;font-weight:400!important;font-style:normal;color:#fd5a24;
+ font-family:Georgia,'Times New Roman',serif!important;font-size:1em;font-weight:700!important;font-style:italic;color:#fd5a24;
 }
 #smokers-site#smokers-site .ss-reference-v8 .ss-flat-description{
  font-family:Archivo,system-ui,sans-serif!important;font-size:clamp(13px,1.05vw,17px);line-height:1.55;width:min(100%,530px);max-width:530px;text-wrap:pretty;color:#f4e8d7;
@@ -48,7 +48,7 @@
 }
 #smokers-site#smokers-site .ss-reference-v8 .ss-hero-facts li:last-child{border:0}
 #smokers-site#smokers-site .ss-reference-v8 .ss-hero-facts svg{width:clamp(21px,2.1vw,30px);height:clamp(21px,2.1vw,30px);color:#ff7435}
-#smokers-site#smokers-site .ss-reference-v8 .ss-hero-facts li span{font-family:SSCondensed,'Arial Narrow',sans-serif!important;font-weight:700!important}
+#smokers-site#smokers-site .ss-reference-v8 .ss-hero-facts li span{font:600 clamp(12px,1vw,15px)/1.3 Archivo,Arial,sans-serif!important;letter-spacing:.01em}
 
 @media(max-width:800px){
  #smokers-site#smokers-site .ss-reference-v8{height:100svh!important;min-height:590px!important;padding:0}
@@ -87,7 +87,7 @@
 }
 /* The wide outpaint fills only the extra horizontal space; the original center stays at its native scale. */
 @media(min-aspect-ratio:37/20){
- #smokers-site#smokers-site .ss-reference-v8 .ss-flat-scene{background:#100c08 url('assets/b2c-hero-wide-v10.webp') center center / auto 100% no-repeat}
+ #smokers-site#smokers-site .ss-reference-v8 .ss-flat-scene{background:#100c08 url('assets/b2c-hero-wide-badge-centered.webp') center center / auto 100% no-repeat}
  #smokers-site#smokers-site .ss-reference-v8 .ss-flat-wallpaper{inset:0 auto auto 50%;width:auto;height:100%;aspect-ratio:1672/941;max-width:none;object-fit:fill;transform:translateX(-50%);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
 }
 @media(max-height:690px) and (min-width:801px){
@@ -103,4 +103,7 @@
  #smokers-site#smokers-site .ss-reference-v8 .ss-flat-actions{margin-top:9px}
 }
 
-#smokers-site#smokers-site .ss-reference-v8 .ss-eat-effect svg{font-style:normal;letter-spacing:-1.5px}
+#smokers-site#smokers-site .ss-reference-v8 .ss-eat-effect svg{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-style:italic;letter-spacing:-1.5px}
+
+/* Gentle contrast behind the hero claims. */
+#smokers-site#smokers-site .ss-reference-v8 .ss-hero-facts li span{color:#fff9f0;text-shadow:0 1px 5px #000,0 1px 12px #0009}

@@ -3,6 +3,7 @@
 #smokers-site .ss-orbit-mount{--color-background:#fbece0;--color-foreground:#2a160b;--color-primary:#e96120;--color-muted-foreground:#8e7561}
 #smokers-site .dsh-root{position:relative;min-height:540px;background:radial-gradient(ellipse at 45% 40%,#fff9f1,#fbece0 65%,#f5decc);font-family:dsh-face,Arial,sans-serif!important}
 #smokers-site .dsh-scene{position:absolute;inset:0;will-change:transform}
+#smokers-site .ss-orbit-mount[data-orbit-pending] .dsh-scene{visibility:hidden}
 #smokers-site .dsh-root :is(p,span,button,li,h2){font-family:inherit!important;text-transform:none;letter-spacing:normal}
 #smokers-site .dsh-root h2{font:inherit!important;margin:0;line-height:1;text-align:left}
 #smokers-site .dsh-root .dsh-t1{font-weight:200;letter-spacing:-.015em;text-transform:uppercase}

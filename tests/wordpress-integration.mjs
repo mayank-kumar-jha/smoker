@@ -8,8 +8,9 @@ export async function testWordPress(server){
  await server.playground.mkdir('/wordpress/wp-content/mu-plugins');
  await server.playground.writeFile('/wordpress/wp-content/mu-plugins/smokers-test-mail.php','<?php add_filter("pre_wp_mail",function($result,$atts){update_option("smokers_test_mail",$atts);return !get_option("smokers_test_fail_mail");},10,2);');
  const browser=await chromium.launch({channel:process.env.CI?undefined:'chrome',headless:true}),page=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'}),errors=[];
+ page.setDefaultNavigationTimeout(120000);page.setDefaultTimeout(60000);
  page.on('pageerror',error=>errors.push(error.message));
- const admin=async(tab,q,lang='en')=>{await page.goto(`${base}/wp-admin/admin.php?page=smokers-content&tab=${tab}&lang=${lang}&q=${encodeURIComponent(q)}`);await page.waitForSelector('.smokers-fields')};
+ const admin=async(tab,q,lang='en')=>{await page.goto(`${base}/wp-admin/admin.php?page=smokers-content&tab=${tab}&lang=${lang}&q=${encodeURIComponent(q)}`,{waitUntil:'domcontentloaded'});await page.waitForSelector('.smokers-fields')};
  const save=async()=>{await Promise.all([page.waitForURL(/saved=1/),page.locator('#submit').click()])};
  const checks=[];const push=checks.push.bind(checks);checks.push=(...values)=>{console.log('WP CHECK',...values);return push(...values)};
  try{
@@ -18,6 +19,8 @@ export async function testWordPress(server){
   await page.goto(base+'/en/at-home/');assert.equal(await page.locator('.ss-flat-description').innerText(),'WordPress editing verified');
   const nojs=await browser.newPage({javaScriptEnabled:false});await nojs.goto(base+'/en/at-home/');assert.match(await nojs.locator('.ss-flat-description').innerText(),/WordPress editing verified/);await nojs.close();
   await admin('text',source);await page.locator('.smokers-field textarea').first().fill(original);await save();checks.push('Admin text save, server-rendered output, no-JS content and HTML escaping');
+  for(const route of ['/es/en-casa/','/ca/a-casa/','/en/at-home/']){await page.goto(base+route);assert.equal(await page.locator('#ss-pedir + #ss-gallery').count(),1);assert.equal(await page.locator('#ss-gallery img').count(),4);}
+  checks.push('Gallery follows ordering in all three languages');
   const dish='Pork cheek marinated 12 hours, smoked 4 hours over wood and slow-cooked until it falls apart. No knife needed.';
   await admin('text',dish);const dishField=page.locator('.smokers-field textarea').filter({hasText:/.*/}).first();const oldDish=await dishField.inputValue();await dishField.fill('Edited dish content remains after React hydration.');await save();
   await page.goto(base+'/en/at-home/');await page.locator('.dsh-card').scrollIntoViewIfNeeded();await page.waitForTimeout(400);assert.equal(await page.locator('.dsh-body[aria-hidden=false] .dsh-desc').innerText(),'Edited dish content remains after React hydration.');
@@ -31,6 +34,7 @@ export async function testWordPress(server){
   await admin('media','orbit-v2-01_pork_cheek.webp');await page.locator('.smokers-media-reset').click();await save();checks.push('Media Library upload, replacement and restore');
   const post=await php('$id=wp_insert_post(["post_type"=>"post","post_status"=>"publish","post_title"=>"Phase one blog verification","post_content"=>"<p>Native WordPress article content.</p>"]);update_post_meta($id,"_smokers_language","en");echo json_encode(["id"=>$id,"url"=>get_permalink($id)]);');
   const blog=JSON.parse(post.text);await page.goto(base+'/en/blog/');await page.getByRole('link',{name:'Phase one blog verification'}).click();assert.match(await page.locator('#ss-main').innerText(),/Native WordPress article content/);await php(`wp_delete_post(${blog.id},true);`);checks.push('Native blog listing and article navigation');
+  const missing=await page.request.get(base+'/nonexistent-audit-page-48372/',{maxRedirects:0});assert.equal(missing.status(),404);checks.push('Unknown pages return HTTP 404');
   await page.goto(base+'/en/contact/');await page.locator('[name=name]').fill('Local QA');await page.locator('[name=email]').fill('qa@example.invalid');await page.locator('[name=message]').fill('Local test message; delivery is intercepted.');await page.locator('[name=privacy]').check();await page.locator('#ss-enquiry-form [type=submit]').click();await page.waitForFunction(()=>document.querySelector('.ss-wp-mail-status')?.textContent.includes('submitted'));
   const mail=await php('echo json_encode(get_option("smokers_test_mail"));');assert.match(mail.text,/Local test message/);checks.push('Server-side form submission with intercepted delivery');
   const invalid=await page.evaluate(async()=>{const r=await fetch(window.SMOKERS_WP.ajax,{method:'POST',body:new URLSearchParams({action:'smokers_contact',nonce:'invalid'})});return r.status});assert.equal(invalid,403);checks.push('Invalid form nonce rejected');

@@ -111,9 +111,6 @@
 #smokers-site .ss-faq-answers{border-top:1px solid #d6a04866;min-width:0}
 #smokers-site .ss-faq details{border-bottom-color:#d6a04844}
 #smokers-site .ss-faq summary{padding:28px 0;font-size:18px;line-height:1.5}
-#smokers-site .ss-faq-contact{display:flex;align-items:center;gap:18px;margin-top:28px;padding:20px 24px;border:1px solid #d6a04855;border-radius:16px;background:#d6a0480d;font:600 16px var(--body)}
-#smokers-site .ss-faq-contact svg{width:24px;height:24px;margin-left:auto;color:var(--smk-gold)}
-#smokers-site .ss-faq-contact>span{font-size:25px;color:var(--smk-gold)}
 #smokers-site .ss-client-services{background:linear-gradient(#1b1411ed,#1b1411e6),url('assets/reference-pro.webp') center/cover}
 #smokers-site .ss-client-services article{background:#1b14117a;backdrop-filter:blur(4px);border-top:2px solid var(--smk-gold)}
 

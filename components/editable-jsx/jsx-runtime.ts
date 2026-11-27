@@ -10,8 +10,9 @@ function content(input: unknown) {
   if('children' in next)next.children=text(next.children)
   for(const key of ['alt','title','aria-label','placeholder'])if(typeof next[key]==='string')next[key]=text(next[key])
   for(const key of ['src','poster','href'])if(typeof next[key]==='string')next[key]=window.SMOKERS_CMS.url(next[key] as string)
+  if(typeof next.src==='string'){const image=window.SMOKERS_CMS.image?.(next.src);if(image)Object.assign(next,{...image,sizes:next.sizes||image.sizes})}
   return next
 }
 export const jsx: typeof reactJsx=(type,props,key)=>reactJsx(type,content(props),key)
 export const jsxs: typeof reactJsxs=(type,props,key)=>reactJsxs(type,content(props),key)
-declare global {interface Window {SMOKERS_CMS?:{text:(value:string)=>string;url:(value:string)=>string;html:(value:string)=>string}}}
+declare global {interface Window {SMOKERS_CMS?:{text:(value:string)=>string;url:(value:string)=>string;html:(value:string)=>string;image?:(value:string)=>Record<string,unknown>|undefined}}}

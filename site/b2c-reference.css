@@ -266,7 +266,6 @@
  #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq-photo{height:25svh}
  #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq summary{padding:1.35svh 0;font-size:clamp(15px,calc(1.15 * var(--bu)),18px)}
  #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq details p{font-size:14px;line-height:1.45;padding-bottom:12px}
- #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq-contact{padding:12px 18px;margin-top:18px}
 }
 @media(max-width:1100px){
  #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-kitchen-hero .ss-flat-frame{background:var(--chapter-bg)}
