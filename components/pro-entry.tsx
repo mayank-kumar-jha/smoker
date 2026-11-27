@@ -8,7 +8,7 @@ window.SMOKERS_MOUNT_PRO=(scope,motion=true)=>{
  if(currentChapter!==chapterHost||motion!==chapterMotion){cleanupChapters?.();cleanupChapters=mountProChapters(scope,motion);chapterHost=currentChapter;chapterMotion=motion}
  const host=scope.querySelector<HTMLElement>('.ss-pro-showcase-mount')
  if(!host){mounted?.root.unmount();mounted=undefined;return}
- const content=<ProChickenShowcase lang={(scope.lang||'es') as Locale} motion={motion} assets={window.SMOKERS_ASSETS}/>
+ const content=<ProChickenShowcase lang={(scope.lang||'es') as Locale} motion={motion} assets={window.SMOKERS_ASSETS} proDishes={(window as any).SMOKERS_WP?.proDishes}/>
  if(mounted?.host===host){mounted.root.render(content);return}
  mounted?.root.unmount()
  const hydrate=host.hasChildNodes()&&!window.SMOKERS_STANDALONE

@@ -54,7 +54,13 @@
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-order-copy .ss-eyebrow{justify-content:center}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-order-copy h2{font-size:clamp(40px,11vw,64px);line-height:1.06;margin:18px 0}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-order-copy>.ss-lead{font-size:16px;line-height:1.45;border:0;border-radius:0;padding:0;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-panel-facts-order{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:28px 0;gap:0}
+ #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-order-steps{grid-template-columns:1fr;gap:14px;margin:22px 0;padding:18px 0 0;text-align:left}
+ #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-order-steps li{display:grid;grid-template-columns:auto 1fr;column-gap:12px;row-gap:2px;align-items:center}
+ #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-order-step-head{grid-row:1/3;flex-direction:column;gap:4px}
+ #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-order-step-head svg{width:24px;height:24px}
+ #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-order-steps h3{font-size:16px}
+ #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-order-steps p{font-size:13px;line-height:1.4}
+ #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-panel-facts-order{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:28px 0;gap:0}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-panel-facts-order li{padding:0 5px;font-size:10px;line-height:1.3;min-width:0}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-panel-facts-order svg{width:28px;height:28px;margin-bottom:8px}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-shop-link{display:none}
@@ -70,24 +76,6 @@
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-provider-description{font-size:13px;line-height:1.4;max-width:none}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-provider-arrow{position:static;transform:none;width:32px;height:32px;font-size:22px}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-delivery-note{text-align:center;font-size:13px;line-height:1.5;margin:10px 0}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat{padding:36px 6%;height:auto;min-height:0}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-heading{display:flex;flex-direction:column;gap:18px;text-align:center}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-heading h2{font-size:clamp(27px,7.6vw,45px);line-height:1.1;margin:14px 0}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-heading .ss-lead{font-size:15px;line-height:1.5}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-photo{width:100%;height:auto;aspect-ratio:1.75;margin:0;border-radius:34px;overflow:hidden}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-photo img{width:100%;height:100%;object-fit:cover}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-photo figcaption{width:92px;height:92px;right:8px;bottom:8px}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-photo figcaption strong{font-size:25px}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-photo figcaption span{font-size:9px}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-cards{display:flex;flex-direction:column;gap:0;margin-top:14px}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-cards article{display:grid;grid-template-columns:84px minmax(0,1fr);column-gap:12px;background:none;border:0;border-bottom:1px solid #a5733f;padding:18px 0;border-radius:0}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-cards article:last-child{border:0}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-method-top{grid-column:1;grid-row:1/4;display:flex;align-items:flex-start;gap:10px;padding-top:5px}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-method-number{font-size:28px}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-method-top svg{width:32px;height:32px}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-cards h3{grid-column:2;font:700 22px/1.2 Archivo,sans-serif;margin:0 0 3px}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-cards strong{grid-column:2;font:700 14px/1.3 SSCondensed,sans-serif;margin:0 0 4px}
-#smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-reheat-cards p{grid-column:2;font-size:13px;line-height:1.45;margin:0}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq{display:block;padding:36px 6%;height:auto;min-height:0}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq h2{font-size:clamp(28px,8.4vw,46px);line-height:1.08;margin:14px 0 22px;max-width:95%}
 #smokers-site#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-faq-photo{width:100%;height:auto;aspect-ratio:2.8;border-radius:24px;overflow:hidden;margin-bottom:16px}

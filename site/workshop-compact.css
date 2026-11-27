@@ -1,54 +1,40 @@
-/* Reference workshop: copy, process and photograph in one half-screen band. */
-#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-menu-story .ss-home-method{height:50svh;min-height:0;padding:4svh 6%;display:grid;grid-template-columns:33% 45% 22%;gap:0;align-items:center;overflow:auto;background:radial-gradient(ellipse at 10% 0%,#79401c55,transparent 65%),radial-gradient(ellipse at 90% 100%,#87451d44,transparent 65%),#30170c;color:#fff0dc;border-block:1px solid #a96c343d;view-timeline-name:--workshop;view-timeline-axis:block;scrollbar-width:thin;scrollbar-color:#9b6438 #30170c}
+/* Reference workshop: copy and 4-point method in one compact brown band (no cards, no image). */
+#smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-menu-story .ss-home-method{height:auto;min-height:46svh;padding:6svh 6%;display:grid;grid-template-columns:36% 64%;gap:0;align-items:center;overflow:hidden;background:radial-gradient(ellipse at 10% 0%,#79401c55,transparent 65%),radial-gradient(ellipse at 90% 100%,#87451d44,transparent 65%),#30170c;color:#fff0dc;border-block:1px solid #a96c343d;view-timeline-name:--workshop;view-timeline-axis:block}
 #smokers-site .ss-method-intro{display:contents}
 #smokers-site .ss-method-intro>div:first-child{grid-column:1;grid-row:1;padding-right:7%;min-width:0}
 #smokers-site .ss-method-intro .ss-eyebrow{font-size:clamp(8px,.65vw,12px);letter-spacing:.17em;color:#e8a463;gap:12px;margin-bottom:18px}
 #smokers-site .ss-method-intro .ss-eyebrow:before{width:42px;background:#ff7500}
 #smokers-site .ss-method-intro h2{font:400 clamp(28px,min(3.45vw,6.7svh),64px)/1.05 Georgia,serif;letter-spacing:-.035em;color:#fff1dc;margin-bottom:18px}
 #smokers-site .ss-method-intro h2 em{color:#ff7400;font-style:italic;font-weight:400}
-#smokers-site .ss-method-intro .ss-lead{font-size:clamp(11px,.85vw,15px);line-height:1.5;color:#e0c5ac;margin-bottom:22px}
+#smokers-site .ss-method-intro .ss-lead{font-size:clamp(12px,.95vw,16px);line-height:1.55;color:#e0c5ac;margin-bottom:0}
 #smokers-site .ss-method-intro .ss-button{background:#ff7100;color:white;font-size:11px;min-height:44px;padding:12px 25px;border:0;letter-spacing:.08em}
-#smokers-site .ss-home-steps{grid-column:2;grid-row:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8%;padding:24px 6%;border-left:1px solid #a367344d;align-items:stretch}
-#smokers-site .ss-home-steps li{display:flex;flex-direction:column;position:relative;gap:14px;min-width:0}
-#smokers-site .ss-home-steps svg{display:block;width:48px;height:48px;padding:12px;background:#71361180;color:#ffe6c5;border-radius:17px}
-#smokers-site .ss-home-steps h3{font:400 clamp(20px,1.8vw,34px)/1.1 Georgia,serif;color:#fff2df;margin:0 0 12px;letter-spacing:-.04em}
-#smokers-site .ss-home-steps h3 span{position:absolute;top:13px;left:62px;color:#ff7900;font:400 18px Georgia,serif}
-#smokers-site .ss-home-steps p{font-size:clamp(11px,1vw,17px);line-height:1.5;color:#eddbc7}
+#smokers-site .ss-home-steps{grid-column:2;grid-row:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 6%;padding:12px 0 12px 6%;border-left:1px solid #a367344d;align-items:start;list-style:none}
+#smokers-site .ss-home-steps li{display:flex;flex-direction:column;align-items:flex-start;position:relative;gap:10px;min-width:0;background:none;border:0;padding:0;box-shadow:none}
+#smokers-site .ss-home-steps .ss-step-badge{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#ff5b00;color:#120d0a;font:700 15px/1 SSCondensed,'Arial Narrow',sans-serif;flex:none}
+#smokers-site .ss-home-steps h3{font:700 clamp(14px,1.25vw,20px)/1.2 SSCondensed,'Arial Narrow',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff2df;margin:0 0 6px}
+#smokers-site .ss-home-steps p{font-size:clamp(12px,1vw,16px);line-height:1.5;color:#e0c5ac;margin:0}
 #smokers-site .ss-home-steps li:not(:last-child):after{display:none}
-#smokers-site .ss-method-photo{grid-column:3;grid-row:1;display:block;margin:0 0 0 12%;width:88%;max-width:100%;overflow:hidden;border:1px solid #c96d20;border-radius:80px 0 65px 0;transform:none}
-#smokers-site .ss-method-photo img{width:100%;height:33svh;max-height:340px;object-fit:cover;border-radius:0;transform:scale(1.12);box-shadow:none}
-#smokers-site .ss-method-photo:before,#smokers-site .ss-home-method:before,#smokers-site .ss-home-method:after{display:none}
+#smokers-site .ss-home-method:before,#smokers-site .ss-home-method:after{display:none}
 #smokers-site .ss-home-method .ss-home-pro-link{display:none}
-@supports(animation-timeline:view()){@media(prefers-reduced-motion:no-preference){#smokers-site:not([data-motion=off]) .ss-method-photo img{animation:ss-workshop-drift linear both;animation-timeline:--workshop;animation-range:entry 0% exit 100%}}}
-@keyframes ss-workshop-drift{from{transform:scale(1.16) translateY(-5%)}to{transform:scale(1.16) translateY(5%)}}
+@supports(animation-timeline:view()){@media(prefers-reduced-motion:no-preference){#smokers-site:not([data-motion=off]) .ss-home-steps{animation:ss-workshop-drift linear both;animation-timeline:--workshop;animation-range:entry 0% exit 100%}}}
+@keyframes ss-workshop-drift{from{transform:translateY(24px)}to{transform:translateY(-24px)}}
 @media(max-width:1100px){
- #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-menu-story .ss-home-method{grid-template-columns:40% 60%;padding:24px 5%}
- #smokers-site .ss-method-photo{display:none}
- #smokers-site .ss-home-steps{padding-inline:6%;gap:7%}
+ #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-menu-story .ss-home-method{grid-template-columns:38% 62%;padding:36px 5%}
+ #smokers-site .ss-home-steps{padding-left:5%;gap:22px 5%}
  #smokers-site .ss-method-intro h2{font-size:clamp(26px,3.8vw,42px)}
 }
 @media(max-width:700px){
- #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-menu-story .ss-home-method{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:24px;padding:24px}
+ #smokers-site:is([data-mode=casa],[data-mode=flavour]) .ss-menu-story .ss-home-method{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:24px;padding:32px 6%}
  #smokers-site .ss-method-intro{display:block;flex:none}
  #smokers-site .ss-method-intro>div:first-child{padding:0}
  #smokers-site .ss-method-intro h2{font-size:32px;margin-bottom:12px}
  #smokers-site .ss-method-intro .ss-eyebrow{font-size:8px;margin-bottom:12px}
- #smokers-site .ss-method-intro .ss-lead{font-size:12px;margin-bottom:14px}
- #smokers-site .ss-home-steps{flex:none;padding:16px 0 0;border:0;border-top:1px solid #a367344d;gap:16px}
- #smokers-site .ss-home-steps svg{width:36px;height:36px;padding:8px;border-radius:12px}
- #smokers-site .ss-home-steps h3{font-size:20px}
- #smokers-site .ss-home-steps h3 span{left:43px;top:9px;font-size:14px}
- #smokers-site .ss-home-steps p{font-size:11px}
+ #smokers-site .ss-method-intro .ss-lead{font-size:13px;margin-bottom:0}
+ #smokers-site .ss-home-steps{grid-template-columns:1fr;flex:none;padding:20px 0 0;border:0;border-top:1px solid #a367344d;gap:20px}
+ #smokers-site .ss-home-steps li{flex-direction:row;gap:14px;align-items:flex-start}
+ #smokers-site .ss-home-steps li>div{flex:1;min-width:0}
+ #smokers-site .ss-home-steps .ss-step-badge{width:32px;height:32px;font-size:14px}
+ #smokers-site .ss-home-steps h3{font-size:16px;margin-bottom:4px}
+ #smokers-site .ss-home-steps p{font-size:13px;line-height:1.45}
  #smokers-site .ss-home-steps li:after{display:none}
-}
-
-/* Align each process heading and its description across the three columns. */
-@media(min-width:701px){
- #smokers-site#smokers-site .ss-home-steps li{align-items:flex-start}
- #smokers-site#smokers-site .ss-home-steps li>div{width:100%;min-width:0}
- #smokers-site#smokers-site .ss-home-steps h3{min-height:2.2em;display:flex;align-items:flex-start}
-}
-@media(max-width:700px){
- #smokers-site#smokers-site .ss-home-steps li{align-items:flex-start}
- #smokers-site#smokers-site .ss-home-steps li>div{flex:1;min-width:0}
 }

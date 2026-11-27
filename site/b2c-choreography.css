@@ -15,6 +15,7 @@
 #smokers-site[data-scroll-motion=true] .ss-home-method[data-chapter-entered=false] .ss-home-steps li{translate:0 55px;opacity:0}
 #smokers-site[data-scroll-motion=true] .ss-home-steps li:nth-child(2){transition-delay:.12s}
 #smokers-site[data-scroll-motion=true] .ss-home-steps li:nth-child(3){transition-delay:.24s}
+#smokers-site[data-scroll-motion=true] .ss-home-steps li:nth-child(4){transition-delay:.36s}
 #smokers-site[data-scroll-motion=true] .ss-reference-order[data-chapter-entered=false] .ss-order-copy{translate:-55px 0}
 #smokers-site[data-scroll-motion=true] .ss-reference-order[data-chapter-entered=false] .ss-delivery-card{translate:min(32vw,420px) 0;opacity:0}
 #smokers-site[data-scroll-motion=true] .ss-delivery-card:nth-of-type(1){transition-delay:.12s}

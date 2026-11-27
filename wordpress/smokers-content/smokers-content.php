@@ -35,7 +35,7 @@ function smokers_media($name) {
     return $resolved[$cache]=$url ?: smokers_asset_base().rawurlencode($default);
 }
 function smokers_asset_base(){static $base;return $base??=get_template_directory_uri().'/dist/assets/';}
-function smokers_revision(){static $revision;return $revision??=hash('sha256',wp_json_encode([smokers_settings(),smokers_manifest()['build']??'1',get_option('smokers_media_revision','0'),home_url('/'),get_template_directory_uri()]));}
+function smokers_revision(){static $revision;return $revision??=hash('sha256',wp_json_encode([smokers_settings(),smokers_manifest()['build']??'1',get_option('smokers_media_revision','0'),get_option('smokers_pro_dishes_rev','0'),home_url('/'),get_template_directory_uri()]));}
 function smokers_page_template($page){
     if(isset($page['htmlFile']))$page['html']=file_get_contents(__DIR__.'/data/'.$page['htmlFile']);
     return $page;
@@ -84,13 +84,44 @@ add_action('admin_enqueue_scripts', function ($hook) {
 function smokers_admin() {
     if (!current_user_can('edit_pages')) return;
     $manifest = smokers_manifest(); $settings = smokers_settings();
-    $tab = sanitize_key($_GET['tab'] ?? 'text');if(!in_array($tab,['text','media','links','delivery'],true))$tab='text';
+    $tab = sanitize_key($_GET['tab'] ?? 'text');if(!in_array($tab,['text','media','links','blog','delivery'],true))$tab='text';
     $lang = sanitize_key($_GET['lang'] ?? 'es'); if (!in_array($lang,['es','ca','en'],true)) $lang='es';
     $group = sanitize_text_field(wp_unslash($_GET['group'] ?? ''));
     echo '<div class="wrap smokers-admin"><h1>Smokers content</h1><p>Edit content without changing the animated layout. Repeated phrases are shared within each language. Empty text fields are allowed. Use matching crops and transparent backgrounds for plate replacements.</p>';
     if (isset($_GET['saved'])) echo '<div class="notice notice-success"><p>Changes saved.</p></div>';
     if ($result=get_transient('smokers_setup_result_'.get_current_user_id())) { echo '<div class="notice notice-info"><p>'.esc_html(wp_json_encode($result)).'</p></div>';delete_transient('smokers_setup_result_'.get_current_user_id()); }
-    echo '<nav class="nav-tab-wrapper">';foreach(['text'=>'Text & translations','media'=>'Images & video','links'=>'Links','delivery'=>'Email & setup'] as $id=>$label)echo '<a class="nav-tab '.($tab===$id?'nav-tab-active':'').'" href="'.esc_url(add_query_arg(['page'=>'smokers-content','tab'=>$id],admin_url('admin.php'))).'">'.esc_html($label).'</a>';echo '</nav>';
+    echo '<nav class="nav-tab-wrapper">';foreach(['text'=>'Text & translations','media'=>'Images & video','links'=>'Links','blog'=>'Blog articles','delivery'=>'Email & setup'] as $id=>$label)echo '<a class="nav-tab '.($tab===$id?'nav-tab-active':'').'" href="'.esc_url(add_query_arg(['page'=>'smokers-content','tab'=>$id],admin_url('admin.php'))).'">'.esc_html($label).'</a>';echo '</nav>';
+    if ($tab === 'blog') {
+        $filter_lang = sanitize_key($_GET['blog_lang'] ?? '');
+        echo '<div style="margin:18px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center">';
+        echo '<a class="button button-primary" href="'.esc_url(admin_url('post-new.php?smokers_lang=es')).'">+ Add Spanish article</a>';
+        echo '<a class="button button-primary" href="'.esc_url(admin_url('post-new.php?smokers_lang=ca')).'">+ Add Catalan article</a>';
+        echo '<a class="button button-primary" href="'.esc_url(admin_url('post-new.php?smokers_lang=en')).'">+ Add English article</a>';
+        echo '<span style="margin-left:auto">';
+        foreach([''=>'All languages','es'=>'Spanish','ca'=>'Catalan','en'=>'English'] as $id=>$label){
+            $active = $filter_lang === $id ? ' button-secondary' : '';
+            echo '<a class="button'.$active.'" style="margin-left:4px" href="'.esc_url(add_query_arg(['page'=>'smokers-content','tab'=>'blog','blog_lang'=>$id],admin_url('admin.php'))).'">'.esc_html($label).'</a>';
+        }
+        echo '</span></div>';
+        $args=['post_type'=>'post','post_status'=>['publish','draft','pending','future'],'posts_per_page'=>50,'orderby'=>'date','order'=>'DESC'];
+        if(in_array($filter_lang,['es','ca','en'],true)){
+            $args['meta_query']=$filter_lang==='es'?['relation'=>'OR',['key'=>'_smokers_language','value'=>'es'],['key'=>'_smokers_language','compare'=>'NOT EXISTS']]:[['key'=>'_smokers_language','value'=>$filter_lang]];
+        }
+        $posts=get_posts($args);
+        if(!$posts){echo '<p>No blog articles yet. Use one of the buttons above to create your first article.</p></div>';return;}
+        echo '<table class="widefat striped"><thead><tr><th>Article</th><th>Language</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead><tbody>';
+        $langNames=['es'=>'Spanish (ES)','ca'=>'Catalan (CA)','en'=>'English (EN)'];
+        foreach($posts as $p){
+            $pl=get_post_meta($p->ID,'_smokers_language',true)?:'es';
+            echo '<tr><td><strong><a href="'.esc_url(get_edit_post_link($p->ID)).'">'.esc_html($p->post_title?:'(no title)').'</a></strong></td>';
+            echo '<td>'.esc_html($langNames[$pl]??strtoupper($pl)).'</td>';
+            echo '<td>'.esc_html(ucfirst($p->post_status)).'</td>';
+            echo '<td>'.esc_html(get_the_date('',$p)).'</td>';
+            echo '<td><a class="button button-small" href="'.esc_url(get_edit_post_link($p->ID)).'">Edit</a> <a class="button button-small" href="'.esc_url(get_permalink($p->ID)).'" target="_blank" rel="noopener">View</a></td></tr>';
+        }
+        echo '</tbody></table></div>';
+        return;
+    }
     echo '<form method="get"><input type="hidden" name="page" value="smokers-content"><input type="hidden" name="tab" value="'.esc_attr($tab).'">';
     if($tab==='text'){echo '<label>Language <select name="lang">';foreach(['es'=>'Spanish','ca'=>'Catalan','en'=>'English']as $id=>$label)echo '<option value="'.$id.'" '.selected($id,$lang,false).'>'.$label.'</option>';echo '</select></label>';}
     if($tab!=='delivery'){echo ' <label>Search <input name="q" value="'.esc_attr(wp_unslash($_GET['q']??'')).'"></label> <label>Section <select name="group"><option value="">All sections</option>'; $groups=[];foreach($manifest[$tab==='text'?'text':($tab==='media'?'images':'links')][$tab==='text'?$lang:'']??[]as $field) $groups=array_merge($groups,$field['groups']);if($tab!=='text')foreach($manifest[$tab==='media'?'images':'links']as $field)$groups=array_merge($groups,$field['groups']);foreach(array_unique($groups)as $g)echo '<option '.selected($group,$g,false).'>'.esc_html($g).'</option>';echo '</select></label> <button class="button">Filter</button>';}
@@ -129,9 +160,11 @@ add_action('admin_post_smokers_save',function(){
     wp_safe_redirect(add_query_arg('saved',1,wp_get_referer()?:admin_url('admin.php?page=smokers-content')));exit;
 });
 add_action('add_meta_boxes',function(){
-    add_meta_box('smokers-post-language','Smokers language',function($post){wp_nonce_field('smokers_language','smokers_language_nonce');$lang=get_post_meta($post->ID,'_smokers_language',true)?:'es';echo '<select name="smokers_language">';foreach(['es'=>'Spanish','ca'=>'Catalan','en'=>'English']as $id=>$label)echo '<option value="'.$id.'" '.selected($lang,$id,false).'>'.$label.'</option>';echo '</select>';},'post','side');
+    add_meta_box('smokers-post-language','Smokers language',function($post){wp_nonce_field('smokers_language','smokers_language_nonce');$preset=sanitize_key($_GET['smokers_lang']??'');$lang=get_post_meta($post->ID,'_smokers_language',true)?:(in_array($preset,['es','ca','en'],true)?$preset:'es');echo '<select name="smokers_language">';foreach(['es'=>'Spanish','ca'=>'Catalan','en'=>'English']as $id=>$label)echo '<option value="'.$id.'" '.selected($lang,$id,false).'>'.$label.'</option>';echo '</select>';},'post','side');
     add_meta_box('smokers-page-content','Smokers content',function($post){if(get_post_meta($post->ID,'_smokers_managed',true))echo '<p>This page uses the animated Smokers template. <a href="'.esc_url(admin_url('admin.php?page=smokers-content&lang='.get_post_meta($post->ID,'_smokers_language',true))).'">Edit its text and artwork</a>.</p>';else echo '<p>This page is not managed by Smokers.</p>';},'page','side');
 });
+add_filter('manage_post_posts_columns',function($cols){$cols['smokers_lang']='Language';return $cols;});
+add_action('manage_post_posts_custom_column',function($col,$id){if($col==='smokers_lang')echo esc_html(strtoupper(get_post_meta($id,'_smokers_language',true)?:'es'));},10,2);
 add_action('save_post_post',function($id){if(wp_is_post_revision($id)||!current_user_can('edit_post',$id)||!wp_verify_nonce($_POST['smokers_language_nonce']??'','smokers_language'))return;$lang=sanitize_key($_POST['smokers_language']??'es');if(in_array($lang,['es','ca','en'],true))update_post_meta($id,'_smokers_language',$lang);});
 require_once __DIR__.'/history.php';
 require_once __DIR__.'/dishes.php';

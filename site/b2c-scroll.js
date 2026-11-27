@@ -52,6 +52,10 @@ window.SMOKERS_B2C_MOTION=(root,motionEnabled)=>{
    else if(y<=innerHeight*.78&&bottom>=innerHeight*.12)entered=true;
    else if(y>innerHeight*1.08||bottom<-innerHeight*.25)entered=false;
    if(el.dataset.chapterEntered!==String(entered))el.dataset.chapterEntered=String(entered);
+   if(el.classList.contains('ss-reheat')){
+    const p=enabled?clamp((y+height*.5-innerHeight*.5)/innerHeight,-1,1):0;
+    el.style.setProperty('--reheat-y',p.toFixed(4));
+   }
   }
   if(menu){
    const stageY=stageTop-scrollY;
