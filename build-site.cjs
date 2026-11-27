@@ -15,7 +15,7 @@ const outputRoot=path.resolve(dir);
 function cleanHTML(folder){for(const entry of fs.readdirSync(folder,{withFileTypes:true})){const file=path.resolve(folder,entry.name);if(!file.startsWith(outputRoot+path.sep))throw Error('Output path escaped');if(entry.isDirectory())cleanHTML(file);else if(entry.name.endsWith('.html'))fs.unlinkSync(file)}}
 cleanHTML(outputRoot);
 const files=new Set(['display.woff2','condensed-0.woff2','archivo-400.woff2','archivo-600.woff2','archivo-700.woff2','Archivo-OFL.txt','smokers-logo-orange.png','smokers-loader-logo.png','smokers-intro.mp4','logo-smoke.webp','Bevan-OFL.txt','barlowcondensed-OFL.txt','favicon.svg','apple-touch-icon.png','og-smokers.jpg','hero-texture.webp',...Object.keys(media),...Object.values(media).flat().map(v=>v.file)]);
-for(const f of ['kreo-digital-white.svg','smokers-horeca-2027-en.pdf','smokers-horeca-2027-es.pdf','smokers-horeca-2027-ca.pdf','method-step-0.png','method-step-1.png','method-step-2.png','method-step-3.png'])files.add(f);
+for(const f of ['kreo-digital-white.svg','smokers-horeca-2027-en.pdf','smokers-horeca-2027-es.pdf','smokers-horeca-2027-ca.pdf'])files.add(f);
 files.add('menu-tabletop.webp');
 files.add('b2c-reference-clean-v8.png');
 files.add('b2c-hero-refined-v9.webp');
