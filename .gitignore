@@ -10,4 +10,5 @@ site/orbit-menu-markup.js
 site/pro-showcase-markup.js
 .playground/
 .codex-ppt-build/
+.netlify/
 *.log
