@@ -39,25 +39,18 @@ export default function ProChickenShowcase({lang='es',motion=true,assets={},proD
     return
    }
    if(innerWidth<=1024){releasePending();return}
-   const desktop=matchMedia('(min-width: 801px) and (min-height: 650px)').matches
-   host.dataset.scrollMotion=desktop?'sticky':'flow'
+   host.dataset.scrollMotion='flow'
    ctx.add(()=>{
     const tl=gsap.timeline({paused:true,defaults:{ease:'none'}})
     const track=host.querySelector<HTMLElement>('.ss-chicken-composition')!
     const cards=host.querySelectorAll<HTMLElement>('.ss-chicken-dish')
-    const brand=host.querySelector('.ss-chicken-brand')
-    gsap.set(brand,{autoAlpha:1,y:0})
-    tl.to(brand,{autoAlpha:0,y:-12,duration:.7,ease:'power1.out'},0)
-    gsap.to(brand!.querySelector('img'),{scale:1.035,y:-5,duration:2.8,repeat:-1,yoyo:true,ease:'sine.inOut'})
-    gsap.fromTo(brand!.querySelector('span'),{scaleX:.4,opacity:.4},{scaleX:1,opacity:1,duration:2,repeat:-1,yoyo:true,ease:'sine.inOut'})
     const hasMore=dishes.length>2
     const overflow=hasMore?Math.max(0,track.scrollWidth-host.clientWidth+80):0
     gsap.set(track,{x:0})
     gsap.set(cards,{autoAlpha:0,y:28,scale:.96})
-    tl.to(cards,{autoAlpha:1,y:0,scale:1,duration:1.1,stagger:.18,ease:'power2.out'},.2)
+    tl.to(cards,{autoAlpha:1,y:0,scale:1,duration:1.1,stagger:.18,ease:'power2.out'},0)
     if(overflow>0)tl.to(track,{x:-overflow,duration:3.1,ease:'none'},.7)
-    tl.fromTo(host.querySelector('.ss-chicken-bg'),{y:-45,scale:1.14},{y:45,scale:1.06,duration:4.2},0)
-    const trigger=ScrollTrigger.create({animation:tl,trigger:host.parentElement,start:desktop?'top top':'top 85%',end:desktop?'bottom bottom':'bottom 90%',scrub:.65,invalidateOnRefresh:true})
+    const trigger=ScrollTrigger.create({animation:tl,trigger:host,start:'top 85%',end:'top 15%',scrub:.65,invalidateOnRefresh:true})
     tl.progress(trigger.progress)
    })
    ScrollTrigger.refresh()
@@ -78,7 +71,6 @@ export default function ProChickenShowcase({lang='es',motion=true,assets={},proD
  },{scope:ref,dependencies:[motion,lang,dishes.length],revertOnUpdate:true})
  return <section ref={ref} className="ss-chicken-showcase" id="ss-signatures" aria-label={lang==='en'?'Signature B2B flavours':lang==='ca'?'Especialitats per a professionals':'Especialidades para profesionales'}>
   <img className="ss-chicken-bg" src={asset('pro-chicken-background.webp')} alt="" width="1536" height="1024" loading="lazy"/>
-  <div className="ss-chicken-brand" aria-hidden="true"><img src={asset('smokers-loader-logo.png')} width="1680" height="386" alt=""/><p>{lang==='es'?'Fuego lento. Sabor intenso.':lang==='ca'?'Foc lent. Sabor intens.':'Slow fire. Bold flavour.'}</p><span/></div>
   <div className="ss-chicken-composition" data-has-more={dishes.length>2?'true':'false'}>{dishes.map((dish,i)=><article className={'ss-chicken-dish ss-chicken-dish-'+i} key={i}>
    <div className="ss-chicken-copy"><p className="ss-chicken-kicker">{dish[0]}</p><h2>{dish[1]} <em>{dish[2]}</em></h2><p className="ss-chicken-description">{dish[3]}</p><ul className="ss-chicken-facts">{dish.slice(4).map((fact,j)=><li key={j}><Icon kind={(i%2)*3+j}/><span>{fact}</span></li>)}</ul></div>
   </article>)}</div>

@@ -1,5 +1,5 @@
-#smokers-site .ss-chicken-showcase{position:relative;isolation:isolate;overflow:hidden;background:#180c06;min-height:540px;height:100svh;color:var(--cream);scroll-margin-top:0;display:flex;align-items:center}
-#smokers-site .ss-chicken-bg{position:absolute;z-index:-2;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;pointer-events:none}
+#smokers-site .ss-chicken-showcase{position:relative;isolation:isolate;overflow:hidden;background:#180c06;min-height:480px;height:clamp(480px,65svh,640px);color:var(--cream);scroll-margin-top:0;display:flex;align-items:center}
+#smokers-site .ss-chicken-bg{position:absolute;z-index:-2;inset:0;width:100%;height:100%;max-width:none;object-fit:fill;pointer-events:none}
 #smokers-site .ss-chicken-showcase:after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#180c062e,transparent 22%,transparent 78%,#180c0640)}
 #smokers-site .ss-chicken-composition{width:max-content;min-width:100%;margin:auto;padding:3vh 5vw;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:clamp(22px,2.8vw,40px)}
 #smokers-site .ss-chicken-composition[data-has-more=true]{justify-content:flex-start}
@@ -16,13 +16,10 @@
 #smokers-site .ss-chicken-facts li:last-child{border:0;padding-right:0}
 #smokers-site .ss-chicken-facts svg{width:24px;height:24px;flex:none;color:var(--orange)}
 .ss-block-clip{position:relative;overflow:hidden}.ss-block-wipe{position:absolute;inset:0;z-index:2;pointer-events:none}
-@media(min-width:801px) and (min-height:650px){
- #smokers-site .ss-pro-showcase-mount:has([data-scroll-motion=sticky]){height:240svh;position:relative}
- #smokers-site .ss-chicken-showcase[data-scroll-motion=sticky]{position:sticky;top:0;height:100svh;min-height:0}
-}
-@media(min-width:801px) and (max-height:780px){#smokers-site .ss-chicken-showcase{min-height:520px}#smokers-site .ss-chicken-copy h2{font-size:clamp(30px,3.2vw,48px)}#smokers-site .ss-chicken-description{font-size:15px}#smokers-site .ss-chicken-facts{margin-top:20px}}
+@media(min-width:801px) and (max-height:780px){#smokers-site .ss-chicken-copy h2{font-size:clamp(30px,3.2vw,48px)}#smokers-site .ss-chicken-description{font-size:15px}#smokers-site .ss-chicken-facts{margin-top:20px}}
 @media(max-width:1024px){
  #smokers-site .ss-chicken-showcase{height:auto;min-height:0;padding:48px 0;display:block}
+ #smokers-site .ss-chicken-bg{object-fit:cover}
  #smokers-site .ss-chicken-composition{width:100%;min-width:0;padding:8px 6vw 16px;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#ff5b00 #24130a}
  #smokers-site .ss-chicken-dish{width:min(84vw,430px);scroll-snap-align:center;padding:28px 20px}
  #smokers-site .ss-chicken-kicker{font-size:11px;gap:12px}
@@ -34,12 +31,4 @@
  #smokers-site .ss-chicken-facts svg{width:22px;height:22px}
 }
 
-/* Branding occupies the waiting state only; the scroll timeline crossfades it out. */
-#smokers-site .ss-chicken-brand{display:none;position:absolute;inset:0;z-index:3;align-items:center;justify-content:center;flex-direction:column;gap:24px;pointer-events:none;text-align:center}
-#smokers-site [data-scroll-motion] .ss-chicken-brand{display:flex}
-#smokers-site [data-pro-pending] .ss-chicken-brand{display:flex}
 #smokers-site [data-pro-pending] .ss-chicken-composition{visibility:hidden}
-#smokers-site .ss-chicken-brand img{width:min(440px,66vw);height:auto;filter:drop-shadow(0 8px 30px #0004)}
-#smokers-site .ss-chicken-brand p{font:700 clamp(12px,1vw,16px)/1.5 var(--ui);letter-spacing:.24em;text-transform:uppercase;color:var(--cream);padding-inline:20px}
-#smokers-site .ss-chicken-brand>span{width:60px;height:1px;background:var(--orange)}
-@media(max-width:639px){#smokers-site [data-scroll-motion=phone] .ss-chicken-brand{position:relative;inset:auto;padding:70px 0 35px}}

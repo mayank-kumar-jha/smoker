@@ -5609,9 +5609,6 @@ html:has(#smokers-site) {
         min-height: 500px
     }
 
-    #smokers-site[data-mode=profesional] .ss-chicken-showcase[data-scroll-motion=phone] .ss-chicken-brand {
-        display: none
-    }
 }
 
 @import "./flavour-pages.css";
@@ -7293,18 +7290,22 @@ html:has(#smokers-site) {
 
 #smokers-site .ss-method-orb {
     position: relative;
+    z-index: 2;
     width: 102px;
     height: 102px;
     margin: 0 0 24px 42px;
     display: grid;
     place-items: center;
     border-radius: 50%;
-    background: radial-gradient(circle at 50% 45%, rgba(255, 102, 26, .18), rgba(30, 12, 5, .78) 68%, transparent 74%);
-    transition: transform .4s cubic-bezier(.22, .75, .16, 1)
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 44%, #3c190a 0%, #261006 56%, #1d0b04 100%);
+    box-shadow: 0 0 0 2px #1d0b04;
+    transition: transform .4s cubic-bezier(.22, .75, .16, 1), box-shadow .4s ease
 }
 
 #smokers-site .ss-method-orb-arc {
     position: absolute;
+    z-index: 2;
     inset: 0;
     border-radius: 50%;
     border: 2px solid #ff5b00;
@@ -7315,12 +7316,13 @@ html:has(#smokers-site) {
 
 #smokers-site .ss-method-orb-icon {
     position: relative;
-    z-index: 1;
+    z-index: 3;
     width: 48px;
     height: 48px;
     color: #fff6ec;
     display: grid;
-    place-items: center
+    place-items: center;
+    transition: filter .45s ease, opacity .45s ease, transform .45s ease
 }
 
 #smokers-site .ss-method-orb-icon svg {
@@ -7418,11 +7420,74 @@ html:has(#smokers-site) {
     #smokers-site[data-scroll-motion=true] .ss-wave-path {
         stroke-dasharray: 1;
         stroke-dashoffset: 1;
-        transition: stroke-dashoffset 1.4s cubic-bezier(.22, .75, .16, 1)
+        transition: stroke-dashoffset 2.1s linear
     }
 
     #smokers-site[data-scroll-motion=true] .ss-method-replica[data-chapter-entered=true] .ss-wave-path {
         stroke-dashoffset: 0
+    }
+
+    #smokers-site[data-scroll-motion=true] .ss-method-replica[data-chapter-entered=false] .ss-method-orb-icon {
+        opacity: .42;
+        filter: none
+    }
+
+    #smokers-site[data-scroll-motion=true] .ss-method-replica[data-chapter-entered=false] .ss-method-orb-arc {
+        opacity: .35
+    }
+
+    #smokers-site[data-scroll-motion=true] .ss-method-replica[data-chapter-entered=true] .ss-method-step-0 .ss-method-orb {
+        animation: ss-orb-touch .85s cubic-bezier(.22, .75, .16, 1) .18s both
+    }
+
+    #smokers-site[data-scroll-motion=true] .ss-method-replica[data-chapter-entered=true] .ss-method-step-1 .ss-method-orb {
+        animation: ss-orb-touch .85s cubic-bezier(.22, .75, .16, 1) .88s both
+    }
+
+    #smokers-site[data-scroll-motion=true] .ss-method-replica[data-chapter-entered=true] .ss-method-step-2 .ss-method-orb {
+        animation: ss-orb-touch .85s cubic-bezier(.22, .75, .16, 1) 1.58s both
+    }
+
+    #smokers-site[data-scroll-motion=true] .ss-method-replica[data-chapter-entered=true] .ss-method-step-0 .ss-method-orb-icon {
+        animation: ss-svg-glow .85s cubic-bezier(.22, .75, .16, 1) .18s both
+    }
+
+    #smokers-site[data-scroll-motion=true] .ss-method-replica[data-chapter-entered=true] .ss-method-step-1 .ss-method-orb-icon {
+        animation: ss-svg-glow .85s cubic-bezier(.22, .75, .16, 1) .88s both
+    }
+
+    #smokers-site[data-scroll-motion=true] .ss-method-replica[data-chapter-entered=true] .ss-method-step-2 .ss-method-orb-icon {
+        animation: ss-svg-glow .85s cubic-bezier(.22, .75, .16, 1) 1.58s both
+    }
+
+    @keyframes ss-orb-touch {
+        0% {
+            box-shadow: 0 0 0 2px #1d0b04
+        }
+        45% {
+            box-shadow: 0 0 0 2px #1d0b04, 0 0 30px rgba(255, 112, 24, .75), inset 0 0 24px rgba(255, 91, 0, .4)
+        }
+        100% {
+            box-shadow: 0 0 0 2px #1d0b04, 0 0 18px rgba(255, 91, 0, .28)
+        }
+    }
+
+    @keyframes ss-svg-glow {
+        0% {
+            opacity: .42;
+            transform: scale(.96);
+            filter: none
+        }
+        45% {
+            opacity: 1;
+            transform: scale(1.09);
+            filter: drop-shadow(0 0 10px rgba(255, 145, 56, .95)) drop-shadow(0 0 22px rgba(255, 91, 0, .7))
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+            filter: drop-shadow(0 0 6px rgba(255, 108, 28, .48))
+        }
     }
 }
 
